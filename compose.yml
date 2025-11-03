@@ -1,0 +1,43 @@
+services:
+  flask-api:
+    container_name: flask-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FLASK_ENV=${FLASK_ENV:-production}
+    ports:
+      - "5000:80"
+    networks:
+      - wslnet
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+        consistency: z
+      - type: volume
+        source: temp_output
+        target: /app/output
+        consistency: z
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://0.0.0.0:80/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  temp_output:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/elegro/proyectos/php/php8/www/comfaca-enlinea/laravel/storage/temp
+      o: bind,uid=1000,gid=1000,rw
+
+networks:
+  wslnet:
+    external: true

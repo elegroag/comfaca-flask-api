@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración Juramentada - COMFACA</title>
+    <style>
+        @page {
+            margin: 0in;
+            background-image: url('membrete.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000;
+            margin-bottom: 30px;
+        }
+
+        .header-logo {
+            width: 150px;
+            border-right: 2px solid #000;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .header-gov {
+            width: 180px;
+            border-right: 2px solid #000;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .header-gov-logo {
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .header-gov-text {
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+
+        .header-gov-sub {
+            font-size: 8px;
+            margin-top: 2px;
+        }
+
+        .header-title {
+            flex: 1;
+            padding: 10px 15px;
+            border-right: 2px solid #000;
+        }
+
+        .header-title h1 {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .header-date {
+            width: 280px;
+            padding: 5px;
+        }
+
+        .date-label {
+            font-size: 8px;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+        .date-fields {
+            display: flex;
+            gap: 0;
+        }
+
+        .date-field {
+            flex: 1;
+            border: 1px solid #000;
+            padding: 8px 3px;
+            text-align: center;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .date-field:not(:last-child) {
+            border-right: none;
+        }
+
+        .date-field.large {
+            flex: 2;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-line {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+
+        .form-line label {
+            margin-right: 5px;
+        }
+
+        .form-line input[type="text"] {
+            flex: 1;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 2px 5px;
+            font-size: 11px;
+        }
+
+        .section-title {
+            background-color: #d9d9d9;
+            border: 2px solid #000;
+            padding: 8px 10px;
+            font-weight: bold;
+            font-size: 11px;
+            text-align: center;
+            margin: 20px 0 15px 0;
+        }
+
+        .checkbox-row {
+            display: flex;
+            gap: 30px;
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #000;
+        }
+
+        .declaration-box {
+            border: 2px solid #000;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 10px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .subsection-title {
+            background-color: #d9d9d9;
+            border: 2px solid #000;
+            padding: 6px 10px;
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            margin: 20px 0 10px 0;
+        }
+
+        .info-text {
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table td {
+            border: 1px solid #000;
+            padding: 8px;
+            font-size: 10px;
+        }
+
+        table td.label {
+            font-weight: bold;
+            width: 150px;
+        }
+
+        .parent-table {
+            display: flex;
+            gap: 0;
+        }
+
+        .parent-col {
+            flex: 1;
+            border: 1px solid #000;
+        }
+
+        .parent-col:first-child {
+            border-right: none;
+        }
+
+        .parent-header {
+            background-color: #e8e8e8;
+            padding: 6px;
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            border-bottom: 1px solid #000;
+        }
+
+        .parent-field {
+            padding: 8px;
+            font-size: 10px;
+        }
+
+        .final-declaration {
+            border: 2px solid #000;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-logo">
+                <img src="/placeholder.svg?height=60&width=120" alt="Comfaca Logo">
+            </div>
+            <div class="header-gov">
+                <div class="header-gov-logo">🇨🇴</div>
+                <div class="header-gov-text">El empleo<br>es de todos</div>
+                <div class="header-gov-sub">Mintrabajo</div>
+            </div>
+            <div class="header-title">
+                <h1>Declaración Juramentada</h1>
+            </div>
+            <div class="header-date">
+                <div class="date-label">Fecha de solicitud</div>
+                <div class="date-fields">
+                    <div class="date-field">Año</div>
+                    <div class="date-field">Mes</div>
+                    <div class="date-field">Día</div>
+                    <div class="date-field large">Ciudad / Municipio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="form-section">
+            <div class="form-line">
+                <label>Yo</label>
+                <input type="text">
+            </div>
+            <div class="form-line">
+                <label>Identificado(a) con tipo documento:</label>
+                <input type="text" style="max-width: 300px;">
+                <label style="margin-left: 20px;">y número:</label>
+                <input type="text" style="max-width: 300px;">
+            </div>
+        </div>
+
+        <!-- Motivo Section -->
+        <div class="section-title">MOTIVO DE LA DECLARACIÓN</div>
+        
+        <p style="margin: 10px 0; font-size: 10px;">Marque con una (x) el motivo de la declaración:</p>
+        
+        <div class="checkbox-row">
+            <div class="checkbox-item">
+                <input type="checkbox" id="convivencia-economica">
+                <label for="convivencia-economica">Convivencia y dependencia económica</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="convivencia-custodia">
+                <label for="convivencia-custodia">Convivencia beneficiario por custodia</label>
+            </div>
+        </div>
+
+        <!-- Declaration Box -->
+        <div class="declaration-box">
+            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley
+        </div>
+
+        <!-- Economic Dependency Section -->
+        <div class="subsection-title">DEPENDENCIA ECONÓMICA POR CUSTODIA</div>
+
+        <div class="info-text">
+            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que la persona relacionada hace parte de su grupo familiar como beneficiario con custodia legal, convive y dependen económicamente del trabajador(a), no reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación Familiar. Manifiesto libre y voluntariamente que la persona relacionada a continuación se encuentran bajo mi responsabilidad y total dependencia económica:
+        </div>
+
+        <!-- Dependent Information Table -->
+        <table>
+            <tr>
+                <td class="label">Nombre completo</td>
+                <td></td>
+                <td class="label" style="width: 120px;">Parentesco</td>
+                <td style="width: 150px;"></td>
+            </tr>
+            <tr>
+                <td class="label">Tipo documento</td>
+                <td></td>
+                <td class="label">Número documento</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- Biological Parents Section -->
+        <div style="margin: 15px 0;">
+            <div style="background-color: #e8e8e8; border: 1px solid #000; padding: 6px 10px; font-weight: bold; font-size: 10px; margin-bottom: 0;">
+                Padres biológicos
+            </div>
+            <div class="parent-table">
+                <div class="parent-col">
+                    <div class="parent-header">Identificación papá biológico</div>
+                    <div class="parent-field">Tipo documento (P)</div>
+                </div>
+                <div class="parent-col">
+                    <div class="parent-header">Identificación mamá biológica</div>
+                    <div class="parent-field">Tipo documento (M)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Declaration -->
+        <div class="final-declaration">
+            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a notificar de manera inmediata a COMFACA la novedad en el manifestado a través del presente documento, en caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+        </div>
+    </div>
+</body>
+</html>

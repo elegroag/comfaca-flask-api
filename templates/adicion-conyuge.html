@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Adición Cónyuge - COMFACA</title>
+    <style>
+        @page {
+            margin: 0in;
+            background-image: url('membrete.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 25px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 80px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .header-info {
+            flex: 1;
+            padding-left: 15px;
+        }
+
+        .header-info h1 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .header-info h2 {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header-info p {
+            font-size: 9px;
+            margin: 2px 0;
+        }
+
+        .fecha-box {
+            border: 2px solid #333;
+            min-width: 280px;
+        }
+
+        .fecha-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fecha-box th {
+            background: #e0e0e0;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10px;
+            border: 1px solid #333;
+        }
+
+        .fecha-box td {
+            padding: 8px;
+            border: 1px solid #333;
+        }
+
+        .importante {
+            background: #f5f5f5;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #999;
+        }
+
+        .importante strong {
+            font-weight: bold;
+        }
+
+        .checkbox-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .checkbox-inline input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+        }
+
+        .section {
+            margin: 15px 0;
+            border: 2px solid #333;
+        }
+
+        .section-header {
+            background: #d0d0d0;
+            padding: 6px 10px;
+            font-weight: bold;
+            font-size: 11px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-note {
+            font-size: 9px;
+            font-style: italic;
+            float: right;
+            font-weight: normal;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 6px;
+            border: 1px solid #666;
+        }
+
+        .label {
+            font-weight: bold;
+            background: #f5f5f5;
+            width: 150px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 4px;
+            border: none;
+            background: transparent;
+            font-size: 11px;
+        }
+
+        .row {
+            display: flex;
+            gap: 0;
+        }
+
+        .col {
+            flex: 1;
+            border: 1px solid #666;
+            padding: 6px;
+        }
+
+        .col-label {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+        }
+
+        .info-bancaria {
+            min-height: 150px;
+            padding: 10px;
+            border: 1px solid #666;
+            background: #fafafa;
+        }
+
+        .nota {
+            margin: 15px 0;
+            padding: 8px;
+            background: #f9f9f9;
+            border-left: 3px solid #666;
+            font-size: 10px;
+        }
+
+        .declaracion {
+            margin: 15px 0;
+            padding: 10px;
+            text-align: justify;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .declaracion strong {
+            font-weight: bold;
+        }
+
+        .firma-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .container {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">
+                    Logo COMFACA
+                </div>
+                <div class="header-info">
+                    <h1>CAJA DE COMPENSACIÓN FAMILIAR</h1>
+                    <h2>DEL CAQUETÁ COMFACA</h2>
+                    <p>NIT: 891190047</p>
+                    <p><strong>Sede Administrativa:</strong> Carrera 11 No. 10 -34</p>
+                    <p><strong>Centro Múltiple De Servicios Comfaca:</strong> Transv. 6a. calle 12 av. Bruno del Piero</p>
+                    <p><strong>Atención al Usuario:</strong> atencionalusuario@comfaca.com</p>
+                    <p>Tel: 6084366300 - www.comfaca.com</p>
+                </div>
+            </div>
+            <div class="fecha-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="4">Fecha de solicitud</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; font-weight: bold;">Año</td>
+                            <td style="text-align: center; font-weight: bold;">Mes</td>
+                            <td style="text-align: center; font-weight: bold;">Día</td>
+                            <td style="text-align: center; font-weight: bold;">Ciudad / Municipio</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Importante -->
+        <div class="importante">
+            <strong>IMPORTANTE:</strong> Marque con una X según el tipo de novedad
+            <div class="checkbox-inline">
+                <span>Adición persona a cargo</span>
+                <input type="checkbox">
+            </div>
+        </div>
+
+        <!-- Datos del Trabajador Afiliado -->
+        <div class="section">
+            <div class="section-header">
+                DATOS DEL TRABAJADOR AFILIADO
+                <span class="section-note">(Requerido para establecer relación trabajador - cónyuge)</span>
+            </div>
+            <table>
+                <tr>
+                    <td class="label">No. Identificación</td>
+                    <td><input type="text"></td>
+                    <td class="label">Tipo documento</td>
+                    <td><input type="text"></td>
+                    <td class="label">Nombre trabajador</td>
+                    <td><input type="text"></td>
+                    <td class="label">NIT- Empresa</td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Datos del Cónyuge -->
+        <div class="section">
+            <div class="section-header">DATOS DEL CÓNYUGE O COMPAÑERO ACTUAL</div>
+            <table>
+                <tr>
+                    <td class="label">No. Identificación</td>
+                    <td><input type="text"></td>
+                    <td class="label">Tipo documento</td>
+                    <td><input type="text"></td>
+                    <td class="label">Celular</td>
+                    <td><input type="text"></td>
+                    <td class="label">Correo electrónico</td>
+                    <td><input type="email"></td>
+                </tr>
+                <tr>
+                    <td class="label">Primer apellido</td>
+                    <td><input type="text"></td>
+                    <td class="label">Segundo apellido</td>
+                    <td><input type="text"></td>
+                    <td class="label">Primer nombre</td>
+                    <td><input type="text"></td>
+                    <td class="label">Segundo nombre</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">Dirección de residencia</td>
+                    <td colspan="3"><input type="text"></td>
+                    <td class="label">Ciudad residencia</td>
+                    <td colspan="2"><input type="text"></td>
+                    <td>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <span>Urbana</span>
+                                <input type="checkbox">
+                            </div>
+                            <div class="checkbox-item">
+                                <span>Rural</span>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Pertenencia étnica</td>
+                    <td colspan="2"><input type="text"></td>
+                    <td class="label">Resguardo</td>
+                    <td colspan="2"><input type="text"></td>
+                    <td class="label">Pueblo indígena</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">Tiene discapacidad</td>
+                    <td>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <span>SI</span>
+                                <input type="checkbox">
+                            </div>
+                            <div class="checkbox-item">
+                                <span>NO</span>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="label">Tipo discapacidad</td>
+                    <td colspan="2"><input type="text"></td>
+                    <td class="label">Sexo</td>
+                    <td><input type="text"></td>
+                    <td class="label">Fecha nacimiento</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr>
+                    <td class="label">Nombre empresa donde trabaja</td>
+                    <td colspan="4"><input type="text"></td>
+                    <td class="label">Ingresos mensuales</td>
+                    <td><input type="text"></td>
+                    <td class="label">Recibe subsidio</td>
+                    <td>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <span>SI</span>
+                                <input type="checkbox">
+                            </div>
+                            <div class="checkbox-item">
+                                <span>NO</span>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Ocupación</td>
+                    <td colspan="7"><input type="text"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Información Bancaria -->
+        <div class="section">
+            <div class="section-header">INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR</div>
+            <div class="info-bancaria">
+                <!-- Espacio para información bancaria -->
+            </div>
+        </div>
+
+        <!-- Nota -->
+        <div class="nota">
+            <strong>Nota:</strong> se deben adjuntar certificación del medio de pago, con fecha de expedición no mayor a 30 días.
+        </div>
+
+        <!-- Declaración Jurada -->
+        <div class="declaracion">
+            <strong>DECLARACIÓN JURADA:</strong> Declaramos que la información suministrada en el presente formulario es verdadera, cuenta con los soportes probatorios correspondientes y podrá ser verificada en cualquier momento por parte de la Caja de Compensación Familiar del Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37 de la ley 21 de 1982. En el evento que la información suministrada cambie, me comprometo a reportar modificación de los datos a más tardar el día 10 del mes siguiente de ocurrida la novedad, de igual manera, autorizo a COMFACA, en caso de que cobre cuotas monetarias a las cuales no tenga derecho, me sean descontadas de los próximos pagos de la cuota monetaria de subsidio familiar a que hubiere lugar.
+        </div>
+
+        <!-- Autorización -->
+        <div class="declaracion">
+            <strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN:</strong> COMFACA es responsable del tratamiento de datos personales, y en tal virtud, recolectará, almacenará y usará su información personal de acuerdo con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento.
+        </div>
+
+        <!-- Consentimiento -->
+        <div class="declaracion">
+            Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, torga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la presente autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad.
+            <div class="firma-section">
+                <span>SI</span>
+                <input type="checkbox" style="width: 15px; height: 15px;">
+                <span>NO</span>
+                <input type="checkbox" style="width: 15px; height: 15px;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

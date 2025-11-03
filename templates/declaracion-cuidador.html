@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración Juramentada - Cuidador Beneficiario en Condición de Discapacidad</title>
+    <style>
+         @page {
+            margin: 0in;
+            background-image: url('membrete.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            border-bottom: 2px solid #000;
+        }
+
+        .header-left {
+            width: 18%;
+            border-right: 2px solid #000;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-center {
+            width: 20%;
+            border-right: 2px solid #000;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .header-title {
+            width: 35%;
+            border-right: 2px solid #000;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-title h1 {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .header-date {
+            width: 27%;
+            padding: 0;
+        }
+
+        .date-label {
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            font-size: 10px;
+        }
+
+        .date-fields {
+            display: flex;
+        }
+
+        .date-field {
+            flex: 1;
+            border-right: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .date-field:last-child {
+            border-right: none;
+            flex: 2;
+        }
+
+        .logo-placeholder {
+            width: 100px;
+            height: 60px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            text-align: center;
+        }
+
+        .mintrabajo-logo {
+            width: 120px;
+            height: 50px;
+            background-color: #0066cc;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .identification-section {
+            margin-bottom: 15px;
+        }
+
+        .field-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .field-line label {
+            margin-right: 5px;
+        }
+
+        .field-line input[type="text"] {
+            flex: 1;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 2px 5px;
+            font-size: 11px;
+        }
+
+        .section-title {
+            background-color: #d0d0d0;
+            padding: 8px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0 10px 0;
+            border: 1px solid #000;
+        }
+
+        .motivo-section {
+            margin: 15px 0;
+        }
+
+        .motivo-options {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .declaration-box {
+            border: 2px solid #000;
+            padding: 12px;
+            margin: 15px 0;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .info-box {
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .form-table td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+
+        .form-table input[type="text"] {
+            width: 100%;
+            border: none;
+            padding: 4px;
+            font-size: 11px;
+        }
+
+        .form-table input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .small-checkbox {
+            width: 20px;
+            text-align: center;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .container {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <div class="logo-placeholder">LOGO COMFACA</div>
+            </div>
+            <div class="header-center">
+                <div class="mintrabajo-logo">
+                    <div>El empleo</div>
+                    <div>es de todos</div>
+                    <div style="font-size: 8px; margin-top: 3px;">Mintrabajo</div>
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Declaración Juramentada</h1>
+            </div>
+            <div class="header-date">
+                <div class="date-label">Fecha de solicitud</div>
+                <div class="date-fields">
+                    <div class="date-field">Año</div>
+                    <div class="date-field">Mes</div>
+                    <div class="date-field">Día</div>
+                    <div class="date-field">Ciudad / Municipio</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="identification-section">
+                <div class="field-line">
+                    <label>Yo</label>
+                    <input type="text">
+                </div>
+                <div class="field-line">
+                    <label>Identificado(a) con tipo documento:</label>
+                    <input type="text" style="flex: 0.5;">
+                    <label style="margin-left: 20px;">y número:</label>
+                    <input type="text" style="flex: 0.5;">
+                </div>
+            </div>
+
+            <div class="section-title">MOTIVO DE LA DECLARACIÓN</div>
+
+            <div class="motivo-section">
+                <p style="margin-bottom: 10px;">Marque con una (x) el motivo de la declaración:</p>
+                <div class="motivo-options">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="convivencia">
+                        <label for="convivencia">Convivencia y dependencia económica</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="cuidador">
+                        <label for="cuidador">Cuidador beneficiario en condición de discapacidad</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="declaration-box">
+                Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier 
+                medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley. 
+                Obrando en nombre propio, en cumplimiento de lo establecido en el artículo 8 de la Ley 2225 de 2022, manifiesto a ustedes 
+                bajo la gravedad del juramento, que el beneficiario no cuenta con vinculación laboral o ingreso alguno y soy la persona 
+                encargada de brindarle asistencia en actividades de higiene, aseo o alimentación, ayuda en la administración de medicamentos 
+                por vía oral, por la condición de discapacidad del beneficiario.
+            </div>
+
+            <div class="section-title">CUIDADOR DEL BENEFICIARIO EN CONDICIÓN DISCAPACIDAD</div>
+
+            <div class="info-box">
+                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que la persona relacionada hace parte de su 
+                grupo familiar (beneficiario en condición de discapacidad) convive y dependen económicamente del trabajador(a) no reciben 
+                subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación Familiar. Manifiesto libre y 
+                voluntariamente que la persona relacionada a continuación se encuentran bajo mi responsabilidad y total dependencia 
+                económica:
+            </div>
+
+            <table class="form-table">
+                <tr>
+                    <td style="width: 60%;">Nombre completo</td>
+                    <td style="width: 40%;">Parentesco</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td style="width: 30%;">Tipo documento</td>
+                    <td style="width: 70%;">Número documento</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td style="width: 20%;">Puede trabajar</td>
+                    <td class="small-checkbox"><input type="checkbox"></td>
+                    <td style="width: 70%;">Tipo discapacidad</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+            </table>
+
+            <div class="declaration-box" style="margin-top: 20px;">
+                Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se 
+                verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a 
+                notificar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en 
+                caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido 
+                canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por 
+                otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

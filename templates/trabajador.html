@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Afiliación de Trabajadores - COMFACA</title>
+    <style>
+        @page {
+            margin: 0in;
+            background-image: url('membrete.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4a9d5f;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .header-left {
+            display: flex;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 7px;
+            background: linear-gradient(to right, #4a9d5f 0%, #999 50%, #00c3ff 100%);
+            border-radius: 0 0 50% 50%;
+        }
+
+        .logo-section {
+            width: 250px;
+            padding-bottom: 5px;
+        }
+
+        .header-info {
+            font-size: 8px;
+            line-height: 1.4;
+        }
+
+        .header-info strong {
+            display: block;
+            font-size: 9px;
+            margin-bottom: 3px;
+        }
+
+        .header-right {
+            text-align: center;
+        }
+
+        .header-right h1 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .tipo-afiliado-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7px;
+            margin-top: 5px;
+        }
+
+        .tipo-afiliado-table th,
+        .tipo-afiliado-table td {
+            border: 1px solid #000;
+            padding: 2px 4px;
+            text-align: center;
+        }
+
+        .tipo-afiliado-table th {
+            font-weight: bold;
+        }
+
+        .tipo-afiliado-table td.text-left {
+            text-align: left;
+        }
+
+        .importante {
+            padding: 5px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            font-size: 8px;
+        }
+
+        .section {
+            margin: 5px 0;
+            border: 1px solid #000;
+        }
+
+        .section-title {
+            color: #777;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 9px;
+        }
+
+        .section-content {
+            padding: 3px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3px 0;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #000;
+            padding: 4px;
+            font-size: 8px;
+        }
+
+        table th {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .input-field {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 2px;
+            font-size: 8px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .checkbox {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .list-section {
+            margin: 5px 0;
+        }
+
+        .list-section table {
+            font-size: 7px;
+        }
+
+        .list-section td {
+            padding: 2px 4px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 0;
+        }
+
+        .small-checkbox {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .declaracion {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #000;
+            font-size: 7px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .declaracion strong {
+            font-size: 8px;
+        }
+
+        .nota {
+            padding: 5px;
+            margin: 5px 0;
+            font-size: 7px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .container {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="logo-section">
+                    <div class="w-100"><img src="logo-min.png" alt="COMFACA Logo" style="width: 130px; height: 60px;"></div>
+                    <strong>Sede Administrativa:</strong> Carrera 11 No. 10 - 34<br>
+                    <strong>Centro Múltiple de Servicio Comfaca:</strong> Tranev. 6a. calle 12 av. Bruno del Piero<br>
+                    <strong>Atención al Usuario:</strong> atencionalusuario@comfaca.com<br>
+                    <strong>Tel:</strong> 6086366300 - www.comfaca.com
+                    <div class="importante">
+                        <strong>IMPORTANTE:</strong> Marque con un X según el tipo de novedad. Inscripción del trabajador
+                    </div>
+                </div>
+                <div class="header-info">
+                    <strong>CAJA DE COMPENSACIÓN FAMILIAR<br>DEL CAQUETÁ COMFACA</strong>
+                    NIT 891.200.050-1<br>
+                </div>
+            </div>
+            <div class="header-right">
+                <h1>FORMULARIO DE AFILIACIÓN DE TRABAJADORES</h1>
+                <table class="tipo-afiliado-table">
+                    <tr>
+                        <th colspan="9">TIPO DE AFILIADO</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">DEPENDIENTE</th>
+                        <th>INDEPENDIENTE</th>
+                        <th colspan="2"><small>Indice de Aportes</small><br/> 0.6% - 2%</th>
+                        <th>PENSIONADO</th>
+                        <th colspan="3"><small>Indice de Aportes</small><br/>0.0% - 0.6% - 2%</th>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Servicio Doméstico</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td class="text-left">Taxista</td>
+                        <td><span class="small-checkbox"></span> </td>
+                        <td><span class="small-checkbox"></span> </td>
+                        <td>Fidelidad 25 Años</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Madre Comunitaria</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td class="text-left">Facultativos</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td>Menos de 15 SMMLV</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Veteranos</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td class="text-left">Colombiano en el exterior</td>
+                        <td><span class="small-checkbox"></span> </td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td>Más de 15 SMMLV</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Trabajador Dependiente</td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td class="text-left">Trab. Independiente</td>
+                        <td><span class="small-checkbox"></span> </td>
+                        <td><span class="small-checkbox"></span></td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección 1: Datos del Empleador -->
+        <div class="section">
+            <div class="section-title">1. DATOS DEL EMPLEADOR, ENTIDAD PENSIONADORA O APORTANTE.</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <td style="width: 70%;">Nombre o razón social de la empresa o aportante: {{razsoc}}</td>
+                        <td style="width: 30%;">Nit.: {{nit}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sucursal: {{codsuc}}</td>
+                        <td>Teléfono: {{telefono}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección 2: Datos del Trabajador -->
+        <div class="section">
+            <div class="section-title">2. DATOS DEL TRABAJADOR</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <td colspan="2">No. Identificación: {{cedtra}}</td>
+                        <td>C.C.</td>
+                        <td>T.I.</td>
+                        <td>C.E.</td>
+                        <td>VISA</td>
+                        <td>Celular: {{celular}}</td>
+                        <td colspan="2">Correo Electrónico: {{email}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>PAS.</td>
+                        <td>P.E.P.</td>
+                        <td colspan="2">C.D.</td>
+                        <td></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Primer Apellido</td>
+                        <td colspan="3">Segundo Apellido</td>
+                        <td colspan="2">Primer Nombre</td>
+                        <td colspan="2">Segundo Nombre</td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="height: 25px;"></td>
+                    </tr>
+                </table>
+
+                <table style="margin-top: 5px;">
+                    <tr>
+                        <th colspan="2">Fecha de Nacimiento</th>
+                        <th colspan="2">Sexo</th>
+                        <th colspan="4">Estado Civil</th>
+                        <th colspan="2">ZONA RESIDENCIA</th>
+                    </tr>
+                    <tr>
+                        <td>AÑO</td>
+                        <td>MES</td>
+                        <td>DÍA</td>
+                        <td>H</td>
+                        <td>M</td>
+                        <td>I</td>
+                        <td>UL <span class="small-checkbox"></span></td>
+                        <td>CAS <span class="small-checkbox"></span></td>
+                        <td>DIV <span class="small-checkbox"></span></td>
+                        <td>SEP <span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td><span class="small-checkbox"></span></td>
+                        <td>VIU <span class="small-checkbox"></span></td>
+                        <td>SOL <span class="small-checkbox"></span></td>
+                        <td>U <span class="small-checkbox"></span></td>
+                        <td>R <span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">Dirección de residencia del trabajador</td>
+                        <td colspan="2">Barrio</td>
+                        <td colspan="2">Ciudad</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="height: 20px;">{{direccion}}</td>
+                        <td colspan="2">{{barrio}}</td>
+                        <td colspan="2">{{codciu}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">Resguardo</td>
+                        <td colspan="4">Pueblo Indígena</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="height: 20px;"></td>
+                        <td colspan="4"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Secciones 3, 4, 5 en tres columnas -->
+        <div class="three-column">
+            <!-- Sección 3: Factor de Vulnerabilidad -->
+            <div class="section">
+                <div class="section-title">3. FACTOR DE VULNERABILIDAD</div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Desplazado</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Víctima conflicto armado (No desplazado)</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Desmovilizado o Reinsertado</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Hijo(as) de desmovilizados o Reinsertados</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Damnificado desastre natural</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Cabeza de familia</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Hijo (as) de madres cabeza de familia</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>En condición de discapacidad</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Población migrante</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Población Zona frontera (Nacionales)</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Ejercicio de trabajo sexual</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>No aplica</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 4: Pertenencia Étnica -->
+            <div class="section">
+                <div class="section-title">4. PERTENENCIA ÉTNICA</div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Afrocolombiano</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Comunidad Negra</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Indígena</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Palenquero</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Raizal Del Archipiélago De San Andrés</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Room/gitano</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>No Disponible</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>No se auto reconoce en ninguno de los anteriores</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 5: Nivel de Escolaridad -->
+            <div class="section">
+                <div class="section-title">5. NIVEL DE ESCOLARIDAD</div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Preescolar</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Básica</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Secundaria</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Media</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Básica Adultos</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Secundaria Adultos</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Media Adultos</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Técnico Profesional</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Profesional Universitario</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Posgrado/Maestría</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Sin estudios Formales</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Secundaria Normalista</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Tecnólogo</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Ninguno</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Primera Infancia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secciones 6 y 7 en dos columnas -->
+        <div class="two-column" style="margin-top: 10px;">
+            <!-- Sección 6: Orientación Sexual -->
+            <div class="section">
+                <div class="section-title">6. ORIENTACIÓN SEXUAL</div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Heterosexual</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Homosexual</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Bisexual</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>No Disponible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 7: Tipo de Vivienda -->
+            <div class="section">
+                <div class="section-title">7. TIPO DE VIVIENDA</div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Propia</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Arrendada</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Familiar</span>
+                    </div>
+                    <div class="list-item">
+                        <span class="small-checkbox"></span>
+                        <span>Hipoteca</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 8: Discapacidad -->
+        <div class="section" style="margin-top: 10px;">
+            <div class="section-title">8. PRESENTA ALGUNA DISCAPACIDAD? <span class="checkbox"></span> SI <span class="checkbox"></span> NO</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <td>Cual:</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección 9: Datos Laborales -->
+        <div class="section" style="margin-top: 10px;">
+            <div class="section-title">9. DATOS LABORALES DEL TRABAJADOR</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <th colspan="2">Fecha de Ingreso a la Empresa</th>
+                        <th colspan="4">Tipo de Contrato</th>
+                        <th colspan="2">Jornada Laboral</th>
+                        <th colspan="2">Salario Básico</th>
+                        <th colspan="2">Comisión</th>
+                        <th colspan="2">Sector Agrop.</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{fecing}}</td>
+                        <td>Fijo</td>
+                        <td>Ind.</td>
+                        <td>Labor u Obra</td>
+                        <td>Completa</td>
+                        <td>Medio Tiem.</td>
+                        <td>Parcial</td>
+                        <td>$</td>
+                        <td></td>
+                        <td>SI</td>
+                        <td>NO</td>
+                        <td>SI</td>
+                        <td>NO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">Dirección del Lugar donde desarrolla su labor</td>
+                        <td colspan="4">Zona: {{codzon}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" style="height: 20px;">{{dirlab}}</td>
+                        <td colspan="2">U</td>
+                        <td colspan="2">R</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Labora en otra Empresa</strong></td>
+                        <td colspan="6">Nombre de la Empresa</td>
+                        <td colspan="6">Ocupación</td>
+                    </tr>
+                    <tr>
+                        <td>SI</td>
+                        <td>NO</td>
+                        <td colspan="6">{{otra_empresa}}</td>
+                        <td colspan="6">{{cargo}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección 10: Información Bancaria -->
+        <div class="section" style="margin-top: 10px;">
+            <div class="section-title">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <td style="width: 5%;">YO</td>
+                        <td style="width: 35%;">No de Documento</td>
+                        <td colspan="3">Tipo de Afiliado</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{cedtra}}</td>
+                        <td>Trabajador <span class="small-checkbox"></span></td>
+                        <td>Cónyuge <span class="small-checkbox"></span></td>
+                        <td>Otro <span class="small-checkbox"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Autorizo pago de la cuota monetaria en</td>
+                        <td colspan="3">Entidad Bancaria: {{codban}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Daviplata <span class="small-checkbox"></span> Cuenta de Ahorro <span class="small-checkbox"></span> No.</td>
+                        <td colspan="3">{{numcue}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Nota -->
+        <div class="nota">
+            Nota: se deben adjuntar certificación del medio de pago, con fecha de expedición no mayor a 30 días.
+        </div>
+
+        <!-- Declaraciones -->
+        <div class="declaracion">
+            <strong>DECLARACIÓN JURADA:</strong> Declaro que la información suministrada en el formulario es verdadera, cuenta con los soportes probatorios correspondientes y podrá ser verificada en cualquier momento por parte de la Caja de Compensación Familiar del Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37 de la ley 21 de 1982. En el evento que la información suministrada cambie, me comprometo a reportar modificación de los datos a más tardar el día 10 del mes siguiente a la novedad, de igual manera, autorizo a COMFACA en caso de que no tenga derecho, me sean descontadas los próximos pagos de la cuota monetaria de subsidio familiar a que hubiere lugar.
+        </div>
+
+        <div class="declaracion">
+            <strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN: COMFACA</strong> es responsable del tratamiento de datos personales, y en tal virtud, recolectará, almacenará y usará la información personal que usted suministre con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento.
+        </div>
+
+        <div class="declaracion">
+            Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad. SI <span class="checkbox"></span> NO <span class="checkbox"></span>
+        </div>
+    </div>
+</body>
+</html>

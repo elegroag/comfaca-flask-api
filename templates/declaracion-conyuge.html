@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración Juramentada - COMFACA</title>
+    <style>
+        @page {
+            margin: 0in;
+            background-image: url('membrete.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 25px;
+        }
+
+        /* Encabezado */
+        .header {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .logo-section {
+            width: 180px;
+            padding: 10px;
+            border-right: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-placeholder {
+            width: 140px;
+            height: 60px;
+            background: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+        }
+
+        .mintrabajo-section {
+            width: 180px;
+            padding: 10px;
+            border-right: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mintrabajo-logo {
+            width: 140px;
+            height: 60px;
+            background: #0066cc;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .mintrabajo-logo .main-text {
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .title-section {
+            flex: 1;
+            padding: 10px;
+            border-right: 2px solid #000;
+            text-align: center;
+        }
+
+        .title-section h1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .date-section {
+            width: 280px;
+            padding: 0;
+        }
+
+        .date-header {
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            border-bottom: 1px solid #000;
+            font-size: 10px;
+        }
+
+        .date-fields {
+            display: flex;
+        }
+
+        .date-field {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            border-right: 1px solid #000;
+            font-size: 9px;
+        }
+
+        .date-field:last-child {
+            border-right: none;
+            flex: 2;
+        }
+
+        /* Sección de identificación */
+        .identification-section {
+            margin-bottom: 15px;
+        }
+
+        .field-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .field-line label {
+            margin-right: 5px;
+        }
+
+        .field-line .underline {
+            flex: 1;
+            border-bottom: 1px solid #000;
+            min-height: 20px;
+        }
+
+        /* Motivo de la declaración */
+        .motivo-section {
+            margin-bottom: 15px;
+        }
+
+        .motivo-header {
+            background: #d9d9d9;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .motivo-instruction {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-options {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #000;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Declaración legal */
+        .legal-box {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Secciones de contenido */
+        .content-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            background: #d9d9d9;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: justify;
+            font-size: 10px;
+        }
+
+        /* Tabla de campos */
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .form-table td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+
+        .form-table .label-cell {
+            background: #f0f0f0;
+            font-weight: bold;
+            width: 180px;
+        }
+
+        .form-table .input-cell {
+            background: white;
+        }
+
+        /* Campos de texto en línea */
+        .inline-fields {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .inline-field {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .inline-field .short-line {
+            border-bottom: 1px solid #000;
+            min-width: 100px;
+            min-height: 20px;
+        }
+
+        /* Declaración de unión */
+        .union-declaration {
+            margin-bottom: 15px;
+        }
+
+        .declaration-line {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .declaration-line .inline-blank {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+            min-height: 18px;
+            margin: 0 5px;
+        }
+
+        .declaration-line .short-blank {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            min-width: 60px;
+            min-height: 18px;
+            margin: 0 5px;
+        }
+
+        /* Checkboxes en línea */
+        .inline-checkboxes {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .inline-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Declaración final */
+        .final-declaration {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-placeholder">
+                    Logo COMFACA
+                </div>
+            </div>
+            <div class="mintrabajo-section">
+                <div class="mintrabajo-logo">
+                    <div class="main-text">El empleo<br>es de todos</div>
+                    <div>Mintrabajo</div>
+                </div>
+            </div>
+            <div class="title-section">
+                <h1>Declaración Juramentada</h1>
+            </div>
+            <div class="date-section">
+                <div class="date-header">Fecha de solicitud</div>
+                <div class="date-fields">
+                    <div class="date-field">Año</div>
+                    <div class="date-field">Mes</div>
+                    <div class="date-field">Día</div>
+                    <div class="date-field">Ciudad / Municipio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de identificación -->
+        <div class="identification-section">
+            <div class="field-line">
+                <label>Yo</label>
+                <div class="underline"></div>
+            </div>
+            <div class="field-line">
+                <label>Identificado(a) con tipo documento:</label>
+                <div class="underline" style="flex: 0.5;"></div>
+                <label style="margin-left: 20px;">y número:</label>
+                <div class="underline" style="flex: 0.5;"></div>
+            </div>
+        </div>
+
+        <!-- Motivo de la declaración -->
+        <div class="motivo-section">
+            <div class="motivo-header">MOTIVO DE LA DECLARACIÓN</div>
+            <div class="motivo-instruction">Marque con una (x) el motivo de la declaración:</div>
+            <div class="checkbox-options">
+                <div class="checkbox-option">
+                    <span class="checkbox"></span>
+                    <label>Convivencia y dependencia económica</label>
+                </div>
+                <div class="checkbox-option">
+                    <span class="checkbox"></span>
+                    <label>Unión marital de hecho /Unión Libre</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Declaración legal inicial -->
+        <div class="legal-box">
+            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley
+        </div>
+
+        <!-- Convivencia y dependencia económica -->
+        <div class="content-section">
+            <div class="section-title">CONVIVENCIA Y DEPENDENCIA ECONÓMICA</div>
+            <div class="section-description">
+                A través del diligenciamiento del siguiente recuadro, usted demostrará y aceptará que la persona relacionada hace parte de su grupo familiar (cónyuge) convive y depende económicamente del trabajador(a)
+            </div>
+            <table class="form-table">
+                <tr>
+                    <td class="label-cell">Nombre completo</td>
+                    <td class="input-cell" colspan="2"></td>
+                    <td class="label-cell">Teléfono contacto</td>
+                    <td class="input-cell"></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Documento de identificación</td>
+                    <td class="input-cell" style="width: 80px;">Tipo:</td>
+                    <td class="input-cell" style="width: 120px;">N°</td>
+                    <td class="label-cell">Correo electrónico</td>
+                    <td class="input-cell"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Unión marital de hecho -->
+        <div class="content-section">
+            <div class="section-title">UNIÓN MARITAL DE HECHO (UNIÓN</div>
+            <div class="section-description">
+                A través del diligenciamiento del siguiente espacio demostrará y aceptará que usted convive y tiene una comunidad de vida singular con su compañero(a) permanente
+            </div>
+            <div class="union-declaration">
+                <div class="declaration-line">
+                    Declaro que el(la) Señor(a): <span class="inline-blank"></span> Identificado(a) con el tipo de
+                </div>
+                <div class="declaration-line">
+                    Documento <span class="inline-blank"></span> número <span class="inline-blank"></span> es mi compañero(a) permanente y convivimos
+                </div>
+                <div class="declaration-line">
+                    desde hace <span class="short-blank"></span> años <span class="short-blank"></span> meses.
+                </div>
+                <div class="declaration-line">
+                    Además el(la) señor(a) actualmente se desempeña como:
+                </div>
+                <div class="inline-checkboxes">
+                    <div class="inline-checkbox">
+                        <label>Dependiente:</label>
+                        <span class="checkbox"></span>
+                    </div>
+                    <div class="inline-checkbox">
+                        <label>Independiente:</label>
+                        <span class="checkbox"></span>
+                    </div>
+                    <div class="inline-checkbox">
+                        <label>Pensionado(a):</label>
+                        <span class="checkbox"></span>
+                    </div>
+                    <div class="inline-checkbox">
+                        <label>Estudiante:</label>
+                        <span class="checkbox"></span>
+                    </div>
+                    <div class="inline-checkbox">
+                        <label>No labora:</label>
+                        <span class="checkbox"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Declaración final -->
+        <div class="final-declaration">
+            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se verifiquen los datos aquí contenidos, en caso de cualquier cambio en núcleo familiar, me comprometo a reportar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+        </div>
+    </div>
+</body>
+</html>
