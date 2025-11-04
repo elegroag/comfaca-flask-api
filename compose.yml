@@ -35,7 +35,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/elegro/proyectos/php/php8/www/comfaca-enlinea/laravel/storage/temp
+      device: ${FLASK_PATH_OUTPUT:-./output}
       o: bind,uid=1000,gid=1000,rw
 
 networks:

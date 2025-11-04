@@ -1,575 +1,664 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solicitud de Afiliación Empleador - COMFACA</title>
     <style>
-        @page {
-            margin: 0in;
-            background-image: url('membrete.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+      @page {
+        margin: 0in;
+        background-image: url("membrete.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-size: 9px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .container {
+        margin: 0 auto;
+        background-color: transparent;
+        padding: 25px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #4a9d5f;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          #4a9d5f 0%,
+          #009e47 50%,
+          #00c3ff 100%
+        );
+        border-radius: 0 0 50% 50%;
+      }
+
+      .logo-section {
+        width: 250px;
+        padding-bottom: 5px;
+      }
+
+      .logo-placeholder {
+        width: 180px;
+        height: 80px;
+        background-color: #4a9d5f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 32px;
+        border-radius: 5px;
+      }
+
+      .contact-info {
+        text-align: right;
+        font-size: 7px;
+        line-height: 1.4;
+      }
+
+      .contact-info strong {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .version-info {
+        text-align: right;
+        font-size: 8px;
+        margin-top: 5px;
+        color: #666;
+      }
+
+      .title-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 9px 0;
+      }
+
+      h1 {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        flex: 1;
+      }
+
+      .resolution-box {
+        border: 1px solid #000;
+        padding: 5px;
+        width: 250px;
+      }
+
+      .resolution-header {
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+        padding-bottom: 3px;
+        margin-bottom: 5px;
+      }
+
+      .resolution-fields {
+        display: flex;
+        gap: 5px;
+      }
+
+      .resolution-field {
+        flex: 1;
+        border: 1px solid #000;
+        padding: 10px 5px;
+        text-align: center;
+        font-size: 9px;
+      }
+
+      .instructions {
+        top: 140px;
+        position: absolute;
+        margin: 8px 0;
+        padding-left: 20px;
+      }
+
+      .instructions li {
+        margin-bottom: 5px;
+        list-style-type: none;
+        position: relative;
+      }
+
+      .instructions li::before {
+        content: "✓";
+        position: absolute;
+        left: -15px;
+        font-weight: bold;
+      }
+
+      .section {
+        margin: 10px 0;
+      }
+
+      .section-title {
+        padding: 3px 8px;
+        font-weight: bold;
+        font-size: 10px;
+        border: 1px solid #000;
+        margin-bottom: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+      }
+
+      td,
+      th {
+        border: 1px solid #000;
+        padding: 3px;
+        font-size: 8px;
+      }
+
+      th {
+        font-weight: bold;
+        text-align: left;
+      }
+
+      .text,
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        width: 100%;
+        border: none;
+        padding: 2px;
+        font-size: 8px;
+        font-family: Arial, sans-serif;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: 13px;
+        height: 13px;
+        margin: 1px 5px;
+        border-radius: 50px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        border-radius: 50px;
+      }
+
+      .active {
+        background: #5c82a5;
+        border-color: #5c82a5;
+      }
+
+      .id-type-row {
+        display: flex;
+        gap: 2px;
+      }
+
+      .id-type-cell {
+        flex: 1;
+        border: 1px solid #000;
+        padding: 3px;
+        text-align: center;
+        font-size: 9px;
+        font-weight: bold;
+      }
+
+      .small-cell {
+        width: 40px;
+      }
+
+      .medium-cell {
+        width: 80px;
+      }
+
+      .large-cell {
+        flex: 2;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 60px;
+      }
+
+      .legal-text {
+        font-size: 7px;
+        line-height: 1.3;
+        text-align: justify;
+        margin-top: 8px;
+        padding: 8px;
+        border: 1px solid #000;
+      }
+
+      .legal-text p {
+        margin-bottom: 8px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 0;
+      }
+
+      .form-cell {
+        flex: 1;
+        border: 1px solid #000;
+        border-right: none;
+        padding: 5px;
+      }
+
+      .form-cell:last-child {
+        border-right: 1px solid #000;
+      }
+
+      .form-label {
+        font-size: 9px;
+        font-weight: bold;
+        margin-bottom: 2px;
+        color: #858585;
+      }
+
+      .text-radicado {
+        font-size: 9px;
+        font-weight: bold;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        color: #3f4e46;
+      }
+
+      @media print {
         body {
-            font-size: 9px;
-            line-height: 1.2;
-            margin: 0;
+          padding: 0;
         }
-
         .container {
-            margin: 0 auto;
-            background-color: transparent;
-            padding: 25px;
+          box-shadow: none;
+          max-width: 100%;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #4a9d5f;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 7px;
-            background: linear-gradient(to right, #4a9d5f 0%, #999 50%, #00c3ff 100%);
-            border-radius: 0 0 50% 50%;
-        }
-
-        .logo-section {
-            width: 250px;
-            padding-bottom: 5px;
-        }
-
-        .logo-placeholder {
-            width: 180px;
-            height: 80px;
-            background-color: #4a9d5f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 32px;
-            border-radius: 5px;
-        }
-
-        .contact-info {
-            text-align: right;
-            font-size: 7px;
-            line-height: 1.4;
-        }
-
-        .contact-info strong {
-            display: block;
-            margin-bottom: 3px;
-        }
-
-        .version-info {
-            text-align: right;
-            font-size: 8px;
-            margin-top: 5px;
-            color: #666;
-        }
-
-        .title-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 9px 0;
-        }
-
-        h1 {
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            flex: 1;
-        }
-
-        .resolution-box {
-            border: 1px solid #000;
-            padding: 5px;
-            width: 250px;
-        }
-
-        .resolution-header {
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid #000;
-            padding-bottom: 3px;
-            margin-bottom: 5px;
-        }
-
-        .resolution-fields {
-            display: flex;
-            gap: 5px;
-        }
-
-        .resolution-field {
-            flex: 1;
-            border: 1px solid #000;
-            padding: 10px 5px;
-            text-align: center;
-            font-size: 9px;
-        }
-
-        .instructions {
-            top: 140px;
-            position: absolute;
-            margin: 8px 0;
-            padding-left: 20px;
-        }
-
-        .instructions li {
-            margin-bottom: 5px;
-            list-style-type: none;
-            position: relative;
-        }
-
-        .instructions li::before {
-            content: '✓';
-            position: absolute;
-            left: -15px;
-            font-weight: bold;
-        }
-
-        .section {
-            margin: 10px 0;
-        }
-
-        .section-title {
-            padding: 3px 8px;
-            font-weight: bold;
-            font-size: 10px;
-            border: 1px solid #000;
-            margin-bottom: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #000;
-        }
-
-        td, th {
-            border: 1px solid #000;
-            padding: 3px;
-            font-size: 8px;
-        }
-
-        th {
-            font-weight: bold;
-            text-align: left;
-        }
-
-        .text,
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
-            border: none;
-            padding: 2px;
-            font-size: 8px;
-            font-family: Arial, sans-serif;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 13px;
-            height: 13px;
-            margin: 1px 5px;
-            border-radius: 50px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 10px;
-            height: 10px;
-            margin: 0 4px;
-            border-radius: 50px;
-        }
-
-        .active {
-            background: #5c82a5;
-            border-color:#5c82a5;
-        }
-
-        .id-type-row {
-            display: flex;
-            gap: 2px;
-        }
-
-        .id-type-cell {
-            flex: 1;
-            border: 1px solid #000;
-            padding: 3px;
-            text-align: center;
-            font-size: 9px;
-            font-weight: bold;
-        }
-
-        .small-cell {
-            width: 40px;
-        }
-
-        .medium-cell {
-            width: 80px;
-        }
-
-        .large-cell {
-            flex: 2;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        .legal-text {
-            font-size: 7px;
-            line-height: 1.3;
-            text-align: justify;
-            margin-top: 8px;
-            padding: 8px;
-            border: 1px solid #000;
-        }
-
-        .legal-text p {
-            margin-bottom: 8px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 0;
-        }
-
-        .form-cell {
-            flex: 1;
-            border: 1px solid #000;
-            border-right: none;
-            padding: 5px;
-        }
-
-        .form-cell:last-child {
-            border-right: 1px solid #000;
-        }
-
-        .form-label {
-            font-size: 9px;
-            font-weight: bold;
-            margin-bottom: 2px;
-            color: #858585;
-        }
-
-        .text-radicado {
-            font-size: 9px;
-            font-weight: bold;
-            margin-top: 4px;
-            margin-bottom: 4px;
-            color: #3f4e46;
-        }
-
-        @media print {
-            body {
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-section">
-                <img src="logo-min.png" alt="COMFACA Logo" style="width: 130px; height: 60px;">
-            </div>
-            <div class="contact-info">
-                <strong>Carrera 11 No. 10-34 Barrio la Cooperativa</strong>
-                Tel: 4366300 Ext.: 132 - 166 · Florencia - Caquetá<br>
-                afiliaciones_pendientes@comfaca.com y aportes@comfaca.com
-                <div class="version-info">V-3 - PSU-SCA-FT-04 - 15/06/2016</div>
-            </div>
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-section">
+          <img
+            src="logo-min.png"
+            alt="COMFACA Logo"
+            style="width: 130px; height: 60px"
+          />
         </div>
+        <div class="contact-info">
+          <strong>Carrera 11 No. 10-34 Barrio la Cooperativa</strong>
+          Tel: 4366300 Ext.: 132 - 166 · Florencia - Caquetá<br />
+          afiliaciones_pendientes@comfaca.com y aportes@comfaca.com
+          <div class="version-info">V-3 - PSU-SCA-FT-04 - 15/06/2016</div>
+        </div>
+      </div>
 
-        <!-- Title and Resolution -->
-        <div class="title-section">
-            <h1>SOLICITUD DE AFILIACIÓN EMPLEADOR</h1>
-            <div class="resolution-box">
-                <div class="resolution-header">Resolución No.</div>
-                <div class="text-radicado">Radicado: {{radicado}}</div>
-                <div class="form-label">Fecha de Recibido</div>
-                <div class="resolution-fields">
-                    <div class="resolution-field">Año: {{year}}</div>
-                    <div class="resolution-field">Mes: {{month}}</div>
-                    <div class="resolution-field">Día: {{day}}</div>
+      <!-- Title and Resolution -->
+      <div class="title-section">
+        <h1>SOLICITUD DE AFILIACIÓN EMPLEADOR</h1>
+        <div class="resolution-box">
+          <div class="resolution-header">Resolución No.</div>
+          <div class="text-radicado">Radicado: {{radicado}}</div>
+          <div class="form-label">Fecha de Recibido</div>
+          <div class="resolution-fields">
+            <div class="resolution-field">Año: {{year}}</div>
+            <div class="resolution-field">Mes: {{month}}</div>
+            <div class="resolution-field">Día: {{day}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <ul class="instructions">
+        <li>
+          Antes de diligenciar este formulario lea cuidadosamente la información
+          al respaldo del formulario.
+        </li>
+        <li>
+          Favor diligenciar el formulario con letra clara y utilizar tinta de
+          color negro
+        </li>
+      </ul>
+
+      <!-- Section 1: Datos Generales Empleador -->
+      <div class="section">
+        <div class="section-title">1. DATOS GENERALES EMPLEADOR</div>
+        <table>
+          <tr>
+            <td colspan="10">
+              <div class="form-label">Tipo de Identificación</div>
+              <div class="id-type-row">
+                <div class="id-type-cell small-cell checkbox-item">
+                  CC {% if coddoc == '1' %}
+                  <input type="checkbox" class="active" /> {% endif %}
                 </div>
-            </div>
-        </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  TI {% if coddoc == '2' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  RC {% if coddoc == '3' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  CE {% if coddoc == '4' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  NUIP {% if coddoc == '5' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  P {% if coddoc == '6' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  NIT {% if coddoc == '7' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+                <div class="id-type-cell small-cell checkbox-item">
+                  CD {% if coddoc == '8' %}
+                  <input type="checkbox" class="active" /> {% endif %}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <div class="form-label">Razón Social/Apellidos y Nombres</div>
+              <div type="text">{{razsoc}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Número de Identificación</div>
+              <div type="text">{{nit}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Dígito de Verificación</div>
+              <div type="text">{{digver}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <div class="form-label">Dirección Comercial</div>
+              <div type="text">{{dirpri}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Barrio Comercial</div>
+              <div type="text">{{barrio}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Ciudad Comercial</div>
+              <div type="text">{{ciupri}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Departamento Comercial</div>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <div class="form-label">Dirección de Notificación</div>
+              <div type="text">{{direccion}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Barrio de Notificaciones</div>
+              <input type="text" />
+            </td>
+            <td colspan="2">
+              <div class="form-label">Ciudad de Noticaciones</div>
+              <div type="text">{{codciu}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Departamento de Noticaciones</div>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div class="form-label">Teléfono Fijo</div>
+              <div type="text">{{telefono}}</div>
+            </td>
+            <td colspan="3">
+              <div class="form-label">Celular</div>
+              <div type="text">{{celular}}</div>
+            </td>
+            <td colspan="4">
+              <div class="form-label">Correo para notificaciones</div>
+              <div type="text">{{email}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <!-- Instructions -->
-        <ul class="instructions">
-            <li>Antes de diligenciar este formulario lea cuidadosamente la información al respaldo del formulario.</li>
-            <li>Favor diligenciar el formulario con letra clara y utilizar tinta de color negro</li>
-        </ul>
+      <!-- Section 2: Datos Específicos del Empleador -->
+      <div class="section">
+        <div class="section-title">2. DATOS ESPECÍFICOS DEL EMPLEADOR</div>
+        <table>
+          <tr>
+            <td colspan="2">
+              <div class="form-label">Tipo de Persona</div>
+              <div class="checkbox-group">
+                <label
+                  ><input type="checkbox" {% if tipper == 'N' %} class="active"
+                  {% endif %}> Natural</label
+                >
+                <label
+                  ><input type="checkbox" {% if tipper == 'J' %} class="active"
+                  {% endif %}> Jurídica</label
+                >
+              </div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Tipo de Empresa</div>
+              <div class="checkbox-group">
+                <label
+                  ><input type="checkbox" {% if tipemp == 'O' %} class="active"
+                  {% endif %}> Oficial</label
+                >
+                <label
+                  ><input type="checkbox" {% if tipemp == 'P' %} class="active"
+                  {% endif %}> Privada</label
+                >
+                <label
+                  ><input type="checkbox" {% if tipemp == 'M' %} class="active"
+                  {% endif %}> Mixta</label
+                >
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="form-label">Actividad Económica</div>
+              <div type="text">{{codact}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Código Actividad Económica (CIIU)</div>
+              <div type="text">{{codact}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="form-label">
+                Lugar donde laboran los trabajadores en el Departamento del
+                Caquetá
+              </div>
+              <div type="text">{{codzon}}</div>
+            </td>
+            <td colspan="2">
+              <div class="form-label">Nombre Establecimiento de Comercio</div>
+              <div type="text">{{razsoc}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <!-- Section 1: Datos Generales Empleador -->
-        <div class="section">
-            <div class="section-title">1. DATOS GENERALES EMPLEADOR</div>
-            <table>
-                <tr>
-                    <td colspan="10">
-                        <div class="form-label">Tipo de Identificación</div>
-                        <div class="id-type-row">
-                            <div class="id-type-cell small-cell checkbox-item">CC {% if coddoc == '1' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">TI {% if coddoc == '2' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">RC {% if coddoc == '3' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">CE {% if coddoc == '4' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">NUIP {% if coddoc == '5' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">P {% if coddoc == '6' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">NIT {% if coddoc == '7' %} <input type="checkbox" class="active"> {% endif %}</div>
-                            <div class="id-type-cell small-cell checkbox-item">CD {% if coddoc == '8' %} <input type="checkbox" class="active"> {% endif %}</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6">
-                        <div class="form-label">Razón Social/Apellidos y Nombres</div>
-                        <div type="text">{{razsoc}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Número de Identificación</div>
-                        <div type="text">{{nit}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Dígito de Verificación</div>
-                        <div type="text">{{digver}}</div>
-                     </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <div class="form-label">Dirección Comercial</div>
-                        <div type="text">{{dirpri}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Barrio Comercial</div>
-                        <div type="text">{{barrio}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Ciudad Comercial</div>
-                        <div type="text">{{ciupri}} </div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Departamento Comercial</div>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <div class="form-label">Dirección de Notificación</div>
-                        <div type="text">{{direccion}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Barrio de Notificaciones</div>
-                        <input type="text">
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Ciudad de Noticaciones</div>
-                        <div type="text">{{codciu}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Departamento de Noticaciones</div>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="form-label">Teléfono Fijo</div>
-                        <div type="text">{{telefono}}</div>
-                    </td>
-                    <td colspan="3">
-                        <div class="form-label">Celular</div>
-                        <div type="text">{{celular}}</div>
-                    </td>
-                    <td colspan="4">
-                        <div class="form-label">Correo para notificaciones</div>
-                        <div type="text">{{email}}</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+      <!-- Section 3: Datos del Representante Legal -->
+      <div class="section">
+        <div class="section-title">3. DATOS DEL REPRESENTANTE LEGAL</div>
+        <table>
+          <tr>
+            <td colspan="10">
+              <div class="form-label">Tipo de Identificación</div>
+              <div class="id-type-row">
+                <div class="id-type-cell small-cell">CC</div>
+                <div class="id-type-cell small-cell">TI</div>
+                <div class="id-type-cell small-cell">RC</div>
+                <div class="id-type-cell small-cell">CE</div>
+                <div class="id-type-cell small-cell">NUIP</div>
+                <div class="id-type-cell small-cell">P</div>
+                <div class="id-type-cell small-cell">NIT</div>
+                <div class="id-type-cell small-cell">CD</div>
+                <div class="id-type-cell large-cell">
+                  Número de Identificación
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="10">
+              <div class="form-label">Apellidos y Nombres</div>
+              <div type="text">{{repleg}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div class="form-label">Teléfono Fijo</div>
+              <div type="text">{{telpri}}</div>
+            </td>
+            <td colspan="3">
+              <div class="form-label">Celular</div>
+              <div type="text">{{celpri}}</div>
+            </td>
+            <td colspan="4">
+              <div class="form-label">Correo electrónico</div>
+              <div type="email">{{emailpri}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <!-- Section 2: Datos Específicos del Empleador -->
-        <div class="section">
-            <div class="section-title">2. DATOS ESPECÍFICOS DEL EMPLEADOR</div>
-            <table>
-                <tr>
-                    <td colspan="2">
-                        <div class="form-label">Tipo de Persona</div>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" {% if tipper == 'N' %} class="active" {% endif %}> Natural</label>
-                            <label><input type="checkbox" {% if tipper == 'J' %} class="active" {% endif %}> Jurídica</label>
-                        </div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Tipo de Empresa</div>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" {% if tipemp == 'O' %} class="active" {% endif %}> Oficial</label>
-                            <label><input type="checkbox" {% if tipemp == 'P' %} class="active" {% endif %}> Privada</label>
-                            <label><input type="checkbox" {% if tipemp == 'M' %} class="active" {% endif %}> Mixta</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="form-label">Actividad Económica</div>
-                        <div type="text">{{codact}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Código Actividad Económica (CIIU)</div>
-                        <div type="text">{{codact}}</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="form-label">Lugar donde laboran los trabajadores en el Departamento del Caquetá</div>
-                        <div type="text">{{codzon}}</div>
-                    </td>
-                    <td colspan="2">
-                        <div class="form-label">Nombre Establecimiento de Comercio</div>
-                        <div type="text">{{razsoc}}</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+      <!-- Section 4: Datos del Contacto Administrativo -->
+      <div class="section" style="position: relative">
+        <div class="section-title">4. DATOS DEL CONTACTO ADMINISTRATIVO</div>
+        <table>
+          <tr>
+            <td colspan="7">
+              <div class="form-label">Apellido y Nombres</div>
+              <div type="text">{{repleg}}</div>
+            </td>
+            <td colspan="3">
+              <div class="form-label">Cargo</div>
+              <div type="text">{{cargo}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div class="form-label">Teléfono Fijo</div>
+              <div type="tel">{{telpri}}</div>
+            </td>
+            <td colspan="3">
+              <div class="form-label">Celular</div>
+              <div type="tel">{{celpri}}</div>
+            </td>
+            <td colspan="4">
+              <div class="form-label">Correo electrónico</div>
+              <div type="email">{{emailpri}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="10">
+              <div class="form-label">Observaciones</div>
+              <textarea>{{observaciones}}</textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <!-- Section 3: Datos del Representante Legal -->
-        <div class="section">
-            <div class="section-title">3. DATOS DEL REPRESENTANTE LEGAL</div>
-            <table>
-                <tr>
-                    <td colspan="10">
-                        <div class="form-label">Tipo de Identificación</div>
-                        <div class="id-type-row">
-                            <div class="id-type-cell small-cell">CC</div>
-                            <div class="id-type-cell small-cell">TI</div>
-                            <div class="id-type-cell small-cell">RC</div>
-                            <div class="id-type-cell small-cell">CE</div>
-                            <div class="id-type-cell small-cell">NUIP</div>
-                            <div class="id-type-cell small-cell">P</div>
-                            <div class="id-type-cell small-cell">NIT</div>
-                            <div class="id-type-cell small-cell">CD</div>
-                            <div class="id-type-cell large-cell">Número de Identificación</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="10">
-                        <div class="form-label">Apellidos y Nombres</div>
-                        <div type="text">{{repleg}}</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="form-label">Teléfono Fijo</div>
-                        <div type="text">{{telpri}}</div>
-                    </td>
-                    <td colspan="3">
-                        <div class="form-label">Celular</div>
-                        <div type="text">{{celpri}}</div>
-                    </td>
-                    <td colspan="4">
-                        <div class="form-label">Correo electrónico</div>
-                        <div type="email">{{emailpri}}</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+      <!-- Legal Text -->
+      <div class="legal-text">
+        <p>
+          <strong
+            >Declaro bajo la gravedad de juramento, que la información contenida
+            en el formulario corresponde exactamente a la realidad, por lo
+            anterior cualquier falsedad o inexactitud en que incurra será
+            responsabilidad del empleador y podrá ser sancionado de acuerdo a lo
+            establecido en el artículo 45 de la ley 21 de 1982 y las demás
+            contempladas en la ley.</strong
+          >
+        </p>
 
-        <!-- Section 4: Datos del Contacto Administrativo -->
-        <div class="section" style="position: relative;">
-            <div class="section-title">4. DATOS DEL CONTACTO ADMINISTRATIVO</div>
-            <table>
-                <tr>
-                    <td colspan="7">
-                        <div class="form-label">Apellido y Nombres</div>
-                        <div type="text">{{repleg}}</div>
-                    </td>
-                    <td colspan="3">
-                        <div class="form-label">Cargo</div>
-                        <div type="text">{{cargo}}</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="form-label">Teléfono Fijo</div>
-                        <div type="tel">{{telpri}}</div>
-                    </td>
-                    <td colspan="3">
-                        <div class="form-label">Celular</div>
-                        <div type="tel">{{celpri}}</div>
-                    </td>
-                    <td colspan="4">
-                        <div class="form-label">Correo electrónico</div>
-                        <div type="email">{{emailpri}}</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="10">
-                        <div class="form-label">Observaciones</div>
-                        <textarea>{{observaciones}}</textarea>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <p>
+          En calidad de Representante Legal del empleador, solicito a la Caja de
+          Compensación Familiar del Caquetá COMFACA la afiliación y si fuere
+          aceptado me comprometo a cumplir y respetar los estatutos y
+          reglamentos de COMFACA, así como las disposiciones legales que se
+          refieren al Subsidio Familiar, siendo entendido que la violación por
+          parte del empleador de cualquiera de las normas que rigen el derecho a
+          la Caja para ordenar su expulsión.
+        </p>
 
-        <!-- Legal Text -->
-        <div class="legal-text">
-            <p><strong>Declaro bajo la gravedad de juramento, que la información contenida en el formulario corresponde exactamente a la realidad, por lo anterior cualquier falsedad o inexactitud en que incurra será responsabilidad del empleador y podrá ser sancionado de acuerdo a lo establecido en el artículo 45 de la ley 21 de 1982 y las demás contempladas en la ley.</strong></p>
-            
-            <p>En calidad de Representante Legal del empleador, solicito a la Caja de Compensación Familiar del Caquetá COMFACA la afiliación y si fuere aceptado me comprometo a cumplir y respetar los estatutos y reglamentos de COMFACA, así como las disposiciones legales que se refieren al Subsidio Familiar, siendo entendido que la violación por parte del empleador de cualquiera de las normas que rigen el derecho a la Caja para ordenar su expulsión.</p>
-            
-            <p>La responsabilidad en cuanto al Subsidio Familiar queda limitada para la Caja desde el momento de la Afiliación y Pago de los aportes por parte del empleador, hasta que la empresa sea desafiliada por cualquier motivo.</p>
-            
-            <p>"Con la firma de este formulario autorizo a la Caja de Compensación Familiar del Caquetá COMFACA, el envío de información, y la notificación de procedimientos y actos administrativos a mi correo electrónico registrado en este formulario, en el ítem 1. DATOS GENERALES EMPLEADOR. Igualmente me comprometo a informar oportunamente cualquier cambio en mis datos de ubicación y contacto.</p>
-        </div>
+        <p>
+          La responsabilidad en cuanto al Subsidio Familiar queda limitada para
+          la Caja desde el momento de la Afiliación y Pago de los aportes por
+          parte del empleador, hasta que la empresa sea desafiliada por
+          cualquier motivo.
+        </p>
+
+        <p>
+          "Con la firma de este formulario autorizo a la Caja de Compensación
+          Familiar del Caquetá COMFACA, el envío de información, y la
+          notificación de procedimientos y actos administrativos a mi correo
+          electrónico registrado en este formulario, en el ítem 1. DATOS
+          GENERALES EMPLEADOR. Igualmente me comprometo a informar oportunamente
+          cualquier cambio en mis datos de ubicación y contacto.
+        </p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
