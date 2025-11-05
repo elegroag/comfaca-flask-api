@@ -44,6 +44,7 @@
         align-items: center;
         border: 1px solid #777;
         margin-bottom: 20px;
+        justify-content: space-between;
       }
 
       .logo-section {
@@ -416,13 +417,13 @@
       <div class="identification-section">
         <div class="field-line">
           <label>Yo</label>
-          <div class="underline">{{nombre_conyuge}}</div>
+          <div class="underline">{{trabajador.nombre_trabajador}}</div>
         </div>
         <div class="field-line">
           <label>Identificado(a) con tipo documento: </label>
-          <div class="underline" style="flex: 0.5"> {{tipo_documento}}</div>
+          <div class="underline" style="flex: 0.5"> {{trabajador.tipo_documento}}</div>
           <label style="margin-left: 20px">y número:</label>
-          <div class="underline" style="flex: 0.5"> {{cedcon}}</div>
+          <div class="underline" style="flex: 0.5"> {{trabajador.cedtra}}</div>
         </div>
       </div>
 

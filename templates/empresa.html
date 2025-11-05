@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solicitud de Afiliación Empleador - COMFACA</title>
     <style>
+      @font-face {
+        font-family: 'lato-regular';
+        src: url('lato-regular.ttf') format('truetype'),
+             url('lato-regular.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
       @page {
         margin: 0in;
         background-image: url("membrete.jpg");
@@ -16,6 +23,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'lato-regular', sans-serif;
       }
 
       body {
@@ -192,7 +200,13 @@
         border: none;
         padding: 2px;
         font-size: 8px;
-        font-family: Arial, sans-serif;
+      }
+
+      .text {
+        display: inline-block;
+        border-bottom: 1px solid #000;
+        min-height: 16px;
+        padding: 2px 2px;
       }
 
       .checkbox-group input[type="checkbox"] {
@@ -222,17 +236,10 @@
         justify-content: center;
       }
 
-      .checkbox-item input[type="checkbox"] {
-        width: 10px;
-        height: 10px;
-        margin: 0 4px;
-        border-radius: 50px;
-      }
+      .small-checkbox { width: 10px; height: 10px; border: 1px solid #7a7a7a; display: inline-block; border-radius: 5px; }
+      .small-checkbox.active { background-color: #7a7a7a; }
 
-      .active {
-        background: #5c82a5;
-        border-color: #5c82a5;
-      }
+      /* .active no usada para inputs; se usan .small-checkbox/.active */
 
       .id-type-row {
         display: flex;
@@ -375,36 +382,28 @@
               <div class="form-label">Tipo de Identificación</div>
               <div class="id-type-row">
                 <div class="id-type-cell small-cell checkbox-item">
-                  CC {% if coddoc == '1' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  CC <div {% if coddoc == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  TI {% if coddoc == '2' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  TI <div {% if coddoc == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  RC {% if coddoc == '3' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  RC <div {% if coddoc == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  CE {% if coddoc == '4' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  CE <div {% if coddoc == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  NUIP {% if coddoc == '5' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  NUIP <div {% if coddoc == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  P {% if coddoc == '6' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  P <div {% if coddoc == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  NIT {% if coddoc == '7' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  NIT <div {% if coddoc == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
                 <div class="id-type-cell small-cell checkbox-item">
-                  CD {% if coddoc == '8' %}
-                  <input type="checkbox" class="active" /> {% endif %}
+                  CD <div {% if coddoc == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
                 </div>
               </div>
             </td>
@@ -438,7 +437,7 @@
             </td>
             <td colspan="2">
               <div class="form-label">Departamento Comercial</div>
-              <input type="text" />
+              <div class="text">{{text}}</div>
             </td>
           </tr>
           <tr>
@@ -448,7 +447,7 @@
             </td>
             <td colspan="2">
               <div class="form-label">Barrio de Notificaciones</div>
-              <input type="text" />
+              <div class="text">{{text}}</div>
             </td>
             <td colspan="2">
               <div class="form-label">Ciudad de Noticaciones</div>
@@ -456,7 +455,7 @@
             </td>
             <td colspan="2">
               <div class="form-label">Departamento de Noticaciones</div>
-              <input type="text" />
+              <div class="text">{{text}}</div>
             </td>
           </tr>
           <tr>
@@ -484,31 +483,16 @@
             <td colspan="2">
               <div class="form-label">Tipo de Persona</div>
               <div class="checkbox-group">
-                <label
-                  ><input type="checkbox" {% if tipper == 'N' %} class="active"
-                  {% endif %}> Natural</label
-                >
-                <label
-                  ><input type="checkbox" {% if tipper == 'J' %} class="active"
-                  {% endif %}> Jurídica</label
-                >
+                <label><div {% if tipper == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Natural</label>
+                <label><div {% if tipper == 'J' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Jurídica</label>
               </div>
             </td>
             <td colspan="2">
               <div class="form-label">Tipo de Empresa</div>
               <div class="checkbox-group">
-                <label
-                  ><input type="checkbox" {% if tipemp == 'O' %} class="active"
-                  {% endif %}> Oficial</label
-                >
-                <label
-                  ><input type="checkbox" {% if tipemp == 'P' %} class="active"
-                  {% endif %}> Privada</label
-                >
-                <label
-                  ><input type="checkbox" {% if tipemp == 'M' %} class="active"
-                  {% endif %}> Mixta</label
-                >
+                <label><div {% if tipemp == 'O' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Oficial</label>
+                <label><div {% if tipemp == 'P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Privada</label>
+                <label><div {% if tipemp == 'M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Mixta</label>
               </div>
             </td>
           </tr>
@@ -614,7 +598,7 @@
           <tr>
             <td colspan="10">
               <div class="form-label">Observaciones</div>
-              <textarea>{{observaciones}}</textarea>
+              <div class="text">{{text}}</div>
             </td>
           </tr>
         </table>

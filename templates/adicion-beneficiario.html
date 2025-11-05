@@ -1,594 +1,682 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario de Adición de Beneficiario - COMFACA</title>
     <style>
-        @page {
-            margin: 0in;
-            background-image: url('membrete.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+      @font-face {
+        font-family: "lato-regular";
+        src: url("lato-regular.ttf") format("truetype"),
+          url("lato-regular.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @page {
+        margin: 0in;
+        background-image: url("membrete.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "lato-regular", sans-serif;
+      }
 
+      body {
+        font-size: 9px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .container {
+        margin: 0 auto;
+        background-color: transparent;
+        padding: 25px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        position: relative;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 120px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: #666;
+      }
+
+      .header-info {
+        flex: 1;
+        padding-left: 15px;
+      }
+
+      .header-info h1 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 3px;
+      }
+
+      .header-info p {
+        font-size: 9px;
+        margin: 2px 0;
+      }
+
+      .section-card {
+        padding: 3px 8px;
+        font-size: 9px;
+        border: 1px solid #777;
+        margin-bottom: 0;
+      }
+
+      .section-card .group-text {
+        display: flex;
+      }
+
+      .title-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 9px 0;
+      }
+      .resolution-box {
+        border: 1px solid #000;
+        padding: 5px;
+        width: 250px;
+      }
+      .resolution-header {
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+      }
+      .text-radicado {
+        font-size: 9px;
+        font-weight: bold;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        color: #3f4e46;
+      }
+      .form-label {
+        font-size: 9px;
+        font-weight: bold;
+        margin-bottom: 2px;
+        color: #444;
+      }
+      .resolution-fields {
+        display: flex;
+        gap: 5px;
+      }
+      .resolution-field {
+        flex: 1;
+        border: 1px solid #000;
+        padding: 10px 5px;
+        text-align: center;
+        font-size: 9px;
+      }
+
+      .importante {
+        background: #f9f9f9;
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #999;
+      }
+
+      .importante strong {
+        font-weight: bold;
+      }
+
+      .checkbox-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: 0px;
+      }
+
+      .checkbox {
+        width: 14px;
+        height: 14px;
+        border: 1px solid #333;
+        display: inline-block;
+        background: white;
+      }
+
+      .section {
+        margin: 15px 0;
+        border: none;
+      }
+
+      .section-header {
+        background: #2b914d;
+        padding: 6px 10px;
+        font-weight: bold;
+        font-size: 9px;
+        border: 1px solid #2b914d;
+        border-bottom: none;
+        color: #fff;
+      }
+
+      .section-note {
+        font-size: 9px;
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 6px;
+        border: 1px solid #666;
+        vertical-align: top;
+      }
+
+      .label {
+        font-weight: bold;
+        width: 150px;
+        color: #444;
+      }
+
+      .text {
+        display: inline-block;
+        min-height: 18px;
+        padding: 2px 4px;
+        font-size: 9px;
+      }
+
+      .id-types {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+      }
+
+      .id-type {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 9px;
+      }
+
+      .small-checkbox {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #7a7a7a;
+        display: inline-block;
+        border-radius: 5px;
+      }
+      .small-checkbox.active {
+        background-color: #7a7a7a;
+      }
+
+      .row {
+        display: flex;
+      }
+
+      .col {
+        flex: 1;
+        border-right: 1px solid #333;
+      }
+
+      .col:last-child {
+        border-right: none;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .legal-text {
+        margin-top: 15px;
+        padding: 5px;
+        font-size: 9px;
+        line-height: 1.5;
+        text-align: justify;
+      }
+
+      .legal-text p {
+        margin-bottom: 10px;
+      }
+
+      .legal-text strong {
+        font-weight: bold;
+      }
+
+      .consent-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        padding: 8px;
+        border: 1px solid #333;
+        background: #f9f9f9;
+      }
+
+      .ethnicity-options {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 9px;
+      }
+
+      .ethnicity-option {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .sello-section {
+        position: absolute;
+        bottom: 20px;
+        right: 100px;
+      }
+
+      @media print {
         body {
-            font-size: 9px;
-            line-height: 1.2;
-            margin: 0;
+          padding: 0;
         }
-
         .container {
-            margin: 0 auto;
-            background-color: transparent;
-            padding: 25px;
+          border: none;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #333;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            width: 120px;
-            height: 60px;
-            background: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #666;
-            border: 1px solid #999;
-        }
-
-        .header-info {
-            flex: 1;
-            padding-left: 15px;
-        }
-
-        .header-info h1 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .header-info p {
-            font-size: 9px;
-            margin: 2px 0;
-        }
-
-        .date-box {
-            border: 2px solid #333;
-            min-width: 280px;
-        }
-
-        .date-box table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .date-box th {
-            background: #f0f0f0;
-            padding: 4px;
-            font-size: 10px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid #333;
-        }
-
-        .date-box td {
-            padding: 8px;
-            border: 1px solid #333;
-        }
-
-        .important-note {
-            background: #f9f9f9;
-            padding: 8px;
-            margin: 10px 0;
-            border: 1px solid #999;
-        }
-
-        .important-note strong {
-            font-weight: bold;
-        }
-
-        .checkbox-inline {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-left: 10px;
-        }
-
-        .checkbox {
-            width: 14px;
-            height: 14px;
-            border: 1px solid #333;
-            display: inline-block;
-            background: white;
-        }
-
-        .section {
-            margin: 15px 0;
-            border: 2px solid #333;
-        }
-
-        .section-header {
-            background: #d0d0d0;
-            padding: 6px 10px;
-            font-weight: bold;
-            font-size: 11px;
-            border-bottom: 2px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-note {
-            font-size: 9px;
-            font-weight: normal;
-            font-style: italic;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        td {
-            padding: 6px;
-            border: 1px solid #333;
-            vertical-align: top;
-        }
-
-        .label {
-            font-size: 10px;
-            font-weight: normal;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="number"],
-        textarea {
-            width: 100%;
-            padding: 4px;
-            border: none;
-            background: transparent;
-            font-size: 11px;
-            font-family: Arial, sans-serif;
-        }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .id-types {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
-
-        .id-type {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            font-size: 9px;
-        }
-
-        .small-checkbox {
-            width: 12px;
-            height: 12px;
-            border: 1px solid #333;
-            display: inline-block;
-        }
-
-        .row {
-            display: flex;
-        }
-
-        .col {
-            flex: 1;
-            border-right: 1px solid #333;
-        }
-
-        .col:last-child {
-            border-right: none;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .legal-text {
-            margin-top: 15px;
-            padding: 10px;
-            font-size: 9px;
-            line-height: 1.5;
-            text-align: justify;
-        }
-
-        .legal-text p {
-            margin-bottom: 10px;
-        }
-
-        .legal-text strong {
-            font-weight: bold;
-        }
-
-        .consent-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            padding: 8px;
-            border: 1px solid #333;
-            background: #f9f9f9;
-        }
-
-        .ethnicity-options {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            font-size: 9px;
-        }
-
-        .ethnicity-option {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        @media print {
-            body {
-                padding: 0;
-            }
-            .container {
-                border: none;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-section">
-                <div class="logo">LOGO COMFACA</div>
-                <div class="header-info">
-                    <h1>CAJA DE COMPENSACIÓN FAMILIAR<br>DEL CAQUETÁ COMFACA</h1>
-                    <p><strong>NIT:</strong> 891190047</p>
-                    <p><strong>Sede Administrativa:</strong> Carrera 11 No. 10 -34</p>
-                    <p><strong>Centro Múltiple De Servicios Comfaca:</strong> Transv. 6a. calle 12 av. Bruno del Piero</p>
-                    <p><strong>Atención al Usuario:</strong> atencionalusuario@comfaca.com</p>
-                    <p>Tel: 6084366300 - www.comfaca.com</p>
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-section">
+          <div class="logo">
+            <img
+              src="logo-min.png"
+              alt="COMFACA Logo"
+              style="width: 130px; height: 60px"
+            />
+          </div>
+          <div class="header-info">
+            <h1>CAJA DE COMPENSACIÓN FAMILIAR<br />DEL CAQUETÁ COMFACA</h1>
+            <p><strong>NIT:</strong> 891190047</p>
+            <p><strong>Sede Administrativa:</strong> Carrera 11 No. 10 -34</p>
+            <p>
+              <strong>Centro Múltiple De Servicios Comfaca:</strong> Transv. 6a.
+              calle 12 av. Bruno del Piero
+            </p>
+            <p>
+              <strong>Atención al Usuario:</strong>
+              atencionalusuario@comfaca.com
+            </p>
+            <p>Tel: 6084366300 - www.comfaca.com</p>
+          </div>
+        </div>
+        <div class="title-section">
+          <div class="resolution-box">
+            <div class="resolution-header">Radicado No.</div>
+            <div class="text-radicado">{{ruuid}}</div>
+            <div class="form-label">Fecha de radicado</div>
+            <div class="resolution-fields">
+              <div class="resolution-field">Año: {{year}}</div>
+              <div class="resolution-field">Mes: {{month}}</div>
+              <div class="resolution-field">Día: {{day}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Importante -->
+      <div class="importante">
+        <div class="checkbox-inline">
+          <strong>IMPORTANTE:</strong>
+          <span>Adición persona a cargo</span>
+          <span>SI</span>
+          <div class="small-checkbox active"></div>
+          <span>NO</span>
+          <div class="small-checkbox"></div>
+        </div>
+      </div>
+
+      <!-- Datos del Trabajador Afiliado -->
+      <div class="section">
+        <div class="section-header">
+          <span>DATOS DEL TRABAJADOR AFILIADO</span>
+          <span class="section-note">(Requerido para establecer relación trabajador - beneficiario)</span>
+        </div>
+        <table>
+          <tr>
+            <td style="width: 20%">
+              <div class="label">No. Identificación</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">Tipo documento</div>
+            </td>
+            <td style="width: 40%">
+              <div class="label">Nombre trabajador</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">NIT- Empresa</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="text">{{trabajador.cedtra}}</div></td>
+            <td><div class="text">{{trabajador.tipo_documento}}</div></td>
+            <td><div class="text">{{trabajador.nombre_trabajador}}</div></td>
+            <td><div class="text">{{trabajador.nit}}</div></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Datos del Padre/Madre Biológico -->
+      <div class="section">
+        <div class="section-header">
+          <span>DATOS DEL PADRE / MADRE BIOLÓGICO</span>
+          <span class="section-note">(Requerido para beneficiarios hijos/hijastros/custodios)</span>
+        </div>
+        <table>
+          <tr>
+            <td style="width: 20%">
+              <div class="label">No. Identificación</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">Tipo documento</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">Celular</div>
+            </td>
+            <td style="width: 40%">
+              <div class="label">Correo electrónico</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 20%">
+              <div class="text">{{biologico.cedcon}}</div>
+            </td>
+            <td style="width: 20%">
+              <div class="text">{{biologico.tipo_documento}}</div>
+            </td>
+            <td style="width: 20%">
+              <div class="text">{{biologico.telefono}}</div>
+            </td>
+            <td style="width: 40%">
+              <div class="text">{{biologico.email}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 25%">
+              <div class="label">Primer apellido</div>
+              <div class="text">{{biologico.priape}}</div>
+            </td>
+            <td style="width: 25%">
+              <div class="label">Segundo apellido</div>
+              <div class="text">{{biologico.segape}}</div>
+            </td>
+            <td style="width: 25%">
+              <div class="label">Primer nombre</div>
+              <div class="text">{{biologico.prinom}}</div>
+            </td>
+            <td style="width: 25%">
+              <div class="label">Segundo nombre</div>
+              <div class="text">{{biologico.segnom}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="label">Dirección de residencia</div>
+              <div class="text">{{biologico.direccion}}</div>
+            </td>
+            <td>
+              <div class="label">Ciudad residencia</div>
+              <div class="text">{{biologico.ciudad_residencia}}</div>
+            </td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <span>Urbana</span>
+                  <span {% if zoneurbana == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
                 </div>
-            </div>
-            <div class="date-box">
-                <table>
-                    <tr>
-                        <th colspan="4">Fecha de solicitud</th>
-                    </tr>
-                    <tr>
-                        <th>Año</th>
-                        <th>Mes</th>
-                        <th>Día</th>
-                        <th>Ciudad / Municipio</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
+                <div class="radio-option">
+                  <span>Rural</span>
+                  <span {% if zoneurbana != 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Datos de la Persona a Cargo -->
+      <div class="section">
+        <div class="section-header">
+          <span>DATOS DE LA PERSONA A CARGO DEL TRABAJADOR</span>
+          <span class="section-note">(Datos del beneficiario)</span>
         </div>
+        <table>
+          <tr>
+            <td style="width: 20%">
+              <div class="label">No. Identificación</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">Tipo documento</div>
+            </td>
+            <td style="width: 40%">
+              <div class="label">Nombre completo beneficiario</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">Parentesco</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div type="text">{{numdoc}}</div></td>
+            <td><div type="text">{{tipo_documento}}</div></td>
+            <td><div type="text">{{nombre_beneficiario}}</div></td>
+            <td><div type="text">{{parentesco}}</div></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="label">Pertenencia étnica</div>
+              <div class="ethnicity-options">
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Afrocolombiano</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Comu. Negra</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Indígena</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Palenquero</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Raizal de San Andrés</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>Room/gitano</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>No se auto reconoce en ninguno de los ant.</span>
+                </div>
+                <div class="ethnicity-option">
+                  <span {% if  peretn  == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %} ></span>
+                  <span>No Disponible</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="label">Resguardo</div>
+              <div class="text">{{resguardo_name}}</div>
+            </td>
+            <td>
+              <div class="label">Pueblo indígena</div>
+              <div class="text">{{pueblo_name}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="label">Tiene discapacidad</div>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <span>SI</span>
+                  <div {% if tipdis and tipdis != "00" %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
+                </div>
+                <div class="radio-option">
+                  <span>NO</span>
+                  <div {% if tipdis == None or tipdis == "00" %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
+                </div>
+              </div>
+              <div class="label" style="margin-top: 8px">Tipo de discapacidad</div>
+              <div class="text">{{discapacidad_name}}</div>
+            </td>
+            <td>
+              <div class="label">Sexo</div>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <span>M</span>
+                  <span {% if sexo == 'M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                </div>
+                <div class="radio-option">
+                  <span>F</span>
+                  <span {% if sexo == 'F' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                </div>
+                <div class="radio-option">
+                  <span>I</span>
+                  <span {% if sexo == 'I' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="label">Fecha nacimiento</div>
+              <div class="text">{{fecnac}}</div>
+              <div class="label" style="margin-top: 8px">Tipo beneficiario</div>
+              <div class="text">{{tipo_hijo}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-        <!-- Important Note -->
-        <div class="important-note">
-            <strong>IMPORTANTE:</strong> Marque con una X según el tipo de novedad
-            <div class="checkbox-inline">
-                <span>Adición persona a cargo</span>
-                <span class="checkbox"></span>
+      <!-- Información Bancaria -->
+      <div class="section">
+        <div class="section-header">
+          INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO
+          FAMILIAR
+        </div>
+        <table>
+          <tr>
+            <td>
+              <div class="text">{{info_bancaria}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Pregunta sobre ubicación del padre/madre -->
+      <div class="section">
+          <div class="section-card">
+            <div class="group-text">
+              <span style="margin-right: 10px;">Desconoce ubicación del padre/madre biológico del menor:</span>
+              <div class="radio-group">
+                <div class="radio-option">
+                    <span>SI</span>
+                    <span {% if desconoce_ubicacion == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                  </div>
+                  <div class="radio-option">
+                    <span>NO</span>
+                    <span {% if desconoce_ubicacion != 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                  </div>
+              </div>
             </div>
-        </div>
-
-        <!-- Datos del Trabajador Afiliado -->
-        <div class="section">
-            <div class="section-header">
-                <span>DATOS DEL TRABAJADOR AFILIADO</span>
-                <span class="section-note">(Requerido para establecer relación trabajador - beneficiario)</span>
+            <div style="margin-top: 8px; font-size: 8px;">
+              (Requerido para beneficiarios hijos/hijastros/custodios)
             </div>
-            <table>
-                <tr>
-                    <td style="width: 20%;">
-                        <span class="label">No. Identificación</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">Tipo documento</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 40%;">
-                        <span class="label">Nombre trabajador</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">NIT- Empresa</span>
-                        <input type="text">
-                    </td>
-                </tr>
-            </table>
+          </div>
+      </div>
+
+      <!-- Legal Text -->
+      <div class="legal-text">
+        <p>
+          Nota: se deben adjuntar certificación del medio de pago, con fecha de
+          expedición no mayor a 30 días.
+        </p>
+
+        <p>
+          <strong>DECLARACIÓN JURADA:</strong> Declaramos que la información
+          suministrada en el presente formulario es verdadera, cuenta con los
+          soportes probatorios correspondientes y podrá ser verificada en
+          cualquier momento por parte de la Caja de Compensación Familiar del
+          Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37 de
+          la ley 21 de 1982. En el evento que la información suministrada
+          cambie, me comprometo a reportar modificación de los datos a más
+          tardar el día 10 del mes siguiente de ocurrida la novedad, de igual
+          manera, autorizo a COMFACA, en caso de que cobre cuotas monetarias a
+          las cuales no tenga derecho, me sean descontadas de los próximos pagos
+          de la cuota monetaria de subsidio familiar a que hubiere lugar.
+        </p>
+
+        <p>
+          <strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN:</strong> COMFACA es
+          responsable del tratamiento de datos personales, y en tal virtud,
+          recolectará, almacenará y usará su información personal de acuerdo con
+          lo establecido en el formato de autorización PM-PSF-FT-10 que hemos
+          puesto en su conocimiento de manera previa a la solicitud de
+          diligenciamiento del presente documento.
+        </p>
+
+        <p>
+          Firmar con firma digital o diligenciar la información requerida se entenderá como una
+          conducta inequívoca de que usted como titular de los datos personales
+          confirma conocer y haber diligenciado el formato de autorización
+          PM-PSF-FT-10, torga su consentimiento a COMFACA para que trate su
+          información personal de acuerdo con lo allí descrito y manifiesta que
+          la presente autorización le fue solicitada y puesta de presente antes
+          de entregar sus datos y que la suscribe de forma libre y voluntaria
+          una vez leída en su totalidad.
+        </p>
+        <div class="radio-group">
+          <div class="radio-option">
+            <span>SI</span>
+            <span class="small-checkbox active"></span>
+            <span>NO</span>
+            <span class="small-checkbox"></span>
+          </div>
         </div>
+      </div>
 
-        <!-- Datos del Padre/Madre Biológico -->
-        <div class="section">
-            <div class="section-header">
-                <span>DATOS DEL PADRE / MADRE BIOLÓGICO</span>
-                <span class="section-note">(Requerido para beneficiarios hijos/hijastros/custodios)</span>
-            </div>
-            <table>
-                <tr>
-                    <td style="width: 20%;">
-                        <span class="label">No. Identificación</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">Tipo documento</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">Celular</span>
-                        <input type="tel">
-                    </td>
-                    <td style="width: 40%;">
-                        <span class="label">Correo electrónico</span>
-                        <input type="email">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 25%;">
-                        <span class="label">Primer apellido</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 25%;">
-                        <span class="label">Segundo apellido</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 25%;">
-                        <span class="label">Primer nombre</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 25%;">
-                        <span class="label">Segundo nombre</span>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span class="label">Dirección de residencia</span>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <span class="label">Ciudad residencia</span>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <span>Urbana</span>
-                                <span class="checkbox"></span>
-                            </div>
-                            <div class="radio-option">
-                                <span>Rural</span>
-                                <span class="checkbox"></span>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Datos de la Persona a Cargo -->
-        <div class="section">
-            <div class="section-header">
-                <span>DATOS DE LA PERSONA A CARGO DEL TRABAJADOR</span>
-                <span class="section-note">(Datos del beneficiario)</span>
-            </div>
-            <table>
-                <tr>
-                    <td style="width: 20%;">
-                        <span class="label">No. Identificación</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">Tipo documento</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 40%;">
-                        <span class="label">Nombre completo beneficiario</span>
-                        <input type="text">
-                    </td>
-                    <td style="width: 20%;">
-                        <span class="label">Parentesco</span>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span class="label">Pertenencia étnica</span>
-                        <div class="ethnicity-options">
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Afrocolombiano</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Comu. Negra</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Indígena</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Palenquero</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Raizal de San Andrés</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Room/gitano</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>Resp. Pueb. Indígena</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>No Disponible</span>
-                            </div>
-                            <div class="ethnicity-option">
-                                <span class="small-checkbox"></span>
-                                <span>No se auto reconoce en ninguno de los ant.</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label">Resguardo</span>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <span class="label">Pueblo indígena</span>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span class="label">Tiene discapacidad</span>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <span>SI</span>
-                                <span class="checkbox"></span>
-                            </div>
-                            <div class="radio-option">
-                                <span>NO</span>
-                                <span class="checkbox"></span>
-                            </div>
-                        </div>
-                        <span class="label" style="margin-top: 8px;">Tipo de discapacidad</span>
-                        <input type="text">
-                    </td>
-                    <td>
-                        <span class="label">Sexo</span>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <span>M</span>
-                                <span class="checkbox"></span>
-                            </div>
-                            <div class="radio-option">
-                                <span>F</span>
-                                <span class="checkbox"></span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label">Fecha nacimiento</span>
-                        <input type="text">
-                        <span class="label" style="margin-top: 8px;">Tipo beneficiario</span>
-                        <input type="text">
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Información Bancaria -->
-        <div class="section">
-            <div class="section-header">
-                INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR
-            </div>
-            <table>
-                <tr>
-                    <td>
-                        <textarea placeholder="Información de cuenta bancaria o Daviplata..."></textarea>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Pregunta sobre ubicación del padre/madre -->
-        <div class="section">
-            <table>
-                <tr>
-                    <td>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span>Desconoce ubicación del padre/madre biológico del menor:</span>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <span>SI</span>
-                                    <span class="checkbox"></span>
-                                </div>
-                                <div class="radio-option">
-                                    <span>NO</span>
-                                    <span class="checkbox"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="text-align: right; font-size: 9px; font-style: italic; margin-top: 5px;">
-                            (Requerido para beneficiarios hijos/hijastros/custodios)
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Legal Text -->
-        <div class="legal-text">
-            <p>Nota: se deben adjuntar certificación del medio de pago, con fecha de expedición no mayor a 30 días.</p>
-
-            <p><strong>DECLARACIÓN JURADA:</strong> Declaramos que la información suministrada en el presente formulario es verdadera, cuenta con los soportes probatorios correspondientes y podrá ser verificada en cualquier momento por parte de la Caja de Compensación Familiar del Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37 de la ley 21 de 1982. En el evento que la información suministrada cambie, me comprometo a reportar modificación de los datos a más tardar el día 10 del mes siguiente de ocurrida la novedad, de igual manera, autorizo a COMFACA, en caso de que cobre cuotas monetarias a las cuales no tenga derecho, me sean descontadas de los próximos pagos de la cuota monetaria de subsidio familiar a que hubiere lugar.</p>
-
-            <p><strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN:</strong> COMFACA es responsable del tratamiento de datos personales, y en tal virtud, recolectará, almacenará y usará su información personal de acuerdo con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento.</p>
-
-            <p>Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, torga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la presente autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad.</p>
-
-            <div class="consent-box">
-                <span>SI</span>
-                <span class="checkbox"></span>
-                <span>NO</span>
-                <span class="checkbox"></span>
-            </div>
-        </div>
+      <div class="sello-section">
+        <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
+      </div>
     </div>
-</body>
+  </body>
 </html>

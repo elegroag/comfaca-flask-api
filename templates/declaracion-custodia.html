@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Declaración Juramentada - COMFACA</title>
     <style>
+        @font-face {
+            font-family: "lato-regular";
+            src: url("lato-regular.ttf") format("truetype"),
+                 url("lato-regular.woff2") format("woff2");
+            font-weight: normal;
+            font-style: normal;
+        }
         @page {
             margin: 0in;
             background-image: url('membrete.jpg');
@@ -16,6 +23,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "lato-regular", sans-serif;
         }
 
         body {
@@ -33,14 +41,15 @@
         .header {
             display: flex;
             align-items: center;
-            border: 2px solid #000;
+            border: 1px solid #777;
             margin-bottom: 30px;
         }
 
-        .header-logo {
-            width: 150px;
-            border-right: 2px solid #000;
-            padding: 10px;
+        .logo-section {
+            width: 90px;
+            padding-left: 4px;
+            padding-right: 4px;
+            border-right: 1px solid #777;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -80,50 +89,38 @@
             margin-top: 2px;
         }
 
-        .header-title {
+        .title-section {
             flex: 1;
-            padding: 10px 15px;
-            border-right: 2px solid #000;
+            padding: 10px;
+            text-align: center;
         }
 
-        .header-title h1 {
+        .title-section h1 {
             font-size: 14px;
             font-weight: bold;
-            text-align: center;
         }
 
-        .header-date {
-            width: 280px;
-            padding: 5px;
+        .date-section {
+            width: 200px;
+            padding: 0;
+            border-left: 1px solid #777;
+            margin-right: 10px;
         }
 
-        .date-label {
-            font-size: 8px;
-            text-align: center;
-            margin-bottom: 3px;
-        }
+        
 
-        .date-fields {
-            display: flex;
-            gap: 0;
-        }
+        .date-fields { display: flex; }
 
         .date-field {
             flex: 1;
-            border: 1px solid #000;
-            padding: 8px 3px;
             text-align: center;
+            padding: 8px 5px;
+            border-right: 1px solid #000;
             font-size: 9px;
-            font-weight: bold;
         }
 
-        .date-field:not(:last-child) {
-            border-right: none;
-        }
+        .date-field:last-child { border-right: none; flex: 2; }
 
-        .date-field.large {
-            flex: 2;
-        }
 
         .form-section {
             margin-bottom: 20px;
@@ -147,43 +144,26 @@
             font-size: 11px;
         }
 
-        .section-title {
-            background-color: #d9d9d9;
-            border: 2px solid #000;
-            padding: 8px 10px;
+        .section-header {
+            background: #2b914d;
+            padding: 6px 10px;
             font-weight: bold;
-            font-size: 11px;
+            font-size: 9px;
+            border: 1px solid #2b914d;
+            border-bottom: none;
+            color: #fff;
             text-align: center;
-            margin: 20px 0 15px 0;
+            margin-bottom: 5px;
         }
 
-        .checkbox-row {
-            display: flex;
-            gap: 30px;
-            margin: 15px 0;
-            padding-left: 20px;
-        }
+        .checkbox-options { display: flex; gap: 40px; margin-bottom: 15px; }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .checkbox-option { display: flex; align-items: center; gap: 8px; }
 
-        .checkbox-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #000;
-        }
+        .small-checkbox { width: 10px; height: 10px; border: 1px solid #7a7a7a; display: inline-block; border-radius: 5px; }
+        .small-checkbox.active{ background-color: #7a7a7a; }
 
-        .declaration-box {
-            border: 2px solid #000;
-            padding: 12px;
-            margin: 15px 0;
-            font-size: 10px;
-            line-height: 1.5;
-            text-align: justify;
-        }
+        .legal-box { border: 1px solid #000; padding: 10px; margin-bottom: 15px; text-align: justify; }
 
         .subsection-title {
             background-color: #d9d9d9;
@@ -208,11 +188,9 @@
             margin: 15px 0;
         }
 
-        table td {
-            border: 1px solid #000;
-            padding: 8px;
-            font-size: 10px;
-        }
+        table td { border: 1px solid #777; padding: 8px; font-size: 10px; }
+        .label-cell { background: #f0f0f0; font-weight: bold; width: 180px; }
+        .input-cell { background: white; }
 
         table td.label {
             font-weight: bold;
@@ -224,37 +202,27 @@
             gap: 0;
         }
 
-        .parent-col {
-            flex: 1;
-            border: 1px solid #000;
-        }
+        .parent-col { flex: 1; border: 1px solid #777; }
 
         .parent-col:first-child {
             border-right: none;
         }
 
-        .parent-header {
-            background-color: #e8e8e8;
-            padding: 6px;
-            font-weight: bold;
-            font-size: 10px;
-            text-align: center;
-            border-bottom: 1px solid #000;
-        }
+        .parent-header { background-color: #e8e8e8; padding: 6px; font-weight: bold; font-size: 10px; text-align: center; border-bottom: 1px solid #777; }
 
         .parent-field {
             padding: 8px;
             font-size: 10px;
         }
 
-        .final-declaration {
-            border: 2px solid #000;
-            padding: 12px;
-            margin: 20px 0;
-            font-size: 10px;
-            line-height: 1.6;
-            text-align: justify;
-        }
+        .final-declaration { border: 1px solid #777; padding: 15px; text-align: justify; line-height: 1.6; }
+
+        .resolution-box { padding: 5px; width: 100%; }
+        .resolution-header { text-align: center; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 5px; }
+        .text-radicado { font-size: 9px; font-weight: bold; margin-top: 4px; margin-bottom: 4px; color: #3f4e46; }
+        .form-label { font-size: 9px; font-weight: bold; margin-bottom: 2px; color: #444; }
+        .resolution-fields { display: flex; gap: 5px; }
+        .resolution-field { flex: 1; border: 1px solid #000; padding: 10px 5px; text-align: center; font-size: 9px; }
 
         @media print {
             body {
@@ -271,28 +239,39 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <div class="header">
-            <div class="header-logo">
-                <img src="/placeholder.svg?height=60&width=120" alt="Comfaca Logo">
-            </div>
-            <div class="header-gov">
-                <div class="header-gov-logo">🇨🇴</div>
-                <div class="header-gov-text">El empleo<br>es de todos</div>
-                <div class="header-gov-sub">Mintrabajo</div>
-            </div>
-            <div class="header-title">
-                <h1>Declaración Juramentada</h1>
-            </div>
-            <div class="header-date">
-                <div class="date-label">Fecha de solicitud</div>
-                <div class="date-fields">
-                    <div class="date-field">Año</div>
-                    <div class="date-field">Mes</div>
-                    <div class="date-field">Día</div>
-                    <div class="date-field large">Ciudad / Municipio</div>
-                </div>
-            </div>
+      <div class="header">
+        <div class="logo-section">
+           <img
+              src="logo-min.png"
+              alt="COMFACA Logo"
+              style="width: 90px; height: 35px"
+            />
         </div>
+        <div class="mintrabajo-section">
+          <div class="mintrabajo-logo">
+            <img
+              src="mintrabajo.jpg"
+              alt="Mintrabajo Logo"
+              style="width: 145px; height: 35px"
+            />           
+          </div>
+        </div>
+        <div class="title-section">
+          <h1>Declaración Juramentada</h1>
+        </div>
+        <div class="date-section">
+          <div class="resolution-box">
+            <div class="resolution-header">Radicado No.</div>
+            <div class="text-radicado">{{ruuid}}</div>
+            <div class="form-label">Fecha de radicado</div>
+            <div class="resolution-fields">
+              <div class="resolution-field">Año: {{year}}</div>
+              <div class="resolution-field">Mes: {{month}}</div>
+              <div class="resolution-field">Día: {{day}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
         <!-- Personal Information -->
         <div class="form-section">
@@ -309,23 +288,23 @@
         </div>
 
         <!-- Motivo Section -->
-        <div class="section-title">MOTIVO DE LA DECLARACIÓN</div>
-        
-        <p style="margin: 10px 0; font-size: 10px;">Marque con una (x) el motivo de la declaración:</p>
-        
-        <div class="checkbox-row">
-            <div class="checkbox-item">
-                <input type="checkbox" id="convivencia-economica">
-                <label for="convivencia-economica">Convivencia y dependencia económica</label>
+        <div class="section-header">MOTIVO DE LA DECLARACIÓN</div>
+        <div class="motivo-instruction" style="margin-bottom:10px;">
+            Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de la declaración:
+        </div>
+        <div class="checkbox-options">
+            <div class="checkbox-option">
+                <span class="small-checkbox active"></span>
+                <label>Convivencia y dependencia económica</label>
             </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="convivencia-custodia">
-                <label for="convivencia-custodia">Convivencia beneficiario por custodia</label>
+            <div class="checkbox-option">
+                <span class="small-checkbox active"></span>
+                <label>Convivencia beneficiario por custodia</label>
             </div>
         </div>
 
         <!-- Declaration Box -->
-        <div class="declaration-box">
+        <div class="legal-box">
             Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley
         </div>
 
@@ -337,25 +316,25 @@
         </div>
 
         <!-- Dependent Information Table -->
-        <table>
+        <table class="form-table">
             <tr>
-                <td class="label">Nombre completo</td>
-                <td></td>
-                <td class="label" style="width: 120px;">Parentesco</td>
-                <td style="width: 150px;"></td>
+                <td class="label-cell">Nombre completo</td>
+                <td class="input-cell" colspan="2"></td>
+                <td class="label-cell" style="width: 120px;">Parentesco</td>
+                <td class="input-cell" style="width: 150px;"></td>
             </tr>
             <tr>
-                <td class="label">Tipo documento</td>
-                <td></td>
-                <td class="label">Número documento</td>
-                <td></td>
+                <td class="label-cell">Tipo documento</td>
+                <td class="input-cell"></td>
+                <td class="label-cell">Número documento</td>
+                <td class="input-cell"></td>
             </tr>
         </table>
 
         <!-- Biological Parents Section -->
         <div style="margin: 15px 0;">
-            <div style="background-color: #e8e8e8; border: 1px solid #000; padding: 6px 10px; font-weight: bold; font-size: 10px; margin-bottom: 0;">
-                Padres biológicos
+            <div class="section-header">
+                PADRES BIOLÓGICOS
             </div>
             <div class="parent-table">
                 <div class="parent-col">
