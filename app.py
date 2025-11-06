@@ -85,7 +85,7 @@ def generate_pdf_endpoint():
         if output_path:
             # Retornar confirmación de guardado
             return jsonify({
-                "status": "success",
+                "success": True,
                 "message": "PDF generado exitosamente",
                 "path": result
             })
