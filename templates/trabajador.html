@@ -55,6 +55,11 @@
             padding: 25px;
         }
 
+        .sello-section {
+            position: absolute;
+            bottom: 20px;
+            right: 100px;
+        }
         .header {
             display: flex;
             justify-content: space-between;
@@ -124,16 +129,17 @@
             margin: 3px 0;
         }
 
-        .section-title {
-            background-color: #2b914d;
-            color: #fff;
+        .section-header {
             padding: 2px 3px;
             font-weight: bold;
             font-size: 7px;
             margin-bottom: 0px;
-            border-top: 1px solid #000;
-            border-left: 1px solid #000;
-            border-right: 1px solid #000;
+            color: #000;
+            background-color: #89bd94;
+            border-top: 1px solid #61a770;
+            border-left: 1px solid #75b182;
+            border-right: 1px solid #75b182;
+            border-bottom: none;
         }
 
         .section-content {
@@ -171,7 +177,7 @@
         }
 
         .table-anidada td {
-            border: 1px solid #dadada;
+            border: 1px solid #efefef;
             padding: 5px;
         }
 
@@ -319,11 +325,11 @@
                     <div class="resolution-header">Radicado No.</div>
                     <div class="text-radicado">{{ruuid}} </div>
                 </div>
-                <table class="tipo-afiliado-table">
+                <div class="section-header" style="margin-bottom: 0px;">
+                    <div class="">TIPO DE AFILIADO</div>
+                </div>
+                <table class="tipo-afiliado-table" style="margin-top: 0px;">
                     <thead>
-                        <tr>
-                            <th colspan="9">TIPO DE AFILIADO</th>
-                        </tr>
                         <tr>
                             <th colspan="2">DEPENDIENTE</th>
                             <th>INDEPENDIENTE</th>
@@ -396,7 +402,7 @@
         </div>
 
         <div class="section">
-            <div class="section-title">1. DATOS DEL EMPLEADOR, ENTIDAD PENSIONADORA O APORTANTE.</div>
+            <div class="section-header">1. DATOS DEL EMPLEADOR, ENTIDAD PENSIONADORA O APORTANTE.</div>
             <div>
                 <table>
                     <tr>
@@ -413,7 +419,7 @@
 
         <!-- Sección 2: Datos del Trabajador -->
         <div class="section">
-            <div class="section-title">2. DATOS DEL TRABAJADOR</div>
+            <div class="section-header">2. DATOS DEL TRABAJADOR</div>
             <table>
                 <tr>
                     <td style="width: 20%;">No. Identificación: {{cedtra}}</td>
@@ -570,7 +576,7 @@
         <div class="three-column">
             <!-- Sección 3: Factor de Vulnerabilidad -->
             <div class="section">
-                <div class="section-title">3. FACTOR DE VULNERABILIDAD</div>
+                <div class="section-header">3. FACTOR DE VULNERABILIDAD</div>
                 <div class="section-content">
                     <div class="list-item">
                         <span {% if facvul == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
@@ -617,7 +623,7 @@
                         <span>Ejercicio de trabajo sexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul is None or facvul == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul is none or facvul == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
                         <span>No aplica</span>
                     </div>
                 </div>
@@ -625,7 +631,7 @@
 
             <!-- Sección 4: Pertenencia Étnica -->
             <div class="section">
-                <div class="section-title">4. PERTENENCIA ÉTNICA</div>
+                <div class="section-header">4. PERTENENCIA ÉTNICA</div>
                 <div class="section-content">
                     <div class="list-item">
                         <span {% if peretn == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
@@ -652,7 +658,7 @@
                         <span>Room/gitano</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn is None or peretn == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn is none or peretn == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
                         <span>No Disponible</span>
                     </div>
                     <div class="list-item">
@@ -664,7 +670,7 @@
 
             <!-- Sección 5: Nivel de Escolaridad -->
             <div class="section">
-                <div class="section-title">5. NIVEL DE ESCOLARIDAD</div>
+                <div class="section-header">5. NIVEL DE ESCOLARIDAD</div>
                 <div class="section-content">
                     <div class="list-item">
                         <span {% if nivedu == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
@@ -734,7 +740,7 @@
         <div class="two-column">
             <!-- Sección 6: Orientación Sexual -->
             <div class="section">
-                <div class="section-title">6. ORIENTACIÓN SEXUAL</div>
+                <div class="section-header">6. ORIENTACIÓN SEXUAL</div>
                 <div class="section-content d-flex">
                     <div class="list-item">
                         <span {% if orisex == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
@@ -749,7 +755,7 @@
                         <span>Bisexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if orisex == '4' or orisex == '' or orisex is None %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if orisex == '4' or orisex == '' or orisex is none %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
                         <span>No Disponible</span>
                     </div>
                 </div>
@@ -757,7 +763,7 @@
 
             <!-- Sección 7: Tipo de Vivienda -->
             <div class="section">
-                <div class="section-title">7. TIPO DE VIVIENDA</div>
+                <div class="section-header">7. TIPO DE VIVIENDA</div>
                 <div class="section-content d-flex">
                     <div class="list-item">
                         <span {% if vivienda == 'P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
@@ -781,13 +787,13 @@
 
         <!-- Sección 8: Discapacidad -->
         <div class="section">
-            <div class="section-title">8. PRESENTA ALGUNA DISCAPACIDAD?</div>
+            <div class="section-header">8. PRESENTA ALGUNA DISCAPACIDAD?</div>
             <table>
                 <tr>
                     <td style="width: 100px;">
                         <div class="inline-checkbox">
-                            <span {% if tipdis != None %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>SI</label>
-                            <span {% if tipdis is None %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>NO</label>
+                            <span {% if tipdis %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>SI</label>
+                            <span {% if tipdis is none %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>NO</label>
                         </div>
                     </td>
                     <td style="width: 30px;"><div class="label">Cual</div></td>
@@ -798,7 +804,7 @@
 
         <!-- Sección 9: Datos Laborales -->
         <div class="section">
-            <div class="section-title">9. DATOS LABORALES DEL TRABAJADOR</div>
+            <div class="section-header">9. DATOS LABORALES DEL TRABAJADOR</div>
             <table>
                 <tbody>
                     <tr>
@@ -874,7 +880,7 @@
 
         <!-- Sección 10: Información Bancaria -->
         <div class="section">
-            <div class="section-title">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR</div>
+            <div class="section-header">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR</div>
             <table>
                 <tr>
                     <td>YO  <div class="text">{{nombre_trabajador}}</div></td>
@@ -903,7 +909,7 @@
                             <label>Cuenta de Ahorro </label>
                             <span {% if tippag == 'A' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
                             <label>No tiene </label>
-                            <span {% if tippag is None or tippag == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
+                            <span {% if tippag is none or tippag == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
                         </div>
                     </td>
                     <td colspan="3">
@@ -930,6 +936,10 @@
         <div class="declaracion">
             Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad. 
             SI <span class="small-checkbox active"></span> NO <span class="small-checkbox"></span>
+        </div>
+
+        <div class="sello-section">
+            <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
         </div>
     </div>
 </body>

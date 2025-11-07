@@ -35,16 +35,16 @@
         margin: 0;
       }
 
-      .container {
-        margin: 0 auto;
-        background-color: transparent;
-        padding: 25px;
-      }
-
       .sello-section {
         position: absolute;
         bottom: 20px;
         right: 100px;
+      }
+
+      .container {
+        margin: 0 auto;
+        background-color: transparent;
+        padding: 25px;
       }
 
       .header {
@@ -131,46 +131,6 @@
         padding: 10px 5px;
         text-align: center;
         font-size: 9px;
-      }
-
-      .document-header {
-        border: 2px solid #000;
-        margin-bottom: 30px;
-      }
-
-      .header-row {
-        display: flex;
-        border-bottom: 2px solid #000;
-      }
-
-      .header-row:last-child {
-        border-bottom: none;
-      }
-
-      .header-cell {
-        padding: 8px 12px;
-        font-size: 10px;
-        border-right: 2px solid #000;
-      }
-
-      .header-cell:last-child {
-        border-right: none;
-      }
-
-      .header-cell.bold {
-        font-weight: bold;
-      }
-
-      .header-cell.center {
-        text-align: center;
-      }
-
-      .header-cell.flex-1 {
-        flex: 1;
-      }
-
-      .header-cell.flex-2 {
-        flex: 2;
       }
 
       .page-number {
@@ -267,9 +227,9 @@
         vertical-align: top;
       }
 
-      .form-section td .text{
-          font-size: 8px;
-          font-weight: regular;
+      .form-section td .text {
+        font-size: 8px;
+        font-weight: regular;
       }
 
       .form-section td .label {
@@ -350,10 +310,11 @@
             </td>
             <td style="width: 60%">
               <div class="header-info">
-                <h3 class="text-center">PROCEDO SUBSIDIO FAMILIAR <br/>
-                    AUTORIZACIÓN Y REFRENDACIÓN DE USO DE DATOS PERSONALES
+                <h3 class="text-center">
+                  PROCEDO SUBSIDIO FAMILIAR <br />
+                  AUTORIZACIÓN Y REFRENDACIÓN DE USO DE DATOS PERSONALES
                 </h3>
-                <br/>
+                <br />
                 <p>NIT: 891190047</p>
                 <p>
                   <strong>Sede Administrativa:</strong> Carrera 11 No. 10 -34
@@ -519,21 +480,34 @@
       </div>
 
       <!-- Form Section -->
-      <table class="form-section" cellspacing="0" cellpadding="0" align="center">
+      <table
+        class="form-section"
+        cellspacing="0"
+        cellpadding="0"
+        align="center"
+      >
         <tbody>
           <tr>
             <td style="width: 25%"><div class="label">RAZÓN SOCIAL:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{razsoc}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{razsoc}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">TIPO DOCUMENTO:</div></td>
-            <td style="width: 20%;" class="underline"><div class="text">{{tpdoc}}</div></td>
-            <td style="width: 20%;"><div class="label">NÚMERO DOCUMENTO:</div></td>
+            <td style="width: 20%" class="underline">
+              <div class="text">{{tpdoc}}</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">NÚMERO DOCUMENTO:</div>
+            </td>
             <td class="underline"><div class="text">{{numdoc}}</div></td>
           </tr>
           <tr>
             <td><div class="label">NOMBRES Y APELLIDOS REPRESENTANTE:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{nomrep}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{nomrep}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">TIPO DOCUMENTO R.L.:</div></td>
@@ -549,7 +523,9 @@
           </tr>
           <tr>
             <td><div class="label">DIRECCIÓN LABORAL:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{dirlab}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{dirlab}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">TELÉFONO FIJO:</div></td>
@@ -559,12 +535,14 @@
           </tr>
           <tr>
             <td><div class="label">CORREO ELECTRÓNICO:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{email}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{email}}</div>
+            </td>
           </tr>
         </tbody>
       </table>
 
-       <div class="sello-section">
+      <div class="sello-section">
         <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
       </div>
     </div>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formato Actualización Datos de Trabajadores - COMFACA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .page {
+            page-break-after: always;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .page:last-child {
+            border-bottom: none;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+        }
+
+        .header-table td {
+            border: 1px solid #333;
+            padding: 10px;
+            font-size: 11px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .header-logo {
+            font-weight: bold;
+            color: #1b7d3e;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .header-meta {
+            font-size: 11px;
+        }
+
+        .page-number {
+            text-align: center;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .section-title {
+            background-color: #e0e0e0;
+            font-weight: bold;
+            padding: 8px 10px;
+            margin: 20px 0 10px 0;
+            font-size: 12px;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            border: 1px solid #999;
+        }
+
+        .form-table td {
+            border: 1px solid #999;
+            padding: 8px;
+            font-size: 11px;
+            vertical-align: top;
+        }
+
+        .form-table td.label {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .form-table td.input {
+            min-height: 25px;
+            vertical-align: middle;
+        }
+
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            border: 1px solid #999;
+        }
+
+        .signature-table td {
+            border: 1px solid #999;
+            padding: 30px 10px 10px 10px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            height: 60px;
+        }
+
+        .signature-table td.title {
+            border: none;
+            padding: 5px;
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+
+        .declaration-box {
+            border: 1px solid #999;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 11px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #333;
+            margin-right: 8px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .notes-box {
+            background-color: #f9f9f9;
+            border: 1px solid #999;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .notes-box strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .notes-box ol {
+            margin-left: 20px;
+        }
+
+        .notes-box li {
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        .control-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border: 1px solid #999;
+        }
+
+        .control-table th {
+            background-color: #7fb342;
+            color: white;
+            border: 1px solid #999;
+            padding: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .control-table td {
+            border: 1px solid #999;
+            padding: 12px 8px;
+            font-size: 11px;
+            text-align: center;
+            height: 40px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 11px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 25px 0 15px 0;
+            font-size: 13px;
+            color: #333;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .form-table td {
+                font-size: 10px;
+            }
+
+            .signature-table td {
+                padding: 20px 5px 5px 5px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PÁGINA 1 -->
+        <div class="page">
+            <table class="header-table">
+                <tr>
+                    <td rowspan="3" class="header-logo">COMFACA</td>
+                    <td rowspan="3" class="header-title">
+                        PROCESO MISIONAL<br>
+                        PROCESO SUBSIDIO FAMILIAR<br>
+                        FORMATO ACTUALIZACIÓN DATOS DE TRABAJADORES
+                    </td>
+                    <td class="header-meta">Versión: 1</td>
+                </tr>
+                <tr>
+                    <td class="header-meta">Código: PE-PSF-FT-12</td>
+                </tr>
+                <tr>
+                    <td class="header-meta">Fecha: 17 - febrero - 2022</td>
+                </tr>
+            </table>
+
+            <div class="page-number">1 de 2</div>
+
+            <div class="section-title">INFORMACIÓN GENERAL DEL TRABAJADOR</div>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Nombres y Apellidos Trabajador:</td>
+                    <td class="input" colspan="2"></td>
+                    <td class="label">No. de Identificación:</td>
+                    <td class="input"></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="label">Expedida en:</td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="input" style="min-height: 20px;"></td>
+                </tr>
+            </table>
+
+            <div class="section-title">DATOS DE UBICACIÓN Y CONTACTO DEL TRABAJADOR</div>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Dirección de residencia:</td>
+                    <td class="input" colspan="3"></td>
+                    <td class="label">Barrio:</td>
+                    <td class="input"></td>
+                </tr>
+                <tr>
+                    <td class="label">Ciudad:</td>
+                    <td class="input"></td>
+                    <td class="label">Departamento:</td>
+                    <td class="input" colspan="3"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">No. Celular para notificaciones:</td>
+                    <td class="input"></td>
+                    <td class="label">Teléfono Fijo:</td>
+                    <td class="input"></td>
+                    <td class="label">Correo electrónico para notificaciones:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <div class="section-title">AUTORIZACIÓN MEDIO DE PAGO CUOTA MONETARIA (SI EL TRABAJADOR RECIBE CUOTA MONETARIA POR PADRES O HERMANOS HUÉRFANOS DE PADRES O TIENE CUSTODIA DE SUS HIJOS)</div>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Autorizo pago de cuota monetaria en DaviPlata:</td>
+                    <td class="input">
+                        SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span>
+                    </td>
+                    <td class="label">No. Celular para DaviPlata:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Autorizo pago de cuota monetaria en Cuenta Bancaria:</td>
+                    <td class="input">
+                        SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="label">Banco:</td>
+                    <td class="input"></td>
+                    <td class="label">Tipo de Cuenta:</td>
+                    <td class="input"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="label">No. Cuenta Bancaria:</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="input" style="min-height: 25px;"></td>
+                </tr>
+            </table>
+
+            <div class="section-title">INFORMACIÓN GENERAL DEL BENEFICIARIO QUE RECIBE LA CUOTA MONETARIA (MADRE DEL HIJO O DE LOS HIJOS BENEFICIARIOS AFILIADOS)</div>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Nombres y Apellidos:</td>
+                    <td class="input" colspan="2"></td>
+                    <td class="label">No. de Identificación:</td>
+                    <td class="input"></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="label">Expedida en:</td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="input" style="min-height: 20px;"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">No. Celular para notificaciones:</td>
+                    <td class="input"></td>
+                    <td class="label">Teléfono Fijo:</td>
+                    <td class="input"></td>
+                    <td class="label">Correo electrónico para notificaciones:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <div class="section-title">AUTORIZACIÓN MEDIO DE PAGO CUOTA MONETARIA</div>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Autorizo pago de cuota monetaria en DaviPlata:</td>
+                    <td class="input">
+                        SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span>
+                    </td>
+                    <td class="label">No. Celular para DaviPlata:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Autorizo pago cuota monetaria Cuenta Bancaria para pago de cuota monetaria:</td>
+                    <td class="input">
+                        SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Banco:</td>
+                    <td class="input" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td class="label">Tipo de Cuenta:</td>
+                    <td class="input"></td>
+                    <td class="label">No. Cuenta Bancaria:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <div class="declaration-box">
+                Yo, como AFILIADO con la firma de este documento y de conformidad con lo establecido en la Ley 1437 de 2011, solicito y acepto que dentro de los trámites que se adelanten en la Caja de Compensación Familiar del Caquetá COMFACA, y para mayor agilidad se me notifique todo acto administrativo, decisión o requerimiento vía correo electrónico. Marcar con una X<br><br>
+                <span style="margin-left: 20px;">SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span></span>
+            </div>
+
+            <table class="signature-table">
+                <tr>
+                    <td style="width: 33.33%;">ELABORÓ:<br><br>Nombre: Betty Rojas Rojas<br>Cargo: Jefe Depto. Aportes y Subsidio<br>Fecha: 14 – febrero - 2022</td>
+                    <td style="width: 33.33%;">REVISÓ:<br><br>Nombre: Guillermo A. Perdomo Rojas<br>Cargo: Subdirector Corporativo y Financiero<br>Fecha: 16 – febrero - 2022</td>
+                    <td style="width: 33.33%;">APROBÓ:<br><br>Nombre: César Augusto Trujillo Barreto<br>Cargo: Director Administrativo<br>Fecha: 17 – febrero - 2022</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PÁGINA 2 -->
+        <div class="page">
+            <table class="header-table">
+                <tr>
+                    <td rowspan="3" class="header-logo">COMFACA</td>
+                    <td rowspan="3" class="header-title">
+                        PROCESO MISIONAL<br>
+                        PROCESO SUBSIDIO FAMILIAR<br>
+                        FORMATO ACTUALIZACIÓN DATOS DE TRABAJADORES
+                    </td>
+                    <td class="header-meta">Versión: 1</td>
+                </tr>
+                <tr>
+                    <td class="header-meta">Código: PE-PSF-FT-12</td>
+                </tr>
+                <tr>
+                    <td class="header-meta">Fecha: 17 - febrero - 2022</td>
+                </tr>
+            </table>
+
+            <div class="page-number">2 de 2</div>
+
+            <div class="declaration-box">
+                <strong>COMFACA</strong> es responsable del tratamiento de datos personales, y en tal virtud, recolectarán, almacenarán y usará su información personal de acuerdo con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento. Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la presente autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad.
+            </div>
+
+            <div class="declaration-box">
+                <strong>Yo, como Trabajador Afiliado</strong> con la firma de este documento declaro bajo la gravedad de juramento, que la información contenida en este formato corresponde exactamente a la realidad, por lo anterior cualquier falsedad o inexactitud en que incurra será mi responsabilidad y podré ser sancionado de acuerdo con lo establecido en el Artículo 45 de la Ley 21 de 1982.
+            </div>
+
+            <table class="form-table">
+                <tr>
+                    <td colspan="4" class="label">Observaciones:</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="input" style="min-height: 50px;"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label" style="width: 35%;">Firma del Trabajador:</td>
+                    <td class="input" style="min-height: 60px; width: 15%;"></td>
+                    <td class="label" style="width: 35%;">Firma del Cónyuge o beneficiario quien recibe la cuota monetaria:</td>
+                    <td class="input" style="min-height: 60px; width: 15%;"></td>
+                </tr>
+            </table>
+
+            <table class="form-table">
+                <tr>
+                    <td class="label">Fecha de actualización:</td>
+                    <td class="input"></td>
+                    <td class="label">Nombre del Funcionario de COMFACA que actualiza:</td>
+                    <td class="input"></td>
+                </tr>
+            </table>
+
+            <h3>Notas a tener en cuenta en la actualización:</h3>
+
+            <div class="notes-box">
+                <ol>
+                    <li>Para el pago por DaviPlata el número de celular suministrado para aperturar la cuenta, debe estar registrado con el número de cédula de quien recibe la cuota monetaria, de lo contrario no se hará efectivo el pago por este medio.</li>
+                    <li>Para el pago en cuenta bancaria, la cuenta debe estar a nombre de quien recibe la cuota monetaria.</li>
+                    <li>En ambos casos se debe adjuntar certificación bancaria, tanto de DaviPlata como de otras entidades bancarias.</li>
+                </ol>
+            </div>
+
+            <h3>IDENTIFICACIÓN CONTROL DE CAMBIOS:</h3>
+
+            <table class="control-table">
+                <tr>
+                    <th style="width: 30%;">FECHA</th>
+                    <th style="width: 50%;">DESCRIPCIÓN DEL CAMBIO</th>
+                    <th style="width: 20%;">VERSIÓN</th>
+                </tr>
+                <tr>
+                    <td style="height: 40px;"></td>
+                    <td style="height: 40px;"></td>
+                    <td style="height: 40px;"></td>
+                </tr>
+                <tr>
+                    <td style="height: 40px;"></td>
+                    <td style="height: 40px;"></td>
+                    <td style="height: 40px;"></td>
+                </tr>
+            </table>
+
+            <table class="signature-table">
+                <tr>
+                    <td style="width: 33.33%;">ELABORÓ:<br><br>Nombre: Betty Rojas Rojas<br>Cargo: Jefe Depto. Aportes y Subsidio<br>Fecha: 14 – febrero - 2022</td>
+                    <td style="width: 33.33%;">REVISÓ:<br><br>Nombre: Guillermo A. Perdomo Rojas<br>Cargo: Subdirector Corporativo y Financiero<br>Fecha: 16 – febrero - 2022</td>
+                    <td style="width: 33.33%;">APROBÓ:<br><br>Nombre: César Augusto Trujillo Barreto<br>Cargo: Director Administrativo<br>Fecha: 17 – febrero - 2022</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

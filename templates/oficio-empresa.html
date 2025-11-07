@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficio de Solicitud de Afiliación - COMFACA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background-color: white;
+            margin: 20px auto;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .header-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .header-info-item {
+            font-size: 12px;
+        }
+
+        .header-info-item label {
+            font-weight: bold;
+        }
+
+        .logo {
+            max-width: 120px;
+            text-align: right;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d5f3f;
+            text-align: right;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #2d5f3f;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        .saludo {
+            font-size: 13px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .direccion {
+            font-size: 11px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .body-content {
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .body-content p {
+            margin-bottom: 15px;
+        }
+
+        .underline-field {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            min-width: 150px;
+            padding: 0 5px;
+        }
+
+        .underline-short {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            min-width: 80px;
+            padding: 0 5px;
+        }
+
+        .datos-section {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .dato-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            align-items: baseline;
+        }
+
+        .dato-label {
+            font-weight: bold;
+            min-width: 200px;
+        }
+
+        .dato-field {
+            border-bottom: 1px solid #000;
+            padding: 2px 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 30px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #000;
+        }
+
+        .firma-section {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .firma-box {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .firma-line {
+            border-top: 1px solid #000;
+            margin-top: 40px;
+            padding-top: 5px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="header-info">
+                    <div class="header-info-item">
+                        <label>Ciudad:</label> ___________________________________
+                    </div>
+                    <div class="header-info-item">
+                        <label>Fecha:</label> _____ __ ____
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="logo-text">Comfaca</div>
+            </div>
+        </div>
+
+        <!-- Saludo -->
+        <div class="saludo">Señores</div>
+
+        <!-- Dirección -->
+        <div class="direccion">
+            CAJA DE COMPENSACION FAMILIAR DEL CAQUETA COMFACA<br>
+            DEPARTAMENTO DE APORTES Y SUBSIDIO<br>
+            Carrera 11 No. 10-34 Barrio Cooperativa<br>
+            Telf. 098-4366300 Extensión 1066<br>
+            Florencia, Caquetá
+        </div>
+
+        <!-- Saludo Cordial -->
+        <div class="body-content">
+            <p>Cordial saludo,</p>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="body-content">
+            <p>Comedidamente me permito solicitar la afiliación en calidad: <span class="underline-field"></span>, de <span class="underline-field"></span> ante la Caja de Compensación Familiar del Caquetá COMFACA, los pagos de aportes parafiscales se iniciarán a cancelar a partir del día<span class="underline-short"></span> mes<span class="underline-short"></span> año<span class="underline-short"></span>, fecha en que se vinculó a laboral el personal.</p>
+        </div>
+
+        <!-- Datos del Solicitante -->
+        <div class="datos-section">
+            <div class="section-title">Datos de: ___________________</div>
+            
+            <div class="dato-row">
+                <div class="dato-label">Tipo de documento:</div>
+                <div class="dato-field"></div>
+                <div class="dato-label" style="margin-left: 20px;">Número:</div>
+                <div class="dato-field"></div>
+            </div>
+
+            <div class="dato-row">
+                <div class="dato-label">Dirección laboral:</div>
+                <div class="dato-field"></div>
+            </div>
+
+            <div class="dato-row">
+                <div class="dato-label">Teléfono móvil:</div>
+                <div class="dato-field"></div>
+            </div>
+
+            <div class="dato-row">
+                <div class="dato-label">Teléfono:</div>
+                <div class="dato-field"></div>
+                <div class="dato-label" style="margin-left: 20px;">Correo electrónico:</div>
+                <div class="dato-field"></div>
+            </div>
+
+            <div class="dato-row">
+                <div class="dato-label">Ciudad donde se causan los aportes:</div>
+                <div class="dato-field"></div>
+            </div>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="body-content">
+            <p><strong>Manifiesto SI ( ) NO ( ) haber estado afiliado a una Caja de Compensación Familiar con anterioridad a la solicitud.</strong><br>
+            Adjunto Paz y Salvo de la anterior caja de Compensación Familiar SI ( ) NO ( ).</p>
+        </div>
+
+        <!-- Firma -->
+        <div class="firma-section">
+            <div class="firma-box">
+                <div class="firma-line"></div>
+                <strong>Firma del Solicitante</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
