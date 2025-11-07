@@ -51,40 +51,40 @@
       }
 
       ol {
-        margin: 15px 0 15px 30px;
+        margin: 10px 0 10px 20px;
         font-size: 8px;
         text-align: justify;
       }
 
       li {
-        margin-bottom: 4px;
+        margin-bottom: 3px;
         color: #333;
       }
 
       ul {
-        margin: 10px 0 10px 30px;
+        margin: 10px 0 10px 25px;
         list-style-type: disc;
         font-size: 8px;
       }
 
       ul li {
-        margin-bottom: 4px;
+        margin-bottom: 3px;
         color: #333;
       }
 
       .sello-section {
         position: absolute;
-        bottom: 20px;
-        right: 100px;
+        bottom: 18px;
+        right: 80px;
       }
 
       .container {
         margin: 0px;
         margin-top: 20px;
-        margin-left: 40px;
-        margin-right: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
         background-color: transparent;
-        padding: 25px;
+        padding: 20px;
       }
 
       .header {
@@ -119,15 +119,15 @@
       }
 
       .resolution-box {
-        border: 1px solid #000;
+        border: 1px solid #777;
         padding: 5px;
-        width: 250px;
+        width: 160px;
       }
 
       .resolution-header {
         text-align: center;
         font-weight: bold;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #777;
         padding-bottom: 5px;
         margin-bottom: 5px;
       }
@@ -154,7 +154,7 @@
 
       .resolution-field {
         flex: 1;
-        border: 1px solid #000;
+        border: 1px solid #777;
         padding: 10px 5px;
         text-align: center;
         font-size: 9px;
@@ -176,29 +176,22 @@
       .process-labels {
         display: flex;
         justify-content: space-between;
-        font-size: 11px;
+        font-size: 9px;
         font-weight: bold;
         color: #333;
-        margin-bottom: 20px;
-      }
-
-      .page-number {
-        text-align: right;
-        font-size: 11px;
-        color: #999;
         margin-bottom: 20px;
       }
 
       .section-title {
         font-weight: bold;
-        margin: 20px 0 10px 0;
+        margin: 10px 0 10px 0;
         color: #333;
-        font-size: 10px;
+        font-size: 9px;
       }
 
       .sensitive-data {
         margin: 15px 0;
-        font-size: 12px;
+        font-size: 9px;
       }
 
       .sensitive-data ul {
@@ -214,15 +207,16 @@
       }
 
       .rights-section li {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .contact-section {
         background-color: #f9f9f9;
-        padding: 15px;
-        margin: 20px 0;
+        padding: 5px;
+        margin-top: 10px;
+        margin-left: 10px;
         border-left: 4px solid #006b4f;
-        font-size: 12px;
+        font-size: 9px;
       }
 
       .contact-section ul {
@@ -231,10 +225,11 @@
 
       .declaration {
         background-color: #f0f0f0;
-        padding: 15px;
-        margin: 20px 0;
+        padding: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
         border-radius: 4px;
-        font-size: 12px;
+        font-size: 9px;
         text-align: justify;
         color: #333;
       }
@@ -284,83 +279,27 @@
       .form-group label {
         font-weight: bold;
         margin-bottom: 5px;
-        font-size: 12px;
+        font-size: 9px;
         color: #333;
-      }
-
-      .form-group input[type="text"],
-      .form-group input[type="email"],
-      .form-group input[type="tel"],
-      .form-group input[type="date"] {
-        border: none;
-        border-bottom: 1px solid #333;
-        padding: 5px 0;
-        font-size: 12px;
-        background-color: transparent;
-        font-family: Arial, sans-serif;
-      }
-
-      .form-group input:focus {
-        outline: none;
-        border-bottom: 2px solid #006b4f;
-      }
-
-      .signature-line {
-        border-top: 1px solid #333;
-        margin-top: 20px;
-        padding-top: 5px;
-        text-align: center;
-        font-size: 11px;
-        color: #666;
       }
 
       .form-table {
         margin: auto;
-        width: 600px;
+        width: 450px;
         border-collapse: collapse;
-        margin-top: 30px;
+        margin-top: 5px;
       }
 
       .form-table td {
-        padding: 6px 8px;
+        padding: 4px;
         vertical-align: top;
-        font-size: 9px;
+        font-size: 8px;
       }
 
       .form-table .label {
         font-weight: bold;
         white-space: nowrap;
         width: 25%;
-      }
-
-      @media print {
-        body {
-          background-color: white;
-          padding: 0;
-        }
-
-        .container {
-          box-shadow: none;
-          padding: 0;
-          max-width: 100%;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .form-row {
-          grid-template-columns: 1fr;
-          gap: 10px;
-        }
-
-        .container {
-          padding: 20px;
-        }
-
-        p,
-        li,
-        .declaration {
-          font-size: 11px;
-        }
       }
     </style>
   </head>
@@ -404,9 +343,9 @@
                   <div class="text-radicado">{{ruuid}}</div>
                   <div class="form-label">Fecha de radicado</div>
                   <div class="resolution-fields">
-                    <div class="resolution-field">Año: {{year}}</div>
-                    <div class="resolution-field">Mes: {{month}}</div>
-                    <div class="resolution-field">Día: {{day}}</div>
+                    <div class="resolution-field">{{year}}</div>
+                    <div class="resolution-field">{{month}}</div>
+                    <div class="resolution-field">{{day}}</div>
                   </div>
                 </div>
               </div>
@@ -414,8 +353,6 @@
           </tr>
         </table>
       </div>
-      <div class="page-number"><small>1 de 2</small></div>
-
       <p>
         La Caja de Compensación Familiar del Caquetá (COMFACA), identificada con
         Nit 891.190.047-2, es la entidad responsable del tratamiento de los
@@ -570,7 +507,7 @@
           información personal de acuerdo con las finalidades mencionadas en
           esta política.
         </p>
-        <p style="margin-top: 10px">
+        <p style="margin-top: 5px">
           Asimismo, declara que la presente autorización le fue solicitada y
           puesta de presente antes de entregar sus datos y que la suscribe de
           forma libre y voluntaria una vez leída en su totalidad.
@@ -595,7 +532,7 @@
           </tr>
           <tr>
             <td class="label">CIUDAD:</td>
-            <td class="underline"><div class="text">{{ciudad}}</div></td>
+            <td class="underline"><div class="text">{{ciudad_name}}</div></td>
             <td class="label">FECHA DE DILIGENCIAMIENTO:</td>
             <td class="underline"><div class="text">{{fecsol}}</div></td>
           </tr>
@@ -619,6 +556,9 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="sello-section">
+      <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
     </div>
   </body>
 </html>

@@ -35,16 +35,48 @@
         margin: 0;
       }
 
+      p {
+        margin-bottom: 3px;
+        text-align: justify;
+        font-size: 9px;
+        color: #333;
+      }
+
+      ol {
+        margin: 8px 0 8px 20px;
+        font-size: 8px;
+        text-align: justify;
+      }
+
+      li {
+        margin-bottom: 3px;
+        color: #333;
+      }
+
+      ul {
+        margin: 10px 0 10px 25px;
+        list-style-type: disc;
+        font-size: 8.5px;
+      }
+
+      ul li {
+        margin-bottom: 3px;
+        color: #333;
+      }
+
       .container {
-        margin: 0 auto;
+        margin: 0px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
         background-color: transparent;
-        padding: 25px;
+        padding: 18px;
       }
 
       .sello-section {
         position: absolute;
-        bottom: 20px;
-        right: 100px;
+        bottom: 18px;
+        right: 80px;
       }
 
       .header {
@@ -92,15 +124,15 @@
       }
 
       .resolution-box {
-        border: 1px solid #000;
+        border: 1px solid #777;
         padding: 5px;
-        width: 250px;
+        width: 160px;
       }
 
       .resolution-header {
         text-align: center;
         font-weight: bold;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #777;
         padding-bottom: 5px;
         margin-bottom: 5px;
       }
@@ -127,64 +159,75 @@
 
       .resolution-field {
         flex: 1;
-        border: 1px solid #000;
+        border: 1px solid #777;
         padding: 10px 5px;
         text-align: center;
         font-size: 9px;
       }
 
-      .document-header {
-        border: 2px solid #000;
-        margin-bottom: 30px;
+      .contact-section {
+        background-color: #f9f9f9;
+        padding: 5px;
+        margin-top: 5px;
+        margin-left: 20px;
+        border-left: 4px solid #006b4f;
+        font-size: 9px;
       }
 
-      .header-row {
-        display: flex;
-        border-bottom: 2px solid #000;
+      .contact-section ul {
+        margin-left: 20px;
       }
 
-      .header-row:last-child {
-        border-bottom: none;
+      .declaration {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-top: 5px;
+        margin-left: 20px;
+        border-radius: 4px;
+        font-size: 9px;
+        text-align: justify;
+        color: #333;
       }
 
-      .header-cell {
-        padding: 8px 12px;
-        font-size: 10px;
-        border-right: 2px solid #000;
-      }
-
-      .header-cell:last-child {
-        border-right: none;
-      }
-
-      .header-cell.bold {
+      .section-title {
         font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        color: #333;
+        font-size: 9px;
       }
 
-      .header-cell.center {
-        text-align: center;
+      .rights-section {
+        margin-left: 20px;
+        margin-right: 20px;
       }
 
-      .header-cell.flex-1 {
-        flex: 1;
+      .rights-section ul {
+        margin-left: 30px;
       }
 
-      .header-cell.flex-2 {
-        flex: 2;
+      .rights-section li {
+        margin-bottom: 6px;
       }
 
-      .page-number {
-        text-align: right;
-        font-size: 10px;
-        margin-bottom: 20px;
+      .form-table {
+        margin: auto;
+        width: 450px;
+        border-collapse: collapse;
+        margin-top: 5px;
+      }
+
+      .form-table td {
+        padding: 4px;
+        vertical-align: top;
+        font-size: 8px;
+      }
+
+      .form-table .label {
         font-weight: bold;
-      }
-
-      .main-title {
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
+        white-space: nowrap;
+        width: 25%;
       }
 
       .intro-text {
@@ -206,17 +249,9 @@
       }
 
       .purposes-list li {
-        font-size: 9px;
+        font-size: 8.5px;
         margin-bottom: 3px;
         text-align: justify;
-      }
-
-      .section-title {
-        font-weight: bold;
-        margin-top: 10px;
-        margin-left: 40px;
-        margin-right: 40px;
-        font-size: 10px;
       }
 
       .rights-list {
@@ -234,102 +269,6 @@
 
       .rights-list li strong {
         font-weight: bold;
-      }
-
-      .contact-info {
-        margin-left: 40px;
-        padding: 10px;
-        font-size: 9px;
-      }
-
-      .contact-info li {
-        margin-bottom: 8px;
-      }
-
-      .consent-text {
-        text-align: justify;
-        margin-left: 40px;
-        margin-right: 20px;
-        font-size: 9px;
-      }
-
-      .form-section {
-        margin: auto;
-        width: 70%;
-        margin-top: 30px;
-        padding: 15px;
-        border-collapse: collapse;
-        border: 1px solid #444;
-      }
-
-      .form-section td {
-        padding: 6px 8px;
-        vertical-align: top;
-      }
-
-      .form-section td .text{
-          font-size: 8px;
-          font-weight: regular;
-      }
-
-      .form-section td .label {
-        font-weight: bold;
-        white-space: nowrap;
-        font-size: 8px;
-        width: 25%;
-      }
-
-      .form-row {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-        align-items: center;
-      }
-
-      .form-field {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .form-field label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 8px;
-      }
-
-      .form-field input {
-        border: none;
-        border-bottom: 1px solid #000;
-        padding: 5px 0;
-        font-size: 9px;
-      }
-
-      .form-field.full-width {
-        flex: 2;
-      }
-
-      .page-break {
-        margin: 40px 0;
-        border-top: 2px dashed #ccc;
-        padding-top: 40px;
-      }
-
-      @media print {
-        body {
-          background-color: white;
-          padding: 0;
-        }
-        .container {
-          box-shadow: none;
-          max-width: 100%;
-        }
-        .page-break {
-          page-break-before: always;
-          border-top: none;
-          margin: 0;
-          padding-top: 0;
-        }
       }
     </style>
   </head>
@@ -350,10 +289,11 @@
             </td>
             <td style="width: 60%">
               <div class="header-info">
-                <h3 class="text-center">PROCEDO SUBSIDIO FAMILIAR <br/>
-                    AUTORIZACIÓN Y REFRENDACIÓN DE USO DE DATOS PERSONALES
+                <h3 class="text-center">
+                  PROCEDO SUBSIDIO FAMILIAR <br />
+                  AUTORIZACIÓN Y REFRENDACIÓN DE USO DE DATOS PERSONALES
                 </h3>
-                <br/>
+                <br />
                 <p>NIT: 891190047</p>
                 <p>
                   <strong>Sede Administrativa:</strong> Carrera 11 No. 10 -34
@@ -376,9 +316,9 @@
                   <div class="text-radicado">{{ruuid}}</div>
                   <div class="form-label">Fecha de radicado</div>
                   <div class="resolution-fields">
-                    <div class="resolution-field">Año: {{year}}</div>
-                    <div class="resolution-field">Mes: {{month}}</div>
-                    <div class="resolution-field">Día: {{day}}</div>
+                    <div class="resolution-field">{{year}}</div>
+                    <div class="resolution-field">{{month}}</div>
+                    <div class="resolution-field">{{day}}</div>
                   </div>
                 </div>
               </div>
@@ -451,120 +391,148 @@
         <li>Cumplir con la atención de derechos de los ciudadanos.</li>
       </ol>
 
-      <div class="section-title">
-        Como titular de sus datos personales, usted tiene derecho a:
-      </div>
-
-      <ul class="rights-list">
-        <li>
-          <strong>(i) Acceder:</strong> Consultar de forma gratuita los datos
-          proporcionados que hayan sido objeto de tratamiento.
-        </li>
-        <li>
-          <strong>(ii) Conocer, Actualizar y Rectificar:</strong> Solicitar la
-          corrección o actualización de su información frente a datos parciales,
-          inexactos, incompletos, fraccionados, que induzcan a error, o aquellos
-          cuyo tratamiento esté prohibido o no haya sido autorizado.
-        </li>
-        <li>
-          <strong>(iii) Solicitar Prueba de Autorización:</strong> Requerir una
-          copia de la autorización otorgada para el tratamiento de sus datos.
-        </li>
-        <li>
-          <strong>(iv) Presentar Quejas:</strong> Interponer quejas ante la
-          Superintendencia de Industria y Comercio (SIC) por infracciones a la
-          normatividad vigente.
-        </li>
-        <li>
+      <div class="section-title">Derechos del Titular de Datos</div>
+      <div class="rights-section">
+        <p>
           <strong
-            >(v) Revocar la Autorización y/o Solicitar la Supresión:</strong
+            >Como titular de sus datos personales, usted tiene derecho
+            a:</strong
           >
-          Pedir la eliminación de sus datos o revocar la autorización, siempre
-          que no exista un deber legal o contractual que impida su supresión.
-        </li>
-      </ul>
-
-      <!-- Page 2 Content -->
-      <ul class="rights-list">
-        <li>
-          <strong>(vi) Abstenerse de Responder:</strong> No contestar preguntas
-          sobre datos sensibles.
-        </li>
-      </ul>
-
-      <div class="consent-text">
-        Puede ejercer sus derechos como titular de los datos siguiendo el
-        procedimiento descrito en nuestra política. Para consultarla o iniciar
-        un requerimiento, puede utilizar los siguientes canales:
+        </p>
+        <ul>
+          <li>
+            <strong>(i) Acceder:</strong> Consultar de forma gratuita los datos
+            proporcionados que hayan sido objeto de tratamiento.
+          </li>
+          <li>
+            <strong>(ii) Conocer, Actualizar y Rectificar:</strong> Solicitar la
+            corrección o actualización de su información frente a datos
+            parciales, inexactos, incompletos, fraccionados, que induzcan a
+            error, o aquellos cuyo tratamiento esté prohibido o no haya sido
+            autorizado.
+          </li>
+          <li>
+            <strong>(iii) Solicitar Prueba de Autorización:</strong> Requerir
+            una copia de la autorización otorgada para el tratamiento de sus
+            datos.
+          </li>
+          <li>
+            <strong>(iv) Presentar Quejas:</strong> Interponer quejas ante la
+            Superintendencia de Industria y Comercio (SIC) por infracciones a la
+            normatividad vigente.
+          </li>
+          <li>
+            <strong
+              >(v) Revocar la Autorización y/o Solicitar la Supresión:</strong
+            >
+            Pedir la eliminación de sus datos o revocar la autorización, siempre
+            que no exista un deber legal o contractual que impida su supresión.
+          </li>
+          <li>
+            <strong>(vi) Abstenerse de Responder:</strong> No contestar
+            preguntas sobre datos sensibles.
+          </li>
+        </ul>
       </div>
 
-      <ul class="contact-info">
-        <li>
-          <strong>Correo Electrónico:</strong> atencionalusuario@comfaca.com
-        </li>
-        <li><strong>Página Web:</strong> www.comfaca.com</li>
-      </ul>
-
-      <div class="consent-text">
-        Al firmar o diligenciar la información requerida, usted, como titular de
-        los datos personales, manifiesta a través de una conducta inequívoca que
-        otorga su consentimiento a COMFACA para que trate su información
-        personal de acuerdo con las finalidades mencionadas en esta política.
+      <div class="contact-section">
+        <p>
+          <strong>
+            Puede ejercer sus derechos como titular de los datos siguiendo el
+            procedimiento descrito en nuestra política. Para consultarla o
+            iniciar un requerimiento, puede utilizar los siguientes
+            canales:</strong
+          >
+        </p>
+        <ul>
+          <li>
+            <strong>Correo Electrónico:</strong> atencionalusuario@comfaca.com
+          </li>
+          <li>
+            <strong>Página Web:</strong> Ingresando a http://www.comfaca.com en
+            el enlace de Atención al Usuario - PQR.
+          </li>
+        </ul>
       </div>
 
-      <div class="consent-text">
-        Asimismo, declara que la presente autorización le fue solicitada y
-        puesta de presente antes de entregar sus datos y que la suscribe de
-        forma libre y voluntaria una vez leída en su totalidad.
+      <div class="declaration">
+        <p>
+          Al firmar o diligenciar la información requerida, usted, como titular
+          de los datos personales, manifiesta a través de una conducta
+          inequívoca que otorga su consentimiento a COMFACA para que trate su
+          información personal de acuerdo con las finalidades mencionadas en
+          esta política.
+        </p>
+        <p>
+          Asimismo, declara que la presente autorización le fue solicitada y
+          puesta de presente antes de entregar sus datos y que la suscribe de
+          forma libre y voluntaria una vez leída en su totalidad.
+        </p>
       </div>
 
       <!-- Form Section -->
-      <table class="form-section" cellspacing="0" cellpadding="0" align="center">
+      <table class="form-table" style="margin-top: 15px">
         <tbody>
           <tr>
             <td style="width: 25%"><div class="label">RAZÓN SOCIAL:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{razsoc}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{razsoc}}</div>
+            </td>
           </tr>
           <tr>
-            <td><div class="label">TIPO DOCUMENTO:</div></td>
-            <td style="width: 20%;" class="underline"><div class="text">{{tpdoc}}</div></td>
-            <td style="width: 20%;"><div class="label">NÚMERO DOCUMENTO:</div></td>
-            <td class="underline"><div class="text">{{numdoc}}</div></td>
+            <td><div class="label">TIPO DOCUMENTO EMPRESA:</div></td>
+            <td style="width: 20%" class="underline">
+              <div class="text">{{tipo_documento}}</div>
+            </td>
+            <td style="width: 20%">
+              <div class="label">NÚMERO DOCUMENTO:</div>
+            </td>
+            <td class="underline"><div class="text">{{nit}}</div></td>
           </tr>
           <tr>
             <td><div class="label">NOMBRES Y APELLIDOS REPRESENTANTE:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{nomrep}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{representante.nombre}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">TIPO DOCUMENTO R.L.:</div></td>
-            <td class="underline"><div class="text">{{tpdocrl}}</div></td>
+            <td class="underline">
+              <div class="text">{{representante.tipo_documento}}</div>
+            </td>
             <td><div class="label">NÚMERO DOCUMENTO R.L.:</div></td>
-            <td class="underline"><div class="text">{{numdocrl}}</div></td>
+            <td class="underline">
+              <div class="text">{{representante.cedula}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">CIUDAD:</div></td>
-            <td class="underline"><div class="text">{{ciudad}}</div></td>
+            <td class="underline"><div class="text">{{ciudad_name}}</div></td>
             <td><div class="label">FECHA, DILIGENCIAMIENTO:</div></td>
             <td class="underline"><div class="text">{{fecsol}}</div></td>
           </tr>
           <tr>
             <td><div class="label">DIRECCIÓN LABORAL:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{dirlab}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{direccion}}</div>
+            </td>
           </tr>
           <tr>
             <td><div class="label">TELÉFONO FIJO:</div></td>
             <td class="underline"><div class="text">{{telefono}}</div></td>
             <td><div class="label">CELULAR:</div></td>
-            <td class="underline"><div class="text">{{tel}}</div></td>
+            <td class="underline"><div class="text">{{celpri}}</div></td>
           </tr>
           <tr>
             <td><div class="label">CORREO ELECTRÓNICO:</div></td>
-            <td colspan="3" class="underline"><div class="text">{{email}}</div></td>
+            <td colspan="3" class="underline">
+              <div class="text">{{email}}</div>
+            </td>
           </tr>
         </tbody>
       </table>
 
-       <div class="sello-section">
+      <div class="sello-section">
         <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
       </div>
     </div>

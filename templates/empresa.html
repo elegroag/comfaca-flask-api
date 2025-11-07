@@ -6,9 +6,9 @@
     <title>Solicitud de Afiliación Empleador - COMFACA</title>
     <style>
       @font-face {
-        font-family: 'lato-regular';
-        src: url('lato-regular.ttf') format('truetype'),
-             url('lato-regular.woff2') format('woff2');
+        font-family: "lato-regular";
+        src: url("lato-regular.ttf") format("truetype"),
+          url("lato-regular.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
       }
@@ -23,13 +23,17 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'lato-regular', sans-serif;
+        font-family: "lato-regular", sans-serif;
       }
 
       body {
         font-size: 9px;
         line-height: 1.2;
         margin: 0;
+      }
+
+      .label-bg {
+        background-color: #e7e7e7;
       }
 
       .container {
@@ -64,22 +68,91 @@
         border-radius: 0 0 50% 50%;
       }
 
+      .table-anidada {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table-anidada td {
+        border: 1px solid #efefef;
+        padding: 5px;
+      }
+
+      .section-header {
+        padding: 2px 3px;
+        font-weight: bold;
+        font-size: 7px;
+        margin-bottom: 0px;
+        color: #000;
+        background-color: #89bd94;
+        border-top: 1px solid #61a770;
+        border-left: 1px solid #75b182;
+        border-right: 1px solid #75b182;
+        border-bottom: none;
+        margin-top: 5px;
+      }
+
+      .section-content {
+        padding: 0px;
+        border: 1px solid #000;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0px;
+      }
+
+      table td,
+      table th {
+        border: 1px solid #000;
+        padding: 3px;
+        font-size: 7px;
+      }
+
+      table th {
+        font-weight: bold;
+        text-align: left;
+      }
+
+      table th.label,
+      table td.label {
+        background: #f5f5f5;
+        color: #000;
+      }
+
+      .d-flex {
+        display: flex;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .border-t {
+        border-top: 0px;
+      }
+
+      .table-anidada {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table-anidada td {
+        border: 1px solid #efefef;
+        padding: 5px;
+      }
+
       .logo-section {
         width: 250px;
         padding-bottom: 5px;
       }
 
-      .logo-placeholder {
-        width: 180px;
-        height: 80px;
-        background-color: #4a9d5f;
+      .list-item {
         display: flex;
         align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-        font-size: 32px;
-        border-radius: 5px;
+        gap: 5px;
+        padding: 2px 3px;
       }
 
       .contact-info {
@@ -117,7 +190,7 @@
       .resolution-box {
         border: 1px solid #000;
         padding: 5px;
-        width: 250px;
+        width: 180px;
       }
 
       .resolution-header {
@@ -165,55 +238,16 @@
         margin: 10px 0;
       }
 
-      .section-title {
-        padding: 3px 8px;
-        font-weight: bold;
-        font-size: 10px;
-        border: 1px solid #000;
-        margin-bottom: 0;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #000;
-      }
-
-      td,
-      th {
-        border: 1px solid #000;
-        padding: 3px;
-        font-size: 8px;
-      }
-
-      th {
-        font-weight: bold;
-        text-align: left;
-      }
-
-      .text,
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      textarea {
-        width: 100%;
-        border: none;
-        padding: 2px;
-        font-size: 8px;
+      .sello-section {
+        position: absolute;
+        bottom: 18px;
+        right: 80px;
       }
 
       .text {
         display: inline-block;
-        border-bottom: 1px solid #000;
         min-height: 16px;
         padding: 2px 2px;
-      }
-
-      .checkbox-group input[type="checkbox"] {
-        width: 13px;
-        height: 13px;
-        margin: 1px 5px;
-        border-radius: 50px;
       }
 
       .checkbox-group {
@@ -236,10 +270,16 @@
         justify-content: center;
       }
 
-      .small-checkbox { width: 10px; height: 10px; border: 1px solid #7a7a7a; display: inline-block; border-radius: 5px; }
-      .small-checkbox.active { background-color: #7a7a7a; }
-
-      /* .active no usada para inputs; se usan .small-checkbox/.active */
+      .small-checkbox {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #7a7a7a;
+        display: inline-block;
+        border-radius: 5px;
+      }
+      .small-checkbox.active {
+        background-color: #7a7a7a;
+      }
 
       .id-type-row {
         display: flex;
@@ -259,17 +299,8 @@
         width: 40px;
       }
 
-      .medium-cell {
-        width: 80px;
-      }
-
       .large-cell {
         flex: 2;
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 60px;
       }
 
       .legal-text {
@@ -285,27 +316,11 @@
         margin-bottom: 8px;
       }
 
-      .form-row {
-        display: flex;
-        gap: 0;
-      }
-
-      .form-cell {
-        flex: 1;
-        border: 1px solid #000;
-        border-right: none;
-        padding: 5px;
-      }
-
-      .form-cell:last-child {
-        border-right: 1px solid #000;
-      }
-
       .form-label {
-        font-size: 9px;
+        font-size: 8px;
         font-weight: bold;
         margin-bottom: 2px;
-        color: #858585;
+        color: #000;
       }
 
       .text-radicado {
@@ -314,16 +329,6 @@
         margin-top: 4px;
         margin-bottom: 4px;
         color: #3f4e46;
-      }
-
-      @media print {
-        body {
-          padding: 0;
-        }
-        .container {
-          box-shadow: none;
-          max-width: 100%;
-        }
       }
     </style>
   </head>
@@ -354,9 +359,9 @@
           <div class="text-radicado">Radicado: {{radicado}}</div>
           <div class="form-label">Fecha de Recibido</div>
           <div class="resolution-fields">
-            <div class="resolution-field">Año: {{year}}</div>
-            <div class="resolution-field">Mes: {{month}}</div>
-            <div class="resolution-field">Día: {{day}}</div>
+            <div class="resolution-field">{{year}}</div>
+            <div class="resolution-field">{{month}}</div>
+            <div class="resolution-field">{{day}}</div>
           </div>
         </div>
       </div>
@@ -374,235 +379,452 @@
       </ul>
 
       <!-- Section 1: Datos Generales Empleador -->
-      <div class="section">
-        <div class="section-title">1. DATOS GENERALES EMPLEADOR</div>
-        <table>
-          <tr>
-            <td colspan="10">
-              <div class="form-label">Tipo de Identificación</div>
-              <div class="id-type-row">
-                <div class="id-type-cell small-cell checkbox-item">
-                  CC <div {% if coddoc == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  TI <div {% if coddoc == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  RC <div {% if coddoc == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  CE <div {% if coddoc == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  NUIP <div {% if coddoc == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  P <div {% if coddoc == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  NIT <div {% if coddoc == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-                <div class="id-type-cell small-cell checkbox-item">
-                  CD <div {% if coddoc == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="6">
-              <div class="form-label">Razón Social/Apellidos y Nombres</div>
-              <div type="text">{{razsoc}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Número de Identificación</div>
-              <div type="text">{{nit}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Dígito de Verificación</div>
-              <div type="text">{{digver}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4">
-              <div class="form-label">Dirección Comercial</div>
-              <div type="text">{{dirpri}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Barrio Comercial</div>
-              <div type="text">{{barrio}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Ciudad Comercial</div>
-              <div type="text">{{ciupri}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Departamento Comercial</div>
-              <div class="text">{{text}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4">
-              <div class="form-label">Dirección de Notificación</div>
-              <div type="text">{{direccion}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Barrio de Notificaciones</div>
-              <div class="text">{{text}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Ciudad de Noticaciones</div>
-              <div type="text">{{codciu}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Departamento de Noticaciones</div>
-              <div class="text">{{text}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <div class="form-label">Teléfono Fijo</div>
-              <div type="text">{{telefono}}</div>
-            </td>
-            <td colspan="3">
-              <div class="form-label">Celular</div>
-              <div type="text">{{celular}}</div>
-            </td>
-            <td colspan="4">
-              <div class="form-label">Correo para notificaciones</div>
-              <div type="text">{{email}}</div>
-            </td>
-          </tr>
-        </table>
+      <div class="section-header" style="margin-bottom: 0px">
+        1. DATOS GENERALES EMPLEADOR
       </div>
+      <table>
+        <tr>
+          <td style="width: 100px" class="label-bg">
+            <label class="form-label">Tipo de Identificación</label>
+          </td>
+          <td colspan="9">
+            <div class="d-flex">
+              <table class="table-anidada" style="width: 500px">
+                <tr>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='3' else '' }}"
+                      ></span>
+                      <span>NIT</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}"
+                      ></span>
+                      <span>C.C.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='2' else '' }}"
+                      ></span>
+                      <span>T.I.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='4' else '' }}"
+                      ></span>
+                      <span>C.E.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='13' else '' }}"
+                      ></span>
+                      <span>VISA</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='6' else '' }}"
+                      ></span>
+                      <span>PAS.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='8' else '' }}"
+                      ></span>
+                      <span>P.E.P.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='11' else '' }}"
+                      ></span>
+                      <span>C.D.</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="label-bg">
+            <div class="form-label">Razón Social/Apellidos y Nombres</div>
+          </td>
+          <td>
+            <div>{{razsoc}}</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Número de Identificación</div>
+          </td>
+          <td>
+            <div>{{nit}}</div>
+          </td>
+          <td class="label-bg">
+            <div class="form-label">Dígito de Verificación</div>
+          </td>
+          <td>
+            <div>{{digver}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="label-bg">
+            <div class="form-label">Dirección Comercial</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Barrio Comercial</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Ciudad Comercial</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Departamento Comercial</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div>{{dirpri}}</div>
+          </td>
+          <td colspan="2">
+            <div>{{barrio}}</div>
+          </td>
+          <td colspan="2">
+            <div>{{ciupri}}</div>
+          </td>
+          <td colspan="2">
+            <div class="text">{{departamento_name}}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="label-bg">
+            <div class="form-label">Dirección de Notificación</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Barrio de Notificaciones</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Ciudad de Noticaciones</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Departamento de Noticaciones</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4">
+            <div class="text">{{direccion}}</div>
+          </td>
+          <td colspan="2">
+            <div class="text">{{barrio}}</div>
+          </td>
+          <td colspan="2">
+            <div class="text">{{ciudad_name}}</div>
+          </td>
+          <td colspan="2">
+            <div class="text">{{departamento_name}}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Teléfono Fijo</div>
+          </td>
+          <td>
+            <div>{{telefono}}</div>
+          </td>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Celular</div>
+          </td>
+          <td>
+            <div>{{celular}}</div>
+          </td>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Correo para notificaciones</div>
+          </td>
+          <td>
+            <div>{{email}}</div>
+          </td>
+        </tr>
+      </table>
 
       <!-- Section 2: Datos Específicos del Empleador -->
-      <div class="section">
-        <div class="section-title">2. DATOS ESPECÍFICOS DEL EMPLEADOR</div>
-        <table>
-          <tr>
-            <td colspan="2">
-              <div class="form-label">Tipo de Persona</div>
-              <div class="checkbox-group">
-                <label><div {% if tipper == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Natural</label>
-                <label><div {% if tipper == 'J' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Jurídica</label>
-              </div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Tipo de Empresa</div>
-              <div class="checkbox-group">
-                <label><div {% if tipemp == 'O' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Oficial</label>
-                <label><div {% if tipemp == 'P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Privada</label>
-                <label><div {% if tipemp == 'M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></div> Mixta</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <div class="form-label">Actividad Económica</div>
-              <div type="text">{{codact}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Código Actividad Económica (CIIU)</div>
-              <div type="text">{{codact}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <div class="form-label">
-                Lugar donde laboran los trabajadores en el Departamento del
-                Caquetá
-              </div>
-              <div type="text">{{codzon}}</div>
-            </td>
-            <td colspan="2">
-              <div class="form-label">Nombre Establecimiento de Comercio</div>
-              <div type="text">{{razsoc}}</div>
-            </td>
-          </tr>
-        </table>
+      <div class="section-header" style="margin-bottom: 0px">
+        2. DATOS ESPECÍFICOS DEL EMPLEADOR
       </div>
+
+      <table>
+        <tr>
+          <td style="width: 15%" class="label-bg">
+            <div class="form-label">Tipo de Persona</div>
+          </td>
+          <td style="width: 10%">
+            <div class="list-item">
+              <label class="label">Natural</label>
+              <span
+                class="small-checkbox{{ ' active' if tipper=='N' else '' }}"
+              ></span>
+            </div>
+          </td>
+          <td style="width: 10%">
+            <div class="list-item">
+              <label class="label">Jurídica</label>
+              <span
+                class="small-checkbox{{ ' active' if tipper=='J' else '' }}"
+              ></span>
+            </div>
+          </td>
+          <td style="width: 15%" class="label-bg">
+            <div class="form-label">Tipo de Empresa</div>
+          </td>
+          <td style="width: 10%">
+            <div class="list-item">
+              <label class="label">Publica</label>
+              <span
+                class="small-checkbox{{ ' active' if tipemp=='P' else '' }}"
+              ></span>
+            </div>
+          </td>
+          <td style="width: 10%">
+            <div class="list-item">
+              <label class="label">Oficial</label>
+              <span
+                class="small-checkbox{{ ' active' if tipemp=='O' else '' }}"
+              ></span>
+            </div>
+          </td>
+          <td style="width: 10%">
+            <div class="list-item">
+              <label class="label">Mixta</label>
+              <span
+                class="small-checkbox{{ ' active' if tipemp=='M' else '' }}"
+              ></span>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="width: 20%" class="border-t label-bg" colspan="2">
+            <div class="form-label">Actividad Económica</div>
+          </td>
+          <td class="border-t">
+            <div>{{actividad_name}}</div>
+          </td>
+          <td class="border-t label-bg">
+            <div class="form-label">Código Actividad Económica (CIIU)</div>
+          </td>
+          <td>
+            <div>{{codact}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">
+              Lugar donde laboran los trabajadores en el Departamento del
+              Caquetá
+            </div>
+          </td>
+          <td>
+            <div>{{zona_name}}</div>
+          </td>
+          <td class="label-bg">
+            <div class="form-label">Nombre Establecimiento de Comercio</div>
+          </td>
+          <td>
+            <div>{{razsoc}}</div>
+          </td>
+        </tr>
+      </table>
 
       <!-- Section 3: Datos del Representante Legal -->
-      <div class="section">
-        <div class="section-title">3. DATOS DEL REPRESENTANTE LEGAL</div>
-        <table>
-          <tr>
-            <td colspan="10">
-              <div class="form-label">Tipo de Identificación</div>
-              <div class="id-type-row">
-                <div class="id-type-cell small-cell">CC</div>
-                <div class="id-type-cell small-cell">TI</div>
-                <div class="id-type-cell small-cell">RC</div>
-                <div class="id-type-cell small-cell">CE</div>
-                <div class="id-type-cell small-cell">NUIP</div>
-                <div class="id-type-cell small-cell">P</div>
-                <div class="id-type-cell small-cell">NIT</div>
-                <div class="id-type-cell small-cell">CD</div>
-                <div class="id-type-cell large-cell">
-                  Número de Identificación
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="10">
-              <div class="form-label">Apellidos y Nombres</div>
-              <div type="text">{{repleg}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <div class="form-label">Teléfono Fijo</div>
-              <div type="text">{{telpri}}</div>
-            </td>
-            <td colspan="3">
-              <div class="form-label">Celular</div>
-              <div type="text">{{celpri}}</div>
-            </td>
-            <td colspan="4">
-              <div class="form-label">Correo electrónico</div>
-              <div type="email">{{emailpri}}</div>
-            </td>
-          </tr>
-        </table>
+      <div class="section-header" style="margin-bottom: 0px">
+        3. DATOS DEL REPRESENTANTE LEGAL
       </div>
+      <table>
+        <tr>
+          <td colspan="2" class="label-bg">
+            <label class="form-label">Número de Identificación</label>
+          </td>
+          <td style="width: 100px">
+            <span class="text">{{cedrep}}</span>
+          </td>
+          <td colspan="2" class="label-bg">
+            <label class="form-label">Tipo de Identificación:</label>
+          </td>
+          <td colspan="8">
+            <div class="d-flex">
+              <table class="table-anidada" style="width: 500px">
+                <tr>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='3' else '' }}"
+                      ></span>
+                      <span>NIT</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}"
+                      ></span>
+                      <span>C.C.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='2' else '' }}"
+                      ></span>
+                      <span>T.I.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='4' else '' }}"
+                      ></span>
+                      <span>C.E.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='13' else '' }}"
+                      ></span>
+                      <span>VISA</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='6' else '' }}"
+                      ></span>
+                      <span>PAS.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='8' else '' }}"
+                      ></span>
+                      <span>P.E.P.</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="list-item">
+                      <span
+                        class="small-checkbox{{ ' active' if tipdoc=='11' else '' }}"
+                      ></span>
+                      <span>C.D.</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="label-bg">
+            <div class="form-label">Apellidos y Nombres</div>
+          </td>
+          <td colspan="8">
+            <div>{{repleg}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Teléfono Fijo</div>
+          </td>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Celular</div>
+          </td>
+          <td colspan="4" class="label-bg">
+            <div class="form-label">Correo electrónico</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <div>{{telpri}}</div>
+          </td>
+          <td colspan="3">
+            <div>{{celpri}}</div>
+          </td>
+          <td colspan="4">
+            <div>{{emailpri}}</div>
+          </td>
+        </tr>
+      </table>
 
       <!-- Section 4: Datos del Contacto Administrativo -->
-      <div class="section" style="position: relative">
-        <div class="section-title">4. DATOS DEL CONTACTO ADMINISTRATIVO</div>
-        <table>
-          <tr>
-            <td colspan="7">
-              <div class="form-label">Apellido y Nombres</div>
-              <div type="text">{{repleg}}</div>
-            </td>
-            <td colspan="3">
-              <div class="form-label">Cargo</div>
-              <div type="text">{{cargo}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <div class="form-label">Teléfono Fijo</div>
-              <div type="tel">{{telpri}}</div>
-            </td>
-            <td colspan="3">
-              <div class="form-label">Celular</div>
-              <div type="tel">{{celpri}}</div>
-            </td>
-            <td colspan="4">
-              <div class="form-label">Correo electrónico</div>
-              <div type="email">{{emailpri}}</div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="10">
-              <div class="form-label">Observaciones</div>
-              <div class="text">{{text}}</div>
-            </td>
-          </tr>
-        </table>
+      <div class="section-header" style="margin-bottom: 0px">
+        4. DATOS DEL CONTACTO ADMINISTRATIVO
       </div>
+      <table>
+        <tr>
+          <td colspan="7" class="label-bg">
+            <div class="form-label">Apellido y Nombres</div>
+          </td>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Cargo</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7">
+            <div class="text">{{repleg}}</div>
+          </td>
+          <td colspan="3">
+            <div class="text">{{cargo}}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Teléfono Fijo</div>
+          </td>
+          <td colspan="3" class="label-bg">
+            <div class="form-label">Celular</div>
+          </td>
+          <td colspan="4" class="label-bg">
+            <div class="form-label">Correo electrónico</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <div class="text">{{telpri}}</div>
+          </td>
+          <td colspan="3">
+            <div class="text">{{celpri}}</div>
+          </td>
+          <td colspan="4">
+            <div class="text">{{emailpri}}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="1" class="label-bg">
+            <div class="form-label">Observaciones</div>
+          </td>
+          <td colspan="9">
+            <div class="text">{{observacion}}</div>
+          </td>
+        </tr>
+      </table>
 
       <!-- Legal Text -->
       <div class="legal-text">
@@ -635,7 +857,7 @@
         </p>
 
         <p>
-          "Con la firma de este formulario autorizo a la Caja de Compensación
+          Con la firma de este formulario autorizo a la Caja de Compensación
           Familiar del Caquetá COMFACA, el envío de información, y la
           notificación de procedimientos y actos administrativos a mi correo
           electrónico registrado en este formulario, en el ítem 1. DATOS
@@ -643,6 +865,10 @@
           cualquier cambio en mis datos de ubicación y contacto.
         </p>
       </div>
+    </div>
+
+    <div class="sello-section">
+      <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
     </div>
   </body>
 </html>
