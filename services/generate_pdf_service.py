@@ -5,7 +5,7 @@ service class following a simple layered pattern.
 """
 from pathlib import Path
 from weasyprint import HTML
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
 
 class GeneratePdfService:
     """Service responsible for rendering an HTML template and producing a PDF.
@@ -24,6 +24,8 @@ class GeneratePdfService:
         else:
             # Default to the `templates` folder next to this service file's parent
             self.templates_dir = Path(__file__).parent.parent / "templates"
+
+        self.env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
 
     def generate_pdf(self, template_name: str, context: dict, output_path: str = None):
         """Generate a PDF from a Jinja2 HTML template.
@@ -60,11 +62,8 @@ class GeneratePdfService:
             if not template_path.exists():
                 raise FileNotFoundError(f"Template no encontrado: {template_name}")
 
-            # Render template
-            with open(template_path, 'r', encoding='utf-8') as f:
-                template_content = f.read()
-
-            rendered_html = Template(template_content).render(**context)
+            template = self.env.get_template(safe_name)
+            rendered_html = template.render(**context)
 
             # Generate PDF
             base_url = template_path.parent
@@ -84,3 +83,21 @@ class GeneratePdfService:
             raise
         except Exception as e:
             raise RuntimeError(f"Error al generar PDF: {e}")
+
+    def render_template(self, template_name: str, context: dict) -> str:
+        try:
+            safe_name = Path(template_name).name
+            if safe_name != template_name:
+                raise ValueError("Nombre de template inválido")
+
+            template_path = self.templates_dir / safe_name
+            if not template_path.exists():
+                raise FileNotFoundError(f"Template no encontrado: {template_name}")
+
+            template = self.env.get_template(safe_name)
+            rendered_html = template.render(**context)
+            return rendered_html
+        except FileNotFoundError:
+            raise
+        except Exception as e:
+            raise RuntimeError(f"Error al renderizar template: {e}")

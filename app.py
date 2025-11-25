@@ -11,10 +11,11 @@ Uso:
 """
 
 from pathlib import Path
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from dotenv import dotenv_values
 import io
 import importlib
+import json
 
 # Workaround: fontTools deprecated `instantiateVariableFont` location
 # Newer fonttools expose the function in `fontTools.varLib.instancer`.
@@ -100,6 +101,62 @@ def generate_pdf_endpoint():
                 download_name=f"{Path(template).stem}.pdf"
             )
 
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 404
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
+    except Exception as e:
+        return jsonify({"error": f"Error inesperado: {e}"}), 500
+
+
+@app.route('/api/styles/<path:filename>')
+def serve_styles(filename):
+    styles_dir = Path(__file__).parent / 'templates' / 'styles'
+    return send_from_directory(styles_dir, filename)
+
+
+@app.route('/api/img/<path:filename>')
+def serve_images(filename):
+    img_dir = Path(__file__).parent / 'templates' / 'img'
+    return send_from_directory(img_dir, filename)
+
+
+@app.route('/api/fonts/<path:filename>')
+def serve_fonts(filename):
+    fonts_dir = Path(__file__).parent / 'templates' / 'fonts'
+    return send_from_directory(fonts_dir, filename)
+
+
+@app.route('/api/render-template', methods=['GET'])
+def render_template_endpoint():
+    try:
+        config_name = request.args.get('config', 'render_config.json')
+        if not config_name:
+            return jsonify({"error": "Nombre de archivo JSON requerido"}), 400
+
+        safe_name = Path(config_name).name
+        if safe_name != config_name:
+            return jsonify({"error": "Nombre de archivo JSON inválido"}), 400
+
+        json_path = Path(__file__).parent / safe_name
+        if not json_path.exists():
+            return jsonify({"error": f"Archivo JSON no encontrado: {config_name}"}), 404
+
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        template = data.get('template')
+        context = data.get('context', {})
+        output_path = data.get('output_path') or data.get('output')
+
+        if not template:
+            return jsonify({"error": "Campo 'template' requerido en el archivo JSON"}), 400
+
+        if not isinstance(context, dict):
+            return jsonify({"error": "Campo 'context' debe ser un objeto JSON"}), 400
+
+        rendered_html = pdf_service.render_template("{}.j2".format(template), context)
+        return rendered_html
     except FileNotFoundError as e:
         return jsonify({"error": str(e)}), 404
     except RuntimeError as e:

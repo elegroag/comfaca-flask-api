@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>{% block title %}{% endblock %} - COMFACA</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        <div class="sello-section">
+            <img class="sello" src="img/sello.png" alt="Sello" />
+        </div>
+    </div>
+</body>
+
+</html>

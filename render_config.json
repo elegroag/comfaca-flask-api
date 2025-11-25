@@ -1,0 +1,11 @@
+{
+    "template": "empresa.html",
+    "context": {
+        "nit": "8931232333",
+        "razsoc": "Comfaca S.A.",
+        "direccion": "Calle 123",
+        "telefono": "12345678",
+        "email": "comfaca@comfaca.com"
+    },
+    "output_path": "empresa-generado.pdf"
+}
