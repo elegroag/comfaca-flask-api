@@ -50,6 +50,10 @@ table td.label {
     color: #222;
 }
 
+table tr:first-child th {
+    background: #f0f0f0;
+}
+
 h1 {
     font-size: 14px;
     font-weight: bold;

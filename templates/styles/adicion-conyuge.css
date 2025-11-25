@@ -1,0 +1,290 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #4a9d5f;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right,
+      #4a9d5f 0%,
+      #009e47 50%,
+      #00c3ff 100%);
+  border-radius: 0 0 50% 50%;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #666;
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 9px 0;
+}
+
+.resolution-box {
+  border: 1px solid #000;
+  padding: 5px;
+  width: 250px;
+}
+
+.resolution-header {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.text-radicado {
+  font-size: 9px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #3f4e46;
+}
+
+.form-label {
+  font-size: 9px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #444;
+}
+
+.resolution-fields {
+  display: flex;
+  gap: 5px;
+}
+
+.resolution-field {
+  flex: 1;
+  border: 1px solid #000;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 9px;
+}
+
+.header-info {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.header-info h1 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.header-info h2 {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.header-info p {
+  font-size: 9px;
+  margin: 2px 0;
+}
+
+.fecha-box {
+  border: none;
+  min-width: 280px;
+}
+
+.fecha-box table {
+  width: 280px;
+  border-collapse: collapse;
+}
+
+.fecha-box th {
+  background: #e0e0e0;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+  border: 1px solid #666;
+}
+
+.fecha-box td {
+  padding: 8px;
+  border: 1px solid #666;
+}
+
+.importante {
+  background: #f5f5f5;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #999;
+}
+
+.importante strong {
+  font-weight: bold;
+}
+
+.checkbox-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 0px;
+}
+
+.checkbox-inline input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+.small-checkbox {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #7a7a7a;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.small-checkbox.active {
+  background-color: #7a7a7a;
+}
+
+.section {
+  margin: 15px 0;
+  border: none;
+}
+
+.section-header {
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 8px;
+  margin-bottom: 0px;
+  color: #000;
+  background-color: #89bd94;
+  border-top: 1px solid #61a770;
+  border-left: 1px solid #75b182;
+  border-right: 1px solid #75b182;
+  border-bottom: none;
+}
+
+.section-note {
+  font-size: 9px;
+  font-style: italic;
+  float: right;
+  font-weight: normal;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px;
+  border: 1px solid #666;
+}
+
+.label {
+  font-weight: bold;
+  background: #f5f5f5;
+  width: 150px;
+  color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  font-size: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 0;
+}
+
+.col {
+  flex: 1;
+  border: 1px solid #666;
+  padding: 6px;
+}
+
+.col-label {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+.info-bancaria {
+  min-height: 50px;
+  padding: 10px;
+  border: 1px solid #666;
+  background: #fafafa;
+}
+
+.nota {
+  margin: 15px 0;
+  padding: 8px;
+  background: #f9f9f9;
+  border-left: 3px solid #666;
+  font-size: 10px;
+}
+
+.declaracion {
+  margin: 5px 0;
+  padding: 5px;
+  text-align: justify;
+  font-size: 9.9px;
+  line-height: 1.5;
+}
+
+.declaracion strong {
+  font-weight: bold;
+}
+
+.firma-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
