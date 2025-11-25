@@ -80,7 +80,7 @@ def generate_pdf_endpoint():
             return jsonify({"error": "Campo 'context' debe ser un objeto JSON"}), 400
 
         # Generar PDF via service
-        result = pdf_service.generate_pdf(template, context, output_path)
+        result = pdf_service.generate_pdf("{}.j2".format(template), context, output_path)
 
         if output_path:
             # Retornar confirmación de guardado

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Declaración Juramentada - COMFACA</title>
     <style>
-         @font-face {
-            font-family: "lato-regular";
-            src: url("lato-regular.ttf") format("truetype"),
-                 url("lato-regular.woff2") format("woff2");
+        @font-face {
+            font-family: "fonts/lato-regular";
+            src: url("fonts/lato-regular.ttf") format("truetype"),
+                url("fonts/lato-regular.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
         }
-         @page {
+
+        @page {
             margin: 0in;
             background-image: url('membrete.jpg');
             background-size: cover;
@@ -23,7 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "lato-regular", sans-serif;
+            font-family: "fonts/lato-regular", sans-serif;
         }
 
         body {
@@ -83,7 +85,7 @@
             flex: 1;
             border-bottom: 1px solid #000;
             min-height: 20px;
-            line-height:2 
+            line-height: 2
         }
 
         .logo-section {
@@ -122,7 +124,7 @@
             padding: 0;
             border-left: 1px solid #777;
             margin-right: 10px;
-        }        
+        }
 
         .date-fields {
             display: flex;
@@ -204,7 +206,7 @@
             border-radius: 5px;
         }
 
-        .small-checkbox.active{
+        .small-checkbox.active {
             background-color: #7a7a7a;
         }
 
@@ -250,7 +252,9 @@
             width: 180px;
         }
 
-        .input-cell { background: white; }
+        .input-cell {
+            background: white;
+        }
 
         .parent-table {
             display: flex;
@@ -299,12 +303,47 @@
             line-height: 1.6;
         }
 
-        .resolution-box { padding: 5px; width: 100%; }
-        .resolution-header { text-align: center; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 5px; font-size: 10px; }
-        .text-radicado { font-size: 9px; font-weight: bold; margin-top: 4px; margin-bottom: 4px; color: #3f4e46; }
-        .form-label { font-size: 9px; font-weight: bold; margin-bottom: 2px; color: #444; }
-        .resolution-fields { display: flex; gap: 5px; }
-        .resolution-field { flex: 1; border: 1px solid #000; padding: 10px 5px; text-align: center; font-size: 9px; }
+        .resolution-box {
+            padding: 5px;
+            width: 100%;
+        }
+
+        .resolution-header {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            font-size: 10px;
+        }
+
+        .text-radicado {
+            font-size: 9px;
+            font-weight: bold;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            color: #3f4e46;
+        }
+
+        .form-label {
+            font-size: 9px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            color: #444;
+        }
+
+        .resolution-fields {
+            display: flex;
+            gap: 5px;
+        }
+
+        .resolution-field {
+            flex: 1;
+            border: 1px solid #000;
+            padding: 10px 5px;
+            text-align: center;
+            font-size: 9px;
+        }
 
         .table-anidada {
             width: 100%;
@@ -321,6 +360,7 @@
                 background-color: white;
                 padding: 0;
             }
+
             .container {
                 box-shadow: none;
                 max-width: 100%;
@@ -328,42 +368,35 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
-      <div class="header">
-        <div class="logo-section">
-           <img
-              src="logo-min.png"
-              alt="COMFACA Logo"
-              style="width: 90px; height: 35px"
-            />
-        </div>
-        <div class="mintrabajo-section">
-          <div class="mintrabajo-logo">
-            <img
-              src="mintrabajo.jpg"
-              alt="Mintrabajo Logo"
-              style="width: 145px; height: 35px"
-            />           
-          </div>
-        </div>
-        <div class="title-section">
-          <h1>Declaración Juramentada</h1>
-        </div>
-        <div class="date-section">
-          <div class="resolution-box">
-            <div class="resolution-header">Radicado No.</div>
-            <div class="text-radicado">{{ruuid}}</div>
-            <div class="form-label">Fecha de radicado</div>
-            <div class="resolution-fields">
-              <div class="resolution-field">Año: {{year}}</div>
-              <div class="resolution-field">Mes: {{month}}</div>
-              <div class="resolution-field">Día: {{day}}</div>
+        <div class="header">
+            <div class="logo-section">
+                <img src="img/logo-min.png" alt="COMFACA Logo" style="width: 90px; height: 35px" />
             </div>
-          </div>
+            <div class="mintrabajo-section">
+                <div class="mintrabajo-logo">
+                    <img src="img/mintrabajo.jpg" alt="Mintrabajo Logo" style="width: 145px; height: 35px" />
+                </div>
+            </div>
+            <div class="title-section">
+                <h1>Declaración Juramentada</h1>
+            </div>
+            <div class="date-section">
+                <div class="resolution-box">
+                    <div class="resolution-header">Radicado No.</div>
+                    <div class="text-radicado">{{ruuid}}</div>
+                    <div class="form-label">Fecha de radicado</div>
+                    <div class="resolution-fields">
+                        <div class="resolution-field">Año: {{year}}</div>
+                        <div class="resolution-field">Mes: {{month}}</div>
+                        <div class="resolution-field">Día: {{day}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
         <!-- Personal Information -->
         <div class="identification-section">
@@ -383,7 +416,8 @@
         <div class="section-header">MOTIVO DE LA DECLARACIÓN</div>
         <div class="section-card">
             <div class="info-text">
-                Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de la declaración:
+                Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de
+                la declaración:
             </div>
 
             <div class="checkbox-options">
@@ -397,24 +431,27 @@
                 </div>
             </div>
         </div>
-       
+
 
         <!-- Declaration Box -->
         <div class="legal-box">
-            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley.
+            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que
+            por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones
+            contempladas en la Ley.
         </div>
 
         <!-- Child Economic Dependency Section -->
         <div class="section-header">HIJO / DEPENDENCIA ECONÓMICA</div>
         <div class="section-card">
             <div class="info-text">
-            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona relacionada hacen parte de su grupo familiar (hijo) convive y dependen económicamente del trabajador(a)
+                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
+                relacionada hacen parte de su grupo familiar (hijo) convive y dependen económicamente del trabajador(a)
             </div>
         </div>
         <table class="form-table">
             <tr>
                 <td class="label-cell">Nombre completo</td>
-                <td class="input-cell" ></td>
+                <td class="input-cell"></td>
                 <td class="label-cell" style="width: 120px;">Parentesco</td>
                 <td class="input-cell" style="width: 150px;">{{parentesco}}</td>
             </tr>
@@ -429,13 +466,18 @@
         <div class="section-header">HIJASTRO / DEPENDENCIA ECONÓMICA</div>
         <div class="section-card">
             <div class="info-text">
-                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona relacionada hace parte de su grupo familiar hijastro, convive y dependen económicamente del trabajador(a). Y que el padre o madre biológico del o la menor, no conviven con el beneficiario, no reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación Familiar. Manifiesto libre y voluntariamente que las personas relacionadas a continuación se encuentran bajo mi responsabilidad y total dependencia económica:
+                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
+                relacionada hace parte de su grupo familiar hijastro, convive y dependen económicamente del
+                trabajador(a). Y que el padre o madre biológico del o la menor, no conviven con el beneficiario, no
+                reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación
+                Familiar. Manifiesto libre y voluntariamente que las personas relacionadas a continuación se encuentran
+                bajo mi responsabilidad y total dependencia económica:
             </div>
         </div>
         <table class="form-table">
             <tr>
                 <td class="label-cell">Nombre completo</td>
-                <td class="input-cell" >{{nombre_beneficiario}}</td>
+                <td class="input-cell">{{nombre_beneficiario}}</td>
                 <td class="label-cell" style="width: 120px;">Parentesco</td>
                 <td class="input-cell" style="width: 150px;">{{parentesco}}</td>
             </tr>
@@ -450,18 +492,30 @@
                 <td class="input-cell" style="padding: 0;">
                     <table class="table-anidada">
                         <tr>
-                            <td colspan="2" ><div class="label">Nombre completo</div></td>
-                        </tr>
-                         <tr>
-                            <td colspan="2" ><div class="text">{{biologico.nombre_padre}}</div></td>
-                        </tr>
-                        <tr>
-                            <td><div class="label">Identificación</div></td>
-                            <td><div class="text">{{biologico.cedula_padre}}</div></td>
+                            <td colspan="2">
+                                <div class="label">Nombre completo</div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><div class="label">Tipo documento</div></td>
-                            <td><div class="text">{{biologico.tipo_documento}}</div></td>
+                            <td colspan="2">
+                                <div class="text">{{biologico.nombre_padre}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="label">Identificación</div>
+                            </td>
+                            <td>
+                                <div class="text">{{biologico.cedula_padre}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="label">Tipo documento</div>
+                            </td>
+                            <td>
+                                <div class="text">{{biologico.tipo_documento}}</div>
+                            </td>
                         </tr>
                     </table>
                 </td>
@@ -469,18 +523,30 @@
                 <td class="input-cell" style="padding: 0;">
                     <table class="table-anidada">
                         <tr>
-                            <td colspan="2" ><div class="label">Nombre completo</div></td>
+                            <td colspan="2">
+                                <div class="label">Nombre completo</div>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><div class="text">{{biologico.nombre_madre}}</div></td>
+                            <td colspan="2">
+                                <div class="text">{{biologico.nombre_madre}}</div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><div class="label">Identificación</div></td>
-                            <td><div class="text">{{biologico.cedula_madre}}</div></td>
+                            <td>
+                                <div class="label">Identificación</div>
+                            </td>
+                            <td>
+                                <div class="text">{{biologico.cedula_madre}}</div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><div class="label">Tipo documento</div></td>
-                            <td><div class="text">{{biologico.tipo_documento}}</div></td>
+                            <td>
+                                <div class="label">Tipo documento</div>
+                            </td>
+                            <td>
+                                <div class="text">{{biologico.tipo_documento}}</div>
+                            </td>
                         </tr>
                     </table>
                 </td>
@@ -509,12 +575,18 @@
 
         <!-- Final Declaration -->
         <div class="final-declaration">
-            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a notificar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se
+            verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a
+            notificar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en
+            caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido
+            canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por
+            otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
         </div>
 
         <div class="sello-section" style="position:absolute; bottom:20px; right:100px;">
-            <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
+            <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
         </div>
     </div>
 </body>
+
 </html>

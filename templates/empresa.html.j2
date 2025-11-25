@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitud de Afiliación Empleador - COMFACA</title>
+  <style>
+    @font-face {
+      font-family: "fonts/lato-regular";
+      src: url("fonts/lato-regular.ttf") format("truetype"),
+        url("fonts/lato-regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @page {
+      margin: 0in;
+      background-image: url("membrete.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "fonts/lato-regular", sans-serif;
+    }
+
+    body {
+      font-size: 9px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .label-bg {
+      background-color: #e7e7e7;
+    }
+
+    .container {
+      margin: 0 auto;
+      background-color: transparent;
+      padding: 25px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #4a9d5f;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .importante {
+      padding: 5px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      font-size: 8px;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right,
+          #4a9d5f 0%,
+          #009e47 50%,
+          #00c3ff 100%);
+      border-radius: 0 0 50% 50%;
+    }
+
+    .table-anidada {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-anidada td {
+      border: 1px solid #efefef;
+      padding: 5px;
+    }
+
+    .section-header {
+      padding: 2px 3px;
+      font-weight: bold;
+      font-size: 7px;
+      margin-bottom: 0px;
+      color: #000;
+      background-color: #89bd94;
+      border-top: 1px solid #61a770;
+      border-left: 1px solid #75b182;
+      border-right: 1px solid #75b182;
+      border-bottom: none;
+      margin-top: 5px;
+    }
+
+    .section-content {
+      padding: 0px;
+      border: 1px solid #000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0px;
+    }
+
+    table td,
+    table th {
+      border: 1px solid #000;
+      padding: 3px;
+      font-size: 7px;
+    }
+
+    table th {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    table th.label,
+    table td.label {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .border-t {
+      border-top: 0px;
+    }
+
+    .table-anidada {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-anidada td {
+      border: 1px solid #efefef;
+      padding: 5px;
+    }
+
+    .logo-section {
+      width: 250px;
+      padding-bottom: 5px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 3px;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 7px;
+      line-height: 1.4;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .version-info {
+      text-align: right;
+      font-size: 8px;
+      margin-top: 5px;
+      color: #666;
+    }
+
+    .title-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 9px 0;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    .resolution-box {
+      border: 1px solid #000;
+      padding: 5px;
+      width: 180px;
+    }
+
+    .resolution-header {
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #000;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
+    }
+
+    .resolution-fields {
+      display: flex;
+      gap: 5px;
+    }
+
+    .resolution-field {
+      flex: 1;
+      border: 1px solid #000;
+      padding: 10px 5px;
+      text-align: center;
+      font-size: 9px;
+    }
+
+    .instructions {
+      top: 140px;
+      position: absolute;
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 5px;
+      list-style-type: none;
+      position: relative;
+    }
+
+    .instructions li::before {
+      content: "✓";
+      position: absolute;
+      left: -15px;
+      font-weight: bold;
+    }
+
+    .section {
+      margin: 10px 0;
+    }
+
+    .sello-section {
+      position: absolute;
+      bottom: 18px;
+      right: 80px;
+    }
+
+    .text {
+      display: inline-block;
+      min-height: 16px;
+      padding: 2px 2px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .small-checkbox {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #7a7a7a;
+      display: inline-block;
+      border-radius: 5px;
+    }
+
+    .small-checkbox.active {
+      background-color: #7a7a7a;
+    }
+
+    .id-type-row {
+      display: flex;
+      gap: 2px;
+    }
+
+    .id-type-cell {
+      flex: 1;
+      border: 1px solid #000;
+      padding: 3px;
+      text-align: center;
+      font-size: 9px;
+      font-weight: bold;
+    }
+
+    .small-cell {
+      width: 40px;
+    }
+
+    .large-cell {
+      flex: 2;
+    }
+
+    .legal-text {
+      font-size: 7px;
+      line-height: 1.3;
+      text-align: justify;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    .legal-text p {
+      margin-bottom: 8px;
+    }
+
+    .form-label {
+      font-size: 8px;
+      font-weight: bold;
+      margin-bottom: 2px;
+      color: #000;
+    }
+
+    .text-radicado {
+      font-size: 9px;
+      font-weight: bold;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      color: #3f4e46;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-section">
+        <img src="img/logo-min.png" alt="COMFACA Logo" style="width: 130px; height: 60px" />
+      </div>
+      <div class="contact-info">
+        <strong>Carrera 11 No. 10-34 Barrio la Cooperativa</strong>
+        Tel: 4366300 Ext.: 132 - 166 · Florencia - Caquetá<br />
+        afiliaciones_pendientes@comfaca.com y aportes@comfaca.com
+        <div class="version-info">V-3 - PSU-SCA-FT-04 - 15/06/2016</div>
+      </div>
+    </div>
+
+    <!-- Title and Resolution -->
+    <div class="title-section">
+      <h2>SOLICITUD DE AFILIACIÓN EMPLEADOR</h2>
+      <div class="resolution-box">
+        <div class="resolution-header">Resolución No.</div>
+        <div class="text-radicado">Radicado: {{ruuid}}</div>
+        <div class="form-label">Fecha de Recibido</div>
+        <div class="resolution-fields">
+          <div class="resolution-field">{{year}}</div>
+          <div class="resolution-field">{{month}}</div>
+          <div class="resolution-field">{{day}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <ul class="instructions">
+      <li>
+        Antes de diligenciar este formulario lea cuidadosamente la información
+        al respaldo del formulario.
+      </li>
+      <li>
+        Favor diligenciar el formulario con letra clara y utilizar tinta de
+        color negro.
+        <br />
+        <div class="importante">
+          <strong>IMPORTANTE:</strong> Marque con <span class="small-checkbox active"
+            style="position: relative;top:1px;"></span> según el tipo de novedad.
+        </div>
+      </li>
+    </ul>
+
+
+
+    <!-- Section 1: Datos Generales Empleador -->
+    <div class="section-header" style="margin-bottom: 0px">
+      1. DATOS GENERALES EMPLEADOR
+    </div>
+    <table>
+      <tr>
+        <td style="width: 100px" class="label-bg">
+          <label class="form-label">Tipo de Identificación</label>
+        </td>
+        <td colspan="9">
+          <div class="d-flex">
+            <table class="table-anidada" style="width: 500px">
+              <tr>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='3' else '' }}"></span>
+                    <span>NIT</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}"></span>
+                    <span>C.C.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='4' else '' }}"></span>
+                    <span>C.E.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='13' else '' }}"></span>
+                    <span>VISA</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='6' else '' }}"></span>
+                    <span>PAS.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='8' else '' }}"></span>
+                    <span>P.E.P.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='11' else '' }}"></span>
+                    <span>C.D.</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="label-bg">
+          <div class="form-label">Razón Social/Apellidos y Nombres</div>
+        </td>
+        <td>
+          <div>{{razsoc}}</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Número de Identificación</div>
+        </td>
+        <td>
+          <div>{{nit}}</div>
+        </td>
+        <td class="label-bg">
+          <div class="form-label">Dígito de Verificación</div>
+        </td>
+        <td>
+          <div>{{digver}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="label-bg">
+          <div class="form-label">Dirección Comercial</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Barrio Comercial</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Ciudad Comercial</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Departamento Comercial</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <div>{{dirpri}}</div>
+        </td>
+        <td colspan="2">
+          <div>{{barnotif}}</div>
+        </td>
+        <td colspan="2">
+          <div>{{ciupri_name}}</div>
+        </td>
+        <td colspan="2">
+          <div class="text">{{departamento_name}}</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="4" class="label-bg">
+          <div class="form-label">Dirección de Notificación</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Barrio de Notificaciones</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Ciudad de Noticaciones</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Departamento de Noticaciones</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="4">
+          <div class="text">{{direccion}}</div>
+        </td>
+        <td colspan="2">
+          <div class="text">{{barcomer}}</div>
+        </td>
+        <td colspan="2">
+          <div class="text">{{ciudad_name}}</div>
+        </td>
+        <td colspan="2">
+          <div class="text">{{departamento_name}}</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Teléfono Fijo</div>
+        </td>
+        <td>
+          <div>{{telefono}}</div>
+        </td>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">Celular</div>
+        </td>
+        <td>
+          <div>{{celular}}</div>
+        </td>
+        <td colspan="3" class="label-bg">
+          <div class="form-label">Correo para notificaciones</div>
+        </td>
+        <td>
+          <div>{{email}}</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Section 2: Datos Específicos del Empleador -->
+    <div class="section-header" style="margin-bottom: 0px">
+      2. DATOS ESPECÍFICOS DEL EMPLEADOR
+    </div>
+
+    <table>
+      <tr>
+        <td style="width: 15%" class="label-bg">
+          <div class="form-label">Tipo de Persona</div>
+        </td>
+        <td style="width: 10%">
+          <div class="list-item">
+            <label class="label">Natural</label>
+            <span class="small-checkbox{{ ' active' if tipper=='N' else '' }}"></span>
+          </div>
+        </td>
+        <td style="width: 10%">
+          <div class="list-item">
+            <label class="label">Jurídica</label>
+            <span class="small-checkbox{{ ' active' if tipper=='J' else '' }}"></span>
+          </div>
+        </td>
+        <td style="width: 15%" class="label-bg">
+          <div class="form-label">Tipo de Empresa</div>
+        </td>
+        <td style="width: 10%">
+          <div class="list-item">
+            <label class="label">Publica</label>
+            <span class="small-checkbox{{ ' active' if tipemp=='P' else '' }}"></span>
+          </div>
+        </td>
+        <td style="width: 10%">
+          <div class="list-item">
+            <label class="label">Oficial</label>
+            <span class="small-checkbox{{ ' active' if tipemp=='O' else '' }}"></span>
+          </div>
+        </td>
+        <td style="width: 10%">
+          <div class="list-item">
+            <label class="label">Mixta</label>
+            <span class="small-checkbox{{ ' active' if tipemp=='M' else '' }}"></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td style="width: 20%" class="border-t label-bg" colspan="2">
+          <div class="form-label">Actividad Económica</div>
+        </td>
+        <td class="border-t">
+          <div>{{actividad_name}}</div>
+        </td>
+        <td class="border-t label-bg">
+          <div class="form-label">Código Actividad Económica (CIIU)</div>
+        </td>
+        <td>
+          <div>{{codact}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="label-bg">
+          <div class="form-label">
+            Lugar donde laboran los trabajadores en el Departamento del
+            Caquetá
+          </div>
+        </td>
+        <td>
+          <div>{{zona_name}}</div>
+        </td>
+        <td class="label-bg">
+          <div class="form-label">Nombre Establecimiento de Comercio</div>
+        </td>
+        <td>
+          <div>{{razsoc}}</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Section 3: Datos del Representante Legal -->
+    <div class="section-header" style="margin-bottom: 0px">
+      3. DATOS DEL REPRESENTANTE LEGAL
+    </div>
+    <table>
+      <tr>
+        <td class="label-bg" style="width: 15%">
+          <label class="form-label">Número de Identificación</label>
+        </td>
+        <td style="width: 20%">
+          <span class="text">{{cedrep}}</span>
+        </td>
+        <td class="label-bg" style="width: 20%">
+          <label class="form-label">Tipo de Identificación:</label>
+        </td>
+        <td style="width: 60%">
+          <div class="d-flex">
+            <table class="table-anidada">
+              <tr>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='3' else '' }}"></span>
+                    <span>NIT</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}"></span>
+                    <span>C.C.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='2' else '' }}"></span>
+                    <span>T.I.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='4' else '' }}"></span>
+                    <span>C.E.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='13' else '' }}"></span>
+                    <span>VISA</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='6' else '' }}"></span>
+                    <span>PAS.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='8' else '' }}"></span>
+                    <span>P.E.P.</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-item">
+                    <span class="small-checkbox{{ ' active' if tipdoc=='11' else '' }}"></span>
+                    <span>C.D.</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-bg">
+          <div class="form-label">Apellidos y Nombres</div>
+        </td>
+        <td>
+          <div>{{repleg}}</div>
+        </td>
+        <td class="label-bg">
+          <div class="form-label">Teléfono Fijo</div>
+        </td>
+        <td>
+          <div>{{telpri}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-bg">
+          <div class="form-label">Celular</div>
+        </td>
+        <td>
+          <div>{{celpri}}</div>
+        </td>
+        <td class="label-bg">
+          <div class="form-label">Correo electrónico</div>
+        </td>
+        <td>
+          <div>{{emailpri}}</div>
+        </td>
+      </tr>
+
+    </table>
+
+    <!-- Section 4: Datos del Contacto Administrativo -->
+    <div class="section-header" style="margin-bottom: 0px">
+      4. DATOS DEL CONTACTO ADMINISTRATIVO
+    </div>
+    <table>
+      <tr>
+        <td colspan="7" class="label-bg">
+          <div class="form-label">Apellido y Nombres</div>
+        </td>
+        <td colspan="3" class="label-bg">
+          <div class="form-label">Cargo</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <div class="text">{{repleg}}</div>
+        </td>
+        <td colspan="3">
+          <div class="text">{{cargo}}</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="3" class="label-bg">
+          <div class="form-label">Teléfono Fijo</div>
+        </td>
+        <td colspan="3" class="label-bg">
+          <div class="form-label">Celular</div>
+        </td>
+        <td colspan="4" class="label-bg">
+          <div class="form-label">Correo electrónico</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="text">{{telpri}}</div>
+        </td>
+        <td colspan="3">
+          <div class="text">{{celpri}}</div>
+        </td>
+        <td colspan="4">
+          <div class="text">{{emailpri}}</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="1" class="label-bg" style="width: 120px;">
+          <div class="form-label">Observaciones</div>
+        </td>
+        <td colspan="9">
+          <div class="text">{{observacion}}</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Legal Text -->
+    <div class="legal-text">
+      <p>
+        <strong>Declaro bajo la gravedad de juramento, que la información contenida
+          en el formulario corresponde exactamente a la realidad, por lo
+          anterior cualquier falsedad o inexactitud en que incurra será
+          responsabilidad del empleador y podrá ser sancionado de acuerdo a lo
+          establecido en el artículo 45 de la ley 21 de 1982 y las demás
+          contempladas en la ley.</strong>
+      </p>
+
+      <p>
+        En calidad de Representante Legal del empleador, solicito a la Caja de
+        Compensación Familiar del Caquetá COMFACA la afiliación y si fuere
+        aceptado me comprometo a cumplir y respetar los estatutos y
+        reglamentos de COMFACA, así como las disposiciones legales que se
+        refieren al Subsidio Familiar, siendo entendido que la violación por
+        parte del empleador de cualquiera de las normas que rigen el derecho a
+        la Caja para ordenar su expulsión.
+      </p>
+
+      <p>
+        La responsabilidad en cuanto al Subsidio Familiar queda limitada para
+        la Caja desde el momento de la Afiliación y Pago de los aportes por
+        parte del empleador, hasta que la empresa sea desafiliada por
+        cualquier motivo.
+      </p>
+
+      <p>
+        Con la firma de este formulario autorizo a la Caja de Compensación
+        Familiar del Caquetá COMFACA, el envío de información, y la
+        notificación de procedimientos y actos administrativos a mi correo
+        electrónico registrado en este formulario, en el ítem 1. DATOS
+        GENERALES EMPLEADOR. Igualmente me comprometo a informar oportunamente
+        cualquier cambio en mis datos de ubicación y contacto. Y acepto las presentes condiciones.
+        <span style="position: relative; top: 1px;">
+          <label>SI</label> <span class="small-checkbox active"></span> <label style="margin-left: 4px;">NO</label>
+          <span class="small-checkbox"></span>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="sello-section">
+    <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
+  </div>
+</body>
+
+</html>

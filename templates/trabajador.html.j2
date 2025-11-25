@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+
         @font-face {
             font-family: 'lato-regular';
             src: url('lato-regular.ttf') format('truetype'),
@@ -34,12 +36,12 @@
 
         .d-flex {
             display: flex;
-        } 
+        }
 
         .flex-wrap {
             flex-wrap: wrap;
         }
-        
+
         .border-t {
             border-top: 0px;
         }
@@ -60,6 +62,7 @@
             bottom: 20px;
             right: 100px;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -208,7 +211,7 @@
             border: 1px solid #000;
             display: inline-block;
             position: relative;
-            top:1px;
+            top: 1px;
         }
 
         .inline-checkbox {
@@ -256,7 +259,7 @@
             border-radius: 5px;
         }
 
-        .small-checkbox.active{
+        .small-checkbox.active {
             background-color: #7a7a7a;
         }
 
@@ -284,13 +287,26 @@
             body {
                 padding: 0;
             }
+
             .container {
                 border: none;
             }
-            thead { display: table-header-group; }
-            tfoot { display: table-footer-group; }
-            tr { page-break-inside: avoid; }
-            .section { page-break-inside: avoid; }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
         }
 
         /* Estilos visuales para encabezados cuando no hay thead explícito */
@@ -299,19 +315,23 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
             <div class="header-left">
                 <div class="logo-section">
-                    <div class="w-100"><img src="logo-min.png" alt="COMFACA Logo" style="width: 130px; height: 60px;"></div>
+                    <div class="w-100"><img src="img/logo-min.png" alt="COMFACA Logo"
+                            style="width: 130px; height: 60px;"></div>
                     <strong>Sede Administrativa:</strong> Carrera 11 No. 10 - 34<br>
                     <strong>Centro Múltiple de Servicio Comfaca:</strong> Tranev. 6a. calle 12 av. Bruno del Piero<br>
                     <strong>Atención al Usuario:</strong> atencionalusuario@comfaca.com<br>
                     <strong>Tel:</strong> 6086366300 - www.comfaca.com
                     <div class="importante">
-                        <strong>IMPORTANTE:</strong> Marque con <span class="small-checkbox active" style="position: relative;top:1px;"></span> según el tipo de novedad. Inscripción del trabajador
+                        <strong>IMPORTANTE:</strong> Marque con <span class="small-checkbox active"
+                            style="position: relative;top:1px;"></span> según el tipo de novedad. Inscripción del
+                        trabajador
                     </div>
                 </div>
                 <div class="header-info">
@@ -333,31 +353,37 @@
                         <tr>
                             <th colspan="2">DEPENDIENTE</th>
                             <th>INDEPENDIENTE</th>
-                            <th colspan="2"><small>Indice de Aportes</small><br/> 0.6% - 2%</th>
+                            <th colspan="2"><small>Indice de Aportes</small><br /> 0.6% - 2%</th>
                             <th>PENSIONADO</th>
-                            <th colspan="3"><small>Indice de Aportes</small><br/>0.0% - 0.6% - 2%</th>
+                            <th colspan="3"><small>Indice de Aportes</small><br />0.0% - 0.6% - 2%</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="text-left">Servicio Doméstico</td>
-                            <td><span {% if tipafi == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='2' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td class="text-left">Taxista</td>
-                            <td><span {% if tipafi == '68' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </td>
+                            <td><span {% if tipafi=='68' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> </td>
                             <td><span class="small-checkbox"></span> </td>
                             <td>Fidelidad 25 Años</td>
-                            <td><span {% if tipafi == '66' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='66' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td><span class="small-checkbox"></span></td>
                             <td><span class="small-checkbox"></span></td>
                         </tr>
                         <tr>
                             <td class="text-left">Madre Comunitaria</td>
-                            <td><span {% if tipafi == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='4' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td class="text-left">Facultativos</td>
-                            <td><span {% if tipafi == '63' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='63' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td><span class="small-checkbox"></span></td>
                             <td>Menos de 1,5 SMMLV</td>
-                            <td><span {% if tipafi == '67' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='67' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td><span class="small-checkbox"></span></td>
                             <td><span class="small-checkbox"></span></td>
                         </tr>
@@ -365,19 +391,25 @@
                             <td class="text-left">Veteranos</td>
                             <td><span class="small-checkbox"></span></td>
                             <td class="text-left">Colombiano en el exterior</td>
-                            <td><span {% if tipafi == '69' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </td>
+                            <td><span {% if tipafi=='69' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> </td>
                             <td><span class="small-checkbox"></span></td>
                             <td>Más de 1,5 SMMLV</td>
                             <td><span class="small-checkbox"></span></td>
-                            <td><span {% if tipafi == '64' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
-                            <td><span {% if tipafi == '10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='64' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='10' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                         </tr>
                         <tr>
                             <td class="text-left">Trabajador Dependiente</td>
-                            <td><span {% if tipafi == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span></td>
+                            <td><span {% if tipafi=='1' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span></td>
                             <td class="text-left">Trab. Independiente</td>
-                            <td><span {% if tipafi == '65' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </td>
-                            <td><span {% if tipafi == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </td>
+                            <td><span {% if tipafi=='65' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> </td>
+                            <td><span {% if tipafi=='3' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> </td>
                             <td colspan="4"></td>
                         </tr>
                     </tbody>
@@ -388,11 +420,17 @@
                             <div class="text">Fecha de radicado:</div>
                         </td>
                         <td class="border-t">
-                             <table class="table-anidada" style="width: 100px;">
+                            <table class="table-anidada" style="width: 100px;">
                                 <tr>
-                                    <td><div class="text"><small>{{year}}</small></div></td>
-                                    <td><div class="text"><small>{{month}}</small></div></td>
-                                    <td><div class="text"><small>{{day}}</small></div></td>
+                                    <td>
+                                        <div class="text"><small>{{year}}</small></div>
+                                    </td>
+                                    <td>
+                                        <div class="text"><small>{{month}}</small></div>
+                                    </td>
+                                    <td>
+                                        <div class="text"><small>{{day}}</small></div>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -429,43 +467,50 @@
                                 <tr>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='1' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>C.C.</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='2' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>T.I.</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='4' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>C.E.</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '13' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='13' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>VISA</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='6' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>PAS.</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='8' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>P.E.P.</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="list-item">
-                                            <span {% if tipdoc == '11' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                                            <span {% if tipdoc=='11' %} class="small-checkbox active" {% else %}
+                                                class="small-checkbox" {% endif %}></span>
                                             <span>C.D.</span>
                                         </div>
                                     </td>
@@ -488,10 +533,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><div class="text">{{priape}}</div></td>
-                        <td><div class="text">{{segape}}</div></td>
-                        <td><div class="text">{{prinom}}</div></td>
-                        <td><div class="text">{{segnom}}</div></td>
+                        <td>
+                            <div class="text">{{priape}}</div>
+                        </td>
+                        <td>
+                            <div class="text">{{segape}}</div>
+                        </td>
+                        <td>
+                            <div class="text">{{prinom}}</div>
+                        </td>
+                        <td>
+                            <div class="text">{{segnom}}</div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -509,41 +562,91 @@
                         <td style="width: 10%">
                             <table class="table-anidada">
                                 <tr>
-                                    <td><div class="text"><small>{{fecnac_year}}</small></div></td>
-                                    <td><div class="text"><small>{{fecnac_month}}</small></div></td>
-                                    <td><div class="text"><small>{{fecnac_day}}</small></div></td>
+                                    <td>
+                                        <div class="text"><small>{{fecnac_year}}</small></div>
+                                    </td>
+                                    <td>
+                                        <div class="text"><small>{{fecnac_month}}</small></div>
+                                    </td>
+                                    <td>
+                                        <div class="text"><small>{{fecnac_day}}</small></div>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                         <td style="width: 20%;">
                             <table class="table-anidada">
                                 <tr>
-                                    <td><div class="inline-checkbox"><label>H</label> <span {% if sexo == 'H' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>M</label> <span {% if sexo == 'M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>I</label> <span {% if sexo == 'I' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>H</label> <span {% if sexo=='H' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>M</label> <span {% if sexo=='M' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>I</label> <span {% if sexo=='I' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                         <td style="width: 40%">
                             <table class="table-anidada">
                                 <tr>
-                                    <td><div class="inline-checkbox"><label>UL</label> <span {% if estciv == 'UL' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>CAS</label> <span {% if estciv == 'CAS' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>DIV</label> <span {% if estciv == 'DIV' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>SEP</label> <span {% if estciv == 'SEP' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>VIU</label> <span {% if estciv == 'VIU' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>SOL</label> <span {% if estciv == 'SOL' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>UL</label> <span {% if estciv=='UL' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>CAS</label> <span {% if estciv=='CAS' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>DIV</label> <span {% if estciv=='DIV' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>SEP</label> <span {% if estciv=='SEP' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>VIU</label> <span {% if estciv=='VIU' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>SOL</label> <span {% if estciv=='SOL' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
                                 </tr>
-                            </table>  
+                            </table>
                         </td>
                         <td style="width: 20%">
                             <table class="table-anidada">
                                 <tr>
-                                    <td><div class="inline-checkbox"><label>U</label> <span {% if rural == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
-                                    <td><div class="inline-checkbox"><label>R</label> <span {% if rural == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> </div> </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>U</label> <span {% if rural=='N' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
+                                    <td>
+                                        <div class="inline-checkbox"><label>R</label> <span {% if rural=='S' %}
+                                                class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                                                %}></span> </div>
+                                    </td>
                                 </tr>
                             </table>
-                        </td>                    
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -561,7 +664,7 @@
                     </tr>
                 </tbody>
             </table>
-             <table>
+            <table>
                 <tbody>
                     <tr>
                         <td class="label border-t">Resguardo</td>
@@ -579,51 +682,63 @@
                 <div class="section-header">3. FACTOR DE VULNERABILIDAD</div>
                 <div class="section-content">
                     <div class="list-item">
-                        <span {% if facvul == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Desplazado</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Víctima conflicto armado (No desplazado)</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Desmovilizado o Reinsertado</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Hijo(as) de desmovilizados o Reinsertados</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Damnificado desastre natural</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Cabeza de familia</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Hijo (as) de madres cabeza de familia</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='8' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>En condición de discapacidad</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '9' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='9' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Población migrante</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Población Zona frontera (Nacionales)</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul == '11' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul=='11' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Ejercicio de trabajo sexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if facvul is none or facvul == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if facvul is none or facvul=='' %} class="small-checkbox active" {% else %}
+                            class="small-checkbox" {% endif %}></span>
                         <span>No aplica</span>
                     </div>
                 </div>
@@ -634,35 +749,43 @@
                 <div class="section-header">4. PERTENENCIA ÉTNICA</div>
                 <div class="section-content">
                     <div class="list-item">
-                        <span {% if peretn == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Afrocolombiano</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Comunidad Negra</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Indígena</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Palenquero</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Raizal Del Archipiélago De San Andrés</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Room/gitano</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn is none or peretn == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn is none or peretn=='' %} class="small-checkbox active" {% else %}
+                            class="small-checkbox" {% endif %}></span>
                         <span>No Disponible</span>
                     </div>
                     <div class="list-item">
-                        <span {% if peretn == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if peretn=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>No se auto reconoce en ninguno de los anteriores</span>
                     </div>
                 </div>
@@ -673,63 +796,78 @@
                 <div class="section-header">5. NIVEL DE ESCOLARIDAD</div>
                 <div class="section-content">
                     <div class="list-item">
-                        <span {% if nivedu == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Preescolar</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Básica</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Secundaria</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Media</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Básica Adultos</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Secundaria Adultos</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Media Adultos</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='8' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Técnico Profesional</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '9' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='9' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Profesional Universitario</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Posgrado/Maestría</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '11' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='11' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Sin estudios Formales</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '12' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='12' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Secundaria Normalista</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '13' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='13' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Tecnólogo</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '14' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='14' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Ninguno</span>
                     </div>
                     <div class="list-item">
-                        <span {% if nivedu == '15' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if nivedu=='15' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Primera Infancia</span>
                     </div>
                 </div>
@@ -743,19 +881,23 @@
                 <div class="section-header">6. ORIENTACIÓN SEXUAL</div>
                 <div class="section-content d-flex">
                     <div class="list-item">
-                        <span {% if orisex == '1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if orisex=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Heterosexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if orisex == '2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if orisex=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Homosexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if orisex == '3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if orisex=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Bisexual</span>
                     </div>
                     <div class="list-item">
-                        <span {% if orisex == '4' or orisex == '' or orisex is none %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if orisex=='4' or orisex=='' or orisex is none %} class="small-checkbox active" {% else
+                            %} class="small-checkbox" {% endif %}></span>
                         <span>No Disponible</span>
                     </div>
                 </div>
@@ -766,19 +908,23 @@
                 <div class="section-header">7. TIPO DE VIVIENDA</div>
                 <div class="section-content d-flex">
                     <div class="list-item">
-                        <span {% if vivienda == 'P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if vivienda=='P' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Propia</span>
                     </div>
                     <div class="list-item">
-                        <span {% if vivienda == 'A' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if vivienda=='A' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Arrendada</span>
                     </div>
                     <div class="list-item">
-                        <span {% if vivienda == 'F' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if vivienda=='F' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Familiar</span>
                     </div>
                     <div class="list-item">
-                        <span {% if vivienda == 'H' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span>
+                        <span {% if vivienda=='H' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}></span>
                         <span>Hipoteca</span>
                     </div>
                 </div>
@@ -792,11 +938,15 @@
                 <tr>
                     <td style="width: 100px;">
                         <div class="inline-checkbox">
-                            <span {% if tipdis %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>SI</label>
-                            <span {% if tipdis is none %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>NO</label>
+                            <span {% if tipdis %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                                endif %}></span> <label>SI</label>
+                            <span {% if tipdis is none %} class="small-checkbox active" {% else %}
+                                class="small-checkbox" {% endif %}></span> <label>NO</label>
                         </div>
                     </td>
-                    <td style="width: 30px;"><div class="label">Cual</div></td>
+                    <td style="width: 30px;">
+                        <div class="label">Cual</div>
+                    </td>
                     <td>{{tipdis}}</td>
                 </tr>
             </table>
@@ -816,26 +966,36 @@
                         <td><span class="label">Sector Agrop.</span></td>
                     </tr>
                     <tr>
-                        <td><div class="text">{{fecing}}</div></td>
+                        <td>
+                            <div class="text">{{fecing}}</div>
+                        </td>
                         <td>
                             <div class="inline-checkbox">
-                                <span {% if tipcon == 'F' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Fijo</label>
-                                <span {% if tipcon == 'I' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Ind.</label>
-                                <span {% if tipcon == 'L' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Labor u Obra</label>
+                                <span {% if tipcon=='F' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Fijo</label>
+                                <span {% if tipcon=='I' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Ind.</label>
+                                <span {% if tipcon=='L' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Labor u Obra</label>
                             </div>
                         </td>
-                         <td>
+                        <td>
                             <div class="inline-checkbox">
-                                <span {% if tipjor == 'C' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Completa</label>
-                                <span {% if tipjor == 'M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Medio Tiem.</label>
-                                <span {% if tipjor == 'P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>Parcial</label>
+                                <span {% if tipjor=='C' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Completa</label>
+                                <span {% if tipjor=='M' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Medio Tiem.</label>
+                                <span {% if tipjor=='P' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>Parcial</label>
                             </div>
                         </td>
                         <td>$ {{salario}}</td>
-                         <td>
+                        <td>
                             <div class="inline-checkbox">
-                                <span {% if comision == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>SI</label>
-                                <span {% if comision == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>NO</label>
+                                <span {% if comision=='S' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>SI</label>
+                                <span {% if comision=='N' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>NO</label>
                             </div>
                         </td>
                         <td>
@@ -850,15 +1010,21 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class='border-t label' style="width: 35%;">Dirección del Lugar donde desarrolla su labor</td>
+                        <td class='border-t label' style="width: 35%;">Dirección del Lugar donde desarrolla su labor
+                        </td>
                         <td class='border-t label' style="width: 30%;">Zona:</td>
                         <td class="border-t label" style="width: 35%;">Nombre de la Empresa</td>
                     </tr>
                     <tr>
-                        <td><div class="text">{{dirlab}}</div></td>
-                        <td> <div class="inline-checkbox">
-                                <span {% if ruralt == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>U</label>
-                                <span {% if ruralt == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>R</label>
+                        <td>
+                            <div class="text">{{dirlab}}</div>
+                        </td>
+                        <td>
+                            <div class="inline-checkbox">
+                                <span {% if ruralt=='N' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>U</label>
+                                <span {% if ruralt=='S' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>R</label>
                             </div>
                         </td>
                         <td>{{otra_empresa}}</td>
@@ -866,13 +1032,17 @@
                     <tr>
                         <td class="label">
                             <div class="inline-checkbox">
-                                <strong>Labora en otra Empresa</strong> 
-                                <span {% if labora_otra_empresa == 'S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>SI</label>
-                                <span {% if labora_otra_empresa == 'N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> <label>NO</label>
+                                <strong>Labora en otra Empresa</strong>
+                                <span {% if labora_otra_empresa=='S' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>SI</label>
+                                <span {% if labora_otra_empresa=='N' %} class="small-checkbox active" {% else %}
+                                    class="small-checkbox" {% endif %}></span> <label>NO</label>
                             </div>
                         </td>
                         <td class="label">Ocupación</td>
-                        <td><div class="text">{{cargo}}</div></td>
+                        <td>
+                            <div class="text">{{cargo}}</div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -880,40 +1050,48 @@
 
         <!-- Sección 10: Información Bancaria -->
         <div class="section">
-            <div class="section-header">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR</div>
+            <div class="section-header">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR
+            </div>
             <table>
                 <tr>
-                    <td>YO  <div class="text">{{nombre_trabajador}}</div></td>
-                    <td>No de Documento <div class="text">{{cedtra}}</div></td>
+                    <td>YO <div class="text">{{nombre_trabajador}}</div>
+                    </td>
+                    <td>No de Documento <div class="text">{{cedtra}}</div>
+                    </td>
                     <td><label class="label">Tipo de afiliado:</label></td>
-                    <td>   
-                        <div class="inline-checkbox">                            
-                            <label>Trabajador </label> 
-                            <span class="small-checkbox active"></span> 
+                    <td>
+                        <div class="inline-checkbox">
+                            <label>Trabajador </label>
+                            <span class="small-checkbox active"></span>
                             <label>Cónyuge </label>
-                            <span class="small-checkbox"></span> 
+                            <span class="small-checkbox"></span>
                             <label>Otro </label>
-                            <span class="small-checkbox"></span> 
+                            <span class="small-checkbox"></span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">Autorizo pago de la cuota monetaria en</td>
-                    <td colspan="3">Entidad Bancaria: <div class="text">{{codban}}</div></td>
+                    <td colspan="3">Entidad Bancaria: <div class="text">{{codban}}</div>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <div class="inline-checkbox">
-                            <label>Daviplata </label> 
-                            <span {% if tippag == 'D' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
+                            <label>Daviplata </label>
+                            <span {% if tippag=='D' %} class="small-checkbox active" {% else %} class="small-checkbox"
+                                {% endif %}></span>
                             <label>Cuenta de Ahorro </label>
-                            <span {% if tippag == 'A' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
+                            <span {% if tippag=='A' %} class="small-checkbox active" {% else %} class="small-checkbox"
+                                {% endif %}></span>
                             <label>No tiene </label>
-                            <span {% if tippag is none or tippag == '' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}></span> 
+                            <span {% if tippag is none or tippag=='' %} class="small-checkbox active" {% else %}
+                                class="small-checkbox" {% endif %}></span>
                         </div>
                     </td>
                     <td colspan="3">
-                        <div class="text">No. <div class="text">{{numcue}}</div></div>
+                        <div class="text">No. <div class="text">{{numcue}}</div>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -926,21 +1104,35 @@
 
         <!-- Declaraciones -->
         <div class="declaracion">
-            <strong>DECLARACIÓN JURADA:</strong> Declaro que la información suministrada en el formulario es verdadera, cuenta con los soportes probatorios correspondientes y podrá ser verificada en cualquier momento por parte de la Caja de Compensación Familiar del Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37 de la ley 21 de 1982. En el evento que la información suministrada cambie, me comprometo a reportar modificación de los datos a más tardar el día 10 del mes siguiente a la novedad, de igual manera, autorizo a COMFACA en caso de que no tenga derecho, me sean descontadas los próximos pagos de la cuota monetaria de subsidio familiar a que hubiere lugar.
+            <strong>DECLARACIÓN JURADA:</strong> Declaro que la información suministrada en el formulario es verdadera,
+            cuenta con los soportes probatorios correspondientes y podrá ser verificada en cualquier momento por parte
+            de la Caja de Compensación Familiar del Caquetá COMFACA, de conformidad con lo dispuesto en el artículo 37
+            de la ley 21 de 1982. En el evento que la información suministrada cambie, me comprometo a reportar
+            modificación de los datos a más tardar el día 10 del mes siguiente a la novedad, de igual manera, autorizo a
+            COMFACA en caso de que no tenga derecho, me sean descontadas los próximos pagos de la cuota monetaria de
+            subsidio familiar a que hubiere lugar.
         </div>
 
         <div class="declaracion">
-            <strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN: COMFACA</strong> es responsable del tratamiento de datos personales, y en tal virtud, recolectará, almacenará y usará la información personal que usted suministre con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento.
+            <strong>AUTORIZACIÓN PARA USO DE LA INFORMACIÓN: COMFACA</strong> es responsable del tratamiento de datos
+            personales, y en tal virtud, recolectará, almacenará y usará la información personal que usted suministre
+            con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera
+            previa a la solicitud de diligenciamiento del presente documento.
         </div>
 
         <div class="declaracion">
-            Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad. 
+            Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como
+            titular de los datos personales confirma conocer y haber diligenciado el formato de autorización
+            PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo
+            allí descrito y manifiesta que la autorización le fue solicitada y puesta de presente antes de entregar sus
+            datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad.
             SI <span class="small-checkbox active"></span> NO <span class="small-checkbox"></span>
         </div>
 
         <div class="sello-section">
-            <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
+            <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
         </div>
     </div>
 </body>
+
 </html>

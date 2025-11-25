@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Declaración Juramentada - COMFACA</title>
     <style>
         @font-face {
-            font-family: "lato-regular";
-            src: url("lato-regular.ttf") format("truetype"),
-                 url("lato-regular.woff2") format("woff2");
+            font-family: "fonts/lato-regular";
+            src: url("fonts/lato-regular.ttf") format("truetype"),
+                url("fonts/lato-regular.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
         }
+
         @page {
             margin: 0in;
             background-image: url('membrete.jpg');
@@ -23,7 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "lato-regular", sans-serif;
+            font-family: "fonts/lato-regular", sans-serif;
         }
 
         body {
@@ -107,9 +109,11 @@
             margin-right: 10px;
         }
 
-        
 
-        .date-fields { display: flex; }
+
+        .date-fields {
+            display: flex;
+        }
 
         .date-field {
             flex: 1;
@@ -119,7 +123,10 @@
             font-size: 9px;
         }
 
-        .date-field:last-child { border-right: none; flex: 2; }
+        .date-field:last-child {
+            border-right: none;
+            flex: 2;
+        }
 
 
         .form-section {
@@ -156,14 +163,36 @@
             margin-bottom: 5px;
         }
 
-        .checkbox-options { display: flex; gap: 40px; margin-bottom: 15px; }
+        .checkbox-options {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
 
-        .checkbox-option { display: flex; align-items: center; gap: 8px; }
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        .small-checkbox { width: 10px; height: 10px; border: 1px solid #7a7a7a; display: inline-block; border-radius: 5px; }
-        .small-checkbox.active{ background-color: #7a7a7a; }
+        .small-checkbox {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #7a7a7a;
+            display: inline-block;
+            border-radius: 5px;
+        }
 
-        .legal-box { border: 1px solid #000; padding: 10px; margin-bottom: 15px; text-align: justify; }
+        .small-checkbox.active {
+            background-color: #7a7a7a;
+        }
+
+        .legal-box {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
 
         .subsection-title {
             background-color: #d9d9d9;
@@ -188,9 +217,21 @@
             margin: 15px 0;
         }
 
-        table td { border: 1px solid #777; padding: 8px; font-size: 10px; }
-        .label-cell { background: #f0f0f0; font-weight: bold; width: 180px; }
-        .input-cell { background: white; }
+        table td {
+            border: 1px solid #777;
+            padding: 8px;
+            font-size: 10px;
+        }
+
+        .label-cell {
+            background: #f0f0f0;
+            font-weight: bold;
+            width: 180px;
+        }
+
+        .input-cell {
+            background: white;
+        }
 
         table td.label {
             font-weight: bold;
@@ -202,33 +243,83 @@
             gap: 0;
         }
 
-        .parent-col { flex: 1; border: 1px solid #777; }
+        .parent-col {
+            flex: 1;
+            border: 1px solid #777;
+        }
 
         .parent-col:first-child {
             border-right: none;
         }
 
-        .parent-header { background-color: #e8e8e8; padding: 6px; font-weight: bold; font-size: 10px; text-align: center; border-bottom: 1px solid #777; }
+        .parent-header {
+            background-color: #e8e8e8;
+            padding: 6px;
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            border-bottom: 1px solid #777;
+        }
 
         .parent-field {
             padding: 8px;
             font-size: 10px;
         }
 
-        .final-declaration { border: 1px solid #777; padding: 15px; text-align: justify; line-height: 1.6; }
+        .final-declaration {
+            border: 1px solid #777;
+            padding: 15px;
+            text-align: justify;
+            line-height: 1.6;
+        }
 
-        .resolution-box { padding: 5px; width: 100%; }
-        .resolution-header { text-align: center; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 5px; }
-        .text-radicado { font-size: 9px; font-weight: bold; margin-top: 4px; margin-bottom: 4px; color: #3f4e46; }
-        .form-label { font-size: 9px; font-weight: bold; margin-bottom: 2px; color: #444; }
-        .resolution-fields { display: flex; gap: 5px; }
-        .resolution-field { flex: 1; border: 1px solid #000; padding: 10px 5px; text-align: center; font-size: 9px; }
+        .resolution-box {
+            padding: 5px;
+            width: 100%;
+        }
+
+        .resolution-header {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .text-radicado {
+            font-size: 9px;
+            font-weight: bold;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            color: #3f4e46;
+        }
+
+        .form-label {
+            font-size: 9px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            color: #444;
+        }
+
+        .resolution-fields {
+            display: flex;
+            gap: 5px;
+        }
+
+        .resolution-field {
+            flex: 1;
+            border: 1px solid #000;
+            padding: 10px 5px;
+            text-align: center;
+            font-size: 9px;
+        }
 
         @media print {
             body {
                 background-color: white;
                 padding: 0;
             }
+
             .container {
                 box-shadow: none;
                 max-width: 100%;
@@ -236,42 +327,35 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
-      <div class="header">
-        <div class="logo-section">
-           <img
-              src="logo-min.png"
-              alt="COMFACA Logo"
-              style="width: 90px; height: 35px"
-            />
-        </div>
-        <div class="mintrabajo-section">
-          <div class="mintrabajo-logo">
-            <img
-              src="mintrabajo.jpg"
-              alt="Mintrabajo Logo"
-              style="width: 145px; height: 35px"
-            />           
-          </div>
-        </div>
-        <div class="title-section">
-          <h1>Declaración Juramentada</h1>
-        </div>
-        <div class="date-section">
-          <div class="resolution-box">
-            <div class="resolution-header">Radicado No.</div>
-            <div class="text-radicado">{{ruuid}}</div>
-            <div class="form-label">Fecha de radicado</div>
-            <div class="resolution-fields">
-              <div class="resolution-field">Año: {{year}}</div>
-              <div class="resolution-field">Mes: {{month}}</div>
-              <div class="resolution-field">Día: {{day}}</div>
+        <div class="header">
+            <div class="logo-section">
+                <img src="img/logo-min.png" alt="COMFACA Logo" style="width: 90px; height: 35px" />
             </div>
-          </div>
+            <div class="mintrabajo-section">
+                <div class="mintrabajo-logo">
+                    <img src="img/mintrabajo.jpg" alt="Mintrabajo Logo" style="width: 145px; height: 35px" />
+                </div>
+            </div>
+            <div class="title-section">
+                <h1>Declaración Juramentada</h1>
+            </div>
+            <div class="date-section">
+                <div class="resolution-box">
+                    <div class="resolution-header">Radicado No.</div>
+                    <div class="text-radicado">{{ruuid}}</div>
+                    <div class="form-label">Fecha de radicado</div>
+                    <div class="resolution-fields">
+                        <div class="resolution-field">Año: {{year}}</div>
+                        <div class="resolution-field">Mes: {{month}}</div>
+                        <div class="resolution-field">Día: {{day}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
         <!-- Personal Information -->
         <div class="form-section">
@@ -290,7 +374,8 @@
         <!-- Motivo Section -->
         <div class="section-header">MOTIVO DE LA DECLARACIÓN</div>
         <div class="motivo-instruction" style="margin-bottom:10px;">
-            Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de la declaración:
+            Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de la
+            declaración:
         </div>
         <div class="checkbox-options">
             <div class="checkbox-option">
@@ -305,14 +390,20 @@
 
         <!-- Declaration Box -->
         <div class="legal-box">
-            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones contempladas en la Ley
+            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que
+            por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones
+            contempladas en la Ley
         </div>
 
         <!-- Economic Dependency Section -->
         <div class="subsection-title">DEPENDENCIA ECONÓMICA POR CUSTODIA</div>
 
         <div class="info-text">
-            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que la persona relacionada hace parte de su grupo familiar como beneficiario con custodia legal, convive y dependen económicamente del trabajador(a), no reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación Familiar. Manifiesto libre y voluntariamente que la persona relacionada a continuación se encuentran bajo mi responsabilidad y total dependencia económica:
+            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que la persona relacionada
+            hace parte de su grupo familiar como beneficiario con custodia legal, convive y dependen económicamente del
+            trabajador(a), no reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de
+            Compensación Familiar. Manifiesto libre y voluntariamente que la persona relacionada a continuación se
+            encuentran bajo mi responsabilidad y total dependencia económica:
         </div>
 
         <!-- Dependent Information Table -->
@@ -350,8 +441,14 @@
 
         <!-- Final Declaration -->
         <div class="final-declaration">
-            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a notificar de manera inmediata a COMFACA la novedad en el manifestado a través del presente documento, en caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se
+            verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a
+            notificar de manera inmediata a COMFACA la novedad en el manifestado a través del presente documento, en
+            caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido
+            canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por
+            otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
         </div>
     </div>
 </body>
+
 </html>
