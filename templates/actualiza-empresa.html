@@ -1,492 +1,467 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formato Actualización Datos de Empresas y Aportantes - COMFACA</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Formato Actualización Datos de Empresas y Aportantes - COMFACA
+    </title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      @font-face {
+        font-family: "lato-regular";
+        src: url("lato-regular.ttf") format("truetype"),
+          url("lato-regular.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-            line-height: 1.5;
-        }
+      @page {
+        margin: 0in;
+        background-image: url("membrete.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "lato-regular", sans-serif;
+      }
 
-        .page {
-            page-break-after: always;
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 2px solid #ddd;
-        }
+      body {
+        font-size: 8px;
+        line-height: 1.2;
+        margin: 0;
+      }
 
-        .page:last-child {
-            border-bottom: none;
-        }
+      .container {
+        margin: 0 auto;
+        background-color: transparent;
+        padding: 30px;
+      }
 
-        .header-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            border: 2px solid #333;
-        }
+      .sello-section {
+        position: absolute;
+        bottom: 18px;
+        right: 80px;
+      }
 
-        .header-table td {
-            border: 1px solid #333;
-            padding: 10px;
-            font-size: 11px;
-            text-align: center;
-            vertical-align: middle;
-        }
+      .page {
+        page-break-after: always;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 2px solid #ddd;
+      }
 
-        .header-logo {
-            font-weight: bold;
-            color: #006b4f;
-            font-size: 16px;
-            text-align: center;
-        }
+      .page:last-child {
+        border-bottom: none;
+      }
 
-        .header-title {
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-            padding: 15px;
-        }
+      .header-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 3px;
+        border: 1px solid #333;
+      }
 
-        .header-meta {
-            font-size: 11px;
-        }
+      .header-table td {
+        border: 1px solid #333;
+        padding: 5px;
+        font-size: 8px;
+        text-align: center;
+        vertical-align: middle;
+      }
 
-        .page-number {
-            text-align: center;
-            font-weight: bold;
-            margin: 15px 0;
-            font-size: 12px;
-        }
+      .header-logo {
+        font-weight: bold;
+        color: #006b4f;
+        font-size: 14px;
+        text-align: center;
+      }
 
-        .section-title {
-            background-color: #e0e0e0;
-            font-weight: bold;
-            padding: 8px 10px;
-            margin: 20px 0 10px 0;
-            font-size: 12px;
-            border: 1px solid #999;
-            text-align: center;
-        }
+      .header-title {
+        font-weight: bold;
+        font-size: 8px;
+        text-align: center;
+        padding: 15px;
+      }
 
-        .form-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-            border: 1px solid #999;
-        }
+      .header-meta {
+        font-size: 8px;
+      }
 
-        .form-table td {
-            border: 1px solid #999;
-            padding: 8px;
-            font-size: 11px;
-            vertical-align: top;
-        }
+      .page-number {
+        text-align: center;
+        font-weight: bold;
+        margin: 5px 0;
+        font-size: 8px;
+      }
 
-        .form-table td.label {
-            background-color: #f5f5f5;
-            font-weight: bold;
-            width: 30%;
-        }
+      .section-title {
+        font-weight: bold;       
+        margin: 0px;
+        text-align: center;
+        padding: 2px 3px;
+        font-size: 8px;
+        margin-bottom: 0px;
+        color: #000;
+        background-color: #89bd94;
+        margin-top: 5px;
+        border: 1px solid #999;
+        border-bottom: none;
+      }
 
-        .form-table td.input {
-            min-height: 25px;
-            vertical-align: middle;
-        }
+      .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+        border: 1px solid #999;
+      }
 
-        .form-table tr.row-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
+      .form-table td {
+        border: 1px solid #999;
+        padding: 5px;
+        font-size: 8px;
+        vertical-align: top;
+      }
 
-        .signature-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            border: 1px solid #999;
-        }
+      .form-table td.label {
+        background-color: #f5f5f5;
+        font-weight: bold;
+        width: 30%;
+      }
 
-        .signature-table td {
-            border: 1px solid #999;
-            padding: 30px 10px 10px 10px;
-            text-align: center;
-            font-size: 11px;
-            font-weight: bold;
-            height: 60px;
-        }
+      .form-table td.input {
+        min-height: 25px;
+        vertical-align: middle;
+      }
 
-        .signature-table td.title {
-            border: none;
-            padding: 5px;
-            font-weight: bold;
-            background-color: #f5f5f5;
-        }
+      .form-table tr.row-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
 
-        .declaration-box {
-            border: 1px solid #999;
-            padding: 12px;
-            margin: 15px 0;
-            font-size: 11px;
-            text-align: justify;
-            line-height: 1.6;
-        }
+      .signature-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        border: 1px solid #999;
+      }
 
-        .checkbox {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            border: 1px solid #333;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
+      .signature-table td {
+        border: 1px solid #999;
+        padding: 30px 10px 10px 10px;
+        text-align: center;
+        font-size: 8px;
+        font-weight: bold;
+        height: 60px;
+      }
 
-        .notes-box {
-            background-color: #f9f9f9;
-            border: 1px solid #999;
-            padding: 12px;
-            margin: 15px 0;
-            font-size: 11px;
-            line-height: 1.6;
-        }
+      .signature-table td.title {
+        border: none;
+        padding: 5px;
+        font-weight: bold;
+        background-color: #f5f5f5;
+      }
 
-        .notes-box strong {
-            display: block;
-            margin-bottom: 8px;
-        }
+      .declaration-box {
+        border: 1px solid #999;
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 8px;
+        text-align: justify;
+        line-height: 1.6;
+      }
 
-        .notes-box ol {
-            margin-left: 20px;
-        }
+      .checkbox {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #333;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
 
-        .notes-box li {
-            margin-bottom: 6px;
-            text-align: justify;
-        }
+      .notes-box {
+        background-color: #f9f9f9;
+        border: 1px solid #999;
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 8px;
+        line-height: 1.6;
+      }
 
-        .control-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            border: 1px solid #999;
-        }
+      .notes-box strong {
+        display: block;
+        margin-bottom: 8px;
+      }
 
-        .control-table th {
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #999;
-            padding: 8px;
-            font-size: 11px;
-            font-weight: bold;
-            text-align: center;
-        }
+      .notes-box ol {
+        margin-left: 20px;
+      }
 
-        .control-table td {
-            border: 1px solid #999;
-            padding: 12px 8px;
-            font-size: 11px;
-            text-align: center;
-            height: 40px;
-        }
+      .notes-box li {
+        margin-bottom: 6px;
+        text-align: justify;
+      }
 
-        .address-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
+      .control-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        border: 1px solid #999;
+      }
 
-        .address-field {
-            border: 1px solid #999;
-            padding: 8px;
-        }
+      .control-table th {
+        background-color: #4caf50;
+        color: white;
+        border: 1px solid #999;
+        padding: 8px;
+        font-size: 8px;
+        font-weight: bold;
+        text-align: center;
+      }
 
-        .address-field label {
-            font-weight: bold;
-            font-size: 10px;
-            display: block;
-            margin-bottom: 3px;
-        }
+      .control-table td {
+        border: 1px solid #999;
+        padding: 12px 8px;
+        font-size: 8px;
+        text-align: center;
+        height: 40px;
+      }
 
-        .address-field input {
-            width: 100%;
-            border: none;
-            font-size: 11px;
-            outline: none;
-        }
+      .address-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
 
-        p {
-            margin-bottom: 10px;
-            font-size: 11px;
-            text-align: justify;
-            line-height: 1.6;
-        }
+      .address-field {
+        border: 1px solid #999;
+        padding: 8px;
+      }
 
-        @media print {
-            body {
-                background-color: white;
-                padding: 0;
-            }
+      .address-field label {
+        font-weight: bold;
+        font-size: 10px;
+        display: block;
+        margin-bottom: 3px;
+      }
 
-            .container {
-                box-shadow: none;
-                padding: 0;
-                max-width: 100%;
-            }
+      .address-field input {
+        width: 100%;
+        border: none;
+        font-size: 8px;
+        outline: none;
+      }
 
-            .page {
-                page-break-after: always;
-            }
-        }
+      p {
+        margin-bottom: 10px;
+        font-size: 8px;
+        text-align: justify;
+        line-height: 1.6;
+      }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            .form-table td {
-                font-size: 10px;
-            }
-
-            .signature-table td {
-                padding: 20px 5px 5px 5px;
-                font-size: 10px;
-            }
-        }
+      .checkbox.active {
+        background-color: #7a7a7a;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- PÁGINA 1 -->
-        <div class="page">
-            <table class="header-table">
-                <tr>
-                    <td rowspan="3" class="header-logo">COMFACA</td>
-                    <td rowspan="3" class="header-title">
-                        PROCESO MISIONAL<br>
-                        PROCESO SUBSIDIO FAMILIAR<br>
-                        FORMATO ACTUALIZACIÓN DATOS DE EMPRESAS Y APORTANTES
-                    </td>
-                    <td class="header-meta">Versión: 1</td>
-                </tr>
-                <tr>
-                    <td class="header-meta">Código: PM-PSF-FT-05</td>
-                </tr>
-                <tr>
-                    <td class="header-meta">Fecha: 07 - junio-2022</td>
-                </tr>
-            </table>
+      <div>
+        <table class="header-table">
+          <tr>
+            <td rowspan="3" class="header-logo"><img
+            src="logo-min.png"
+            alt="COMFACA Logo"
+            style="width: 130px; height: 60px"
+          /></td>
+            <td rowspan="3" class="header-title">
+              PROCESO MISIONAL<br />
+              PROCESO SUBSIDIO FAMILIAR<br />
+              FORMATO ACTUALIZACIÓN DATOS DE EMPRESAS Y APORTANTES<br/>
+              Radicado: {{ ruuid }}
+            </td>
+            <td class="header-meta">Versión: 1</td>
+          </tr>
+          <tr>
+            <td class="header-meta">Código: PM-PSF-FT-05</td>
+          </tr>
+          <tr>
+            <td class="header-meta">Fecha: {{year}}/{{month}}/{{day}}</td>
+          </tr>
+        </table>
 
-            <div class="page-number">1 de 2</div>
+        <div class="page-number">1 de 2</div>
 
-            <div class="section-title">INFORMACIÓN GENERAL DEL APORTANTE (EMPRESA-INDEPENDIENTE)</div>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">No. de Identificación:</td>
-                    <td class="input"></td>
-                    <td class="label">DV:</td>
-                    <td class="input"></td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="label">Municipio del Departamento del Caquetá donde laboran los trabajadores:</td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="input" style="min-height: 35px;"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td colspan="4" class="label">Razón Social del Aportante:</td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="input" style="min-height: 35px;"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Nombres y Apellidos Representante Legal:</td>
-                    <td class="input" colspan="2"></td>
-                    <td class="label">No. de Identificación:</td>
-                    <td class="input"></td>
-                </tr>
-            </table>
-
-            <div class="section-title">DATOS DE UBICACIÓN Y CONTACTO DEL APORTANTE (EMPRESA-INDEPENDIENTE)</div>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Dirección de notificación:</td>
-                    <td class="input"></td>
-                    <td class="label">Barrio:</td>
-                    <td class="input"></td>
-                    <td class="label">Ciudad:</td>
-                    <td class="input"></td>
-                    <td class="label">Departamento:</td>
-                    <td class="input"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Teléfono fijo:</td>
-                    <td class="input"></td>
-                    <td class="label">Celular:</td>
-                    <td class="input"></td>
-                    <td class="label">Correo electrónico para notificaciones:</td>
-                    <td class="input"></td>
-                </tr>
-            </table>
-
-            <div class="declaration-box">
-                Yo, como Representante Legal de la empresa y/o como trabajador independiente con la firma de este documento y de conformidad con lo establecido en la Ley 1437 de 2011, solicito y acepto que dentro de los trámites que se adelanten en la Caja de Compensación Familiar del Caquetá COMFACA, y para mayor agilidad se me notifique todo acto administrativo, decisión o requerimiento vía correo electrónico. Marcar con una X<br><br>
-                <span style="margin-left: 20px;">SI <span class="checkbox"></span> &nbsp;&nbsp;&nbsp; NO <span class="checkbox"></span></span>
-            </div>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Dirección comercial:</td>
-                    <td class="input"></td>
-                    <td class="label">Barrio:</td>
-                    <td class="input"></td>
-                    <td class="label">Ciudad:</td>
-                    <td class="input"></td>
-                    <td class="label">Departamento:</td>
-                    <td class="input"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Teléfono Fijo:</td>
-                    <td class="input"></td>
-                    <td class="label">Celular:</td>
-                    <td class="input"></td>
-                    <td class="label">Correo electrónico:</td>
-                    <td class="input"></td>
-                </tr>
-            </table>
-
-            <div class="declaration-box">
-                COMFACA es responsable del tratamiento de datos personales, y en tal virtud, recolectará, almacenará y usará su información personal de acuerdo con lo establecido en el formato de autorización PM-PSF-FT-10 que hemos puesto en su conocimiento de manera previa a la solicitud de diligenciamiento del presente documento. Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted como titular de los datos personales confirma conocer y haber diligenciado el formato de autorización PM-PSF-FT-10, otorga su consentimiento a COMFACA para que trate su información personal de acuerdo con lo allí descrito y manifiesta que la presente autorización le fue solicitada y puesta de presente antes de entregar sus datos y que la suscribe de forma libre y voluntaria una vez leída en su totalidad.<br><br>
-                Yo, como Representante Legal de la empresa con la firma de este documento declaro bajo la gravedad de juramento, que la información contenida en este formato corresponde exactamente a la realidad, por
-            </div>
-
-            <table class="signature-table">
-                <tr>
-                    <td style="width: 33.33%;">ELABORÓ:<br><br>Cargo: Jefe Depto. Aportes y Subsidio<br><br>Fecha: 01 – junio - 2022</td>
-                    <td style="width: 33.33%;">REVISÓ:<br><br>Cargo: Subdirecctor Corporativo y Financiero<br><br>Fecha: 06 – junio - 2022</td>
-                    <td style="width: 33.33%;">APROBÓ:<br><br>Cargo: Director Administrativo<br><br>Fecha: 07 – junio - 2022</td>
-                </tr>
-            </table>
+        <div class="section-title">
+          INFORMACIÓN GENERAL DEL APORTANTE (EMPRESA-INDEPENDIENTE)
         </div>
 
-        <!-- PÁGINA 2 -->
-        <div class="page">
-            <table class="header-table">
-                <tr>
-                    <td rowspan="3" class="header-logo">COMFACA</td>
-                    <td rowspan="3" class="header-title">
-                        PROCESO MISIONAL<br>
-                        PROCESO SUBSIDIO FAMILIAR<br>
-                        FORMATO ACTUALIZACIÓN DATOS DE EMPRESAS Y APORTANTES
-                    </td>
-                    <td class="header-meta">Versión: 1</td>
-                </tr>
-                <tr>
-                    <td class="header-meta">Código: PM-PSF-FT-05</td>
-                </tr>
-                <tr>
-                    <td class="header-meta">Fecha: 07 - junio-2022</td>
-                </tr>
-            </table>
+        <table class="form-table">
+          <tr>
+            <td class="label">No. de Identificación:</td>
+            <td class="input">{{ nit }}</td>
+            <td class="label">DV:</td>
+            <td class="input">{{ digver }}</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="label">
+              Municipio del Departamento del Caquetá donde laboran los
+              trabajadores:
+            </td>
+            <td colspan="2" class="input">{{ zona_name }}</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="label">Razón Social del Aportante:</td>
+            <td colspan="2" class="input">{{ razsoc }}</td>
+          </tr>
+          <tr>
+            <td class="label">Nombres y Apellidos Representante Legal:</td>
+            <td class="input" >{{ repleg }}</td>
+            <td class="label">No. Identificación:</td>
+            <td class="input">{{ cedrep }}</td>
+          </tr>
+        </table>
 
-            <div class="page-number">2 de 2</div>
-
-            <div class="declaration-box">
-                lo anterior cualquier falsedad o inexactitud en que incurra será responsabilidad del empleador y podrá ser sancionado de acuerdo con lo establecido en el Artículo 45 de la Ley 21 de 1982.
-            </div>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Fecha de actualización:</td>
-                    <td class="input" style="min-height: 35px;"></td>
-                    <td class="label">Firma del Representante Legal:</td>
-                    <td class="input" style="min-height: 35px;"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td colspan="4" class="label">Observaciones:</td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="input" style="min-height: 50px;"></td>
-                </tr>
-            </table>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">Nombre del Funcionario de COMFACA que actualiza:</td>
-                    <td class="input" colspan="3" style="min-height: 35px;"></td>
-                </tr>
-            </table>
-
-            <div class="notes-box">
-                <strong>Notas a tener en cuenta en la actualización:</strong>
-                <ol>
-                    <li>Para la actualización de cambio de razón social o representante legal se debe adjuntar copia del documento de identidad, copia del RUT y copia de Cámara de Comercio.</li>
-                    <li>La actualización se hace en cumplimiento del numeral 1.1.1 Reporte de ubicación y contacto de la Resolución 1702 del 28 de diciembre de 2021, emanada de la Unidad de Gestión Personal y contribuciones Parafiscales -UGPP-, por medio de la cual requiere a las administradoras, solicitar a los aportantes afiliados la actualización de datos de ubicación y contacto por lo menos una vez por año.</li>
-                </ol>
-            </div>
-
-            <h3 style="text-align: center; margin: 25px 0 15px 0; font-size: 13px; color: #333;">IDENTIFICACIÓN CONTROL DE CAMBIOS:</h3>
-
-            <table class="control-table">
-                <tr>
-                    <th>FECHA</th>
-                    <th>DESCRIPCIÓN DEL CAMBIO</th>
-                    <th>VERSIÓN</th>
-                </tr>
-                <tr>
-                    <td style="height: 40px;"></td>
-                    <td style="height: 40px;"></td>
-                    <td style="height: 40px;"></td>
-                </tr>
-                <tr>
-                    <td style="height: 40px;"></td>
-                    <td style="height: 40px;"></td>
-                    <td style="height: 40px;"></td>
-                </tr>
-            </table>
-
-            <table class="signature-table">
-                <tr>
-                    <td style="width: 33.33%;">ELABORÓ:<br><br>Cargo: Jefe Depto. Aportes y Subsidio<br><br>Fecha: 01 – junio - 2022</td>
-                    <td style="width: 33.33%;">REVISÓ:<br><br>Cargo: Subdirecctor Corporativo y Financiero<br><br>Fecha: 06 – junio - 2022</td>
-                    <td style="width: 33.33%;">APROBÓ:<br><br>Cargo: Director Administrativo<br><br>Fecha: 07 – junio - 2022</td>
-                </tr>
-            </table>
+        <div class="section-title">
+          DATOS DE UBICACIÓN Y CONTACTO DEL APORTANTE (EMPRESA-INDEPENDIENTE)
         </div>
+
+        <table class="form-table">
+          <tr>
+            <td class="label">Dirección de notificación:</td>
+            <td class="input">{{ direccion }}</td>
+          </tr>
+          <tr>
+            <td class="label">Barrio:</td>
+            <td class="input">{{ barrio_notificacion }}</td>
+            <td class="label">Ciudad:</td>
+            <td class="input">{{ ciudad_name }}</td>
+          </tr>
+          <tr>
+            <td class="label">Departamento:</td>
+            <td class="input">{{ departamento_notify }}</td>
+          </tr>
+          <tr>
+            <td class="label">Teléfono fijo:</td>
+            <td class="input">{{ telefono }}</td>
+            <td class="label">Celular:</td>
+            <td class="input">{{ celular }}</td>
+          </tr>
+          <tr>
+            <td class="label">Correo electrónico para notificaciones:</td>
+            <td class="input" colspan="3">{{ email }}</td>
+          </tr>
+        </table>
+
+        <div class="declaration-box">
+          Yo, como Representante Legal de la empresa y/o como trabajador
+          independiente con la firma de este documento y de conformidad con lo
+          establecido en la Ley 1437 de 2011, solicito y acepto que dentro de
+          los trámites que se adelanten en la Caja de Compensación Familiar del
+          Caquetá COMFACA, y para mayor agilidad se me notifique todo acto
+          administrativo, decisión o requerimiento vía correo electrónico.
+          Marcar con una X<br /><br />
+          <span style="margin-left: 20px"
+            >SI <span class="checkbox active"></span> &nbsp;&nbsp;&nbsp; NO
+            <span class="checkbox"></span
+          ></span>
+        </div>
+
+         <div class="section-title">
+          DATOS DE UBICACIÓN Y CONTACTO COMERCIAL
+        </div>
+        <table class="form-table">
+          <tr>
+            <td class="label">Dirección comercial:</td>
+            <td class="input">{{ dirpri }}</td>
+          </tr>
+          <tr>
+            <td class="label">Barrio:</td>
+            <td class="input">{{ barrio_comercial }}</td>
+            <td class="label">Ciudad:</td>
+            <td class="input">{{ zona_name }}</td>
+          </tr>
+          <tr>
+            <td class="label">Departamento:</td>
+            <td class="input">{{ departamento_name }}</td>
+            <td class="label">Teléfono Fijo:</td>
+            <td class="input">{{ telpri }}</td>
+          </tr>
+          <tr>
+            <td class="label">Celular:</td>
+            <td class="input">{{ celpri }}</td>
+            <td class="label">Correo electrónico:</td>
+            <td class="input">{{ emailpri }}</td>
+          </tr>
+        </table>
+
+        <div class="declaration-box">
+          COMFACA es responsable del tratamiento de datos personales, y en tal
+          virtud, recolectará, almacenará y usará su información personal de
+          acuerdo con lo establecido en el formato de autorización PM-PSF-FT-10
+          que hemos puesto en su conocimiento de manera previa a la solicitud de
+          diligenciamiento del presente documento. Firmar o diligenciar la
+          información requerida se entenderá como una conducta inequívoca de que
+          usted como titular de los datos personales confirma conocer y haber
+          diligenciado el formato de autorización PM-PSF-FT-10, otorga su
+          consentimiento a COMFACA para que trate su información personal de
+          acuerdo con lo allí descrito y manifiesta que la presente autorización
+          le fue solicitada y puesta de presente antes de entregar sus datos y
+          que la suscribe de forma libre y voluntaria una vez leída en su
+          totalidad.<br /><br />
+          Yo, como Representante Legal de la empresa con la firma de este
+          documento declaro bajo la gravedad de juramento, que la información
+          contenida en este formato corresponde exactamente a la realidad, por 
+           lo anterior cualquier falsedad o inexactitud en que incurra será
+          responsabilidad del empleador y podrá ser sancionado de acuerdo con lo
+          establecido en el Artículo 45 de la Ley 21 de 1982.
+        </div>
+      </div>
+
+        <table class="form-table">
+          <tr>
+            <td class="label">Fecha de actualización:</td>
+            <td class="input" style="min-height: 35px">{{ fecsol }}</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="label">Observaciones:</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="input" style="min-height: 50px">
+              {{ observaciones }}
+            </td>
+          </tr>
+        </table>
+
+        <div class="notes-box">
+          <strong>Notas a tener en cuenta en la actualización:</strong>
+          <ol>
+            <li>
+              Para la actualización de cambio de razón social o representante
+              legal se debe adjuntar copia del documento de identidad, copia del
+              RUT y copia de Cámara de Comercio.
+            </li>
+            <li>
+              La actualización se hace en cumplimiento del numeral 1.1.1 Reporte
+              de ubicación y contacto de la Resolución 1702 del 28 de diciembre
+              de 2021, emanada de la Unidad de Gestión Personal y contribuciones
+              Parafiscales -UGPP-, por medio de la cual requiere a las
+              administradoras, solicitar a los aportantes afiliados la
+              actualización de datos de ubicación y contacto por lo menos una
+              vez por año.
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
-</body>
+
+    <div class="sello-section">
+      <img src="sello.png" alt="Sello" style="width: 120px; height: 90px" />
+    </div>
+  </body>
 </html>

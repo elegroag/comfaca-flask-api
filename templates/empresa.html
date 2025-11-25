@@ -52,6 +52,13 @@
         position: relative;
       }
 
+      .importante {
+          padding: 5px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          font-size: 8px;
+      }
+
       .header::after {
         content: "";
         position: absolute;
@@ -353,10 +360,10 @@
 
       <!-- Title and Resolution -->
       <div class="title-section">
-        <h1>SOLICITUD DE AFILIACIÓN EMPLEADOR</h1>
+        <h2>SOLICITUD DE AFILIACIÓN EMPLEADOR</h2>
         <div class="resolution-box">
           <div class="resolution-header">Resolución No.</div>
-          <div class="text-radicado">Radicado: {{radicado}}</div>
+          <div class="text-radicado">Radicado: {{ruuid}}</div>
           <div class="form-label">Fecha de Recibido</div>
           <div class="resolution-fields">
             <div class="resolution-field">{{year}}</div>
@@ -374,9 +381,15 @@
         </li>
         <li>
           Favor diligenciar el formulario con letra clara y utilizar tinta de
-          color negro
+          color negro.
+          <br/>
+          <div class="importante">
+            <strong>IMPORTANTE:</strong> Marque con <span class="small-checkbox active" style="position: relative;top:1px;"></span> según el tipo de novedad.
+          </div>
         </li>
       </ul>
+
+     
 
       <!-- Section 1: Datos Generales Empleador -->
       <div class="section-header" style="margin-bottom: 0px">
@@ -405,14 +418,6 @@
                         class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}"
                       ></span>
                       <span>C.C.</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="list-item">
-                      <span
-                        class="small-checkbox{{ ' active' if tipdoc=='2' else '' }}"
-                      ></span>
-                      <span>T.I.</span>
                     </div>
                   </td>
                   <td>
@@ -499,10 +504,10 @@
             <div>{{dirpri}}</div>
           </td>
           <td colspan="2">
-            <div>{{barrio}}</div>
+            <div>{{barnotif}}</div>
           </td>
           <td colspan="2">
-            <div>{{ciupri}}</div>
+            <div>{{ciupri_name}}</div>
           </td>
           <td colspan="2">
             <div class="text">{{departamento_name}}</div>
@@ -529,7 +534,7 @@
             <div class="text">{{direccion}}</div>
           </td>
           <td colspan="2">
-            <div class="text">{{barrio}}</div>
+            <div class="text">{{barcomer}}</div>
           </td>
           <td colspan="2">
             <div class="text">{{ciudad_name}}</div>
@@ -657,18 +662,18 @@
       </div>
       <table>
         <tr>
-          <td colspan="2" class="label-bg">
+          <td class="label-bg" style="width: 15%">
             <label class="form-label">Número de Identificación</label>
           </td>
-          <td style="width: 100px">
+          <td style="width: 20%">
             <span class="text">{{cedrep}}</span>
           </td>
-          <td colspan="2" class="label-bg">
+          <td class="label-bg" style="width: 20%">
             <label class="form-label">Tipo de Identificación:</label>
           </td>
-          <td colspan="8">
+          <td style="width: 60%">
             <div class="d-flex">
-              <table class="table-anidada" style="width: 500px">
+              <table class="table-anidada">
                 <tr>
                   <td>
                     <div class="list-item">
@@ -740,35 +745,34 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="label-bg">
+          <td class="label-bg">
             <div class="form-label">Apellidos y Nombres</div>
           </td>
-          <td colspan="8">
+          <td>
             <div>{{repleg}}</div>
           </td>
-        </tr>
-        <tr>
-          <td colspan="3" class="label-bg">
+           <td class="label-bg">
             <div class="form-label">Teléfono Fijo</div>
           </td>
-          <td colspan="3" class="label-bg">
-            <div class="form-label">Celular</div>
-          </td>
-          <td colspan="4" class="label-bg">
-            <div class="form-label">Correo electrónico</div>
+          <td>
+            <div>{{telpri}}</div>
           </td>
         </tr>
         <tr>
-          <td colspan="3">
-            <div>{{telpri}}</div>
+          <td class="label-bg">
+            <div class="form-label">Celular</div>
           </td>
-          <td colspan="3">
+            <td>
             <div>{{celpri}}</div>
           </td>
-          <td colspan="4">
+          <td class="label-bg">
+            <div class="form-label">Correo electrónico</div>
+          </td>
+          <td>
             <div>{{emailpri}}</div>
           </td>
         </tr>
+
       </table>
 
       <!-- Section 4: Datos del Contacto Administrativo -->
@@ -817,7 +821,7 @@
         </tr>
 
         <tr>
-          <td colspan="1" class="label-bg">
+          <td colspan="1" class="label-bg" style="width: 120px;">
             <div class="form-label">Observaciones</div>
           </td>
           <td colspan="9">
@@ -862,7 +866,10 @@
           notificación de procedimientos y actos administrativos a mi correo
           electrónico registrado en este formulario, en el ítem 1. DATOS
           GENERALES EMPLEADOR. Igualmente me comprometo a informar oportunamente
-          cualquier cambio en mis datos de ubicación y contacto.
+          cualquier cambio en mis datos de ubicación y contacto. Y acepto las presentes condiciones. 
+          <span style="position: relative; top: 1px;">
+            <label>SI</label> <span class="small-checkbox active"></span>  <label style="margin-left: 4px;">NO</label> <span class="small-checkbox"></span>
+          </span>
         </p>
       </div>
     </div>
