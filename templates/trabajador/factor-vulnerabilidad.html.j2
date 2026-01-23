@@ -1,0 +1,198 @@
+
+<div class="three-column">
+    <!-- Sección 3: Factor de Vulnerabilidad -->
+    <div class="section">
+        <div class="section-header">3. FACTOR DE VULNERABILIDAD</div>
+        <div class="section-content">
+            <div class="list-item">
+                <span {% if facvul=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='1' %}X{% endif %}</span>
+                <span class='mini-label'>Desplazado</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='2' %}X{% endif %}</span>
+                <span class='mini-label'>Víctima conflicto armado (No desplazado)</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='10' %}X{% endif %}</span>
+                <span class='mini-label'>Desmovilizado o Reinsertado</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='4' %}X{% endif %}</span>
+                <span class='mini-label'>Hijo(as) de desmovilizados o Reinsertados</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='5' %}X{% endif %}</span>
+                <span class='mini-label'>Damnificado desastre natural</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='6' %}X{% endif %}</span>
+                <span class='mini-label'>Cabeza de familia</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='7' %}X{% endif %}</span>
+                <span class='mini-label'>Hijo (as) de madres cabeza de familia</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='8' %}X{% endif %}</span>
+                <span class='mini-label'>En condición de discapacidad</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='9' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='9' %}X{% endif %}</span>
+                <span class='mini-label'>Población migrante</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='10' %}X{% endif %}</span>
+                <span class='mini-label'>Población Zona frontera (Nacionales)</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul=='11' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if facvul=='11' %}X{% endif %}</span>
+                <span class='mini-label'>Ejercicio de trabajo sexual</span>
+            </div>
+            <div class="list-item">
+                <span {% if facvul is none or facvul=='' or facvul=='12' or facvul=='13' %} class="small-checkbox active" {% else %}
+                    class="small-checkbox" {% endif %}>{% if facvul is none or facvul=='' or facvul=='12' or facvul=='13' %}X{% endif %}</span>
+                <span class='mini-label'>No aplica</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 4: Pertenencia Étnica -->
+    <div class="section">
+        <div class="section-header">4. PERTENENCIA ÉTNICA</div>
+        <div class="section-content">
+            <div class="list-item">
+                <span {% if peretn=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='1' %}X{% endif %}</span>
+                <span class='mini-label'>Afrocolombiano</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='2' %}X{% endif %}</span>
+                <span class='mini-label'>Comunidad Negra</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='3' %}X{% endif %}</span>
+                <span class='mini-label'>Indígena</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='4' %}X{% endif %}</span>
+                <span class='mini-label'>Palenquero</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='5' %}X{% endif %}</span>
+                <span class='mini-label'>Raizal Del Archipiélago De San Andrés</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='6' %}X{% endif %}</span>
+                <span class='mini-label'>Room/gitano</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn is none or peretn=='' or peretn == '8' %} class="small-checkbox active" {% else %}
+                    class="small-checkbox" {% endif %}>{% if peretn is none or peretn=='' or peretn == '8' %}X{% endif %}</span>
+                <span class='mini-label'>No Disponible</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='7' %}X{% endif %}</span>
+                <span class='mini-label'>No se auto reconoce en ninguno de los anteriores</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 5: Nivel de Escolaridad -->
+    <div class="section">
+        <div class="section-header">5. NIVEL DE ESCOLARIDAD</div>
+        <div class="section-content">
+            <div class="list-item">
+                <span {% if nivedu=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='1' %}X{% endif %}</span>
+                <span class='mini-label'>Preescolar</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='2' %}X{% endif %}</span>
+                <span class='mini-label'>Básica</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='3' %}X{% endif %}</span>
+                <span class='mini-label'>Secundaria</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='4' %}X{% endif %}</span>
+                <span class='mini-label'>Media</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='5' %}X{% endif %}</span>
+                <span class='mini-label'>Básica Adultos</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='6' %}X{% endif %}</span>
+                <span class='mini-label'>Secundaria Adultos</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='7' %}X{% endif %}</span>
+                <span class='mini-label'>Media Adultos</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='8' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='8' %}X{% endif %}</span>
+                <span class='mini-label'>Técnico Profesional</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='9' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='9' %}X{% endif %}</span>
+                <span class='mini-label'>Profesional Universitario</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='10' %}X{% endif %}</span>
+                <span class='mini-label'>Posgrado/Maestría</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='11' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='11' %}X{% endif %}</span>
+                <span class='mini-label'>Sin estudios Formales</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='12' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='12' %}X{% endif %}</span>
+                <span class='mini-label'>Secundaria Normalista</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='13' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='13' %}X{% endif %}</span>
+                <span class='mini-label'>Tecnólogo</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='14' or nivedu is none or nivedu=='' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='14' or nivedu is none or nivedu=='' %}X{% endif %}</span>
+                <span class='mini-label'>Ninguno</span>
+            </div>
+            <div class="list-item">
+                <span {% if nivedu=='15' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if nivedu=='15' %}X{% endif %}</span>
+                <span class='mini-label'>Primera Infancia</span>
+            </div>
+        </div>
+    </div>
+</div>

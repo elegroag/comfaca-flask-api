@@ -27,8 +27,10 @@ RUN pip install --upgrade pip setuptools wheel \
     python-dotenv \
     jinja2 \
     "fonttools>=4.60.1" \
-    flask
+    flask \
+    gunicorn
 
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:80", "app:app"]
 
 EXPOSE 80/tcp

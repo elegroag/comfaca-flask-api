@@ -1,0 +1,179 @@
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 2px solid #333;
+}
+
+.header-table td {
+    border: 1px solid #333;
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header-logo {
+    font-weight: bold;
+    color: #1b7d3e;
+    font-size: 16px;
+    text-align: center;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    padding: 15px;
+}
+
+.header-meta {
+    font-size: 11px;
+}
+
+.page-number {
+    text-align: center;
+    font-weight: bold;
+    margin: 15px 0;
+    font-size: 12px;
+}
+
+.section-title {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    padding: 8px 10px;
+    margin: 20px 0 10px 0;
+    font-size: 12px;
+    border: 1px solid #999;
+    text-align: center;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    border: 1px solid #999;
+}
+
+.form-table td {
+    border: 1px solid #999;
+    padding: 8px;
+    font-size: 11px;
+    vertical-align: top;
+}
+
+.form-table td.label {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    width: 30%;
+}
+
+.form-table td.input {
+    min-height: 25px;
+    vertical-align: middle;
+}
+
+.signature-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border: 1px solid #999;
+}
+
+.signature-table td {
+    border: 1px solid #999;
+    padding: 30px 10px 10px 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 60px;
+}
+
+.signature-table td.title {
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.declaration-box {
+    border: 1px solid #999;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 11px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333;
+    margin-right: 8px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.notes-box {
+    background-color: #f9f9f9;
+    border: 1px solid #999;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.notes-box strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.notes-box ol {
+    margin-left: 20px;
+}
+
+.notes-box li {
+    margin-bottom: 6px;
+    text-align: justify;
+}
+
+.control-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    border: 1px solid #999;
+}
+
+.control-table th {
+    background-color: #7fb342;
+    color: white;
+    border: 1px solid #999;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.control-table td {
+    border: 1px solid #999;
+    padding: 12px 8px;
+    font-size: 11px;
+    text-align: center;
+    height: 40px;
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 11px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+h3 {
+    text-align: center;
+    margin: 25px 0 15px 0;
+    font-size: 13px;
+    color: #333;
+}
+

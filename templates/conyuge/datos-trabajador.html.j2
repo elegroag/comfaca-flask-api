@@ -1,0 +1,41 @@
+<!-- Importante -->
+<div class="importante">
+  <div class="checkbox-inline">
+    <strong>IMPORTANTE:</strong>
+    <span>Adición persona a cargo</span>
+    <span>SI</span>
+    <div class="small-checkbox active">X</div>
+    <span>NO</span>
+    <div class="small-checkbox"></div>
+  </div>
+</div>
+
+<!-- Datos del Trabajador Afiliado -->
+<div class="section">
+  <div class="section-header">
+    DATOS DEL TRABAJADOR AFILIADO
+    <span class="section-note">(Requerido para establecer relación trabajador - cónyuge)</span>
+  </div>
+  <table>
+    <tr>
+      <td class="label">No. Identificación</td>
+      <td class="label">Tipo documento</td>
+      <td class="label">Nombre trabajador</td>
+      <td class="label">NIT- Empresa</td>
+    </tr>
+    <tr>
+      <td>
+        <div type="text">{{trabajador.cedtra}}</div>
+      </td>
+      <td>
+        <div type="text">{{trabajador.tipo_documento}}</div>
+      </td>
+      <td>
+        <div type="text">{{trabajador.nombre_trabajador}}</div>
+      </td>
+      <td>
+        <div type="text">{{trabajador.nit}}</div>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,119 @@
+<!-- Header -->
+<div class="header">
+    <div class="header-left">
+        <div class="logo-section">
+            <div class="w-100"><img src="img/logo-min.png" alt="COMFACA Logo" style="width: 130px; height: 60px;"></div>
+            <strong>Sede Administrativa:</strong> Carrera 11 No. 10 - 34<br>
+            <strong>Centro Múltiple de Servicio Comfaca:</strong> Tranev. 6a. calle 12 av. Bruno del Piero<br>
+            <strong>Atención al Usuario:</strong> atencionalusuario@comfaca.com<br>
+            <strong>Tel:</strong> 6086366300 - www.comfaca.com
+            <div class="importante">
+                <strong>IMPORTANTE:</strong> Marque con <span class="small-checkbox active"
+                    style="position: relative;top:1px;">X</span> según el tipo de novedad. Inscripción del
+                trabajador
+            </div>
+        </div>
+        <div class="header-info">
+            <strong>CAJA DE COMPENSACIÓN FAMILIAR<br>DEL CAQUETÁ COMFACA</strong>
+            NIT 891.200.050-1<br>
+        </div>
+    </div>
+    <div class="header-right">
+        <h1>FORMULARIO DE AFILIACIÓN DE TRABAJADORES</h1>
+        <div class="show-radicado">
+            <div class="resolution-header">Radicado No.</div>
+            <div class="text-radicado">{{ruuid}} </div>
+        </div>
+        <div class="section-header" style="margin-bottom: 0px;">
+            <div class="">TIPO DE AFILIADO</div>
+        </div>
+        <table class="tipo-afiliado-table" style="margin-top: 0px;">
+            <thead>
+                <tr>
+                    <th colspan="2">DEPENDIENTE</th>
+                    <th>INDEPENDIENTE</th>
+                    <th colspan="2"><small>Indice de Aportes</small><br /> 0.6% - 2%</th>
+                    <th>PENSIONADO</th>
+                    <th colspan="3"><small>Indice de Aportes</small><br />0.0% - 0.6% - 2%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-left">Servicio Doméstico</td>
+                    <td><span {% if tipafi=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='2' %}X{% endif %}</span></td>
+                    <td class="text-left">Taxista</td>
+                    <td><span {% if tipafi=='68' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='68' %}X{% endif %}</span> </td>
+                    <td><span class="small-checkbox"></span> </td>
+                    <td>Fidelidad 25 Años</td>
+                    <td><span {% if tipafi=='66' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='66' %}X{% endif %}</span></td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td><span class="small-checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td class="text-left">Madre Comunitaria</td>
+                    <td><span {% if tipafi=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='4' %}X{% endif %}</span></td>
+                    <td class="text-left">Facultativos</td>
+                    <td><span {% if tipafi=='63' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='63' %}X{% endif %}</span></td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td>Menos de 1,5 SMMLV</td>
+                    <td><span {% if tipafi=='67' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='67' %}X{% endif %}</span></td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td><span class="small-checkbox"></span></td>
+                </tr>
+                <tr>
+                    <td class="text-left">Veteranos</td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td class="text-left">Colombiano en el exterior</td>
+                    <td><span {% if tipafi=='69' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='69' %}X{% endif %}</span> </td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td>Más de 1,5 SMMLV</td>
+                    <td><span class="small-checkbox"></span></td>
+                    <td><span {% if tipafi=='64' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='64' %}X{% endif %}</span></td>
+                    <td><span {% if tipafi=='10' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='10' %}X{% endif %}</span></td>
+                </tr>
+                <tr>
+                    <td class="text-left">Trabajador Dependiente</td>
+                    <td><span {% if tipafi=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='1' %}X{% endif %}</span></td>
+                    <td class="text-left">Trab. Independiente</td>
+                    <td><span {% if tipafi=='65' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='65' %}X{% endif %}</span> </td>
+                    <td><span {% if tipafi=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipafi=='3' %}X{% endif %}</span> </td>
+                    <td colspan="4"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tr>
+                <td class="border-t label" style="width: 100px;">
+                    <div class="text">Fecha de radicado:</div>
+                </td>
+                <td class="border-t">
+                    <table class="table-anidada" style="width: 100px;">
+                        <tr>
+                            <td>
+                                <div class="text"><span class="mini-label">{{year}}</span></div>
+                            </td>
+                            <td>
+                                <div class="text"><span class="mini-label">{{month}}</span></div>
+                            </td>
+                            <td>
+                                <div class="text"><span class="mini-label">{{day}}</span></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

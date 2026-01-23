@@ -1,592 +1,174 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "layout/main.html.j2" %}
+{% block title %}Declaración Juramentada - COMFACA{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="styles/declaracion-juramentada.css" />
+{% endblock %}
+{% block content %}
+{% include 'includes/decralacion-header.html.j2' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Declaración Juramentada - COMFACA</title>
-    <style>
-        @font-face {
-            font-family: "fonts/lato-regular";
-            src: url("fonts/lato-regular.ttf") format("truetype"),
-                url("fonts/lato-regular.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
-        }
+<!-- Personal Information -->
+<div class="identification-section">
+    <div class="field-line">
+        <label>Yo</label>
+        <div class="underline">{{trabajador.nombre_trabajador}}</div>
+    </div>
+    <div class="field-line">
+        <label>Identificado(a) con tipo documento: </label>
+        <div class="underline" style="flex: 0.5"> {{trabajador.tipo_documento}}</div>
+        <label style="margin-left: 20px">y número:</label>
+        <div class="underline" style="flex: 0.5"> {{trabajador.numero_documento}}</div>
+    </div>
 
-        @page {
-            margin: 0in;
-            background-image: url('membrete.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+    <div class="info-text">
+        Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de
+        la declaración:
+    </div>
+</div>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "fonts/lato-regular", sans-serif;
-        }
-
-        body {
-            font-size: 9px;
-            line-height: 1.2;
-            margin: 0;
-        }
-
-        .container {
-            margin: 0 auto;
-            background-color: transparent;
-            padding: 25px;
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            border: 1px solid #777;
-            margin-bottom: 20px;
-            justify-content: space-between;
-        }
-
-        .header-logo {
-            width: 90px;
-            border-right: 1px solid #777;
-            padding-left: 4px;
-            padding-right: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-title {
-            flex: 1;
-            padding: 10px;
-            border-right: 0;
-            text-align: center;
-        }
-
-        .title-section h1 {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-
-        .field-line {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .field-line label {
-            margin-right: 5px;
-        }
-
-        .field-line .underline {
-            flex: 1;
-            border-bottom: 1px solid #000;
-            min-height: 20px;
-            line-height: 2
-        }
-
-        .logo-section {
-            width: 90px;
-            padding-left: 4px;
-            padding-right: 4px;
-            border-right: 1px solid #777;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-placeholder {
-            width: 140px;
-            height: 60px;
-            background: #e8e8e8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #666;
-            text-align: center;
-        }
-
-        .mintrabajo-section {
-            width: 160px;
-            padding: 3px;
-            border-right: 1px solid #777;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .date-section {
-            width: 200px;
-            padding: 0;
-            border-left: 1px solid #777;
-            margin-right: 10px;
-        }
-
-        .date-fields {
-            display: flex;
-        }
-
-        .date-field {
-            flex: 1;
-            text-align: center;
-            padding: 8px 5px;
-            border-right: 1px solid #000;
-            font-size: 9px;
-        }
-
-        .date-field:last-child {
-            border-right: none;
-            flex: 2;
-        }
-
-        .section-card {
-            background: #fff;
-            padding-left: 8px;
-            padding-right: 8px;
-            border: 1px solid #777;
-            margin-bottom: 1px;
-        }
-
-        .form-section {
-            margin-bottom: 20px;
-        }
-
-        .form-line {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 15px;
-        }
-
-        .form-line label {
-            margin-right: 5px;
-        }
-
-        .form-line input[type="text"] {
-            flex: 1;
-            border: none;
-            border-bottom: 1px solid #000;
-            padding: 2px 5px;
-            font-size: 11px;
-        }
-
-        .section-header {
-            padding: 6px 10px;
-            font-weight: bold;
-            font-size: 8px;
-            margin-bottom: 0px;
-            color: #000;
-            background-color: #89bd94;
-            border-top: 1px solid #61a770;
-            border-left: 1px solid #75b182;
-            border-right: 1px solid #75b182;
-            border-bottom: none;
-        }
-
-        .checkbox-options {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 15px;
-        }
-
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .small-checkbox {
-            width: 10px;
-            height: 10px;
-            border: 1px solid #7a7a7a;
-            display: inline-block;
-            border-radius: 5px;
-        }
-
-        .small-checkbox.active {
-            background-color: #7a7a7a;
-        }
-
-        .legal-box {
-            border: 1px solid #000;
-            padding: 10px;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .info-text {
-            font-size: 9px;
-            line-height: 1.6;
-            text-align: justify;
-            margin: 5px 0;
-            font-weight: normal;
-        }
-
-        .form-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .form-table td {
-            border: 1px solid #777;
-            padding: 8px;
-        }
-
-        .form-table .label-cell {
-            background: #f0f0f0;
-            font-weight: bold;
-            width: 180px;
-        }
-
-        .form-table .input-cell {
-            background: white;
-        }
-
-        .label-cell {
-            background: #f0f0f0;
-            font-weight: bold;
-            width: 180px;
-        }
-
-        .input-cell {
-            background: white;
-        }
-
-        .parent-table {
-            display: flex;
-            gap: 0;
-        }
-
-        .parent-col {
-            flex: 1;
-            border: 1px solid #777;
-        }
-
-        .parent-col:first-child {
-            border-right: none;
-        }
-
-        .parent-header {
-            background-color: #e8e8e8;
-            padding: 6px;
-            font-weight: bold;
-            font-size: 10px;
-            text-align: center;
-            border-bottom: 1px solid #777;
-        }
-
-        .parent-field {
-            padding: 8px;
-            font-size: 10px;
-        }
-
-        .image-placeholder {
-            border: 1px solid #777;
-            min-height: 200px;
-            margin: 15px 0;
-            background-color: #f9f9f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 12px;
-        }
-
-        .final-declaration {
-            border: 1px solid #777;
-            padding: 15px;
-            text-align: justify;
-            line-height: 1.6;
-        }
-
-        .resolution-box {
-            padding: 5px;
-            width: 100%;
-        }
-
-        .resolution-header {
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 5px;
-            font-size: 10px;
-        }
-
-        .text-radicado {
-            font-size: 9px;
-            font-weight: bold;
-            margin-top: 4px;
-            margin-bottom: 4px;
-            color: #3f4e46;
-        }
-
-        .form-label {
-            font-size: 9px;
-            font-weight: bold;
-            margin-bottom: 2px;
-            color: #444;
-        }
-
-        .resolution-fields {
-            display: flex;
-            gap: 5px;
-        }
-
-        .resolution-field {
-            flex: 1;
-            border: 1px solid #000;
-            padding: 10px 5px;
-            text-align: center;
-            font-size: 9px;
-        }
-
-        .table-anidada {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table-anidada td {
-            border: 1px solid #ddd;
-            padding: 5px;
-        }
-
-        @media print {
-            body {
-                background-color: white;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-section">
-                <img src="img/logo-min.png" alt="COMFACA Logo" style="width: 90px; height: 35px" />
-            </div>
-            <div class="mintrabajo-section">
-                <div class="mintrabajo-logo">
-                    <img src="img/mintrabajo.jpg" alt="Mintrabajo Logo" style="width: 145px; height: 35px" />
-                </div>
-            </div>
-            <div class="title-section">
-                <h1>Declaración Juramentada</h1>
-            </div>
-            <div class="date-section">
-                <div class="resolution-box">
-                    <div class="resolution-header">Radicado No.</div>
-                    <div class="text-radicado">{{ruuid}}</div>
-                    <div class="form-label">Fecha de radicado</div>
-                    <div class="resolution-fields">
-                        <div class="resolution-field">Año: {{year}}</div>
-                        <div class="resolution-field">Mes: {{month}}</div>
-                        <div class="resolution-field">Día: {{day}}</div>
-                    </div>
-                </div>
-            </div>
+<!-- Motivo Section -->
+<div class="section-header">MOTIVO DE LA DECLARACIÓN</div>
+<div class="section-card">
+    <div class="checkbox-options">
+        <div class="checkbox-option">
+            <span class="small-checkbox active">X</span>
+            <label>Convivencia y dependencia económica</label>
         </div>
-
-        <!-- Personal Information -->
-        <div class="identification-section">
-            <div class="field-line">
-                <label>Yo</label>
-                <div class="underline">{{trabajador.nombre_trabajador}}</div>
-            </div>
-            <div class="field-line">
-                <label>Identificado(a) con tipo documento: </label>
-                <div class="underline" style="flex: 0.5"> {{trabajador.tipo_documento}}</div>
-                <label style="margin-left: 20px">y número:</label>
-                <div class="underline" style="flex: 0.5"> {{trabajador.cedtra}}</div>
-            </div>
-        </div>
-
-        <!-- Motivo Section -->
-        <div class="section-header">MOTIVO DE LA DECLARACIÓN</div>
-        <div class="section-card">
-            <div class="info-text">
-                Marque con <span class="small-checkbox active" style="position: relative; top:2px;"></span> el motivo de
-                la declaración:
-            </div>
-
-            <div class="checkbox-options">
-                <div class="checkbox-option">
-                    <span class="small-checkbox active"></span>
-                    <label>Convivencia y dependencia económica</label>
-                </div>
-                <div class="checkbox-option">
-                    <span class="small-checkbox"></span>
-                    <label>Convivencia por custodia</label>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Declaration Box -->
-        <div class="legal-box">
-            Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que
-            por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones
-            contempladas en la Ley.
-        </div>
-
-        <!-- Child Economic Dependency Section -->
-        <div class="section-header">HIJO / DEPENDENCIA ECONÓMICA</div>
-        <div class="section-card">
-            <div class="info-text">
-                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
-                relacionada hacen parte de su grupo familiar (hijo) convive y dependen económicamente del trabajador(a)
-            </div>
-        </div>
-        <table class="form-table">
-            <tr>
-                <td class="label-cell">Nombre completo</td>
-                <td class="input-cell"></td>
-                <td class="label-cell" style="width: 120px;">Parentesco</td>
-                <td class="input-cell" style="width: 150px;">{{parentesco}}</td>
-            </tr>
-            <tr>
-                <td class="label-cell">Tipo documento</td>
-                <td class="input-cell">{{tipo_documento}}</td>
-                <td class="label-cell">Número documento</td>
-                <td class="input-cell">{{numdoc}}</td>
-            </tr>
-        </table>
-
-        <div class="section-header">HIJASTRO / DEPENDENCIA ECONÓMICA</div>
-        <div class="section-card">
-            <div class="info-text">
-                A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
-                relacionada hace parte de su grupo familiar hijastro, convive y dependen económicamente del
-                trabajador(a). Y que el padre o madre biológico del o la menor, no conviven con el beneficiario, no
-                reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación
-                Familiar. Manifiesto libre y voluntariamente que las personas relacionadas a continuación se encuentran
-                bajo mi responsabilidad y total dependencia económica:
-            </div>
-        </div>
-        <table class="form-table">
-            <tr>
-                <td class="label-cell">Nombre completo</td>
-                <td class="input-cell">{{nombre_beneficiario}}</td>
-                <td class="label-cell" style="width: 120px;">Parentesco</td>
-                <td class="input-cell" style="width: 150px;">{{parentesco}}</td>
-            </tr>
-            <tr>
-                <td class="label-cell">Tipo documento</td>
-                <td class="input-cell">{{tipo_documento}}</td>
-                <td class="label-cell">Número documento</td>
-                <td class="input-cell">{{numdoc}}</td>
-            </tr>
-            <tr>
-                <td class="label-cell">Papá biológico hijastro</td>
-                <td class="input-cell" style="padding: 0;">
-                    <table class="table-anidada">
-                        <tr>
-                            <td colspan="2">
-                                <div class="label">Nombre completo</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="text">{{biologico.nombre_padre}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="label">Identificación</div>
-                            </td>
-                            <td>
-                                <div class="text">{{biologico.cedula_padre}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="label">Tipo documento</div>
-                            </td>
-                            <td>
-                                <div class="text">{{biologico.tipo_documento}}</div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td class="label-cell">Mamá biológica hijastro</td>
-                <td class="input-cell" style="padding: 0;">
-                    <table class="table-anidada">
-                        <tr>
-                            <td colspan="2">
-                                <div class="label">Nombre completo</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="text">{{biologico.nombre_madre}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="label">Identificación</div>
-                            </td>
-                            <td>
-                                <div class="text">{{biologico.cedula_madre}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="label">Tipo documento</div>
-                            </td>
-                            <td>
-                                <div class="text">{{biologico.tipo_documento}}</div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-
-        <!-- Biological Parents Section -->
-        <div style="margin: 15px 0;">
-            <div class="section-header">
-                PADRES BIOLÓGICOS HIJO
-            </div>
-            <div class="parent-table">
-                <div class="parent-col">
-                    <div class="parent-header">Identificación papá biológico</div>
-                    <div class="parent-field">Tipo documento (P)</div>
-                </div>
-                <div class="parent-col">
-                    <div class="parent-header">Identificación mamá biológica</div>
-                    <div class="parent-field">Tipo documento (M)</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Absent Biological Parent Section -->
-        <div class="section-header">PAPÁ O MAMÁ BIOLÓGICO AUSENTE</div>
-
-        <!-- Final Declaration -->
-        <div class="final-declaration">
-            Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se
-            verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a
-            notificar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en
-            caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido
-            canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por
-            otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
-        </div>
-
-        <div class="sello-section" style="position:absolute; bottom:20px; right:100px;">
-            <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
+        <div class="checkbox-option">
+            <span class="small-checkbox"></span>
+            <label>Convivencia por custodia</label>
         </div>
     </div>
-</body>
+</div>
 
-</html>
+<div class="legal-box">
+    Declaro bajo la gravedad de juramento que toda la información aquí suministrada es VERÍDICA. Autorizo que
+    por cualquier medio se verifique los datos aquí contenidos y en caso de falsedad, se apliquen las sanciones
+    contempladas en la Ley.
+</div>
+
+{% if tiphij == '1' or tiphij == '0' %}
+    <!-- Child Economic Dependency Section -->
+    <div class="section-header">HIJO / DEPENDENCIA ECONÓMICA</div>
+    <div class="section-card">
+        <div class="info-text">
+            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
+            relacionada hacen parte de su grupo familiar (hijo) convive y dependen económicamente del trabajador(a)
+        </div>
+    </div>
+    <table class="form-table">
+        <tr>
+            <td class="label">Nombre completo</td>
+            <td class="text">{{nombre_beneficiario}} </td>
+            <td class="label" style="width: 120px;">Parentesco</td>
+            <td class="text" style="width: 150px;">{{parentesco}}</td>
+        </tr>
+        <tr>
+            <td class="label">Tipo documento</td>
+            <td class="text">{{tipo_documento}}</td>
+            <td class="label">Número documento</td>
+            <td class="text">{{numdoc}}</td>
+        </tr>
+    </table>
+
+{% endif %}
+
+{% if tiphij == '2' %}
+    <div class="section-header">HIJASTRO / DEPENDENCIA ECONÓMICA</div>
+    <div class="section-card">
+        <div class="info-text">
+            A través del diligenciamiento del siguiente recuadro usted demostrará y aceptará que las persona
+            relacionada hace parte de su grupo familiar hijastro, convive y dependen económicamente del
+            trabajador(a). Y que el padre o madre biológico del o la menor, no conviven con el beneficiario, no
+            reciben subsidio familiar en dinero por este y no se encuentra afiliado a otra Caja de Compensación
+            Familiar. Manifiesto libre y voluntariamente que las personas relacionadas a continuación se encuentran
+            bajo mi responsabilidad y total dependencia económica:
+        </div>
+    </div>
+    <table class="form-table">
+        <tr>
+            <td class="label">Nombre completo</td>
+            <td class="text">{{nombre_beneficiario}}</td>
+            <td class="label" style="width: 120px;">Parentesco</td>
+            <td class="text" style="width: 150px;">{{parentesco}}</td>
+        </tr>
+        <tr>
+            <td class="label">Tipo documento</td>
+            <td class="text">{{tipo_documento}}</td>
+            <td class="label">Número documento</td>
+            <td class="text">{{numdoc}}</td>
+        </tr>
+    </table>
+
+    <div class="section-header">PAPÁ BIOLÓGICO HIJASTRO</div>
+    <table class="form-table">
+        <tr>
+            <td class="label"></td>
+            <td class="label">Papá biológico hijastro</td>
+            <td class="label">Mamá biológica hijastro</td>
+        </tr>
+        <tr>
+            <td class="label">Nombre completo</td>
+            <td class="text">{{biologico.nombre_completo}}</td>
+            <td class="text">{{biologico.nombre_completo}}</td>
+        </tr>
+        <tr>
+            <td class="label">Identificación</td>
+            <td class="text">{{biologico.numero_documento}}</td>
+            <td class="text">{{biologico.numero_documento}}</td>
+        </tr>
+        <tr>
+            <td class="label">Tipo documento</td>
+            <td class="text">{{biologico.tipo_documento}}</td>
+            <td class="text">{{biologico.tipo_documento}}</td>
+        </tr>
+    </table>
+{% endif %}
+
+{% if tiphij == '1' %}
+<div style="margin: 15px 0;">
+    <div class="section-header">
+        INFORMACIÓN DE LOS PADRES BIOLÓGICOS {{tipo_hijo}}
+    </div>
+    <table class="form-table">
+        <tr>
+            <td class="label">Tipo documento papá</td>
+            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
+            <td class="label">Identificación papá</td>
+            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
+            <td class="label">Nombre papá</td>
+            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
+        </tr>
+        <tr>
+            <td class="label">Tipo documento mamá</td>
+            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
+            <td class="label">Identificación mamá</td>
+            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
+            <td class="label">Nombre mamá</td>
+            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+
+{% if desconoce_ubicacion == 'S' %}
+<div class="section-header">PAPÁ O MAMÁ BIOLÓGICO AUSENTE</div>
+<div class="section-card">
+    <div class="info-text">
+        Declaro que el padre o la madre biológica del menor no convive con el beneficiario, no recibe subsidio
+        familiar en dinero por él y no se encuentra afiliado(a) a otra Caja de Compensación Familiar. Asimismo,
+        se desconoce su información de contacto, ubicación y su situación económica.
+    </div>
+</div>
+{% endif %}
+
+<div class="declaration">
+    Declaro que toda la información aquí suministrada es verídica; autorizo para que por cualquier medio se
+    verifiquen los datos aquí contenidos, en caso de cualquier cambio en mi núcleo familiar, me comprometo a
+    notificar de manera inmediata a COMFACA la novedad en lo manifestado a través del presente documento, en
+    caso de no hacerlo me obligo a devolver las sumas correspondientes al Subsidio Familiar que me hayan sido
+    canceladas indebidamente y/o autorizo a COMFACA aplicar descuentos sobre cuotas de subsidio que reciba por
+    otras personas a cargo, hasta cancelar la totalidad del pago de lo no debido.
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+
+<!-- Secciones 6 y 7 en dos columnas -->
+<div class="two-column">
+    <!-- Sección 6: Orientación Sexual -->
+    <div class="section">
+        <div class="section-header">6. ORIENTACIÓN SEXUAL</div>
+        <div class="section-content d-flex">
+            <div class="list-item">
+                <span {% if orisex=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if orisex=='1' %}X{% endif %}</span>
+                <span class="mini-label">Heterosexual</span>
+            </div>
+            <div class="list-item">
+                <span {% if orisex=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if orisex=='2' %}X{% endif %}</span>
+                <span class="mini-label">Homosexual</span>
+            </div>
+            <div class="list-item">
+                <span {% if orisex=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if orisex=='3' %}X{% endif %}</span>
+                <span class="mini-label">Bisexual</span>
+            </div>
+            <div class="list-item">
+                <span {% if orisex=='4' or orisex=='' or orisex is none %} class="small-checkbox active" {% else %}
+                    class="small-checkbox" {% endif %}>{% if orisex=='4' or orisex=='' or orisex is none %}X{% endif %}</span>
+                <span class="mini-label">No Disponible</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 7: Tipo de Vivienda -->
+    <div class="section">
+        <div class="section-header">7. TIPO DE VIVIENDA</div>
+        <div class="section-content d-flex">
+            <div class="list-item">
+                <span {% if vivienda=='P' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if vivienda=='P' %}X{% endif %}</span>
+                <span class="mini-label">Propia</span>
+            </div>
+            <div class="list-item">
+                <span {% if vivienda=='A' or vivienda=='N' or vivienda is none %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if vivienda=='A' or vivienda=='N' or vivienda is none %}X{% endif %}</span>
+                <span class="mini-label">Arrendada</span>
+            </div>
+            <div class="list-item">
+                <span {% if vivienda=='F' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if vivienda=='F' %}X{% endif %}</span>
+                <span class="mini-label">Familiar</span>
+            </div>
+            <div class="list-item">
+                <span {% if vivienda=='H' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if vivienda=='H' %}X{% endif %}</span>
+                <span class="mini-label">Hipoteca</span>
+            </div>
+        </div>
+    </div>
+</div>

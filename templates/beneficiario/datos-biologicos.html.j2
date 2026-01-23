@@ -1,0 +1,101 @@
+{% if parent == '3' %}
+<!-- Los padres no requiren de esta sección -->
+{% else %}
+<!-- Datos del Padre/Madre Biológico -->
+<div class="section">
+  <div class="section-header">
+    <span>DATOS DEL PADRE / MADRE BIOLÓGICO</span>
+    <span class="section-note">(Requerido para el beneficiario {{tipo_hijo}})</span>
+  </div>
+  <table>
+    <tr>
+      <td style="width: 20%">
+        <div class="label">No. Identificación</div>
+      </td>
+      <td style="width: 20%">
+        <div class="label">Tipo documento</div>
+      </td>
+      <td style="width: 20%">
+        <div class="label">Celular</div>
+      </td>
+      <td style="width: 40%">
+        <div class="label">Correo electrónico</div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 20%">
+        <div class="text">{{biologico.numero_documento}}</div>
+      </td>
+      <td style="width: 20%">
+        <div class="text">{{biologico.tipo_documento}}</div>
+      </td>
+      <td style="width: 20%">
+        <div class="text">{{biologico.telefono}}</div>
+      </td>
+      <td style="width: 40%">
+        <div class="text">{{biologico.email}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 25%">
+        <div class="label">Primer apellido</div>
+        <div class="text">{{biologico.primer_apellido}}</div>
+      </td>
+      <td style="width: 25%">
+        <div class="label">Segundo apellido</div>
+        <div class="text">{{biologico.segundo_apellido}}</div>
+      </td>
+      <td style="width: 25%">
+        <div class="label">Primer nombre</div>
+        <div class="text">{{biologico.primer_nombre}}</div>
+      </td>
+      <td style="width: 25%">
+        <div class="label">Segundo nombre</div>
+        <div class="text">{{biologico.segundo_nombre}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="label">Dirección de residencia</div>
+        <div class="text">{{biologico.direccion}}</div>
+      </td>
+      <td>
+        <div class="label">Ciudad residencia</div>
+        <div class="text">{{biologico.ciudad_residencia}}</div>
+      </td>
+      <td>
+        <div class="checkbox-inline">
+            <span>Urbana</span>
+            <div {% if biologico.zona_urbana=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+              %}>{% if biologico.zona_urbana=='S' %}X{% endif %} </div>
+
+            <span>Rural</span>
+            <div {% if biologico.zona_urbana =='N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+              %}>{% if biologico.zona_urbana =='N' %}X{% endif %}</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- Pregunta sobre ubicación del padre/madre -->
+<div class="section">
+  <div class="section-card">
+    <div class="group-text">
+      <span style="margin-right: 10px;">Desconoce ubicación del padre/madre biológico del menor:</span>
+      <div class="checkbox-inline">
+          <span>SI</span>
+          <div {% if desconoce_ubicacion=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+            endif %}>{% if desconoce_ubicacion=='S' %}X{% endif %}</div>
+        
+          <span>NO</span>
+          <div {% if desconoce_ubicacion !='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+            endif %}>{% if desconoce_ubicacion !='S' %}X{% endif %} </div>
+      </div>
+    </div>
+    <div style="margin-top: 4px; font-size: 8px;">
+      (Requerido para beneficiarios {{tipo_hijo}})
+    </div>
+  </div>
+</div>
+{% endif %}

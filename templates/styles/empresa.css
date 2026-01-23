@@ -208,13 +208,18 @@ h1 {
 .small-checkbox {
     width: 10px;
     height: 10px;
-    border: 1px solid #7a7a7a;
+    padding: 1px;
+    border: 1px solid #638864;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 3px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
 }
 
 .small-checkbox.active {
-    background-color: #7a7a7a;
+    background-color: #e1f9e4;
 }
 
 .id-type-row {

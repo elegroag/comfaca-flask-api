@@ -1,0 +1,328 @@
+.header {
+    display: flex;
+    align-items: center;
+    border: 1px solid #777;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.header-logo {
+    width: 90px;
+    border-right: 1px solid #777;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-title {
+    flex: 1;
+    padding: 10px;
+    border-right: 0;
+    text-align: center;
+}
+
+.title-section h1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.field-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.field-line label {
+    margin-right: 5px;
+}
+
+.field-line .underline {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    min-height: 20px;
+    line-height: 2
+}
+
+.logo-section {
+    width: 90px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-right: 1px solid #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-placeholder {
+    width: 140px;
+    height: 60px;
+    background: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #666;
+    text-align: center;
+}
+
+.mintrabajo-section {
+    width: 160px;
+    padding: 3px;
+    border-right: 1px solid #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date-section {
+    width: 200px;
+    padding: 0;
+    border-left: 1px solid #777;
+    margin-right: 10px;
+}
+
+.date-fields {
+    display: flex;
+}
+
+.date-field {
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+    border-right: 1px solid #000;
+    font-size: 9px;
+}
+
+.date-field:last-child {
+    border-right: none;
+    flex: 2;
+}
+
+.section-card {
+    background: #fff;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 1px solid #333;
+    margin-bottom: 3px;
+    padding-top: 2px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-line {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+}
+
+.form-line label {
+    margin-right: 5px;
+}
+
+.form-line input[type="text"] {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 2px 5px;
+    font-size: 11px;
+}
+
+.section-header {
+    padding: 6px 10px;
+    font-weight: bold;
+    font-size: 8px;
+    margin-bottom: 0px;
+    color: #000;
+    background-color: #89bd94;
+    border-top: 1px solid #61a770;
+    border-left: 1px solid #75b182;
+    border-right: 1px solid #75b182;
+    border-bottom: none;
+}
+
+.checkbox-options {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.small-checkbox {
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border: 1px solid #638864;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+
+.small-checkbox.active {
+    background-color: #e1f9e4;
+}
+
+.legal-box {
+    border: 1px solid #444;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.info-text {
+    font-size: 9px;
+    line-height: 1.6;
+    text-align: justify;
+    font-weight: normal;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.form-table td {
+    border: 1px solid #777;
+    padding: 8px;
+}
+
+.form-table .label {
+    background: #f0f0f0;
+    font-weight: bold;
+    font-size: 9px;
+    color: #000;
+}
+
+.form-table .input {
+    background: #fff;
+    font-size: 8.5px;
+    font-weight: normal;
+}
+
+.parent-table {
+    display: flex;
+    gap: 0;
+}
+
+.parent-col {
+    flex: 1;
+    border: 1px solid #777;
+}
+
+.parent-col:first-child {
+    border-right: none;
+}
+
+.parent-header {
+    background-color: #e8e8e8;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid #777;
+}
+
+.parent-field {
+    padding: 8px;
+    font-size: 10px;
+}
+
+.image-placeholder {
+    border: 1px solid #777;
+    min-height: 200px;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 12px;
+}
+
+.declaration {
+    margin-top: 10px;
+    border: 1px solid #777;
+    padding: 10px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.resolution-box {
+    padding: 5px;
+    width: 100%;
+}
+
+.resolution-header {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
+}
+
+.text-radicado {
+    font-size: 9px;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #3f4e46;
+}
+
+.form-label {
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #444;
+}
+
+.resolution-fields {
+    display: flex;
+    gap: 5px;
+}
+
+.resolution-field {
+    flex: 1;
+    border: 1px solid #000;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 9px;
+}
+
+.table-anidada {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-anidada td {
+    border: 1px solid transparent;
+    padding: 5px;
+}
+
+.declaracion {
+    margin: 1px 0;
+    padding: 3px;
+    border: 1px solid #444;
+    font-size: 7px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.declaracion strong {
+    font-size: 8px;
+}
+
+.nota {
+    padding: 5px;
+    margin: 5px 0;
+    font-size: 7px;
+    font-weight: bold;
+}

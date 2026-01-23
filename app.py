@@ -42,7 +42,7 @@ app = Flask(__name__)
 # Registrar middleware de autenticación Basic (excluir /health)
 from services.auth_middleware import register_basic_auth
 
-register_basic_auth(app, config, exempt_paths=['/health', '/favicon.ico'])
+register_basic_auth(app, config, exempt_paths=['/api/health', '/api/favicon.ico'])
 
 # Instantiate PDF service
 pdf_service = GeneratePdfService()
@@ -178,4 +178,4 @@ def internal_error(error):
     return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=False, host='0.0.0.0', port=80)

@@ -1,0 +1,161 @@
+<!-- Datos del Cónyuge -->
+<div class="section">
+  <div class="section-header">DATOS BÁSICOS DEL CÓNYUGE</div>
+  <table>
+    <tr>
+      <td class="label">Tipo documento</td>
+      <td class="label">No. Identificación</td>
+      <td class="label">Fecha nacimiento</td>
+      <td class="label">Sexo</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="text">{{tipo_documento}}</div>
+      </td>
+      <td>
+        <div class="text">{{cedcon}}</div>
+      </td>
+      <td>
+        <div class="text">{{fecnac}}</div>
+      </td>
+      <td>
+        <div class="text">{{sexo_detalle}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Primer apellido</td>
+      <td class="label">Segundo apellido</td>
+      <td class="label">Primer nombre</td>
+      <td class="label">Segundo nombre</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="text">{{priape}}</div>
+      </td>
+      <td>
+        <div class="text">{{segape}}</div>
+      </td>
+      <td>
+        <div class="text">{{prinom}}</div>
+      </td>
+      <td>
+        <div class="text">{{segnom}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="label" colspan="2">Pertenencia étnica</td>
+      <td class="label">Resguardo</td>
+      <td class="label">Pueblo indígena</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="text">{{etnica_name}}</div>
+      </td>
+      <td>
+        <div class="text">{{resguardo_name}}</div>
+      </td>
+      <td>
+        <div class="text">{{pueblo_name}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Tiene discapacidad</td>
+      <td class="label">Tipo discapacidad</td>
+      <td class="label">Ingresos mensuales</td>
+      <td class="label">Recibe subsidio</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <span>SI</span>
+            <div {% if tipdis and tipdis !="00" %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+              endif %}> {% if tipdis and tipdis !="00" %}X{% endif %}</span></div>
+          </div>
+          <div class="checkbox-item">
+            <span>NO</span>
+            <div {% if tipdis==None or tipdis=="00" %} class="small-checkbox active" {% else %} class="small-checkbox"
+              {% endif %}> {% if tipdis==None or tipdis=="00" %}X{% endif %}</span></div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="text">{{discapacidad_name}}</div>
+      </td>
+      <td>
+        <div class="text">{{salario}}</div>
+      </td>
+      <td>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <span>SI</span>
+            <div {% if has_subsidio=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>{% if has_subsidio=='S' %}X{% endif %}</span>
+            </div>
+          </div>
+          <div class="checkbox-item">
+            <span>NO</span>
+            <div {% if has_subsidio !='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>{% if has_subsidio !='S' %}X{% endif %}</span>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="label" colspan="2">Nombre empresa donde trabaja</td>
+      <td class="label" colspan="2">Ocupación</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="text">{{empresa_labora}}</div>
+      </td>
+      <td colspan="2">
+        <div class="text">{{ocupacion}}</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-header">DATOS DE UBICACIÓN Y CONTACTO</div>
+  <table>
+    <tr>
+      <td class="label" colspan="2">Dirección de residencia</td>
+      <td class="label">Ciudad residencia</td>
+      <td class="label">Urbana / Rural</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="text">{{direccion}}</div>
+      </td>
+      <td>
+        <div class="text">{{ciudad_name}}</div>
+      </td>
+      <td>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <span>Urbana</span>
+            <div {% if zoneurbana=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>{% if zoneurbana=='S' %}X{% endif %}</span>
+            </div>
+          </div>
+          <div class="checkbox-item">
+            <span>Rural</span>
+            <div {% if zoneurbana=='N' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>{% if zoneurbana=='N' %}X{% endif %}</span>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Celular</td>
+      <td class="label" colspan="3">Correo electrónico</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="text">{{telefono}}</div>
+      </td>
+      <td colspan="3">
+        <div class="text">{{email}}</div>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,79 @@
+
+<!-- Section 2: Datos Específicos del Empleador -->
+<div class="section-header" style="margin-bottom: 0px">
+  2. DATOS ESPECÍFICOS DEL EMPLEADOR
+</div>
+<table>
+  <tr>
+    <td style="width: 15%" class="label-bg">
+      <div class="form-label">Tipo de Persona</div>
+    </td>
+    <td style="width: 10%">
+      <div class="list-item">
+        <label class="label">Natural</label>
+        <span class="small-checkbox{{ ' active' if tipper=='N' else '' }}"></span>
+      </div>
+    </td>
+    <td style="width: 10%">
+      <div class="list-item">
+        <label class="label">Jurídica</label>
+        <span class="small-checkbox{{ ' active' if tipper=='J' else '' }}"></span>
+      </div>
+    </td>
+    <td style="width: 15%" class="label-bg">
+      <div class="form-label">Tipo de Empresa</div>
+    </td>
+    <td style="width: 10%">
+      <div class="list-item">
+        <label class="label">Publica</label>
+        <span class="small-checkbox{{ ' active' if tipemp=='P' else '' }}"></span>
+      </div>
+    </td>
+    <td style="width: 10%">
+      <div class="list-item">
+        <label class="label">Oficial</label>
+        <span class="small-checkbox{{ ' active' if tipemp=='O' else '' }}"></span>
+      </div>
+    </td>
+    <td style="width: 10%">
+      <div class="list-item">
+        <label class="label">Mixta</label>
+        <span class="small-checkbox{{ ' active' if tipemp=='M' else '' }}"></span>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td style="width: 20%" class="border-t label-bg" colspan="2">
+      <div class="form-label">Actividad Económica</div>
+    </td>
+    <td class="border-t">
+      <div>{{actividad_name}}</div>
+    </td>
+    <td class="border-t label-bg">
+      <div class="form-label">Código Actividad Económica (CIIU)</div>
+    </td>
+    <td class="border-t">
+      <div>{{codact}}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">
+        Lugar donde laboran <small>(Los trabajadores en el Departamento del
+          Caquetá)</small>
+      </div>
+    </td>
+    <td>
+      <div>{{zona_name}}</div>
+    </td>
+    <td class="label-bg">
+      <div class="form-label">Nombre Establecimiento de Comercio</div>
+    </td>
+    <td>
+      <div>{{razsoc}}</div>
+    </td>
+  </tr>
+</table>

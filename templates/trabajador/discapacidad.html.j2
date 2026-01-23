@@ -1,0 +1,19 @@
+<!-- Sección 8: Discapacidad -->
+<div class="section">
+    <div class="section-header">8. PRESENTA ALGUNA DISCAPACIDAD?</div>
+    <table>
+        <tr>
+            <td style="width: 100px;">
+                <div class="inline-checkbox">
+                    <span {% if tipdis and tipdis != '00' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>{% if tipdis and tipdis != '00' %}X{% endif %}</span> <label>SI</label>
+                    <span {% if not tipdis or tipdis == '00' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                        endif %}>{% if not tipdis or tipdis == '00' %}X{% endif %}</span> <label>NO</label>
+                </div>
+            </td>
+            <td style="width: 30px;">
+                <div class="label">Cual</div>
+            </td>
+            <td>{% if tipdis %}{{discapacidad_name}}{% else %}NINGUNA{% endif %}</td>
+        </tr>
+    </table>
+</div>

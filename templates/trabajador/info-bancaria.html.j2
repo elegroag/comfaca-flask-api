@@ -1,0 +1,50 @@
+
+<!-- Sección 10: Información Bancaria -->
+<div class="section">
+    <div class="section-header">10. INFORMACIÓN DAVIPLATA O CUENTA BANCARIA PARA PAGO DEL SUBSIDIO FAMILIAR
+    </div>
+    <table>
+        <tr>
+            <td>YO <div class="text">{{nombre_trabajador}}</div>
+            </td>
+            <td>No de Documento <div class="text">{{cedtra}}</div>
+            </td>
+            <td><label class="label">Tipo de afiliado:</label></td>
+            <td>
+                <div class="inline-checkbox">
+                    <label>Trabajador </label>
+                    <span class="small-checkbox active">X</span>
+                    <label>Cónyuge </label>
+                    <span class="small-checkbox"></span>
+                    <label>Otro </label>
+                    <span class="small-checkbox"></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Autorizo pago de la cuota monetaria en</td>
+            <td colspan="3">Entidad Bancaria: <div class="text">
+            {% if codban is none or codban=='' or codban=='@' %}NO APLICA{% else %}{{banco_name}}{% endif %}</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="inline-checkbox">
+                    <label>Daviplata </label>
+                    <span {% if tippag=='D' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                        %}>{% if tippag=='D' %}X{% endif %}</span>
+                    <label>Cuenta de Ahorro </label>
+                    <span {% if tippag=='A' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                        %}>{% if tippag=='A' %}X{% endif %}</span>
+                    <label>No tiene </label>
+                    <span {% if tippag is none or tippag=='' or tippag=='@' or tippag=='T' %} class="small-checkbox active" {% else %}
+                        class="small-checkbox" {% endif %}>{% if tippag is none or tippag=='' or tippag=='@' or tippag=='T' %}X{% endif %}</span>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="text">No. <div class="text">{{numcue}}</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

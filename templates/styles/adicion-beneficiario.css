@@ -110,21 +110,6 @@
     font-weight: bold;
 }
 
-.checkbox-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 0px;
-}
-
-.checkbox {
-    width: 14px;
-    height: 14px;
-    border: 1px solid #333;
-    display: inline-block;
-    background: white;
-}
-
 .section {
     margin: 15px 0;
     border: none;
@@ -163,14 +148,17 @@ td {
 .label {
     font-weight: bold;
     width: 150px;
-    color: #444;
+    color: #000;
+    font-size: 9.5px;
 }
 
 .text {
     display: inline-block;
     min-height: 18px;
     padding: 2px 4px;
-    font-size: 9px;
+    font-size: 8px;
+    color: #444;
+    font-weight: normal;
 }
 
 .id-types {
@@ -187,16 +175,35 @@ td {
     font-size: 9px;
 }
 
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px;
+}
+
+.checkbox-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 0px;
+}
+
 .small-checkbox {
     width: 10px;
     height: 10px;
-    border: 1px solid #7a7a7a;
+    padding: 1px;
+    border: 1px solid #638864;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 3px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
 }
 
 .small-checkbox.active {
-    background-color: #7a7a7a;
+    background-color: #e1f9e4;
 }
 
 .row {
@@ -210,18 +217,6 @@ td {
 
 .col:last-child {
     border-right: none;
-}
-
-.radio-group {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
 
 .legal-text {
@@ -250,15 +245,22 @@ td {
     background: #f9f9f9;
 }
 
-.ethnicity-options {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    font-size: 9px;
+.declaracion {
+    margin: 1px 0;
+    padding: 3px;
+    border: 1px solid #444;
+    font-size: 7px;
+    line-height: 1.5;
+    text-align: justify;
 }
 
-.ethnicity-option {
-    display: flex;
-    align-items: center;
-    gap: 3px;
+.declaracion strong {
+    font-size: 8px;
+}
+
+.nota {
+    padding: 5px;
+    margin: 5px 0;
+    font-size: 7px;
+    font-weight: bold;
 }

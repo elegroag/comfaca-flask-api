@@ -1,0 +1,162 @@
+
+<!-- Section 1: Datos Generales Empleador -->
+<div class="section-header" style="margin-bottom: 0px">
+
+1. DATOS GENERALES EMPLEADOR
+</div>
+<table>
+  <tr>
+    <td style="width: 100px" class="label-bg">
+      <label class="form-label">Tipo de Identificación</label>
+    </td>
+    <td colspan="9">
+      <div class="d-flex">
+        <table class="table-anidada" style="width: 500px">
+          <tr>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='3' else '' }}">{% if tipdoc=='3' %}x{% endif %}</span>
+                <span>NIT</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='1' else '' }}">{% if tipdoc=='1' %}x{% endif %}</span>
+                <span>C.C.</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='4' else '' }}">{% if tipdoc=='4' %}x{% endif %}</span>
+                <span>C.E.</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='13' else '' }}">{% if tipdoc=='13' %}x{% endif %}</span>
+                <span>VISA</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='6' else '' }}">{% if tipdoc=='6' %}x{% endif %}</span>
+                <span>PAS.</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='8' else '' }}">{% if tipdoc=='8' %}x{% endif %}</span>
+                <span>P.E.P.</span>
+              </div>
+            </td>
+            <td>
+              <div class="list-item">
+                <span class="small-checkbox{{ ' active' if tipdoc=='11' else '' }}">{% if tipdoc=='11' %}x{% endif %}</span>
+                <span>C.D.</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4" class="label-bg">
+      <div class="form-label">Razón Social/Apellidos y Nombres</div>
+    </td>
+    <td>
+      <div>{{razsoc}}</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Número de Identificación</div>
+    </td>
+    <td>
+      <div>{{nit}}</div>
+    </td>
+    <td class="label-bg">
+      <div class="form-label">Dígito de Verificación</div>
+    </td>
+    <td>
+      <div>{{digver}}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4" class="label-bg">
+      <div class="form-label">Dirección Comercial</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Barrio Comercial</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Ciudad Comercial</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Departamento Comercial</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <div>{{dirpri}}</div>
+    </td>
+    <td colspan="2">
+      <div>{{barnotif}}</div>
+    </td>
+    <td colspan="2">
+      <div>{{ciupri_name}}</div>
+    </td>
+    <td colspan="2">
+      <div class="text">{{departamento_name}}</div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="4" class="label-bg">
+      <div class="form-label">Dirección de Notificación</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Barrio de Notificaciones</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Ciudad de Noticaciones</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Departamento de Noticaciones</div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="4">
+      <div class="text">{{direccion}}</div>
+    </td>
+    <td colspan="2">
+      <div class="text">{{barcomer}}</div>
+    </td>
+    <td colspan="2">
+      <div class="text">{{ciudad_name}}</div>
+    </td>
+    <td colspan="2">
+      <div class="text">{{departamento_name}}</div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Teléfono Fijo</div>
+    </td>
+    <td>
+      <div>{{telefono}}</div>
+    </td>
+    <td colspan="2" class="label-bg">
+      <div class="form-label">Celular</div>
+    </td>
+    <td>
+      <div>{{celular}}</div>
+    </td>
+    <td colspan="3" class="label-bg">
+      <div class="form-label">Correo para notificaciones</div>
+    </td>
+    <td>
+      <div>{{email}}</div>
+    </td>
+  </tr>
+</table>

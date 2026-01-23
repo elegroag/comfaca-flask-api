@@ -1,0 +1,96 @@
+
+<!-- Sección 9: Datos Laborales -->
+<div class="section">
+    <div class="section-header">9. DATOS LABORALES DEL TRABAJADOR</div>
+    <table>
+        <tbody>
+            <tr>
+                <td><span class="label">Fecha de Ingreso a la Empresa</span></td>
+                <td><span class="label">Tipo de Contrato</span></td>
+                <td><span class="label">Jornada Laboral</span></td>
+                <td><span class="label">Salario Básico</span></td>
+                <td><span class="label">Comisión</span></td>
+                <td><span class="label">Sector Agrop.</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text">{{fecing}}</div>
+                </td>
+                <td>
+                    <div class="inline-checkbox">
+                        <span {% if tipcon=='F' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipcon=='F' %}X{% endif %}</span> <label>Fijo</label>
+                        <span {% if tipcon=='I' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipcon=='I' %}X{% endif %}</span> <label>Ind.</label>
+                        <span {% if tipcon=='L' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipcon=='L' %}X{% endif %}</span> <label>Labor u Obra</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="inline-checkbox">
+                        <span {% if tipjor=='C' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipjor=='C' %}X{% endif %}</span> <label>Completa</label>
+                        <span {% if tipjor=='M' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipjor=='M' %}X{% endif %}</span> <label>Medio Tiem.</label>
+                        <span {% if tipjor=='P' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if tipjor=='P' %}X{% endif %}</span> <label>Parcial</label>
+                    </div>
+                </td>
+                <td>$ {{salario}}</td>
+                <td>
+                    <div class="inline-checkbox">
+                        <span {% if comision=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if comision=='S' %}X{% endif %}</span> <label>SI</label>
+                        <span {% if comision=='N' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if comision=='N' %}X{% endif %}</span> <label>NO</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="inline-checkbox">
+                        <span class="small-checkbox"></span> <label>SI</label>
+                        <span class="small-checkbox active">X</span> <label>NO</label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class='border-t label' style="width: 35%;">Dirección del lugar donde desarrolla su labor:</td>
+                <td class='border-t label' style="width: 30%;">Zona laboral:</td>
+                <td class="border-t label" style="width: 35%;">Nombre de empresa labora:</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text">{{dirlab}}</div>
+                </td>
+                <td>
+                    <div class="inline-checkbox">
+                        <span {% if ruralt=='N' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if ruralt=='N' %}X{% endif %}</span> <label>U</label>
+                        <span {% if ruralt=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+                            endif %}>{% if ruralt=='S' %}X{% endif %}</span> <label>R</label>
+                    </div>
+                </td>
+                <td class="label"><div class="text">{{razsoc}}</div></td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <div class="inline-checkbox">
+                        <strong>Labora en otra empresa</strong>
+                        <span {% if labora_otra_empresa=='S' %} class="small-checkbox active" {% else %}
+                            class="small-checkbox" {% endif %}>{% if labora_otra_empresa=='S' %}X{% endif %}</span> <label>SI</label>
+                        <span {% if labora_otra_empresa=='N' %} class="small-checkbox active" {% else %}
+                            class="small-checkbox" {% endif %}>{% if labora_otra_empresa=='N' %}X{% endif %}</span> <label>NO</label>
+                    </div>
+                </td>
+                <td>Otra empresa labora: {% if labora_otra_empresa=='S' %} {{empresa_labora}} {% else %}NINGUNA{% endif %}</td>
+                <td>
+                    <div class="text"> Ocupación: {{cargo_name}}</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,158 @@
+<div class="section">
+  <div class="section-header">
+    <span>DATOS DE LA PERSONA A CARGO DEL TRABAJADOR</span>
+    <span class="section-note">(Datos del beneficiario)</span>
+  </div>
+  <table>
+    <tr>
+      <td style="width: 20%">
+        <div class="label">No. Identificación</div>
+      </td>
+      <td style="width: 20%">
+        <div class="label">Tipo documento</div>
+      </td>
+      <td style="width: 40%">
+        <div class="label">Nombre completo beneficiario</div>
+      </td>
+      <td style="width: 20%">
+        <div class="label">Parentesco</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div type="text">{{numdoc}}</div>
+      </td>
+      <td>
+        <div type="text">{{tipo_documento}}</div>
+      </td>
+      <td>
+        <div type="text">{{nombre_beneficiario}}</div>
+      </td>
+      <td>
+        <div type="text">{{parentesco}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <div class="label">Pertenencia étnica</div>
+        <div class="checkbox-inline">
+           <div class="list-item">
+                <span {% if peretn=='1' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='1' %}X{% endif %}</span>
+                <span class='mini-label'>Afrocolombiano</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='2' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='2' %}X{% endif %}</span>
+                <span class='mini-label'>Comunidad Negra</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='3' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='3' %}X{% endif %}</span>
+                <span class='mini-label'>Indígena</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='4' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='4' %}X{% endif %}</span>
+                <span class='mini-label'>Palenquero</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='5' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='5' %}X{% endif %}</span>
+                <span class='mini-label'>Raizal Del Archipiélago De San Andrés</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='6' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='6' %}X{% endif %}</span>
+                <span class='mini-label'>Room/gitano</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn is none or peretn=='' or peretn == '8' %} class="small-checkbox active" {% else %}
+                    class="small-checkbox" {% endif %}>{% if peretn is none or peretn=='' or peretn == '8' %}X{% endif %}</span>
+                <span class='mini-label'>No Disponible</span>
+            </div>
+            <div class="list-item">
+                <span {% if peretn=='7' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif
+                    %}>{% if peretn=='7' %}X{% endif %}</span>
+                <span class='mini-label'>No se auto reconoce en ninguno de los anteriores</span>
+            </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="label">Resguardo:</div>
+      </td>
+      <td colspan="2">
+        <div class="label">Pueblo indígena:</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="text">{{resguardo_name}}</div>
+      </td>
+      <td colspan="2">
+        <div class="text">{{pueblo_name}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="label">Tiene discapacidad:</div>
+      </td>
+      <td>
+        <div class="label">Sexo:</div>
+      </td>
+      <td>
+        <div class="label">Fecha nacimiento:</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="checkbox-inline">
+            <span>SI</span>
+            <div {% if tipdis and tipdis !="00" %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+              endif %}>
+              {% if tipdis and tipdis !="00" %}X{% endif %}
+            </div>
+            <span>NO</span>
+            <div {% if tipdis==None or tipdis=="00" %} class="small-checkbox active" {% else %} class="small-checkbox"
+              {% endif %}>
+              {% if tipdis==None or tipdis=="00" %}X{% endif %}
+            </div>
+        </div>
+      </td>
+      <td>
+        <div class="checkbox-inline">
+            <span>M</span>
+            <span {% if sexo=='M' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}> 
+            {% if sexo=='M' %}X{% endif %}
+            </span>
+            <span>F</span>
+            <span {% if sexo=='F' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>
+            {% if sexo=='F' %}X{% endif %}
+            </span>
+            <span>I</span>
+            <span {% if sexo=='I' %} class="small-checkbox active" {% else %} class="small-checkbox" {% endif %}>
+            {% if sexo=='I' %}X{% endif %}
+            </span>
+        </div>
+      </td>
+      <td>
+        <div class="text">{{fecnac}}</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div class="label" style="margin-top: 8px">Tipo de discapacidad:</div>
+        <div class="text">{{discapacidad_name}}</div>
+      </td>
+      <td>
+        <div class="label" style="margin-top: 8px">Tipo beneficiario</div>
+        <div class="text">{{parentesco}}</div>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table>
+</div>

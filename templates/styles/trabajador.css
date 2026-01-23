@@ -48,7 +48,7 @@
 .header-right h1 {
     font-size: 13px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .tipo-afiliado-table {
@@ -108,8 +108,8 @@
 }
 
 .table-anidada td {
-    border: 1px solid #efefef;
-    padding: 5px;
+    border: transparent;
+    padding: 2px;
 }
 
 .input-field {
@@ -182,13 +182,18 @@
 .small-checkbox {
     width: 10px;
     height: 10px;
-    border: 1px solid #7a7a7a;
+    padding: 1px;
+    border: 1px solid #638864;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 3px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
 }
 
 .small-checkbox.active {
-    background-color: #7a7a7a;
+    background-color: #e1f9e4;
 }
 
 .declaracion {
@@ -209,4 +214,14 @@
     margin: 5px 0;
     font-size: 7px;
     font-weight: bold;
+}
+
+.mini-label {
+    font-size: 7px;
+}
+
+.show-radicado {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 6px;
 }
