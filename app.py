@@ -62,6 +62,9 @@ def generate_pdf_endpoint():
     - Si output especificado: JSON con {"status": "success", "path": "path/to/file"}
     - Si no output: PDF file como attachment
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     try:
         if not request.is_json:
             return jsonify({"error": "Content-Type debe ser application/json"}), 415
@@ -80,11 +83,14 @@ def generate_pdf_endpoint():
         if not isinstance(context, dict):
             return jsonify({"error": "Campo 'context' debe ser un objeto JSON"}), 400
 
+        logger.info(f"Recibida solicitud de PDF para template: {template}")
+
         # Generar PDF via service
         result = pdf_service.generate_pdf("{}.j2".format(template), context, output_path)
 
         if output_path:
             # Retornar confirmación de guardado
+            logger.info(f"PDF generado exitosamente: {result}")
             return jsonify({
                 "success": True,
                 "message": "PDF generado exitosamente",
@@ -92,6 +98,7 @@ def generate_pdf_endpoint():
             })
         else:
             # Retornar PDF como archivo
+            logger.info(f"PDF generado exitosamente para descarga directa")
             pdf_buffer = io.BytesIO(result)
             pdf_buffer.seek(0)
             return send_file(
@@ -102,10 +109,13 @@ def generate_pdf_endpoint():
             )
 
     except FileNotFoundError as e:
+        logger.error(f"Template no encontrado: {e}")
         return jsonify({"error": str(e)}), 404
     except RuntimeError as e:
+        logger.error(f"Error de runtime: {e}")
         return jsonify({"error": str(e)}), 500
     except Exception as e:
+        logger.error(f"Error inesperado: {e}")
         return jsonify({"error": f"Error inesperado: {e}"}), 500
 
 

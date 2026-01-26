@@ -4,8 +4,14 @@ This is a port of the former top-level `generate_pdf` function into a
 service class following a simple layered pattern.
 """
 from pathlib import Path
+import logging
+import time
 from weasyprint import HTML
 from jinja2 import Environment, FileSystemLoader
+
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class GeneratePdfService:
     """Service responsible for rendering an HTML template and producing a PDF.
@@ -52,6 +58,9 @@ class GeneratePdfService:
         RuntimeError
             For other unexpected errors during generation.
         """
+        start_time = time.time()
+        logger.info(f"Iniciando generación de PDF para template: {template_name}")
+        
         try:
             # Prevent path traversal by using only the name
             safe_name = Path(template_name).name
@@ -62,18 +71,29 @@ class GeneratePdfService:
             if not template_path.exists():
                 raise FileNotFoundError(f"Template no encontrado: {template_name}")
 
+            # Medir tiempo de renderizado
+            render_start = time.time()
             template = self.env.get_template(safe_name)
             rendered_html = template.render(**context)
+            render_time = time.time() - render_start
+            logger.info(f"Template renderizado en {render_time:.2f} segundos")
 
-            # Generate PDF
+            # Medir tiempo de generación de PDF
+            pdf_start = time.time()
             base_url = template_path.parent
             pdf_bytes = HTML(string=rendered_html, base_url=str(base_url)).write_pdf()
+            pdf_time = time.time() - pdf_start
+            logger.info(f"PDF generado en {pdf_time:.2f} segundos")
+
+            total_time = time.time() - start_time
+            logger.info(f"Tiempo total de generación: {total_time:.2f} segundos")
 
             if output_path:
                 output_dir = Path(output_path).parent
                 output_dir.mkdir(parents=True, exist_ok=True)
                 with open(output_path, 'wb') as f:
                     f.write(pdf_bytes)
+                logger.info(f"PDF guardado en: {output_path}")
                 return output_path
             else:
                 return pdf_bytes
@@ -82,6 +102,8 @@ class GeneratePdfService:
             # Let callers handle 404 semantics
             raise
         except Exception as e:
+            total_time = time.time() - start_time
+            logger.error(f"Error después de {total_time:.2f} segundos: {e}")
             raise RuntimeError(f"Error al generar PDF: {e}")
 
     def render_template(self, template_name: str, context: dict) -> str:
