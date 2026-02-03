@@ -1,0 +1,44 @@
+{# Sección 5: Información Económica #}
+<table>
+  <tr>
+    <td colspan="6" class="section-header">INFORMACIÓN ECONÓMICA DEL SOLICITANTE</td>
+  </tr>
+  <tr>
+    <td colspan="3" rowspan="5" style="vertical-align: top;">
+      <span class="field-label">Arrendamientos</span><br>
+      <div class="input-field" style="margin-bottom: 10px;">{{
+        solicitud.informacion_economica.arrendamientos|default(0)|currency }}</div><br>
+      <span class="field-label">Otros ingresos</span><br>
+      <div class="input-field" style="margin-bottom: 10px;">{{
+        solicitud.informacion_economica.otros_ingresos|default(0)|currency }}</div><br>
+      <span class="field-label">Descripción de ingresos:</span><br>
+      <div class="input-field" style="width: 100%; border: 1px solid #000; min-height: 100px; white-space: pre-wrap;">{{
+        solicitud.informacion_economica.descripcion_ingresos|default('') }}</div>
+    </td>
+    <td colspan="3" class="bg-light-green font-bold">OTROS INGRESOS</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <span class="field-label">TOTAL GASTOS</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_economica.total_gastos|default(0)|currency }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <span class="field-label">Descripción de gastos</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_economica.descripcion_gastos|default('') }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <span class="field-label">TOTAL ACTIVOS</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_economica.total_activos|default(0)|currency }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <span class="field-label">TOTAL PASIVOS</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_economica.total_pasivos|default(0)|currency }}</div>
+    </td>
+  </tr>
+</table>

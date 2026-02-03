@@ -1,0 +1,59 @@
+{# Referencias del solicitante #}
+<table>
+  <tr>
+    <td colspan="3" class="section-header">REFERENCIAS</td>
+  </tr>
+
+  {# Referencias Familiares #}
+  <tr>
+    <td colspan="3" class="bg-light-green font-bold">FAMILIAR</td>
+  </tr>
+  {% if solicitud.referencias and solicitud.referencias|length > 0 %}
+  {% for referencia in solicitud.referencias %}
+  {% if referencia.tipo == 'familiar' %}
+  <tr>
+    <td style="width: 60%;">
+      <span class="field-label">Nombre / Apellidos</span><br>
+      <div class="input-min-field">{{ referencia.nombre_apellidos|default('') }}</div>
+    </td>
+    <td colspan="2">
+      <span class="field-label">No. Celular</span><br>
+      <div class="input-min-field">{{ referencia.celular|default('') }}</div>
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {# Referencias Personales #}
+  <tr>
+    <td colspan="3" class="bg-light-green font-bold">PERSONAL (Que no viva con usted)</td>
+  </tr>
+  {% if solicitud.referencias and solicitud.referencias|length > 0 %}
+  {% for referencia in solicitud.referencias %}
+  {% if referencia.tipo == 'personal' %}
+  <tr>
+    <td>
+      <span class="field-label">Nombre / Apellidos</span><br>
+      <div class="input-min-field">{% if referencia %} {{ referencia.nombre_apellidos }} {% else %} {% endif %}</div>
+    </td>
+    <td colspan="2">
+      <span class="field-label">No. Celular</span><br>
+      <div class="input-min-field">{% if referencia %} {{ referencia.celular }} {% else %} {% endif %}</div>
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td>
+      <span class="field-label">Nombre / Apellidos</span><br>
+      <div class="input-min-field">{% if referencia %} {{ referencia.nombre_apellidos }} {% else %} {% endif %}</div>
+    </td>
+    <td colspan="2">
+      <span class="field-label">No. Celular</span><br>
+      <div class="input-min-field">{% if referencia %} {{ referencia.celular }} {% else %} {% endif %}</div>
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+</table>

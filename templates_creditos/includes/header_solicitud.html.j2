@@ -1,0 +1,25 @@
+{# Header con logo y título #}
+<table class="header-section">
+  <tr>
+    <td style="width: 100px; text-align: center;">
+      <div class="logo-box">
+        <img src="img/logo-min.png" alt="Logo" style="max-width: 100%; max-height: 100%;">
+      </div>
+    </td>
+    <td style="text-align: center;">
+      <div class="title-main">CAJA DE COMPENSACIÓN FAMILIAR DEL CAQUETÁ<br> <b>COMFACA</b></div>
+      <div class="title-main" style="font-size: 16px;">FORMULARIO DE SOLICITUD DE CRÉDITO</div>
+      <div class="warning-text">LOS DATOS AQUÍ REGISTRADOS ESTÁN SUJETOS A VERIFICACIÓN<br>
+        Diligenciar completamente este formulario para hacer ágil sus trámites e inconsistencias</div>
+    </td>
+    <td style="width: 120px;">
+      <div class="section-header">FECHA RADICADO</div>
+      <div style="height: 30px; border: 1px solid #000; margin-top: 5px; text-align: center; padding-top: 10px;">
+        {{ solicitud.encabezado.fecha_radicado|format_date if solicitud.encabezado.fecha_radicado else '' }}
+      </div>
+      <div class="code-box">
+        <span>PM-SGF-FT-16</span> <span>V3</span> <span>07-07-2021</span>
+      </div>
+    </td>
+  </tr>
+</table>

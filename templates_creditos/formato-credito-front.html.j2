@@ -1,0 +1,58 @@
+{% extends "layout.html.j2" %}
+
+{% block title %}FORMULARIO DE SOLICITUD DE CRÉDITO - COMFACA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="styles/formato-front.css" />
+<link rel="stylesheet" href="styles/formato-back-essential.css" />
+{% endblock %}
+
+{% block content %}
+{# Header con logo y fecha radicado #}
+{% include "includes/header_solicitud.html.j2" %}
+
+{# Sección 1: Solicitud de Crédito #}
+{% include "includes/datos_solicitud.html.j2" %}
+
+{# Sección 2: Producto Solicitado #}
+{% include "includes/producto_solicitado.html.j2" %}
+
+{# Sección 3: Datos del Solicitante #}
+{% include "includes/datos_solicitante.html.j2" %}
+
+{# Datos del Cónyuge #}
+{% include "includes/datos_conyuge.html.j2" %}
+
+{# Sección 4: Información Laboral #}
+{% include "includes/informacion_laboral.html.j2" %}
+
+{% include "includes/datos_pie_pagina.html.j2" %}
+
+<div class="page-break"></div>
+
+{# Sección: Ingresos y Descuentos #}
+{% include "includes/ingresos_descuentos.html.j2" %}
+
+{# Sección 5: Información Económica #}
+{% include "includes/informacion_economica.html.j2" %}
+
+{# Propiedades #}
+{% include "includes/propiedades.html.j2" %}
+
+{# Deudas #}
+{% include "includes/deudas.html.j2" %}
+
+{# Referencias #}
+{% include "includes/referencias.html.j2" %}
+
+{# Footer Legal #}
+{% include "includes/footer_legal.html.j2" %}
+
+{% include "includes/datos_pie_pagina.html.j2" %}
+
+<div class="page-break"></div>
+
+{% include "includes/seccion_legal.html.j2" %}
+{% include "includes/datos_pie_pagina.html.j2" %}
+
+{% endblock %}

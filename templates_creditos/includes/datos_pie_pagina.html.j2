@@ -1,0 +1,9 @@
+{# Información del PDF #}
+{% if pdf_metadata %}
+<div
+  style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 5px; font-size: 8px; color: #666; text-align: center;">
+  Documento generado el {{ pdf_metadata.fecha_generacion|format_date }} |
+  ID Solicitud: {{ pdf_metadata.solicitud_id }} |
+  Sistema Comfaca v{{ pdf_metadata.version|default('1.0') }}
+</div>
+{% endif %}

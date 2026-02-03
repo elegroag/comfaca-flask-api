@@ -1,0 +1,63 @@
+{# Propiedades del solicitante #}
+<table>
+  <tr>
+    <td colspan="5" class="section-header">PROPIEDADES</td>
+  </tr>
+  <tr>
+    <td class="font-bold">TIPO DE BIEN</td>
+    <td class="font-bold">DIRECCIÓN - MARCA - PLACA</td>
+    <td class="font-bold">CIUDAD</td>
+    <td class="font-bold">MATRICULA INMOB. / MODELO</td>
+    <td class="font-bold">VALOR COMERCIAL</td>
+  </tr>
+  {% if solicitud.propiedades and solicitud.propiedades|length > 0 %}
+  {% for propiedad in solicitud.propiedades %}
+  <tr>
+    <td>{{ propiedad.tipo_bien|default('') }}</td>
+    <td>
+      <div class="input-min-field">{{ propiedad.direccion_marca_placa|default('') }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ propiedad.ciudad|default('') }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ propiedad.matricula_modelo|default('') }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ propiedad.valor_comercial|default(0)|currency }}</div>
+    </td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <tr>
+    <td>Vivienda</td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>Vehículo</td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+    <td>
+      <div class="input-field"></div>
+    </td>
+  </tr>
+  {% endif %}
+</table>

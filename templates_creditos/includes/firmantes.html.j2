@@ -1,0 +1,64 @@
+{# Sección de firmantes del documento #}
+{% if firmantes and firmantes|length > 0 %}
+<div class="section" style="page-break-inside: avoid; margin-top: 30px;">
+  <div class="section-header">FIRMANTES DEL DOCUMENTO</div>
+
+  {% for firmante in firmantes %}
+  <div class="signature-section" style="margin-top: 20px; border: 1px solid #ddd; padding: 15px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div style="flex: 1;">
+        <div class="signature-title">{{ firmante.tipo|upper }} - {{ firmante.rol|upper }}</div>
+        <p style="margin: 10px 0;">
+          <strong>Nombre:</strong> {{ firmante.nombre_completo }}<br>
+          <strong>Documento:</strong> {{ firmante.numero_documento|format_document }}<br>
+          <strong>Email:</strong> {{ firmante.email }}<br>
+          <strong>Orden de firma:</strong> {{ firmante.orden }}
+        </p>
+        <div style="margin-top: 40px; border-top: 1px solid #000; padding-top: 5px; width: 300px;">
+          FIRMA Y HUELLA
+        </div>
+      </div>
+      <div class="fingerprint-box"
+        style="width: 100px; height: 120px; border: 1px solid #000; text-align: center; padding-top: 50px;">
+        HUELLA
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{# Información adicional del proceso de firmado #}
+{% if proceso_firmado %}
+<div class="section" style="margin-top: 20px; background-color: #f0f0f0; padding: 10px;">
+  <p style="font-size: 10px; margin: 0;">
+    <strong>Información de Firma Digital:</strong><br>
+    Proveedor: {{ proceso_firmado.proveedor }}<br>
+    Estado: {{ proceso_firmado.estado }}<br>
+    {% if proceso_firmado.transaccion_id %}
+    ID Transacción: {{ proceso_firmado.transaccion_id }}<br>
+    {% endif %}
+    {% if proceso_firmado.fecha_inicio %}
+    Fecha Inicio: {{ proceso_firmado.fecha_inicio|format_date }}<br>
+    {% endif %}
+  </p>
+</div>
+{% endif %}
+
+{% else %}
+{# Si no hay firmantes definidos, mostrar espacios en blanco #}
+<div class="section" style="margin-top: 30px;">
+  <div class="section-header">FIRMAS</div>
+  <div style="margin-top: 50px;">
+    <div style="display: inline-block; width: 45%; text-align: center;">
+      <div style="border-top: 1px solid #000; margin-top: 80px; padding-top: 5px;">
+        FIRMA DEL SOLICITANTE
+      </div>
+    </div>
+    <div style="display: inline-block; width: 45%; text-align: center; margin-left: 5%;">
+      <div style="border-top: 1px solid #000; margin-top: 80px; padding-top: 5px;">
+        FIRMA DEL ASESOR
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

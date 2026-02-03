@@ -1,0 +1,358 @@
+{% extends "layout.html.j2" %}
+
+{% block title %}Formulario de Crédito - Información Legal y Autorizaciones{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="styles/formato-back.css" />
+{% endblock %}
+
+{% block content %}
+{# Header #}
+<div class="section">
+    <div class="section-header">INFORMACIÓN LEGAL</div>
+</div>
+
+{# Secciones legales #}
+{% include "includes/seccion_legal.html.j2" %}
+
+{# Firmantes #}
+{% include "includes/firmantes.html.j2" %}
+
+{# Sección Deudor/Codeudor (original del back) #}
+<div class="section">
+    <div class="signature-section">
+        <div class="signature-box">
+            <div class="signature-title">DEUDOR O CODEUDOR</div>
+            <p class="legal-text">
+                Declar(o)(amos) que la información suministrada y los documentos que se anexan son totalmente ciertos.
+                Expresamente
+                autoriz(o)(amos) a COMFACA para que consulte y reporte a cualquier Banco de Datos la información y
+                referencias relativas
+                a mi (nuestros) nombre, apellido y documentos de identificación, a mi (nuestro) comportamiento y crédito
+                comercial,
+                hábitos de pagos, manejo de mi (nuestra) cuenta (S) corriente (s) Bancaria(s) y en general el
+                cumplimiento de mis obligaciones.
+                Declar(o)(amos) conocer el reglamento de crédito.
+            </p>
+        </div>
+
+        <!-- SECCIÓN 8: AUTORIZACIÓN DESCUENTOS DE CRÉDITO -->
+        <div class="section">
+            <div class="section-title">8. AUTORIZACIÓN DESCUENTOS DE CRÉDITO:</div>
+            <p class="legal-text">
+                De igual manera en el evento que resulte la solicitud de crédito, autorizo expresa e irrevocablemente a
+                COMFACA para
+                descontar en la fecha de desembolso del crédito el valor total de los gastos por concepto de estudio,
+                estudio de
+                crédito, evaluación de crédito, entendiendo por ella los procesos administrativos y operativos que
+                realiza previamente
+                el perfeccionamiento de mutuo correspondiente, así el valor del seguro deudores, intereses de ajustes,
+                central de riesgos,
+                saldos que a la fecha adeude a COMFACA, igualmente en caso de mi (nuestro) retiro de la empresa en forma
+                irrevocable
+                autoriz(o)(amos) al pagador para retener mi mis salarios y prestaciones sociales, pensiones /cesantías e
+                indemnización
+                a que tengo derecho el saldo que a esta fecha adeude. En el evento de tener otro crédito contabilizado
+                que cancelare
+                que me encuentro en mora pago (10) Realice la verificación de que cancelare para me encuentro
+                tramitando.
+            </p>
+        </div>
+
+        <!-- SECCIÓN 9: AUTORIZACIÓN CONSULTA O TRATAMIENTO DE DATOS PERSONALES -->
+        <div class="section">
+            <div class="section-title">9. AUTORIZACIÓN CONSULTA O TRATAMIENTO DE DATOS PERSONALES</div>
+            <p class="legal-text">
+                COMFACA identificada con Nit 891.190.047-2 es responsable del tratamiento de datos personales, y en tal
+                virtud,
+                recolectará, almacenará y usará su información personal para las siguientes finalidades: (1) Remitir o
+                enviar información
+                relacionada con el objeto social de la organización; (2) Realizar actividades de gestión administrativa;
+                (3) Cumplir con
+                la atención de los ciudadanos; SMS, teléfono u otro medio; (4) Recibir información o transferirla a
+                terceros de manera
+                lícita y en el marco de los convenios, contratos, alianzas, servicios, etc. que puedan realizar a través
+                de sus afiliados
+                comerciales; (5) Realizar campañas de información de cambios en el tratamiento de datos personales; (6)
+                Gestionar
+                actividades de captación y préstamo de recursos; (7) Gestionar actividades de captación y préstamo de
+                recursos;
+                (8) Cumplir con los requisitos legales para la prevención del lavado de activos y financiación del
+                terrorismo;
+                (9) Gestionar actividades de cobro administrativo y/o judicial de las obligaciones crediticias; (10)
+                Adelantar actividades
+                de recaudo; (11) Adelantar comunicaciones; (12) Transferir comunicaciones a terceros; (13) Cumplir con
+                actividades de
+                cobro y pago; (14) Realizar actividades de verificación de actividades de cobro y pago; (15) Cumplir con
+                los deberes
+                económicos y contables; (16) Atender requerimientos de autoridad judicial o administrativa; (17)
+                Realizar la verificación de
+                datos suministrados; (18) Realizar envío de certificaciones; (19) Realizar la vigilancia de datos de
+                cobranza contabilizadas a terceros;
+                (20) Realizar contratos de cobranza contabilizados a terceros; (21) Adelantar el ofrecimiento productos
+                y servicios;
+                (22) Gestionar la seguridad de la información; (23) Dar respuesta a solicitudes, peticiones, quejas y
+                reclamos de los
+                afiliados, de clientes, asociados, y en general de los ciudadanos.
+            </p>
+            <p class="legal-text">
+                Como titular de sus datos personales usted tiene derecho a: (i) Acceder en forma gratuita a los datos
+                proporcionados que
+                hayan sido objeto de tratamiento, (ii) Conocer, actualizar y rectificar su información frente a datos
+                parciales, inexactos,
+                incompletos, fraccionados, que induzcan a error, o aquellos cuyo tratamiento esté prohibido o no haya
+                sido autorizado.
+                (iii) Solicitar prueba de la autorización otorgada. (iv) Revocar la autorización y/o solicitar la
+                supresión del dato,
+                siempre y cuando no exista un deber legal o contractual que impida eliminarlo. (v) Abstenerse de
+                responder las preguntas
+                sobre datos sensibles. Puede ejercer sus derechos siguiendo el procedimiento descrito en nuestra
+                política, la cual puede
+                consultar en: www.comfaca.com o presentando su derecho electrónico en correo electrónico a
+                atencionusuario@comfaca.com
+                o usando nuestra página web www.comfaca.com
+            </p>
+            <p class="legal-text">
+                Firmar o diligenciar la información requerida se entenderá como una conducta inequívoca de que usted
+                como titular de
+                los datos personales otorga su consentimiento a COMFACA para que trate su información personal de
+                acuerdo con las
+                finalidades mencionadas anteriormente y manifiesta que ha leído y comprendido la directiva sobre la
+                protección de sus
+                datos y que la autoriza forma libre, previa, expresa, voluntaria y debidamente informada.
+            </p>
+            <p class="legal-text">
+                Igualmente con la presente autorización faculto a la COMFACA para solicitar a los Operadores de
+                Información del PILA
+                y éstos a su vez, para que le suministren a COMFACA, por el medio que establezca, mis datos personales
+                relacionados
+                con la afiliación y pago de los aportes al Sistema de Seguridad Social Integral, tales como ingreso base
+                de cotización
+                y demás información relacionada con dicho Sistema (presente y futura) COMFACA podrá conocer dicha
+                información las
+                veces que lo requiera, mantendrá actualizada, y en general ofrecerme productos y servicios que se
+                adecuen a mi perfil
+                crediticio o en aras de establecer una relación comercial y/o de servicios conmigo, así como también
+                para ofrecerme
+                productos y servicios que se adecuen a mi perfil crediticio o alianzas si existieren.
+            </p>
+        </div>
+
+        <!-- SECCIÓN 10: AUTORIZACIÓN DE CONSULTA Y REPORTE EN CENTRALES DE RIESGO -->
+        <div class="section">
+            <div class="section-title">10. AUTORIZACIÓN DE CONSULTA Y REPORTE EN CENTRALES DE RIESGO</div>
+            <p class="legal-text">
+                Autorizo de manera permanente, expresa e irrevocable a (Comfaca) a: i) Reportar, divulgar y procesar,
+                ante las Centrales
+                de Información Financiera y de Entidades Financieras y/o cualquier otra entidad sin importar su
+                naturaleza que las administre
+                o llegare a administrar en el futuro, que determine bases de datos con fines análogos a los de ésta
+                última toda la información
+                relacionada con las obligaciones que he contraído (y llegaré a contraer) con (Comfaca) y específicamente
+                el incumplimiento
+                y/o mora de las obligaciones contraídas, ii) Solicitar y consultar, con fines estadísticos de control,
+                de supervisión y de
+                información comercial, toda mi información financiera y comercial con la periodicidad requerida por
+                (Comfaca), y/o cualquier
+                otra persona natural o jurídica con la que llegare a tener cualquier vínculo comercial o contrato
+                cualquiera fuere la naturaleza
+                de éste, ya sea en Colombia o en el exterior, iii) Consultar y verificar con terceros toda la
+                información que he suministrado
+                a Comfaca, lo cual incluye, sin limitarse a: referencias laborales, información financiera, personales y
+                comerciales, todo lo
+                anterior en los términos del Artículo 13 de la Ley 1266 de 2.008. En caso de no realizar el respectivo
+                reporte ante las
+                centrales de información financiera a la cual se le comunicará su hábito.
+            </p>
+            <p class="legal-text">
+                Conozco que el alcance de esta autorización implica que el comportamiento frente a mis obligaciones será
+                registrado con
+                el objeto de suministrar información suficiente y adecuada al mercado de los estados pasados o actuales
+                de las obligaciones
+                financieras, comerciales, crediticias, de servicios y la prospección de tratamiento y evaluación de
+                riesgos inherentes,
+                y/o tengan acceso a las centrales de riesgo podrán conocer esta información, de conformidad con la
+                legislación y jurisprudencia
+                aplicable.
+            </p>
+        </div>
+
+        <!-- SECCIÓN 11: AUTORIZACIÓN DE NOTIFICACIONES -->
+        <div class="section">
+            <div class="section-title">11. AUTORIZACIÓN DE NOTIFICACIONES</div>
+            <p class="legal-text">
+                Autorizo de manera permanente, expresa e irrevocable a (COMFACA) para recibir notificaciones judiciales
+                o cualquier
+                otro tipo de notificación que esté relacionada con mi obligación crediticia al correo electrónico
+                relacionado en el
+                acápite 3 de este formulario.
+            </p>
+            <p class="legal-text">
+                En cumplimiento de lo dispuesto por la ley 2300 de 2023, por medio del presente formulario AUTORIZO a la
+                CAJA DE
+                COMPENSACIÓN FAMILIAR DEL CAQUETÁ COMFACA, para que, con fines comerciales y de cobranza me contacte a
+                través
+                de los siguientes canales: usando con una X los diferentes canales que autoriza CORREO ELECTRÓNICO: __
+                CELULAR:
+                __ WHATSAPP: __ TELÉFONO FIJO: __ DIRECCIÓN DE CORRESPONDENCIA: __ y/o MENSAJE DE TEXTO: __
+            </p>
+            <p class="legal-text">
+                La autorización que aquí se concede es con el fin de dar cumplimiento a las disposiciones contenidas en
+                la ley 2300 de 2023,
+                por tanto, me podrán contactar por los canales autorizados en los horarios que se establecen en la
+                norma, esto es de lunes
+                a viernes de 7:00 a.m a 7:00 p.m y los sábados de 8:00 a.m a 3:00 p.m.
+            </p>
+
+            <div class="contact-fields">
+                <div class="field-group">
+                    <label class="field-label">CORREO ELECTRÓNICO:</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">CELULAR:</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">WHATSAPP:</label>
+                    <input type="text" class="field-input">
+                </div>
+            </div>
+
+            <div class="contact-fields">
+                <div class="field-group">
+                    <label class="field-label">TELÉFONO FIJO:</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">DIRECCIÓN DE CORRESPONDENCIA:</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">MENSAJE DE TEXTO:</label>
+                    <input type="text" class="field-input">
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DEUDOR O CODEUDOR Y FIRMA -->
+        <div class="section">
+            <div class="signature-section">
+                <div class="signature-box">
+                    <div class="signature-title">DEUDOR O CODEUDOR</div>
+                    <p class="legal-text">
+                        Yo, como deudor certifico que este crédito propende por el mejoramiento de mi calidad de vida.
+                    </p>
+                    <div class="signature-line">FIRMA, C.C. Y HUELLA</div>
+                </div>
+                <div class="fingerprint-box">
+                    <div class="fingerprint-title">HUELLA</div>
+                    <div class="fingerprint-area">
+                        (Colocar huella digital)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN ESPACIO EXCLUSIVO RESPONSABLE -->
+        <div class="internal-section">
+            <div class="internal-title">ESPACIO EXCLUSIVO RESPONSABLE PROCESO DE CRÉDITO SOCIAL</div>
+            <div class="internal-grid">
+                <div class="field-group">
+                    <label class="field-label">Valor aprobado</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">Periodo de amortización</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">No. de documento</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">Fecha Aprobación</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">$ <span style="margin-left: 10px;">Aprobado por:</span></label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group" style="grid-column: span 2;">
+                    <label class="field-label">Observaciones</label>
+                    <input type="text" class="field-input">
+                </div>
+                <div class="field-group">
+                    <label class="field-label">Firma Jefe</label>
+                    <input type="text" class="field-input">
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER CON LOGO Y CHECKLIST -->
+        <div class="footer-section">
+            <div class="logo-section">
+                <div class="logo-placeholder">
+                    Comfaca
+                </div>
+            </div>
+            <div class="checklist-section">
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc1">
+                    <label for="doc1">FORMULARIO DE SOLICITUD DE CRÉDITO</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc2">
+                    <label for="doc2">FOTOCOPIA CÉDULA AMPLIADA AL 150% DEL SOLICITANTE</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc3">
+                    <label for="doc3">FOTOCOPIA DE CERTIFICADO LABORAL DE LOS ÚLTIMOS 3 MESES</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc4">
+                    <label for="doc4">DESPRENDIBLE DE NÓMINA O 30 DÍAS (TIPO GXM): SUELDO, FECHA INGRESO, CARGO, FECHA
+                        VENC. CONTRATO</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc5">
+                    <label for="doc5">COMPROBANTE PAGO PENSIÓN PARA CRÉDITO EDUCATIVO</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc6">
+                    <label for="doc6">COTIZACIÓN DE LA ENTIDAD O FACTURA PARA CRÉDITOS (SALUD, TURISMO)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc7">
+                    <label for="doc7">FACTURA SERVICIOS PÚBLICOS (MÁXIMO 2 MESES)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc8">
+                    <label for="doc8">FOTOCOPIA SERVICIOS PÚBLICOS</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc9">
+                    <label for="doc9"><span class="bold-text">PARA CRÉDITOS DE VIVIENDA:</span></label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc10">
+                    <label for="doc10">PROMESA DE COMPRAVENTA AUTENTICADA (PARA COMPRA DE VIVIENDA)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc11">
+                    <label for="doc11">CERTIFICADO QUE EL PREDIO NO ESTÁ EN ZONA DE RIESGO NO MITIGABLE</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc12">
+                    <label for="doc12">PROMESA DE COMPRAVENTA AUTENTICADA (PARA COMPRA DE VIVIENDA)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="doc13">
+                    <label for="doc13">LICENCIA: INVERSIÓN EN OBRA CIVIL (PARA REMODELACIÓN O CONSTRUCCIÓN DE
+                        VIVIENDA)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{# Sección 4: Información Laboral #}
+<table>
+  <tr>
+    <td colspan="6" class="section-header">INFORMACIÓN LABORAL (ESPACIO EXCLUSIVO PARA LA EMPRESA)</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <span class="field-label">Razón Social de la Empresa</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_razon_social|default('') }}</div>
+    </td>
+    <td>
+      <span class="field-label">Nit</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_nit|default('') }}</div>
+    </td>
+    <td colspan="2">
+      <span class="field-label">Teléfono</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_telefono|default('') }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <span class="field-label">Dirección de la Empresa</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_direccion|default('') }}</div>
+    </td>
+    <td>
+      <span class="field-label">Ciudad</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_ciudad|default('') }}</div>
+    </td>
+    <td>
+      <span class="field-label">Cargo</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.cargo|default('') }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span class="field-label">Fecha de Ingreso</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.fecha_ingreso|format_date if
+        solicitud.informacion_laboral.fecha_ingreso else '' }}</div>
+    </td>
+    <td>
+      <span class="field-label">Tipo de contrato</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.tipo_contrato|default('') }}</div>
+    </td>
+    <td colspan="2">
+      <span class="field-label">Nombramiento / Nombre del pagador</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.nombramiento_o_pagador|default('') }}</div>
+    </td>
+    <td>
+      <span class="field-label">Tiempo de Servicio</span><br>
+      <div class="input-min-field">{{ solicitud.informacion_laboral.tiempo_servicio|default(0) }} {{
+        solicitud.informacion_laboral.tiempo_servicio_unidad|default('meses') }}</div>
+    </td>
+  </tr>
+</table>
+
+{# Firma del responsable de la empresa #}
+<table style="margin-top: 10px; margin-bottom: 60px;">
+  <tr>
+    <td>
+      {% if convenio %}
+      <span class="field-label">NOMBRE DEL REPRESENTANTE LEGAL,</span>
+      <div style="height: 20px; margin: 10px 0;">
+        {{ convenio.representante_nombre|default('') }}
+      </div>
+      <div class="text-small">
+        FIRMA Y SELLO (RESPONSABLE ADMINISTRACIÓN PERSONAL AUTORIZADO POR LA EMPRESA)<br>
+        Acepto como responsable de autorizar el descuento por nómina a valor correspondiente de acuerdo al plan de
+        pagos, el valor del Crédito concedido por COMFACA al solicitante más los intereses, seguros y demás obligaciones
+        a su cargo, y entregarse a dicha entidad en las fechas convenidas sin que por ello adquiera responsabilidad
+        alguna diferente a lo aquí autorizado.
+      </div>
+      {% endif %}
+    </td>
+  </tr>
+</table>
