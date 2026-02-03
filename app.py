@@ -34,6 +34,7 @@ except Exception:
 
 
 from services.generate_pdf_service import GeneratePdfService
+from services.creditos_generator_service import CreditosGeneratorService
 # Cargar variables de entorno lo antes posible para que el middleware pueda leerlas
 config = dotenv_values(".env")
 
@@ -178,6 +179,28 @@ def render_template_endpoint():
 def health_check():
     """Endpoint de verificación de salud."""
     return jsonify({"status": "healthy", "service": "pdf-generator"})
+
+
+@app.route('/api/creditos/generate-pdf', methods=['POST'])
+def generate_pdf_creditos():
+    try:
+
+        if not request.is_json:
+            return jsonify({"error": "Content-Type debe ser application/json"}), 415
+        data = request.get_json()
+       
+        pdf_service_creditos = CreditosGeneratorService()
+        resultado = pdf_service_creditos.generar_pdf(data)
+        
+        return jsonify({
+            "success": True,
+            "message": "PDF generado exitosamente y solicitud enviada para validación",
+            "data": resultado
+        })
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @app.errorhandler(404)
 def not_found(error):

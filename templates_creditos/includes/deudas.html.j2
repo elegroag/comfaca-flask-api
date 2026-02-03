@@ -1,0 +1,30 @@
+{# Deudas del solicitante #}
+<table>
+  <tr>
+    <td colspan="4" class="section-header">DEUDAS A CARGO DEL SOLICITANTE</td>
+  </tr>
+  <tr>
+    <td class="font-bold">NOMBRE ACREEDOR</td>
+    <td class="font-bold">CONCEPTO</td>
+    <td class="font-bold">VALOR CUOTA</td>
+    <td class="font-bold">SALDO DE LA OBLIGACIÓN</td>
+  </tr>
+  {% if solicitud.deudas and solicitud.deudas|length > 0 %}
+  {% for deuda in solicitud.deudas %}
+  <tr>
+    <td>
+      <div class="input-min-field">{{ deuda.nombre_acreedor|default('') }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ deuda.concepto|default('') }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ deuda.valor_cuota|default(0)|currency }}</div>
+    </td>
+    <td>
+      <div class="input-min-field">{{ deuda.saldo_obligacion|default(0)|currency }}</div>
+    </td>
+  </tr>
+  {% endfor %}
+  {% endif %}
+</table>

@@ -1,0 +1,173 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Clases reutilizables */
+.section-header {
+    background-color: #90EE90;
+    font-weight: bold;
+    padding: 5px 8px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.field-label {
+    font-size: 9px;
+    font-weight: normal;
+}
+
+.input-field {
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    padding: 2px;
+    font-size: 10px;
+}
+
+.input-min-field {
+    border: none;
+    width: 100%;
+    padding: 2px;
+    font-size: 10px;
+    color: #333;
+}
+
+.checkbox-container {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #444;
+    display: inline-block;
+    vertical-align: -3px;
+    margin-left: 5px;
+    gap: 5px;
+    text-align: center;
+    line-height: 15px;
+    font-weight: bold;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+td,
+th {
+    border: 1px solid #444;
+    padding: 4px 6px;
+    vertical-align: top;
+}
+
+.no-border {
+    border: none;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #000;
+}
+
+/* Logo y encabezado */
+.header-section {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.logo-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-box {
+    width: 100%;
+    height: 120px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #ccc;
+    background-color: #f9f9f9;
+}
+
+.title-main {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.title-sub {
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.warning-text {
+    font-size: 8px;
+    text-align: center;
+    font-style: italic;
+}
+
+.amount-box {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-small {
+    font-size: 8px;
+}
+
+.bg-green {
+    background-color: #90EE90;
+}
+
+.bg-light-green {
+    background-color: #E8F5E8;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.vertical-text {
+    writing-mode: vertical-lr;
+    text-align: center;
+    font-weight: bold;
+}
+
+.firma-section {
+    margin-top: 20px;
+    border: 1px solid #444;
+    padding: 10px;
+}
+
+.code-box {
+    text-align: right;
+    font-size: 9px;
+    padding-top: 10px;
+}
+
+.page-break {
+    break-before: page;
+}
+
+.footer-section {
+    margin-top: 10px;
+}
