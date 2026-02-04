@@ -195,3 +195,34 @@ Este endpoint no requiere autenticación.
 
 - Puedes crear nuevas plantillas en `templates/` y probar su renderizado primero con `/api/render-template` usando un archivo JSON de configuración.
 - Una vez validado el HTML, puedes generar el PDF usando `/api/generate-pdf` con la misma plantilla y contexto.
+
+## Para volver a crear el venv con `uv` en [flask-api](cci:9://file:///home/elegro/proyectos/python/comfaca-credito/flask-api:0:0-0:0)
+
+### 1) Eliminar venv anterior (si existe)
+
+```bash
+rm -rf .venv
+```
+
+### 2) Crear nuevo entorno con uv
+
+```bash
+cd /home/elegro/proyectos/python/comfaca-credito/flask-api
+uv venv
+```
+
+### 3) Activar e instalar dependencias
+
+```bash
+source .venv/bin/activate
+uv pip install -e .
+# o simplemente:
+uv sync
+```
+
+### 4) Verificar instalación
+
+```bash
+uv pip list
+python -c "import flask, weasyprint; print('OK')"
+```

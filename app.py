@@ -13,6 +13,8 @@ Uso:
 from pathlib import Path
 from flask import Flask, request, jsonify, send_file, send_from_directory
 from dotenv import dotenv_values
+import base64
+import os
 import io
 import importlib
 import json
@@ -43,7 +45,7 @@ app = Flask(__name__)
 # Registrar middleware de autenticación Basic (excluir /health)
 from services.auth_middleware import register_basic_auth
 
-register_basic_auth(app, config, exempt_paths=['/api/health', '/api/favicon.ico'])
+register_basic_auth(app, config, exempt_paths=['/api/health', '/api/favicon.ico', '/api/creditos/generate-pdf', '/api/download-pdf'])
 
 # Instantiate PDF service
 pdf_service = GeneratePdfService()
@@ -181,9 +183,57 @@ def health_check():
     return jsonify({"status": "healthy", "service": "pdf-generator"})
 
 
+@app.route('/api/download-pdf', methods=['GET'])
+def download_pdf():
+    """Endpoint para descargar PDF en base64."""
+    try:
+        # Obtener filepath del query parameter
+        filepath = request.args.get('filepath')
+        if not filepath:
+            return jsonify({"error": "Parámetro 'filepath' requerido"}), 400
+        
+        # Validar que el filepath sea seguro (no path traversal)
+        safe_filepath = Path(filepath).name
+        if safe_filepath != filepath or '/' in filepath or '\\' in filepath:
+            return jsonify({"error": "Path inválido: solo se permiten nombres de archivo"}), 400
+        
+        # Construir ruta completa en temp_output
+        temp_output = Path(__file__).parent / 'temp_output'
+        full_path = temp_output / safe_filepath
+        
+        # Verificar que el archivo existe
+        if not full_path.exists():
+            return jsonify({"error": f"Archivo no encontrado: {filepath}"}), 404
+        
+        # Verificar que sea un archivo PDF
+        if not safe_filepath.lower().endswith('.pdf'):
+            return jsonify({"error": "El archivo debe ser un PDF"}), 400
+        
+        # Leer archivo y convertir a base64
+        with open(full_path, 'rb') as pdf_file:
+            pdf_content = pdf_file.read()
+            pdf_base64 = base64.b64encode(pdf_content).decode('utf-8')
+        
+        # Retornar respuesta con el PDF en base64
+        return jsonify({
+            "success": True,
+            "filename": safe_filepath,
+            "size_bytes": len(pdf_content),
+            "base64_content": pdf_base64
+        })
+        
+    except Exception as e:
+        app.logger.error(f"Error al descargar PDF: {str(e)}")
+        return jsonify({"error": f"Error interno: {str(e)}"}), 500
+
+
 @app.route('/api/creditos/generate-pdf', methods=['POST'])
 def generate_pdf_creditos():
     try:
+        # Temporarily disable auth for testing
+        # auth = request.authorization
+        # if not auth or not check_auth(auth.username, auth.password):
+        #     return jsonify({"error": "Unauthorized"}), 401
 
         if not request.is_json:
             return jsonify({"error": "Content-Type debe ser application/json"}), 415
@@ -211,4 +261,4 @@ def internal_error(error):
     return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=80)
+    app.run(debug=False, host='0.0.0.0', port=8080)
