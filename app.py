@@ -241,7 +241,7 @@ def generate_pdf_creditos():
        
         pdf_service_creditos = CreditosGeneratorService()
         resultado = pdf_service_creditos.generar_pdf(data)
-        
+                
         return jsonify({
             "success": True,
             "message": "PDF generado exitosamente y solicitud enviada para validación",

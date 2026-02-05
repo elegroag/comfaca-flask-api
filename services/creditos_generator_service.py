@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import base64
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -275,7 +276,7 @@ class CreditosGeneratorService:
         data: Dict[str, Any],
    ) -> Dict[str, Any]:
         """
-        Genera el PDF de una solicitud de crédito utilizando las clases de datos estructuradas.
+        Genera el PDF de una solicitud de crédito y retorna el contenido en base64.
         
         Args:
             data: Diccionario con todos los datos necesarios para generar el PDF:
@@ -287,8 +288,8 @@ class CreditosGeneratorService:
                 - incluir_firmantes: Booleano para incluir firmantes (default: True)
             
         Returns:
-            Dict con información del PDF generado:
-                - success: Booleano indicando éxito
+            Dict con el contenido del PDF generado:
+                - content: String con el contenido del PDF en base64
                 - pdf_path: Ruta completa del archivo PDF generado
                 - pdf_filename: Nombre del archivo PDF
             
@@ -346,7 +347,7 @@ class CreditosGeneratorService:
             html_content = self._renderizar_template(context)
             
             # Generar PDF desde HTML
-            pdf_path = self._generar_pdf_desde_html(
+            api_content, api_path, api_filename = self._generar_pdf_desde_html(
                 html_content=html_content,
                 solicitud_id=solicitud_id
             )
@@ -354,21 +355,15 @@ class CreditosGeneratorService:
             logger.info(
                 "PDF generado exitosamente",
                 extra={
-                    "solicitud_id": solicitud_id,
-                    "pdf_path": pdf_path,
-                    "pdf_filename": Path(pdf_path).name,
-                    "tiene_convenio": context.tiene_convenio,
-                    "cantidad_firmantes": len(context.firmantes)
+                    "api_path": api_path,
+                    "api_filename": api_filename,
                 }
             )
             
             return {
-                "pdf_path": pdf_path,
-                "pdf_filename": Path(pdf_path).name,
-                "solicitud_id": solicitud_id,
-                "fecha_generacion": context.fecha_generacion.isoformat(),
-                "tiene_convenio": context.tiene_convenio,
-                "cantidad_firmantes": len(context.firmantes)
+                "api_content": api_content,
+                "api_path": api_path,
+                "api_filename": api_filename
             }
             
         except Exception as e:
@@ -501,8 +496,8 @@ class CreditosGeneratorService:
         self, 
         html_content: str, 
         solicitud_id: str
-    ) -> str:
-        """Genera archivo PDF desde contenido HTML."""
+    ) -> tuple[str, str, str]:
+        """Genera PDF desde contenido HTML y retorna el contenido en base64, ruta y nombre de archivo."""
         try:
             # Crear directorio para el solicitante si no existe
             solicitud_dir = self.storage_dir / "solicitudes" / solicitud_id
@@ -514,14 +509,29 @@ class CreditosGeneratorService:
             pdf_path = solicitud_dir / pdf_filename
             
             # Generar PDF con WeasyPrint
-            HTML(string=html_content, base_url=str(self.template_dir)).write_pdf(
-                str(pdf_path)
+            pdf_bytes = HTML(string=html_content, base_url=str(self.template_dir)).write_pdf()
+            
+            # Guardar PDF en disco
+            with open(pdf_path, 'wb') as f:
+                f.write(pdf_bytes)
+            
+            # Convertir a base64
+            pdf_base64 = base64.b64encode(pdf_bytes).decode('utf-8')
+            
+            logger.info(
+                "PDF generado exitosamente",
+                extra={
+                    "solicitud_id": solicitud_id,
+                    "pdf_path": str(pdf_path),
+                    "pdf_size_bytes": len(pdf_bytes),
+                    "base64_length": len(pdf_base64)
+                }
             )
             
-            return str(pdf_path)
+            return pdf_base64, str(pdf_path), pdf_filename
             
         except Exception as e:
-            logger.exception("Error generando archivo PDF")
+            logger.exception("Error generando PDF")
             raise ValidationError(
                 "Error al generar el archivo PDF",
                 details={"error": str(e)}
