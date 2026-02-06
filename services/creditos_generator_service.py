@@ -35,10 +35,11 @@ class EncabezadoData:
 @dataclass
 class SolicitanteData:
     """Datos del solicitante para el template."""
-    nombres_apellidos: str
-    tipo_identificacion: str
-    numero_identificacion: str
-    cedula: str  # Alias para numero_identificacion
+    nombres: str
+    apellidos: str
+    tipo_documento: str
+    numero_documento: str
+    cedula: str  # Alias para numero_documento
     nit: str     # NIT personal o de empresa
     fecha_nacimiento: str
     email: str
@@ -54,7 +55,7 @@ class SolicitanteData:
         info_laboral = payload.get("informacion_laboral", {})
         
         # Mapear campos para compatibilidad con template
-        numero_identificacion = solicitante.get("numero_documento", "")  # Corregido: numero_documento en lugar de numero_identificacion
+        numero_documento = solicitante.get("numero_documento", "")  # Corregido: numero_documento en lugar de numero_documento
         
         # Conversión segura de salario
         salario_value = 0
@@ -65,10 +66,11 @@ class SolicitanteData:
             logger.warning(f"Error convirtiendo salario: {e}", extra={"salario_raw": str(solicitante.get("salario"))})
         
         return cls(
-            nombres_apellidos=solicitante.get("nombres_apellidos", ""),
-            tipo_identificacion=solicitante.get("tipo_identificacion", ""),
-            numero_identificacion=numero_identificacion,
-            cedula=numero_identificacion,  # Alias
+            nombres=solicitante.get("nombres", ""),
+            apellidos=solicitante.get("apellidos", ""),
+            tipo_documento=solicitante.get("tipo_documento", ""),
+            numero_documento=numero_documento,
+            cedula=numero_documento,  # Alias
             nit=info_laboral.get("empresa_nit", ""),  # NIT de empresa como respaldo
             fecha_nacimiento=solicitante.get("fecha_nacimiento", ""),
             email=solicitante.get("email", ""),
@@ -415,11 +417,14 @@ class CreditosGeneratorService:
     def _validar_contexto_template(self, context: TemplateContext) -> None:
         """Valida que el contexto del template tenga todos los datos necesarios."""
         # Validar datos del solicitante
-        if not context.solicitante.numero_identificacion:
+        if not context.solicitante.numero_documento:
             logger.warning("Contexto sin número de identificación del solicitante")
         
-        if not context.solicitante.nombres_apellidos:
+        if not context.solicitante.nombres:
             logger.warning("Contexto sin nombre del solicitante")
+
+        if not context.solicitante.apellidos:
+            logger.warning("Contexto sin apellido del solicitante")
         
         # Validar datos de la solicitud - numero_solicitud está directamente en el contexto
         if not context.numero_solicitud:
@@ -447,44 +452,20 @@ class CreditosGeneratorService:
             "Contexto validado exitosamente",
             extra={
                 "numero_solicitud": context.numero_solicitud,
-                "solicitante": context.solicitante.nombres_apellidos,
+                "solicitante": context.solicitante.nombres,
                 "tiene_convenio": context.tiene_convenio,
                 "cantidad_firmantes": len(context.firmantes)
             }
         )
 
-    def _construir_nombre_completo(self, datos: Dict[str, Any]) -> str:
-        """Construye nombre completo desde diferentes formatos de datos."""
-        # Formato API externa (prinom, priape)
-        if datos.get("prinom") or datos.get("priape"):
-            nombres = [
-                datos.get("prinom", ""),
-                datos.get("segnom", ""),
-                datos.get("priape", ""),
-                datos.get("segape", "")
-            ]
-        # Formato interno (primer_nombre, primer_apellido)
-        elif datos.get("primer_nombre") or datos.get("primer_apellido"):
-            nombres = [
-                datos.get("primer_nombre", ""),
-                datos.get("segundo_nombre", ""),
-                datos.get("primer_apellido", ""),
-                datos.get("segundo_apellido", "")
-            ]
-        # Formato simple (nombres, apellidos)
-        else:
-            nombres = [
-                datos.get("nombres", ""),
-                datos.get("apellidos", "")
-            ]
-        
-        return " ".join([n.strip() for n in nombres if n and n.strip()])
-
     def _renderizar_template(self, context: TemplateContext) -> str:
         """Renderiza el template HTML con el contexto."""
         try:
             template = self.env.get_template('formato-credito-front.html.j2')
-            return template.render(**context.__dict__)
+            # Agregar template_dir al contexto para las rutas CSS
+            template_context = context.__dict__.copy()
+            template_context['template_dir'] = str(self.template_dir)
+            return template.render(**template_context)
         except Exception as e:
             logger.exception("Error renderizando template")
             raise ValidationError(
