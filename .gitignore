@@ -14,6 +14,5 @@ uv.lock
 .envrc
 output/
 services/__pycache__/
-services/__init__.py
 python_flask_pdf.egg-info/
 *.pdf
