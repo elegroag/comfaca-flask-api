@@ -10,68 +10,68 @@
   <tr>
     <td style="width: 40%;">Salario básico mensual</td>
     <td style="width: 10%;">
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.salario_basico_mensual|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.salario_basico_mensual|default(0)|currency }}</div>
     </td>
     <td style="width: 40%;">Salud y pensión</td>
     <td style="width: 10%;">
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.salud_pension|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.salud_pension|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td>Subsidio de transporte</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.subsidio_transporte|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.subsidio_transporte|default(0)|currency }}</div>
     </td>
     <td>Libranzas con Comfaca</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.libranzas_comfaca|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.libranzas_comfaca|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td>Horas Extras</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.horas_extras|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.horas_extras|default(0)|currency }}</div>
     </td>
     <td>Otras Libranzas</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.otras_libranzas|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.otras_libranzas|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td>Comisiones</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.comisiones|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.comisiones|default(0)|currency }}</div>
     </td>
     <td>Judiciales</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.judiciales|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.judiciales|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td>Otros ingresos laborales</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.otros_ingresos|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.otros_ingresos|default(0)|currency }}</div>
     </td>
     <td>Otras deducciones de nómina</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.otras_deducciones|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.otras_deducciones|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td class="font-bold">TOTAL INGRESOS</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.total_ingresos|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.total_ingresos|default(0)|currency }}</div>
     </td>
     <td class="font-bold">TOTAL GASTOS</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.total_gastos|default(0)|currency }}</div>
+      <div class="input-min-field">{{ descuentos.total_gastos|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="2"></td>
     <td class="font-bold">TOTAL NETO RECIBIDO</td>
     <td>
-      <div class="input-min-field">{{ solicitud.ingresos_descuentos.total_neto|default(0)|currency }}</div>
+      <div class="input-min-field">{{ ingresos.total_neto|default(0)|currency }}</div>
     </td>
   </tr>
 </table>

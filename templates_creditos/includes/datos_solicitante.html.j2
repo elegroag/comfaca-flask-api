@@ -6,119 +6,119 @@
   <tr>
     <td colspan="2">
       <span class="field-label">Fecha de Vinculación a Comfaca</span><br>
-      {{ solicitud.solicitante.fecha_vinculacion|format_date if solicitud.solicitante.fecha_vinculacion else '' }}
+      {{ solicitante.fecha_vinculacion|format_date if solicitante.fecha_vinculacion else '' }}
     </td>
     <td colspan="2">
       <span class="field-label">Tipo de Identificación</span><br>
-      C.C. <span class="checkbox">{{ 'X' if solicitud.solicitante.tipo_identificacion == 'CC' else '' }}</span>
-      C.E. <span class="checkbox">{{ 'X' if solicitud.solicitante.tipo_identificacion == 'CE' else '' }}</span>
+      C.C. <span class="checkbox">{{ 'X' if solicitante.tipo_documento == 'CC' else '' }}</span>
+      C.E. <span class="checkbox">{{ 'X' if solicitante.tipo_documento == 'CE' else '' }}</span>
     </td>
     <td colspan="2">
       <span class="field-label">No. Identificación</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.numero_identificacion|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.numero_documento|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Fecha de Nacimiento</span><br>
       <div class="input-min-field">
-        {{ solicitud.solicitante.fecha_nacimiento|format_date if solicitud.solicitante.fecha_nacimiento else '' }}
+        {{ solicitante.fecha_nacimiento|format_date if solicitante.fecha_nacimiento else '' }}
       </div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <span class="field-label">País de Nacimiento</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.pais_nacimiento|default('Colombia') }}</div>
+      <div class="input-min-field">{{ solicitante.pais_nacimiento|default('Colombia') }}</div>
     </td>
     <td colspan="6">
       <span class="field-label">Nombres y apellidos</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.nombres_apellidos|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.nombre_completo|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <span class="field-label">Fecha de Expedición</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.fecha_expedicion_documento|format_date if
-        solicitud.solicitante.fecha_expedicion_documento else '' }}</div>
+      <div class="input-min-field">{{ solicitante.fecha_expedicion_documento|format_date if
+        solicitante.fecha_expedicion_documento else '' }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Profesión u Ocupación</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.profesion_ocupacion|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.profesion_ocupacion|default('') }}</div>
     </td>
     <td colspan="4">
       Sexo &nbsp;
-      M <span class="checkbox">{{ 'X' if solicitud.solicitante.sexo == 'M' else '' }}</span> &nbsp;
-      F <span class="checkbox">{{ 'X' if solicitud.solicitante.sexo == 'F' else '' }}</span>
+      M <span class="checkbox">{{ 'X' if solicitante.sexo == 'M' else '' }}</span> &nbsp;
+      F <span class="checkbox">{{ 'X' if solicitante.sexo == 'F' else '' }}</span>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <span class="field-label">Nivel educativo</span><br>
-      Primaria <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'primaria' else '' }}</span>
+      Primaria <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'primaria' else '' }}</span>
     </td>
     <td>
-      Bachillerato <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'bachillerato' else ''
+      Bachillerato <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'bachillerato' else ''
         }}</span>
     </td>
     <td>
-      Técnico <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'tecnico' else '' }}</span>
+      Técnico <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'tecnico' else '' }}</span>
     </td>
     <td>
-      Universitario <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'universitario' else ''
+      Universitario <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'universitario' else ''
         }}</span>
     </td>
     <td>
-      Posgrado <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'posgrado' else '' }}</span>
+      Posgrado <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'posgrado' else '' }}</span>
     </td>
     <td colspan="2">
-      Ninguno <span class="checkbox">{{ 'X' if solicitud.solicitante.nivel_educativo == 'ninguno' else '' }}</span>
+      Ninguno <span class="checkbox">{{ 'X' if solicitante.nivel_educativo == 'ninguno' else '' }}</span>
     </td>
   </tr>
   <tr>
     <td colspan="4">
       <span class="field-label">Dirección de Residencia - Recibo de Correspondencia</span><br>
       Barrio <div class="input-min-field" style="width: 60%; display: inline-block;">{{
-        solicitud.solicitante.barrio_residencia|default('') }}</div>
+        solicitante.barrio_residencia|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Ciudad Residencia</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.ciudad_residencia|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.ciudad_residencia|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">País Residencia</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.pais_residencia|default('Colombia') }}</div>
+      <div class="input-min-field">{{ solicitante.pais_residencia|default('Colombia') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="3">
       <span class="field-label">Teléfono fijo</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.telefono_fijo|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.telefono_fijo|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Móvil</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.telefono_movil|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.telefono_movil|default('') }}</div>
     </td>
     <td colspan="3">
       <span class="field-label">Email:</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.email|default('') }}</div>
+      <div class="input-min-field">{{ solicitante.email|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <span class="field-label">Tipo de Vivienda</span><br>
-      Propia <span class="checkbox">{{ 'X' if solicitud.solicitante.tipo_vivienda == 'propia' else '' }}</span>
+      Propia <span class="checkbox">{{ 'X' if solicitante.tipo_vivienda == 'propia' else '' }}</span>
     </td>
     <td>
-      Familiar <span class="checkbox">{{ 'X' if solicitud.solicitante.tipo_vivienda == 'familiar' else '' }}</span>
+      Familiar <span class="checkbox">{{ 'X' if solicitante.tipo_vivienda == 'familiar' else '' }}</span>
     </td>
     <td>
-      Arrendada <span class="checkbox">{{ 'X' if solicitud.solicitante.tipo_vivienda == 'arrendada' else '' }}</span>
+      Arrendada <span class="checkbox">{{ 'X' if solicitante.tipo_vivienda == 'arrendada' else '' }}</span>
     </td>
     <td colspan="2">
-      Núcleo Familiar <span class="checkbox">{{ 'X' if solicitud.solicitante.vive_con_nucleo_familiar else '' }}</span>
+      Núcleo Familiar <span class="checkbox">{{ 'X' if solicitante.vive_con_nucleo_familiar else '' }}</span>
     </td>
     <td colspan="2">
       <span class="field-label">No. de Personas a cargo</span><br>
-      <div class="input-min-field">{{ solicitud.solicitante.personas_a_cargo|default(0) }}</div>
+      <div class="input-min-field">{{ solicitante.personas_a_cargo|default(0) }}</div>
     </td>
   </tr>
 </table>

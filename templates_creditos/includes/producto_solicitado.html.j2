@@ -4,31 +4,31 @@
     <td colspan="10" class="section-header">PRODUCTO SOLICITADO (Marque con una X)</td>
   </tr>
   <tr>
-    <td style="width: 12%;">A. Educación <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo ==
+    <td style="width: 12%;">A. Educación <span class="checkbox">{{ 'X' if solicitud.producto_tipo ==
         'educacion' else '' }}</span></td>
-    <td style="width: 12%;">B. Salud <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo == 'salud' else
+    <td style="width: 12%;">B. Salud <span class="checkbox">{{ 'X' if solicitud.producto_tipo == 'salud' else
         '' }}</span></td>
-    <td style="width: 12%;">C. Vivienda <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo ==
+    <td style="width: 12%;">C. Vivienda <span class="checkbox">{{ 'X' if solicitud.producto_tipo ==
         'vivienda' else '' }}</span></td>
-    <td style="width: 18%;">D. Electrodomésticos <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo ==
+    <td style="width: 18%;">D. Electrodomésticos <span class="checkbox">{{ 'X' if solicitud.producto_tipo ==
         'electrodomesticos' else '' }}</span></td>
     <td rowspan="2" colspan="2" style="width: 20%;">
       <span class="field-label">Ha tenido crédito con Comfaca</span>
     </td>
     <td rowspan="2" style="width: 26%; text-align: right;">
-      Si <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.ha_tenido_credito_comfaca else '' }}</span>
+      Si <span class="checkbox">{{ 'X' if solicitud.ha_tenido_credito_comfaca else '' }}</span>
       &nbsp;&nbsp;&nbsp;
-      NO <span class="checkbox">{{ 'X' if not solicitud.producto_solicitado.ha_tenido_credito_comfaca else '' }}</span>
+      NO <span class="checkbox">{{ 'X' if not solicitud.ha_tenido_credito_comfaca else '' }}</span>
     </td>
   </tr>
   <tr>
-    <td>E. Productos del Hogar <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo == 'productos_hogar'
+    <td>E. Productos del Hogar <span class="checkbox">{{ 'X' if solicitud.producto_tipo == 'productos_hogar'
         else '' }}</span></td>
-    <td>F. Vestuario <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo == 'vestuario' else ''
+    <td>F. Vestuario <span class="checkbox">{{ 'X' if solicitud.producto_tipo == 'vestuario' else ''
         }}</span></td>
-    <td>G. Recreación <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo == 'recreacion' else ''
+    <td>G. Recreación <span class="checkbox">{{ 'X' if solicitud.producto_tipo == 'recreacion' else ''
         }}</span></td>
-    <td>H. Turismo <span class="checkbox">{{ 'X' if solicitud.producto_solicitado.tipo == 'turismo' else '' }}</span>
+    <td>H. Turismo <span class="checkbox">{{ 'X' if solicitud.producto_tipo == 'turismo' else '' }}</span>
     </td>
   </tr>
 </table>

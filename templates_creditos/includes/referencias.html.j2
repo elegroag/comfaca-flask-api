@@ -8,8 +8,8 @@
   <tr>
     <td colspan="3" class="bg-light-green font-bold">FAMILIAR</td>
   </tr>
-  {% if solicitud.referencias and solicitud.referencias|length > 0 %}
-  {% for referencia in solicitud.referencias %}
+  {% if referencias and referencias|length > 0 %}
+  {% for referencia in referencias %}
   {% if referencia.tipo == 'familiar' %}
   <tr>
     <td style="width: 60%;">
@@ -29,8 +29,8 @@
   <tr>
     <td colspan="3" class="bg-light-green font-bold">PERSONAL (Que no viva con usted)</td>
   </tr>
-  {% if solicitud.referencias and solicitud.referencias|length > 0 %}
-  {% for referencia in solicitud.referencias %}
+  {% if referencias and referencias|length > 0 %}
+  {% for referencia in referencias %}
   {% if referencia.tipo == 'personal' %}
   <tr>
     <td>

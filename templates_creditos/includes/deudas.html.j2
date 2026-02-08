@@ -9,8 +9,8 @@
     <td class="font-bold">VALOR CUOTA</td>
     <td class="font-bold">SALDO DE LA OBLIGACIÓN</td>
   </tr>
-  {% if solicitud.deudas and solicitud.deudas|length > 0 %}
-  {% for deuda in solicitud.deudas %}
+  {% if deudas and deudas|length > 0 %}
+  {% for deuda in deudas %}
   <tr>
     <td>
       <div class="input-min-field">{{ deuda.nombre_acreedor|default('') }}</div>

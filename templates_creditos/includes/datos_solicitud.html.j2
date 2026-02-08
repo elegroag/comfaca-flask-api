@@ -6,38 +6,38 @@
   <tr>
     <td style="width: 15%;">
       <span class="field-label">No. Solicitud</span><br>
-      <div class="input-field">{{ solicitud.solicitud.numero_solicitud|default('') }}</div>
+      <div class="input-field">{{ solicitud.numero_solicitud|default('') }}</div>
     </td>
     <td style="width: 20%;">
       <span class="field-label">No. de Comprobante</span><br>
-      <div class="input-field">{{ solicitud.solicitud.numero_comprobante|default('') }}</div>
+      <div class="input-field">{{ solicitud.numero_comprobante|default('') }}</div>
     </td>
     <td style="width: 35%;">
       <span class="field-label">Valor de la Solicitud</span><br>
-      <div class="amount-box">{{ solicitud.solicitud.valor_solicitud|default(0)|currency }}</div>
+      <div class="amount-box">{{ solicitud.valor_solicitud|default(0)|currency }}</div>
     </td>
     <td style="width: 20%;">
       <span class="field-label">Categoría</span><br>
-      <div class="input-field">{{ solicitud.solicitud.categoria|default('') }}</div>
+      <div class="input-field">{{ solicitud.categoria|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td>
       <span class="field-label">Solicitante</span>
-      <div class="checkbox">{{ 'X' if solicitud.solicitud.rol_en_solicitud == 'solicitante' else '' }}</div>
+      <div class="checkbox">{{ 'X' if solicitud.rol_en_solicitud == 'solicitante' else '' }}</div>
     </td>
     <td>
       <span class="field-label">Codeudor</span>
-      <div class="checkbox">{{ 'X' if solicitud.solicitud.rol_en_solicitud == 'codeudor' else '' }}</div>
+      <div class="checkbox">{{ 'X' if solicitud.rol_en_solicitud == 'codeudor' else '' }}</div>
     </td>
     <td>
       <span class="field-label">Valor Solicitado</span><br>
-      <div style="font-weight: bold; text-align: center;">{{ solicitud.solicitud.valor_solicitud|default(0)|currency }}
+      <div style="font-weight: bold; text-align: center;">{{ solicitud.valor_solicitud|default(0)|currency }}
       </div>
     </td>
     <td>
       <span class="field-label">Plazo en meses</span><br>
-      <div style="font-weight: bold; text-align: center; font-size: 16px;">{{ solicitud.solicitud.plazo_meses|default(0)
+      <div style="font-weight: bold; text-align: center; font-size: 16px;">{{ solicitud.plazo_meses|default(0)
         }}</div>
     </td>
   </tr>

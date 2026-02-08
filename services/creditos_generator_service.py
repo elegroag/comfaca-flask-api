@@ -23,115 +23,84 @@ class ValidationError(Exception):
 class EncabezadoData:
     """Datos del encabezado para el template."""
     fecha_radicado: str
+    solicitud_id: str
     
     @classmethod
     def from_payload(cls, payload: Dict[str, Any]) -> 'EncabezadoData':
         encabezado = payload.get("encabezado", {})
         return cls(
-            fecha_radicado=encabezado.get("fecha_radicado", "")
+            fecha_radicado=encabezado.get("fecha_radicado", ""),
+            solicitud_id=encabezado.get("solicitud_id", "")
         )
 
 
 @dataclass
 class SolicitanteData:
     """Datos del solicitante para el template."""
-    nombres: str
-    apellidos: str
+    fecha_vinculacion: str
     tipo_documento: str
     numero_documento: str
-    cedula: str  # Alias para numero_documento
-    nit: str     # NIT personal o de empresa
     fecha_nacimiento: str
-    email: str
-    telefono_movil: str
-    direccion: str
-    ciudad_residencia: str
+    pais_nacimiento: str
+    nombre_completo: str
+    fecha_expedicion_documento: str
     profesion_ocupacion: str
-    salario: float
+    sexo: str
+    nivel_educativo: str
+    barrio_residencia: str
+    ciudad_residencia: str
+    pais_residencia: str
+    telefono_fijo: str
+    telefono_movil: str
+    email: str
+    tipo_vivienda: str
+    vive_con_nucleo_familiar: bool
+    personas_a_cargo: int
+    direccion_residencia: str
     
     @classmethod
     def from_payload(cls, payload: Dict[str, Any]) -> 'SolicitanteData':
         solicitante = payload.get("solicitante", {})
-        info_laboral = payload.get("informacion_laboral", {})
-        
-        # Mapear campos para compatibilidad con template
-        numero_documento = solicitante.get("numero_documento", "")  # Corregido: numero_documento en lugar de numero_documento
-        
-        # Conversión segura de salario
-        salario_value = 0
-        try:
-            salario_raw = solicitante.get("salario", 0)
-            salario_value = float(salario_raw) if salario_raw else 0
-        except (ValueError, TypeError) as e:
-            logger.warning(f"Error convirtiendo salario: {e}", extra={"salario_raw": str(solicitante.get("salario"))})
         
         return cls(
-            nombres=solicitante.get("nombres", ""),
-            apellidos=solicitante.get("apellidos", ""),
+            fecha_vinculacion=solicitante.get("fecha_vinculacion", ""),
             tipo_documento=solicitante.get("tipo_documento", ""),
-            numero_documento=numero_documento,
-            cedula=numero_documento,  # Alias
-            nit=info_laboral.get("empresa_nit", ""),  # NIT de empresa como respaldo
+            numero_documento=solicitante.get("numero_documento", ""),
             fecha_nacimiento=solicitante.get("fecha_nacimiento", ""),
-            email=solicitante.get("email", ""),
-            telefono_movil=solicitante.get("telefono", ""),  # Corregido: telefono en lugar de telefono_movil
-            direccion=solicitante.get("barrio_residencia", ""),
-            ciudad_residencia=solicitante.get("ciudad_residencia", ""),
+            pais_nacimiento=solicitante.get("pais_nacimiento", ""),
+            nombre_completo=solicitante.get("nombre_completo", ""),
+            fecha_expedicion_documento=solicitante.get("fecha_expedicion_documento", ""),
             profesion_ocupacion=solicitante.get("profesion_ocupacion", ""),
-            salario=salario_value
+            sexo=solicitante.get("sexo", ""),
+            nivel_educativo=solicitante.get("nivel_educativo", ""),
+            barrio_residencia=solicitante.get("barrio_residencia", ""),
+            ciudad_residencia=solicitante.get("ciudad_residencia", ""),
+            pais_residencia=solicitante.get("pais_residencia", ""),
+            telefono_fijo=solicitante.get("telefono_fijo", ""),
+            telefono_movil=solicitante.get("telefono_movil", ""),
+            email=solicitante.get("email", ""),
+            tipo_vivienda=solicitante.get("tipo_vivienda", ""),
+            vive_con_nucleo_familiar=solicitante.get("vive_con_nucleo_familiar", False),
+            personas_a_cargo=solicitante.get("personas_a_cargo", 0),
+            direccion_residencia=solicitante.get("direccion_residencia", "")
         )
 
 
 @dataclass
 class SolicitudData:
     """Datos de la solicitud para el template."""
-    encabezado: EncabezadoData
-    solicitud: 'SolicitudDetalleData'  # Datos anidados como espera el template
-    solicitante: SolicitanteData  # Datos del solicitante como espera el template
-    # Campos adicionales que el template espera como solicitud.campo
-    producto_solicitado: Dict[str, Any]
-    informacion_laboral: Dict[str, Any]
-    ingresos_descuentos: Dict[str, Any]
-    informacion_economica: Dict[str, Any]
-    deudas: List[Dict[str, Any]]
-    referencias: Dict[str, Any]
-    
-    @classmethod
-    def from_payload(cls, payload: Dict[str, Any], numero_solicitud: str = "") -> 'SolicitudData':
-        return cls(
-            encabezado=EncabezadoData.from_payload(payload),
-            solicitud=SolicitudDetalleData.from_payload(payload, numero_solicitud),
-            solicitante=SolicitanteData.from_payload(payload),
-            producto_solicitado=payload.get("producto_solicitado", {}),
-            informacion_laboral=payload.get("informacion_laboral", {}),
-            ingresos_descuentos=payload.get("ingresos_descuentos", {}),
-            informacion_economica=payload.get("informacion_economica", {}),
-            deudas=payload.get("deudas", []),
-            referencias=payload.get("referencias", {})
-        )
-
-
-@dataclass
-class SolicitudDetalleData:
-    """Datos detallados de la solicitud (anidados)."""
     numero_solicitud: str
     numero_comprobante: str
     valor_solicitud: int
-    valor_solicitado: int
     categoria: str
     rol_en_solicitud: str
     plazo_meses: int
-    foto_documento: Dict[str, Any]
-    moneda: str
-    tipcre: str
-    modxml4: int
-    detalle_modalidad: str
-    cuota_mensual: int
+    producto_tipo: str
+    ha_tenido_credito_comfaca: bool
     
     @classmethod
-    def from_payload(cls, payload: Dict[str, Any], numero_solicitud: str = "") -> 'SolicitudDetalleData':
+    def from_payload(cls, payload: Dict[str, Any]) -> 'SolicitudData':
         solicitud = payload.get("solicitud", {})
-        linea = payload.get("linea_credito", {})
         
         # Función helper para conversión segura a int
         def safe_int(value, default=0):
@@ -142,59 +111,232 @@ class SolicitudDetalleData:
                 return default
         
         return cls(
-            numero_solicitud=numero_solicitud,  # Usar el numero_solicitud pasado como parámetro
+            numero_solicitud=solicitud.get("numero_solicitud", ""),
             numero_comprobante=solicitud.get("numero_comprobante", ""),
             valor_solicitud=safe_int(solicitud.get("valor_solicitud")),
-            valor_solicitado=safe_int(solicitud.get("valor_solicitado")),
             categoria=solicitud.get("categoria", ""),
             rol_en_solicitud=solicitud.get("rol_en_solicitud", ""),
             plazo_meses=safe_int(solicitud.get("plazo_meses")),
-            foto_documento=solicitud.get("foto_documento", {"url": ""}),
-            moneda=solicitud.get("moneda", "COP"),
-            tipcre=solicitud.get("tipcre", ""),
-            modxml4=safe_int(solicitud.get("modxml4")),
-            detalle_modalidad=linea.get("detalle_modalidad", ""),
-            cuota_mensual=safe_int(solicitud.get("cuota_mensual"))
+            producto_tipo=solicitud.get("producto_tipo", ""),
+            ha_tenido_credito_comfaca=solicitud.get("ha_tenido_credito_comfaca", False)
+        )
+
+
+@dataclass
+class LaboralData:
+    """Datos laborales para el template."""
+    empresa_razon_social: str
+    empresa_nit: str
+    empresa_telefono: str
+    empresa_direccion: str
+    empresa_ciudad: str
+    cargo: str
+    fecha_ingreso: str
+    tipo_contrato: str
+    nombramiento_o_pagador: str
+    tiempo_servicio: int
+    tiempo_servicio_unidad: str
+    
+    @classmethod
+    def from_payload(cls, payload: Dict[str, Any]) -> 'LaboralData':
+        laboral = payload.get("laboral", {})
+        
+        def safe_int(value, default=0):
+            try:
+                return int(value) if value else default
+            except (ValueError, TypeError):
+                return default
+        
+        return cls(
+            empresa_razon_social=laboral.get("empresa_razon_social", ""),
+            empresa_nit=laboral.get("empresa_nit", ""),
+            empresa_telefono=laboral.get("empresa_telefono", ""),
+            empresa_direccion=laboral.get("empresa_direccion", ""),
+            empresa_ciudad=laboral.get("empresa_ciudad", ""),
+            cargo=laboral.get("cargo", ""),
+            fecha_ingreso=laboral.get("fecha_ingreso", ""),
+            tipo_contrato=laboral.get("tipo_contrato", ""),
+            nombramiento_o_pagador=laboral.get("nombramiento_o_pagador", ""),
+            tiempo_servicio=safe_int(laboral.get("tiempo_servicio")),
+            tiempo_servicio_unidad=laboral.get("tiempo_servicio_unidad", "")
+        )
+
+
+@dataclass
+class EconomicaData:
+    """Datos económicos para el template."""
+    arrendamientos: float
+    otros_ingresos: float
+    descripcion_ingresos: str
+    total_gastos: float
+    descripcion_gastos: str
+    total_activos: float
+    total_pasivos: float
+    
+    @classmethod
+    def from_payload(cls, payload: Dict[str, Any]) -> 'EconomicaData':
+        economica = payload.get("economica", {})
+        
+        def safe_float(value, default=0):
+            try:
+                return float(value) if value else default
+            except (ValueError, TypeError):
+                return default
+        
+        return cls(
+            arrendamientos=safe_float(economica.get("arrendamientos")),
+            otros_ingresos=safe_float(economica.get("otros_ingresos")),
+            descripcion_ingresos=economica.get("descripcion_ingresos", ""),
+            total_gastos=safe_float(economica.get("total_gastos")),
+            descripcion_gastos=economica.get("descripcion_gastos", ""),
+            total_activos=safe_float(economica.get("total_activos")),
+            total_pasivos=safe_float(economica.get("total_pasivos"))
+        )
+
+
+@dataclass
+class IngresosData:
+    """Datos de ingresos para el template."""
+    salario_basico_mensual: float
+    subsidio_transporte: float
+    horas_extras: float
+    comisiones: float
+    otros_ingresos: float
+    total_ingresos: float
+    total_neto: float
+    
+    @classmethod
+    def from_payload(cls, payload: Dict[str, Any]) -> 'IngresosData':
+        ingresos = payload.get("ingresos", {})
+        
+        def safe_float(value, default=0):
+            try:
+                return float(value) if value else default
+            except (ValueError, TypeError):
+                return default
+        
+        return cls(
+            salario_basico_mensual=safe_float(ingresos.get("salario_basico_mensual")),
+            subsidio_transporte=safe_float(ingresos.get("subsidio_transporte")),
+            horas_extras=safe_float(ingresos.get("horas_extras")),
+            comisiones=safe_float(ingresos.get("comisiones")),
+            otros_ingresos=safe_float(ingresos.get("otros_ingresos")),
+            total_ingresos=safe_float(ingresos.get("total_ingresos")),
+            total_neto=safe_float(ingresos.get("total_neto"))
+        )
+
+
+@dataclass
+class DescuentosData:
+    """Datos de descuentos para el template."""
+    salud_pension: float
+    libranzas_comfaca: float
+    otras_libranzas: float
+    judiciales: float
+    otras_deducciones: float
+    total_gastos: float
+    
+    @classmethod
+    def from_payload(cls, payload: Dict[str, Any]) -> 'DescuentosData':
+        descuentos = payload.get("descuentos", {})
+        
+        def safe_float(value, default=0):
+            try:
+                return float(value) if value else default
+            except (ValueError, TypeError):
+                return default
+        
+        return cls(
+            salud_pension=safe_float(descuentos.get("salud_pension")),
+            libranzas_comfaca=safe_float(descuentos.get("libranzas_comfaca")),
+            otras_libranzas=safe_float(descuentos.get("otras_libranzas")),
+            judiciales=safe_float(descuentos.get("judiciales")),
+            otras_deducciones=safe_float(descuentos.get("otras_deducciones")),
+            total_gastos=safe_float(descuentos.get("total_gastos"))
+        )
+
+
+@dataclass
+class ConyugeData:
+    """Datos del cónyuge para el template."""
+    numero_identificacion: str
+    nombres_apellidos: str
+    ingresos_laborales: float
+    trabaja: bool
+    empresa_nombre: str
+    empresa_direccion: str
+    email: str
+    empresa_telefono: str
+    telefono_movil: str
+    
+    @classmethod
+    def from_payload(cls, payload: Dict[str, Any]) -> 'ConyugeData':
+        conyuge = payload.get("conyuge", {})
+        
+        def safe_float(value, default=0):
+            try:
+                return float(value) if value else default
+            except (ValueError, TypeError):
+                return default
+        
+        return cls(
+            numero_identificacion=conyuge.get("numero_identificacion", ""),
+            nombres_apellidos=conyuge.get("nombres_apellidos", ""),
+            ingresos_laborales=safe_float(conyuge.get("ingresos_laborales")),
+            trabaja=conyuge.get("trabaja", False),
+            empresa_nombre=conyuge.get("empresa_nombre", ""),
+            empresa_direccion=conyuge.get("empresa_direccion", ""),
+            email=conyuge.get("email", ""),
+            empresa_telefono=conyuge.get("empresa_telefono", ""),
+            telefono_movil=conyuge.get("telefono_movil", "")
         )
 
 
 @dataclass
 class TemplateContext:
     """Estructura completa de datos para el template."""
-    solicitante: SolicitanteData
     solicitud: SolicitudData
-    trabajador: Dict[str, Any]
-    convenio: Optional[Dict[str, Any]]
+    solicitante: SolicitanteData
+    laboral: LaboralData
+    economica: EconomicaData
+    ingresos: IngresosData
+    descuentos: DescuentosData
+    conyuge: Optional[ConyugeData]
+    referencias: List[Dict[str, Any]]
+    deudas: List[Dict[str, Any]]
+    propiedades: List[Dict[str, Any]]
     firmantes: List[Dict[str, Any]]
-    tiene_convenio: bool
-    fecha_generacion: datetime
-    metadata: Dict[str, Any]
-    numero_solicitud: str  # Agregar numero_solicitud directamente
+    convenio: Optional[Dict[str, Any]]
+    proceso_firmado: Dict[str, Any]
+    encabezado: EncabezadoData
+    pdf_metadata: Dict[str, Any]
+    trabajador: Dict[str, Any]
     
     @classmethod
     def from_data(
         cls, 
         data: Dict[str, Any],
-        trabajador: Dict[str, Any],
-        convenio: Optional[Dict[str, Any]],
-        firmantes: List[Dict[str, Any]]
+        trabajador: Dict[str, Any]
     ) -> 'TemplateContext':
         """Crea TemplateContext desde datos."""
-        payload = data.get("payload", {})
         
         return cls(
-            solicitante=SolicitanteData.from_payload(payload),
-            solicitud=SolicitudData.from_payload(payload, data.get("numero_solicitud", "")),
-            trabajador=trabajador,
-            convenio=convenio,
-            firmantes=firmantes,
-            tiene_convenio=convenio is not None,
-            fecha_generacion=datetime.now(),
-            metadata={
-                "sistema": "Comfaca Crédito",
-                "version": "2.0"
-            },
-            numero_solicitud=data.get("numero_solicitud", "")  # Agregar numero_solicitud desde data
+            solicitud=SolicitudData.from_payload(data),
+            solicitante=SolicitanteData.from_payload(data),
+            laboral=LaboralData.from_payload(data),
+            economica=EconomicaData.from_payload(data),
+            ingresos=IngresosData.from_payload(data),
+            descuentos=DescuentosData.from_payload(data),
+            conyuge=ConyugeData.from_payload(data) if data.get("conyuge") else None,
+            referencias=data.get("referencias", []),
+            deudas=data.get("deudas", []),
+            propiedades=data.get("propiedades", []),
+            firmantes=data.get("firmantes", []),
+            convenio=data.get("convenio"),
+            proceso_firmado=data.get("proceso_firmado", {}),
+            encabezado=EncabezadoData.from_payload(data),
+            pdf_metadata=data.get("pdf_metadata", {}),
+            trabajador=trabajador
         )
 
 
@@ -283,11 +425,22 @@ class CreditosGeneratorService:
         Args:
             data: Diccionario con todos los datos necesarios para generar el PDF:
                 - solicitud_id: ID de la solicitud (requerido)
-                - solicitud_data: Datos completos de la solicitud desde MongoDB (requerido)
-                - trabajador_data: Datos del trabajador desde API externa (opcional)
-                - convenio_data: Datos del convenio (requerido)
-                - firmantes_data: Lista de firmantes (opcional)
-                - incluir_firmantes: Booleano para incluir firmantes (default: True)
+                - solicitud: Datos de la solicitud
+                - solicitante: Datos del solicitante
+                - laboral: Datos laborales
+                - economica: Datos económicos
+                - ingresos: Datos de ingresos
+                - descuentos: Datos de descuentos
+                - conyuge: Datos del cónyuge (opcional)
+                - referencias: Lista de referencias
+                - deudas: Lista de deudas
+                - propiedades: Lista de propiedades
+                - firmantes: Lista de firmantes
+                - convenio: Datos del convenio (opcional)
+                - proceso_firmado: Datos del proceso de firmado
+                - encabezado: Datos del encabezado
+                - pdf_metadata: Metadatos del PDF
+                - trabajador: Datos del trabajador (opcional)
             
         Returns:
             Dict con el contenido del PDF generado:
@@ -308,38 +461,25 @@ class CreditosGeneratorService:
                     details={"field": "solicitud_id"},
                 )
 
-            # Obtener y validar datos de la solicitud
-            solicitud_data = data.get("solicitud_data", {})
-    
             # Extraer datos opcionales con valores por defecto
-            trabajador_data = data.get("trabajador_data", {})
-            
-            incluir_firmantes = data.get("incluir_firmantes", True)
-            
-            # Obtener datos de convenio (requerido)
-            convenio_data = data.get("convenio_data")
+            trabajador_data = data.get("trabajador", {})
 
             logger.info(
                 "Iniciando generación de PDF",
                 extra={
                     "solicitud_id": solicitud_id,
-                    "incluir_firmantes": data.get("incluir_firmantes", True),
-                    "tiene_convenio": convenio_data is not None
+                    "tiene_convenio": data.get("convenio") is not None,
+                    "cantidad_firmantes": len(data.get("firmantes", []))
                 }
             )
             
-            # Preparar datos de firmantes según flag
-            firmantes_data = data.get("firmantes_data", []) if incluir_firmantes else []
-            
-            # Validar estructura básica del payload
-            self._validar_estructura_solicitud(solicitud_data)
+            # Validar estructura básica de los datos
+            self._validar_estructura_solicitud(data)
             
             # Crear TemplateContext usando las clases de datos estructuradas
             context = TemplateContext.from_data(
-                data=solicitud_data,
-                trabajador=trabajador_data,
-                convenio=convenio_data,
-                firmantes=firmantes_data
+                data=data,
+                trabajador=trabajador_data
             )
             
             # Validar contexto creado
@@ -377,41 +517,40 @@ class CreditosGeneratorService:
                 details={"error": str(e)}
             )
 
-    def _validar_estructura_solicitud(self, solicitud_data: Dict[str, Any]) -> None:
+    def _validar_estructura_solicitud(self, data: Dict[str, Any]) -> None:
         """Valida la estructura básica de los datos de la solicitud."""
-        payload = solicitud_data.get("payload", {})
-        if not isinstance(payload, dict):
+        if not isinstance(data, dict):
             raise ValidationError(
-                "Estructura inválida: falta payload en solicitud_data",
-                details={"expected": "payload", "received": type(payload).__name__}
+                "Estructura inválida: los datos deben ser un diccionario",
+                details={"expected": "dict", "received": type(data).__name__}
             )
         
-        # Validar campos requeridos en el payload
+        # Validar campos requeridos
         campos_requeridos = ["solicitud", "solicitante"]
         for campo in campos_requeridos:
-            if campo not in payload or not payload[campo]:
+            if campo not in data or not data[campo]:
                 raise ValidationError(
-                    f"Campo requerido faltante en payload: {campo}",
+                    f"Campo requerido faltante: {campo}",
                     details={"missing_field": campo}
                 )
         
         # Validar estructura de solicitud
-        solicitud_info = payload["solicitud"]
+        solicitud_info = data["solicitud"]
         if not isinstance(solicitud_info, dict):
             raise ValidationError(
                 "Estructura inválida: solicitud debe ser un diccionario",
                 details={"expected": "dict", "received": type(solicitud_info).__name__}
             )
         
-        # Validar campos críticos de solicitud - numero_solicitud está en solicitud_data, no en payload
-        if not solicitud_data.get("numero_solicitud"):
+        # Validar campos críticos de solicitud
+        if not solicitud_info.get("numero_solicitud"):
             logger.error(
                 "Campo crítico faltante: numero_solicitud",
-                extra={"solicitud_data": solicitud_data}
+                extra={"solicitud": solicitud_info}
             )
             raise ValidationError(
                 "Campo requerido faltante: numero_solicitud",
-                details={"field": "solicitud_data.numero_solicitud"}
+                details={"field": "solicitud.numero_solicitud"}
             )
     
     def _validar_contexto_template(self, context: TemplateContext) -> None:
@@ -420,26 +559,19 @@ class CreditosGeneratorService:
         if not context.solicitante.numero_documento:
             logger.warning("Contexto sin número de identificación del solicitante")
         
-        if not context.solicitante.nombres:
+        if not context.solicitante.nombre_completo:
             logger.warning("Contexto sin nombre del solicitante")
-
-        if not context.solicitante.apellidos:
-            logger.warning("Contexto sin apellido del solicitante")
         
-        # Validar datos de la solicitud - numero_solicitud está directamente en el contexto
-        if not context.numero_solicitud:
+        # Validar datos de la solicitud
+        if not context.solicitud.numero_solicitud:
             logger.error(
                 "Contexto inválido: falta numero_solicitud",
-                extra={"context": {"numero_solicitud": context.numero_solicitud}}
+                extra={"solicitud": context.solicitud.numero_solicitud}
             )
             raise ValidationError(
                 "Contexto inválido: falta numero_solicitud en los datos de solicitud",
-                details={"field": "context.numero_solicitud"}
+                details={"field": "context.solicitud.numero_solicitud"}
             )
-        
-        # Validar convenio si debería tenerlo
-        if context.tiene_convenio and not context.convenio:
-            logger.warning("Contexto indica tener convenio pero no hay datos de convenio")
         
         # Validar estructura de firmantes
         if context.firmantes and not isinstance(context.firmantes, list):
@@ -451,9 +583,9 @@ class CreditosGeneratorService:
         logger.info(
             "Contexto validado exitosamente",
             extra={
-                "numero_solicitud": context.numero_solicitud,
-                "solicitante": context.solicitante.nombres,
-                "tiene_convenio": context.tiene_convenio,
+                "numero_solicitud": context.solicitud.numero_solicitud,
+                "solicitante": context.solicitante.nombre_completo,
+                "tiene_convenio": context.convenio is not None,
                 "cantidad_firmantes": len(context.firmantes)
             }
         )

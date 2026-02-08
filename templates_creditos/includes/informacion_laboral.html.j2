@@ -6,49 +6,49 @@
   <tr>
     <td colspan="3">
       <span class="field-label">Razón Social de la Empresa</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_razon_social|default('') }}</div>
+      <div class="input-min-field">{{ laboral.empresa_razon_social|default('') }}</div>
     </td>
     <td>
       <span class="field-label">Nit</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_nit|default('') }}</div>
+      <div class="input-min-field">{{ laboral.empresa_nit|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Teléfono</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_telefono|default('') }}</div>
+      <div class="input-min-field">{{ laboral.empresa_telefono|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="4">
       <span class="field-label">Dirección de la Empresa</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_direccion|default('') }}</div>
+      <div class="input-min-field">{{ laboral.empresa_direccion|default('') }}</div>
     </td>
     <td>
       <span class="field-label">Ciudad</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.empresa_ciudad|default('') }}</div>
+      <div class="input-min-field">{{ laboral.empresa_ciudad|default('') }}</div>
     </td>
     <td>
       <span class="field-label">Cargo</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.cargo|default('') }}</div>
+      <div class="input-min-field">{{ laboral.cargo|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <span class="field-label">Fecha de Ingreso</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.fecha_ingreso|format_date if
-        solicitud.informacion_laboral.fecha_ingreso else '' }}</div>
+      <div class="input-min-field">{{ laboral.fecha_ingreso|format_date if
+        laboral.fecha_ingreso else '' }}</div>
     </td>
     <td>
       <span class="field-label">Tipo de contrato</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.tipo_contrato|default('') }}</div>
+      <div class="input-min-field">{{ laboral.tipo_contrato|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Nombramiento / Nombre del pagador</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.nombramiento_o_pagador|default('') }}</div>
+      <div class="input-min-field">{{ laboral.nombramiento_o_pagador|default('') }}</div>
     </td>
     <td>
       <span class="field-label">Tiempo de Servicio</span><br>
-      <div class="input-min-field">{{ solicitud.informacion_laboral.tiempo_servicio|default(0) }} {{
-        solicitud.informacion_laboral.tiempo_servicio_unidad|default('meses') }}</div>
+      <div class="input-min-field">{{ laboral.tiempo_servicio|default(0) }} {{
+        laboral.tiempo_servicio_unidad|default('meses') }}</div>
     </td>
   </tr>
 </table>

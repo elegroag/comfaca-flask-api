@@ -10,8 +10,8 @@
     <td class="font-bold">MATRICULA INMOB. / MODELO</td>
     <td class="font-bold">VALOR COMERCIAL</td>
   </tr>
-  {% if solicitud.propiedades and solicitud.propiedades|length > 0 %}
-  {% for propiedad in solicitud.propiedades %}
+  {% if propiedades and propiedades|length > 0 %}
+  {% for propiedad in propiedades %}
   <tr>
     <td>{{ propiedad.tipo_bien|default('') }}</td>
     <td>

@@ -1,5 +1,5 @@
 {# Datos del Cónyuge (si aplica) #}
-{% if solicitud.conyuge %}
+{% if conyuge %}
 <table>
   <tr>
     <td rowspan="4" class="bg-light-green text-center vertical-text" style="width: 8%;">
@@ -7,43 +7,43 @@
     </td>
     <td colspan="3">
       <span class="field-label">No. de Identificación</span><br>
-      <div class="input-min-field">{{ solicitud.conyuge.numero_identificacion|default('') }}</div>
+      <div class="input-min-field">{{ conyuge.numero_identificacion|default('') }}</div>
     </td>
     <td colspan="3">
       <span class="field-label">Nombre y apellidos</span><br>
-      <div class="input-min-field">{{ solicitud.conyuge.nombres_apellidos|default('') }}</div>
+      <div class="input-min-field">{{ conyuge.nombres_apellidos|default('') }}</div>
     </td>
     <td colspan="1">
       <span class="field-label">Ingresos Laborales</span><br>
-      <div class="input-min-field">{{ solicitud.conyuge.ingresos_laborales|default(0)|currency }}</div>
+      <div class="input-min-field">{{ conyuge.ingresos_laborales|default(0)|currency }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       Trabaja &nbsp;
-      Si <span class="checkbox">{{ 'X' if solicitud.conyuge.trabaja else '' }}</span> &nbsp;
-      No <span class="checkbox">{{ 'X' if not solicitud.conyuge.trabaja else '' }}</span>
+      Si <span class="checkbox">{{ 'X' if conyuge.trabaja else '' }}</span> &nbsp;
+      No <span class="checkbox">{{ 'X' if not conyuge.trabaja else '' }}</span>
     </td>
     <td colspan="3">
       <span class="field-label">Nombre de la empresa</span><br>
-      <div class="input-min-field">{{ solicitud.conyuge.empresa_nombre|default('') }}</div>
+      <div class="input-min-field">{{ conyuge.empresa_nombre|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">Dirección</span><br>
-      <div class="input-min-field">{{ solicitud.conyuge.empresa_direccion|default('') }}</div>
+      <div class="input-min-field">{{ conyuge.empresa_direccion|default('') }}</div>
     </td>
   </tr>
   <tr>
     <td colspan="7">
       <span class="field-label">E-mail</span><br>
-      <div class="input-min-field" style="width: 50%; display: inline-block;">{{ solicitud.conyuge.email|default('') }}
+      <div class="input-min-field" style="width: 50%; display: inline-block;">{{ conyuge.email|default('') }}
       </div>
       <span class="field-label" style="margin-left: 20px;">Teléfono Empresa</span>
       <div class="input-min-field" style="width: 30%; display: inline-block;">{{
-        solicitud.conyuge.empresa_telefono|default('') }}</div>
+        conyuge.empresa_telefono|default('') }}</div>
       <span class="field-label" style="margin-left: 10px;">Móvil</span>
       <div class="input-min-field" style="width: 15%; display: inline-block;">{{
-        solicitud.conyuge.telefono_movil|default('') }}</div>
+        conyuge.telefono_movil|default('') }}</div>
     </td>
   </tr>
 </table>
