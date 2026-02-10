@@ -102,12 +102,24 @@ class SolicitudData:
     def from_payload(cls, payload: Dict[str, Any]) -> 'SolicitudData':
         solicitud = payload.get("solicitud", {})
         
+        # Logging para depuración
+        logger.info(f"Payload recibido: {payload}")
+        logger.info(f"Solicitud extraída: {solicitud}")
+        logger.info(f"Valor de valor_solicitud: {solicitud.get('valor_solicitud')} (tipo: {type(solicitud.get('valor_solicitud'))})")
+        
         # Función helper para conversión segura a int
         def safe_int(value, default=0):
             try:
-                return int(value) if value else default
+                logger.info(f"Convirtiendo valor a int: {value} (tipo: {type(value)})")
+                if value is None or value == '':
+                    logger.warning("Valor es None o vacío, usando default")
+                    return default
+                # Convertir a float primero para manejar decimales, luego a int
+                result = int(float(value))
+                logger.info(f"Conversión exitosa: {value} -> {result}")
+                return result
             except (ValueError, TypeError) as e:
-                logger.warning(f"Error convirtiendo a int: {e}", extra={"value": str(value)})
+                logger.warning(f"Error convirtiendo a int: {e}", extra={"value": str(value), "type": str(type(value))})
                 return default
         
         return cls(
@@ -143,7 +155,10 @@ class LaboralData:
         
         def safe_int(value, default=0):
             try:
-                return int(value) if value else default
+                if value is None or value == '':
+                    return default
+                # Convertir a float primero para manejar decimales, luego a int
+                return int(float(value))
             except (ValueError, TypeError):
                 return default
         

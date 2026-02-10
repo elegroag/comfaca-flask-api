@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
 Test final del endpoint /api/download-pdf con autenticación.
+Actualizado para trabajar con la nueva estructura de datos.
 """
 
 import requests
 import base64
 import json
+import os
 
 def test_download_pdf_complete():
     """Test completo del endpoint con autenticación."""
@@ -14,6 +16,34 @@ def test_download_pdf_complete():
     
     print("🧪 Test completo endpoint /api/download-pdf")
     print(f"🔐 Usando autenticación: {auth[0]}:***")
+    
+    # Primero generar un PDF de prueba
+    print("\n📄 Generando PDF de prueba...")
+    json_path = "/home/elegro/proyectos/python/comfaca-credito/creadte-pdf-model.json"
+    
+    try:
+        with open(json_path, 'r') as f:
+            test_data = json.load(f)
+        
+        # Generar PDF
+        gen_response = requests.post(
+            f"{base_url}/api/generate-pdf",
+            json=test_data,
+            headers={'Content-Type': 'application/json'},
+            auth=auth
+        )
+        
+        if gen_response.status_code == 200:
+            gen_data = gen_response.json()
+            pdf_filename = gen_data.get('api_filename', 'test_generated.pdf')
+            print(f"✅ PDF generado: {pdf_filename}")
+        else:
+            print(f"⚠️  No se pudo generar PDF, usando archivo de prueba")
+            pdf_filename = 'test.pdf'
+            
+    except Exception as e:
+        print(f"⚠️  Error generando PDF: {e}")
+        pdf_filename = 'test.pdf'
     
     # Test 1: Sin parámetro filepath
     print("\n1. Test sin filepath...")
@@ -41,7 +71,7 @@ def test_download_pdf_complete():
     
     # Test 5: Descarga exitosa
     print("\n5. Test descarga exitosa...")
-    response = requests.get(f"{base_url}/api/download-pdf?filepath=test.pdf", auth=auth)
+    response = requests.get(f"{base_url}/api/download-pdf?filepath={pdf_filename}", auth=auth)
     print(f"Status: {response.status_code}")
     if response.status_code == 200:
         data = response.json()
