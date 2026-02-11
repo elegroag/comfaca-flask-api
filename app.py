@@ -261,4 +261,12 @@ def internal_error(error):
     return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False, host='172.168.0.15', port=5000)
+    host = os.getenv('BASE_URL', 'localhost')
+    # Remover http:// o https:// si están presentes
+    if host.startswith('http://'):
+        host = host[7:]
+    elif host.startswith('https://'):
+        host = host[8:]
+    
+    port = int(os.getenv('BASE_PORT', 5000))
+    app.run(debug=False, host=host, port=port)
