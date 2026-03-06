@@ -15,6 +15,7 @@ from flask import Flask, request, jsonify, send_file, send_from_directory
 from dotenv import dotenv_values
 import base64
 import os
+import uuid
 import importlib
 import json
 
@@ -79,9 +80,9 @@ def generate_pdf_endpoint():
         context = data.get('context', {})
         output = data.get('output')
         if output:
-            output_path = "/app/output/" + output
+            output_path = "/app/temp_output/enlinea/" + output
         else:
-            output_path = None
+            output_path = "/app/temp_output/enlinea/"+ uuid.uuid4().hex + ".pdf"
 
         if not template:
             raise ValueError("Campo 'template' requerido")
