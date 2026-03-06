@@ -12,7 +12,7 @@ Uso:
 
 from pathlib import Path
 from flask import Flask, request, jsonify, send_file, send_from_directory
-from dotenv import dotenv_values
+from dotenv import dotenv_values, load_dotenv
 import base64
 import os
 import uuid
@@ -38,6 +38,7 @@ except Exception:
 from services.generate_pdf_service import GeneratePdfService
 from services.creditos_generator_service import CreditosGeneratorService
 # Cargar variables de entorno lo antes posible para que el middleware pueda leerlas
+load_dotenv(".env")
 config = dotenv_values(".env")
 
 app = Flask(__name__)
@@ -259,6 +260,9 @@ def internal_error(error):
 
 if __name__ == '__main__':
     host = os.getenv('BASE_URL', 'localhost')
+    print(f"Host: {host}")
+    print(f"Port: {os.getenv('BASE_PORT', 5000)}")
+
     # Remover http:// o https:// si están presentes
     if host.startswith('http://'):
         host = host[7:]
