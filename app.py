@@ -15,7 +15,6 @@ from flask import Flask, request, jsonify, send_file, send_from_directory
 from dotenv import dotenv_values
 import base64
 import os
-import io
 import importlib
 import json
 
@@ -70,56 +69,48 @@ def generate_pdf_endpoint():
     
     try:
         if not request.is_json:
-            return jsonify({"error": "Content-Type debe ser application/json"}), 415
+            raise ValueError("Content-Type debe ser application/json")
         data = request.get_json()
 
         if not data:
-            return jsonify({"error": "JSON requerido"}), 400
+            raise ValueError("JSON requerido")
 
         template = data.get('template')
         context = data.get('context', {})
-        output_path = "/app/output/" + data.get('output')
+        output = data.get('output')
+        if output:
+            output_path = "/app/output/" + output
+        else:
+            output_path = None
 
         if not template:
-            return jsonify({"error": "Campo 'template' requerido"}), 400
+            raise ValueError("Campo 'template' requerido")
 
         if not isinstance(context, dict):
-            return jsonify({"error": "Campo 'context' debe ser un objeto JSON"}), 400
+            raise ValueError("Campo 'context' debe ser un objeto JSON")
 
         logger.info(f"Recibida solicitud de PDF para template: {template}")
 
         # Generar PDF via service
-        result = pdf_service.generate_pdf("{}.j2".format(template), context, output_path)
+        resultado = pdf_service.generate_pdf("{}.j2".format(template), context, output_path)
 
-        if output_path:
-            # Retornar confirmación de guardado
-            logger.info(f"PDF generado exitosamente: {result}")
-            return jsonify({
-                "success": True,
-                "message": "PDF generado exitosamente",
-                "path": result
-            })
-        else:
-            # Retornar PDF como archivo
-            logger.info(f"PDF generado exitosamente para descarga directa")
-            pdf_buffer = io.BytesIO(result)
-            pdf_buffer.seek(0)
-            return send_file(
-                pdf_buffer,
-                mimetype='application/pdf',
-                as_attachment=True,
-                download_name=f"{Path(template).stem}.pdf"
-            )
-
-    except FileNotFoundError as e:
-        logger.error(f"Template no encontrado: {e}")
-        return jsonify({"error": str(e)}), 404
+        # Retornar confirmación de guardado
+        logger.info(f"PDF generado exitosamente: {resultado['api_filename']}")
+        return jsonify({
+            "success": True,
+            "message": "PDF generado exitosamente",
+            "data": resultado
+        })
+        
+    except ValueError as e:
+        logger.error(f"Error de validación: {e}")
+        return jsonify({"success": False, "error": str(e)}), 400
     except RuntimeError as e:
         logger.error(f"Error de runtime: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"success": False, "error": str(e)}), 500
     except Exception as e:
         logger.error(f"Error inesperado: {e}")
-        return jsonify({"error": f"Error inesperado: {e}"}), 500
+        return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
 
 
 @app.route('/api/styles/<path:filename>')
@@ -229,14 +220,12 @@ def download_pdf():
 
 @app.route('/api/creditos/generate-pdf', methods=['POST'])
 def generate_pdf_creditos():
+    import logging
+    logger = logging.getLogger(__name__)
+    
     try:
-        # Temporarily disable auth for testing
-        # auth = request.authorization
-        # if not auth or not check_auth(auth.username, auth.password):
-        #     return jsonify({"error": "Unauthorized"}), 401
-
         if not request.is_json:
-            return jsonify({"error": "Content-Type debe ser application/json"}), 415
+            raise ValueError("Content-Type debe ser application/json")
         data = request.get_json()
        
         pdf_service_creditos = CreditosGeneratorService()
@@ -248,8 +237,15 @@ def generate_pdf_creditos():
             "data": resultado
         })
         
+    except ValueError as e:
+        logger.error(f"Error de validación: {e}")
+        return jsonify({"success": False, "error": str(e)}), 400
+    except RuntimeError as e:
+        logger.error(f"Error de runtime: {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        logger.error(f"Error inesperado: {e}")
+        return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
 
 
 @app.errorhandler(404)

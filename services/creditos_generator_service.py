@@ -125,92 +125,72 @@ class CreditosGeneratorService:
         Raises:
             ValidationError: Si faltan datos requeridos o hay errores en el proceso
         """       
-        try:
-            # Validar y extraer datos de entrada
-            solicitud_id = str(data.get("solicitud_id") or "").strip()
-            if not solicitud_id:
-                logger.error("Solicitud ID faltante en datos de entrada")
-                raise ValidationError(
-                    "Campo requerido faltante: solicitud_id",
-                    details={"field": "solicitud_id"},
-                )
-
-            # Extraer datos opcionales con valores por defecto
-            trabajador_data = data.get("trabajador", {})
-
-            logger.info(
-                "Iniciando generación de PDF",
-                extra={
-                    "solicitud_id": solicitud_id,
-                    "tiene_convenio": data.get("convenio") is not None,
-                    "cantidad_firmantes": len(data.get("firmantes", []))
-                }
+        # Validar y extraer datos de entrada
+        solicitud_id = str(data.get("solicitud_id") or "").strip()
+        if not solicitud_id:
+            logger.error("Solicitud ID faltante en datos de entrada")
+            raise ValueError(
+                "Campo requerido faltante: solicitud_id"
             )
-            
-            # Validar estructura básica de los datos
-            self._validar_estructura_solicitud(data)
 
-            # Normalizar datos del JSON al formato esperado por los templates
-            contexto = self._preparar_contexto(data)
+        # Extraer datos opcionales con valores por defecto
+        trabajador_data = data.get("trabajador", {})
 
-            # Validar contexto normalizado
-            self._validar_contexto_template(contexto)
-
-            # Renderizar HTML desde template
-            html_content = self._renderizar_template(contexto)
-            
-            # Generar PDF desde HTML
-            api_content, api_path, api_filename = self._generar_pdf_desde_html(
-                html_content=html_content,
-                solicitud_id=solicitud_id
-            )
-            
-            logger.info(
-                "PDF generado exitosamente",
-                extra={
-                    "api_path": api_path,
-                    "api_filename": api_filename,
-                }
-            )
-            
-            return {
-                "api_content": api_content,
-                "api_path": api_path,
-                "api_filename": api_filename
+        logger.info(
+            "Iniciando generación de PDF",
+            extra={
+                "solicitud_id": solicitud_id,
+                "tiene_convenio": data.get("convenio") is not None,
+                "cantidad_firmantes": len(data.get("firmantes", []))
             }
-            
-        except Exception as e:
-            if isinstance(e, ValidationError):
-                raise
-            logger.exception("Error inesperado generando PDF")
-            raise ValidationError(
-                "Error al generar el PDF de la solicitud", 
-                details={"error": str(e)}
-            )
+        )
+        
+        # Validar estructura básica de los datos
+        self._validar_estructura_solicitud(data)
+
+        # Normalizar datos del JSON al formato esperado por los templates
+        contexto = self._preparar_contexto(data)
+
+        # Validar contexto normalizado
+        self._validar_contexto_template(contexto)
+
+        # Renderizar HTML desde template
+        html_content = self._renderizar_template(contexto)
+        
+        # Generar PDF desde HTML
+        api_content, api_path, api_filename = self._generar_pdf_desde_html(
+            html_content=html_content,
+            solicitud_id=solicitud_id
+        )
+        
+        logger.info(
+            "PDF generado exitosamente",
+            extra={
+                "api_path": api_path,
+                "api_filename": api_filename,
+            }
+        )
+        return {
+            "api_content": api_content,
+            "api_path": api_path,
+            "api_filename": api_filename
+        }
 
     def _validar_estructura_solicitud(self, data: Dict[str, Any]) -> None:
         """Valida la estructura básica de los datos de la solicitud."""
-        if not isinstance(data, dict):
-            raise ValidationError(
-                "Estructura inválida: los datos deben ser un diccionario",
-                details={"expected": "dict", "received": type(data).__name__}
-            )
-        
         # Validar campos requeridos
         campos_requeridos = ["solicitud", "solicitante"]
         for campo in campos_requeridos:
             if campo not in data or not data[campo]:
-                raise ValidationError(
-                    f"Campo requerido faltante: {campo}",
-                    details={"missing_field": campo}
+                raise ValueError(
+                    f"Campo requerido faltante: {campo}"
                 )
         
         # Validar estructura de solicitud
         solicitud_info = data["solicitud"]
         if not isinstance(solicitud_info, dict):
-            raise ValidationError(
-                "Estructura inválida: solicitud debe ser un diccionario",
-                details={"expected": "dict", "received": type(solicitud_info).__name__}
+            raise ValueError(
+                "Estructura inválida: solicitud debe ser un diccionario"
             )
         
         # Validar campos críticos de solicitud
@@ -219,9 +199,8 @@ class CreditosGeneratorService:
                 "Campo crítico faltante: numero_solicitud",
                 extra={"solicitud": solicitud_info}
             )
-            raise ValidationError(
-                "Campo requerido faltante: numero_solicitud",
-                details={"field": "solicitud.numero_solicitud"}
+            raise ValueError(
+                "Campo requerido faltante: numero_solicitud"
             )
     
     def _preparar_contexto(self, data: Dict[str, Any]) -> Dict[str, Any]:
@@ -324,9 +303,8 @@ class CreditosGeneratorService:
             return template.render(**template_context)
         except Exception as e:
             logger.exception("Error renderizando template")
-            raise ValidationError(
-                "Error al generar el documento HTML",
-                details={"error": str(e)}
+            raise ValueError(
+                f"Error al generar el documento HTML: {str(e)}"
             )
 
     def _generar_pdf_desde_html(
@@ -369,7 +347,6 @@ class CreditosGeneratorService:
             
         except Exception as e:
             logger.exception("Error generando PDF")
-            raise ValidationError(
-                "Error al generar el archivo PDF",
-                details={"error": str(e)}
+            raise ValueError(
+                f"Error al generar el archivo PDF: {str(e)}"
             )

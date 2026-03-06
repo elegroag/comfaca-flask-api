@@ -6,6 +6,7 @@ service class following a simple layered pattern.
 from pathlib import Path
 import logging
 import time
+import base64
 from weasyprint import HTML
 from jinja2 import Environment, FileSystemLoader
 
@@ -44,82 +45,76 @@ class GeneratePdfService:
             Context used to render the template.
         output_path : str, optional
             If provided, the PDF will be written to this path and the path is
-            returned. Otherwise the PDF bytes are returned.
+            returned. Otherwise the PDF in base64 is returned.
 
         Returns
         -------
-        bytes or str
-            PDF bytes when `output_path` is None, otherwise the output path.
-
-        Raises
-        ------
-        FileNotFoundError
-            If the template file does not exist.
-        RuntimeError
-            For other unexpected errors during generation.
+        dict
+            Dictionary with api_content, api_path, api_filename.
         """
         start_time = time.time()
         logger.info(f"Iniciando generación de PDF para template: {template_name}")
         
-        try:
-            # Prevent path traversal by using only the name
-            safe_name = Path(template_name).name
-            if safe_name != template_name:
-                raise ValueError("Nombre de template inválido")
+        # Prevent path traversal by using only the name
+        safe_name = Path(template_name).name
+        if safe_name != template_name:
+            raise ValueError("Nombre de template inválido")
 
-            template_path = self.templates_dir / safe_name
-            if not template_path.exists():
-                raise FileNotFoundError(f"Template no encontrado: {template_name}")
+        template_path = self.templates_dir / safe_name
+        if not template_path.exists():
+            raise ValueError(f"Template no encontrado: {template_name}")
 
-            # Medir tiempo de renderizado
-            render_start = time.time()
-            template = self.env.get_template(safe_name)
-            rendered_html = template.render(**context)
-            render_time = time.time() - render_start
-            logger.info(f"Template renderizado en {render_time:.2f} segundos")
+        # Medir tiempo de renderizado
+        render_start = time.time()
+        template = self.env.get_template(safe_name)
+        
+        rendered_html = template.render(**context)
+        render_time = time.time() - render_start
+        logger.info(f"Template renderizado en {render_time:.2f} segundos")
 
-            # Medir tiempo de generación de PDF
-            pdf_start = time.time()
-            base_url = template_path.parent
-            pdf_bytes = HTML(string=rendered_html, base_url=str(base_url)).write_pdf()
-            pdf_time = time.time() - pdf_start
-            logger.info(f"PDF generado en {pdf_time:.2f} segundos")
+        # Medir tiempo de generación de PDF
+        pdf_start = time.time()
+        base_url = template_path.parent
+        pdf_bytes = HTML(string=rendered_html, base_url=str(base_url)).write_pdf()
+        pdf_time = time.time() - pdf_start
+        logger.info(f"PDF generado en {pdf_time:.2f} segundos")
 
-            total_time = time.time() - start_time
-            logger.info(f"Tiempo total de generación: {total_time:.2f} segundos")
+        total_time = time.time() - start_time
+        logger.info(f"Tiempo total de generación: {total_time:.2f} segundos")
 
-            if output_path:
-                output_dir = Path(output_path).parent
-                output_dir.mkdir(parents=True, exist_ok=True)
-                with open(output_path, 'wb') as f:
-                    f.write(pdf_bytes)
-                logger.info(f"PDF guardado en: {output_path}")
-                return output_path
-            else:
-                return pdf_bytes
-
-        except FileNotFoundError:
-            # Let callers handle 404 semantics
-            raise
-        except Exception as e:
-            total_time = time.time() - start_time
-            logger.error(f"Error después de {total_time:.2f} segundos: {e}")
-            raise RuntimeError(f"Error al generar PDF: {e}")
+        if output_path:
+            # Guardar PDF en disco
+            output_dir = Path(output_path).parent
+            output_dir.mkdir(parents=True, exist_ok=True)
+            
+            with open(output_path, 'wb') as f:
+                f.write(pdf_bytes)
+            logger.info(f"PDF guardado en: {output_path}")
+        
+            # Extraer nombre de archivo desde output_path
+            pdf_filename = Path(output_path).name
+            
+            # Convertir PDF a base64
+            pdf_base64 = base64.b64encode(pdf_bytes).decode('utf-8')
+            logger.info(f"PDF convertido a base64, longitud: {len(pdf_base64)} caracteres")
+            return {
+                "api_content": pdf_base64,
+                "api_path": output_path,
+                "api_filename": pdf_filename
+            }
+        else:
+            raise ValueError("El path de salida es requerido para guardar el PDF")
+       
 
     def render_template(self, template_name: str, context: dict) -> str:
-        try:
-            safe_name = Path(template_name).name
-            if safe_name != template_name:
-                raise ValueError("Nombre de template inválido")
+        safe_name = Path(template_name).name
+        if safe_name != template_name:
+            raise ValueError("Nombre de template inválido")
 
-            template_path = self.templates_dir / safe_name
-            if not template_path.exists():
-                raise FileNotFoundError(f"Template no encontrado: {template_name}")
+        template_path = self.templates_dir / safe_name
+        if not template_path.exists():
+            raise ValueError(f"Template no encontrado: {template_name}")
 
-            template = self.env.get_template(safe_name)
-            rendered_html = template.render(**context)
-            return rendered_html
-        except FileNotFoundError:
-            raise
-        except Exception as e:
-            raise RuntimeError(f"Error al renderizar template: {e}")
+        template = self.env.get_template(safe_name)
+        rendered_html = template.render(**context)
+        return rendered_html
