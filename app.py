@@ -80,10 +80,13 @@ def generate_pdf_endpoint():
         template = data.get('template')
         context = data.get('context', {})
         output = data.get('output')
+        project_dir = Path(__file__).parent
         if output:
-            output_path = "/app/temp_output/enlinea/" + output
+            output_path = str(project_dir / "temp_output" / "enlinea" / output)
         else:
-            output_path = "/app/temp_output/enlinea/"+ uuid.uuid4().hex + ".pdf"
+            output_path = str(project_dir / "temp_output" / "enlinea" / (uuid.uuid4().hex + ".pdf"))
+
+        logger.info(f"Output path: {output_path}")
 
         if not template:
             raise ValueError("Campo 'template' requerido")

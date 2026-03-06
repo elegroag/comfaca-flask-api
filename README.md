@@ -225,4 +225,20 @@ uv sync
 ```bash
 uv pip list
 python -c "import flask, weasyprint; print('OK')"
+
+
+# Iniciar la aplicación
+pm2 start ecosystem.config.js
+
+# Ver estado
+pm2 status
+
+# Ver logs
+pm2 logs flask-api
+
+# Reiniciar
+pm2 restart flask-api
+
+# Detener
+pm2 stop flask-api
 ```
