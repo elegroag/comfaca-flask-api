@@ -1,0 +1,60 @@
+{% extends "layout/main.html.j2" %}
+{% block title %}Relación Trabajadores en Nómina - COMFACA{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="styles/empresa.css" />
+<link rel="stylesheet" href="styles/oficio-empresa.css" />
+{% endblock %}
+{% block content %}
+{% include "oficio-solicitud/header.html.j2" %}
+    <div class="datos-section">
+        <div class="dato-row">
+            <h3 class="text-center">RELACIÓN DE TRABAJADORES EN NÓMINA</h3>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="datos-section">
+        <div class="body-content">
+            Yo <span class="underline">{{representante.nombre}}</span>, identificado con
+            <span class="underline">{{representante.tipo_documento}}</span> número
+            <span class="underline">{{representante.cedula}}</span>, en calidad de Representante Legal de la
+            empresa <span class="underline">{{razsoc}}</span>, con NIT
+            <span class="underline">{{nit}}</span>, certifico que las personas relacionadas en este documento
+            figuran en nómina y laboran en el Departamento del Caquetá.
+        </div>
+    </div>
+
+    <div class="datos-section">
+        <div class="dato-row">
+            <p>Relación de Trabajadores en Nómina:</p>
+        </div>
+
+        <table class="datos-table">
+            <thead>
+                <tr>
+                    <th>Identificado</th>
+                    <th>Nombre</th>
+                    <th>Salario</th>
+                    <th>Fecha inicia</th>
+                    <th>Código cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for trabajador in trabajadores_nomina %}
+                <tr>
+                    <td class="dato-field">{{trabajador.cedula}}</td>
+                    <td class="dato-field">{{trabajador.nombre}}</td>
+                    <td class="dato-field">{{trabajador.salario}}</td>
+                    <td class="dato-field">{{trabajador.fecha_inicio}}</td>
+                    <td class="dato-field">{{trabajador.cargo}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="sello-section">
+        <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
+    </div>
+{% endblock %}

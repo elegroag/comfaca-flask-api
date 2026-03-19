@@ -2,36 +2,23 @@
 {% block title %}Oficio Empresa - COMFACA{% endblock %}
 {% block head %}
 {{ super() }}
+<link rel="stylesheet" href="styles/empresa.css" />
 <link rel="stylesheet" href="styles/oficio-empresa.css" />
 {% endblock %}
 {% block content %}
-    <!-- Header -->
-    <div class="header">
-        <div class="header-left">
-            <div class="header-info">
-                <div class="header-info-item">
-                    <label>Ciudad:</label> ___________________________________
-                </div>
-                <div class="header-info-item">
-                    <label>Fecha:</label> _____ __ ____
-                </div>
-            </div>
-        </div>
-        <div class="logo">
-            <div class="logo-text">Comfaca</div>
-        </div>
-    </div>
-
+{% include "oficio-solicitud/header.html.j2" %}
     <!-- Saludo -->
     <div class="saludo">Señores</div>
 
     <!-- Dirección -->
-    <div class="direccion">
-        CAJA DE COMPENSACION FAMILIAR DEL CAQUETA COMFACA<br>
-        DEPARTAMENTO DE APORTES Y SUBSIDIO<br>
-        Carrera 11 No. 10-34 Barrio Cooperativa<br>
-        Telf. 098-4366300 Extensión 1066<br>
-        Florencia, Caquetá
+    <div class="datos-section">
+        <div class="dato-row">
+            CAJA DE COMPENSACION FAMILIAR DEL CAQUETA COMFACA<br>
+            DEPARTAMENTO DE APORTES Y SUBSIDIO<br>
+            Carrera 11 No. 10-34 Barrio Cooperativa<br>
+            Telf. 098-4366300 Extensión 1066<br>
+            Florencia, Caquetá
+        </div>
     </div>
 
     <!-- Saludo Cordial -->
@@ -41,46 +28,104 @@
 
     <!-- Contenido Principal -->
     <div class="body-content">
-        <p>Comedidamente me permito solicitar la afiliación en calidad: <span class="underline-field"></span>, de <span class="underline-field"></span> ante la Caja de Compensación Familiar del Caquetá COMFACA, los pagos de aportes parafiscales se iniciarán a cancelar a partir del día<span class="underline-short"></span> mes<span class="underline-short"></span> año<span class="underline-short"></span>, fecha en que se vinculó a laboral el personal.</p>
+        <p>Comedidamente me permito solicitar la afiliación en calidad: 
+        <span class="underline">{{calemp_detalle}}</span>, de 
+        <span class="underline">{{razsoc}}</span> 
+        ante la Caja de Compensación Familiar del Caquetá COMFACA, 
+        los pagos de aportes parafiscales se iniciarán a cancelar a partir del día 
+        <span class="underline">{{day}}</span> mes 
+        <span class="underline">{{month}}</span> año 
+        <span class="underline">{{year}}</span>, fecha en que se vinculó a laboral el personal.</p>
     </div>
 
     <!-- Datos del Solicitante -->
     <div class="datos-section">
-        <div class="section-title">Datos de: ___________________</div>
-        
         <div class="dato-row">
-            <div class="dato-label">Tipo de documento:</div>
-            <div class="dato-field"></div>
-            <div class="dato-label" style="margin-left: 20px;">Número:</div>
-            <div class="dato-field"></div>
+            <p>Datos de {{calemp_detalle}}:</p>
         </div>
 
-        <div class="dato-row">
-            <div class="dato-label">Dirección laboral:</div>
-            <div class="dato-field"></div>
-        </div>
-
-        <div class="dato-row">
-            <div class="dato-label">Teléfono móvil:</div>
-            <div class="dato-field"></div>
-        </div>
-
-        <div class="dato-row">
-            <div class="dato-label">Teléfono:</div>
-            <div class="dato-field"></div>
-            <div class="dato-label" style="margin-left: 20px;">Correo electrónico:</div>
-            <div class="dato-field"></div>
-        </div>
-
-        <div class="dato-row">
-            <div class="dato-label">Ciudad donde se causan los aportes:</div>
-            <div class="dato-field"></div>
-        </div>
+        <table class="datos-table-border-0">
+            <tbody>
+                <tr>
+                    <td class="dato-label">Razon social:</td>
+                    <td class="dato-field">{{razsoc}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Tipo de documento:</td>
+                    <td class="dato-field">{{tipo_documento}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Número de documento:</td>
+                    <td class="dato-field">{{nit}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Dirección laboral:</td>
+                    <td class="dato-field">{{direccion}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Teléfono móvil:</td>
+                    <td class="dato-field">{{telefono}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Correo electrónico:</td>
+                    <td class="dato-field">{{email}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Ciudad donde se causan los aportes:</td>
+                    <td class="dato-field">{{ciudad_name}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Preguntas -->
     <div class="body-content">
-        <p><strong>Manifiesto SI ( ) NO ( ) haber estado afiliado a una Caja de Compensación Familiar con anterioridad a la solicitud.</strong><br>
-        Adjunto Paz y Salvo de la anterior caja de Compensación Familiar SI ( ) NO ( ).</p>
+        <p><strong>Manifiesto 
+        SI ({% if codcaj %}X{% else %}_{% endif %}) 
+        NO ({% if not codcaj %}X{% else %}_{% endif %}) 
+        haber estado afiliado a una Caja de Compensación Familiar con anterioridad a la solicitud.</strong><br>
+        Adjunto Paz y Salvo de la anterior caja de Compensación Familiar 
+        SI ({% if not paz_y_salvo %}X{% else %}_{% endif %}) 
+        NO ({% if paz_y_salvo %}X{% else %}_{% endif %}).</p>
+    </div>
+
+    <!-- Datos del representante legal -->
+    <div class="datos-section">
+        <div class="dato-row">
+            <p>Datos del Representante Legal:</p>
+        </div>
+
+        <table class="datos-table-border-0">
+            <tbody>
+                <tr>
+                    <td class="dato-label">Nombre completo:</td>
+                    <td class="dato-field">{{representante.nombre}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Tipo de documento:</td>
+                    <td class="dato-field">{{representante.tipo_documento}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Número de documento:</td>
+                    <td class="dato-field">{{representante.cedula}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Teléfono móvil:</td>
+                    <td class="dato-field">{{celpri}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Correo electrónico:</td>
+                    <td class="dato-field">{{email}}</td>
+                </tr>
+                <tr>
+                    <td class="dato-label">Ciudad de residencia:</td>
+                    <td class="dato-field">{{ciudad_name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="sello-section">
+        <img src="img/sello.png" alt="Sello" style="width: 120px; height: 90px" />
     </div>
 {% endblock %}
