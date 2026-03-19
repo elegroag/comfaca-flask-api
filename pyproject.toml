@@ -8,6 +8,7 @@ dependencies = [
     "jinja2",
     "fonttools>=4.60.1",
     "flask",
+    "pypdf",
 ]
 
 [tool.setuptools]

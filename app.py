@@ -14,10 +14,13 @@ from pathlib import Path
 from flask import Flask, request, jsonify, send_file, send_from_directory
 from dotenv import dotenv_values, load_dotenv
 import base64
+import io
 import os
 import uuid
 import importlib
 import json
+
+from pypdf import PdfReader, PdfWriter
 
 # Workaround: fontTools deprecated `instantiateVariableFont` location
 # Newer fonttools expose the function in `fontTools.varLib.instancer`.
@@ -107,6 +110,86 @@ def generate_pdf_endpoint():
             "data": resultado
         })
         
+    except ValueError as e:
+        logger.error(f"Error de validación: {e}")
+        return jsonify({"success": False, "error": str(e)}), 400
+    except RuntimeError as e:
+        logger.error(f"Error de runtime: {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
+    except Exception as e:
+        logger.error(f"Error inesperado: {e}")
+        return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
+
+
+@app.route('/api/genera-consolidado-pdf', methods=['POST'])
+def genera_consolidado_pdf_endpoint():
+    import logging
+    logger = logging.getLogger(__name__)
+
+    try:
+        if not request.is_json:
+            raise ValueError("Content-Type debe ser application/json")
+
+        data = request.get_json()
+        if not data:
+            raise ValueError("JSON requerido")
+
+        templates = data.get('templates')
+        context = data.get('context', {})
+        api_filename = data.get('output', f"consolidado_{uuid.uuid4().hex}.pdf")
+
+        if not templates or not isinstance(templates, list):
+            raise ValueError("Campo 'templates' requerido y debe ser una lista")
+
+        if not isinstance(context, dict):
+            raise ValueError("Campo 'context' debe ser un objeto JSON")
+
+        normalized_templates = []
+        for t in templates:
+            if not isinstance(t, str) or not t.strip():
+                raise ValueError("Cada item de 'templates' debe ser un string no vacío")
+            normalized_templates.append(t.strip())
+
+        project_dir = Path(__file__).parent
+        output_dir = project_dir / "temp_output" / "enlinea"
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        writer = PdfWriter()
+        generated_files = []
+
+        for template in normalized_templates:
+            template_name = f"{template}.j2"
+            logger.info(f"Generando PDF con template: {template}")
+            individual_path = output_dir / f"{Path(template).stem}_{uuid.uuid4().hex}.pdf"
+            pdf_service.generate_pdf(template_name, context, str(individual_path))
+            generated_files.append(individual_path)
+
+            reader = PdfReader(str(individual_path))
+            for page in reader.pages:
+                writer.add_page(page)
+
+        out = io.BytesIO()
+        writer.write(out)
+        merged_bytes = out.getvalue()
+
+        
+        api_path = output_dir / api_filename
+        with open(api_path, 'wb') as merged_file:
+            merged_file.write(merged_bytes)
+
+        api_content = base64.b64encode(merged_bytes).decode('utf-8')
+
+        return jsonify({
+            "success": True,
+            "message": "PDF generado exitosamente",
+            "data": {
+                "api_content": api_content,
+                "api_path": str(api_path),
+                "api_filename": api_filename,
+                "generated_files": [str(path) for path in generated_files]
+            }
+        })
+
     except ValueError as e:
         logger.error(f"Error de validación: {e}")
         return jsonify({"success": False, "error": str(e)}), 400

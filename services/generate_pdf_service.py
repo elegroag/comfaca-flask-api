@@ -34,6 +34,40 @@ class GeneratePdfService:
 
         self.env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
 
+    def _get_template_path(self, template_name: str) -> Path:
+        safe_name = Path(template_name).name
+        if safe_name != template_name:
+            raise ValueError("Nombre de template inválido")
+
+        template_path = self.templates_dir / safe_name
+        if not template_path.exists():
+            raise ValueError(f"Template no encontrado: {template_name}")
+
+        return template_path
+
+    def generate_pdf_bytes(self, template_name: str, context: dict) -> bytes:
+        start_time = time.time()
+        logger.info(f"Iniciando generación de PDF (bytes) para template: {template_name}")
+
+        template_path = self._get_template_path(template_name)
+
+        render_start = time.time()
+        template = self.env.get_template(template_path.name)
+        rendered_html = template.render(**context)
+        render_time = time.time() - render_start
+        logger.info(f"Template renderizado en {render_time:.2f} segundos")
+
+        pdf_start = time.time()
+        base_url = template_path.parent
+        pdf_bytes = HTML(string=rendered_html, base_url=str(base_url)).write_pdf()
+        pdf_time = time.time() - pdf_start
+        logger.info(f"PDF generado en {pdf_time:.2f} segundos")
+
+        total_time = time.time() - start_time
+        logger.info(f"Tiempo total de generación: {total_time:.2f} segundos")
+
+        return pdf_bytes
+
     def generate_pdf(self, template_name: str, context: dict, output_path: str = None):
         """Generate a PDF from a Jinja2 HTML template.
 
@@ -52,35 +86,9 @@ class GeneratePdfService:
         dict
             Dictionary with api_content, api_path, api_filename.
         """
-        start_time = time.time()
         logger.info(f"Iniciando generación de PDF para template: {template_name}")
-        
-        # Prevent path traversal by using only the name
-        safe_name = Path(template_name).name
-        if safe_name != template_name:
-            raise ValueError("Nombre de template inválido")
-
-        template_path = self.templates_dir / safe_name
-        if not template_path.exists():
-            raise ValueError(f"Template no encontrado: {template_name}")
-
-        # Medir tiempo de renderizado
-        render_start = time.time()
-        template = self.env.get_template(safe_name)
-        
-        rendered_html = template.render(**context)
-        render_time = time.time() - render_start
-        logger.info(f"Template renderizado en {render_time:.2f} segundos")
-
-        # Medir tiempo de generación de PDF
-        pdf_start = time.time()
-        base_url = template_path.parent
-        pdf_bytes = HTML(string=rendered_html, base_url=str(base_url)).write_pdf()
-        pdf_time = time.time() - pdf_start
-        logger.info(f"PDF generado en {pdf_time:.2f} segundos")
-
-        total_time = time.time() - start_time
-        logger.info(f"Tiempo total de generación: {total_time:.2f} segundos")
+        template_path = self._get_template_path(template_name)
+        pdf_bytes = self.generate_pdf_bytes(template_path.name, context)
 
         if output_path:
             # Guardar PDF en disco
@@ -107,14 +115,7 @@ class GeneratePdfService:
        
 
     def render_template(self, template_name: str, context: dict) -> str:
-        safe_name = Path(template_name).name
-        if safe_name != template_name:
-            raise ValueError("Nombre de template inválido")
-
-        template_path = self.templates_dir / safe_name
-        if not template_path.exists():
-            raise ValueError(f"Template no encontrado: {template_name}")
-
-        template = self.env.get_template(safe_name)
+        template_path = self._get_template_path(template_name)
+        template = self.env.get_template(template_path.name)
         rendered_html = template.render(**context)
         return rendered_html

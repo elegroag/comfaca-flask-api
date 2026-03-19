@@ -21,7 +21,7 @@ class TestConfig:
     
     # Rutas de archivos
     JSON_TEST_PATH = os.getenv('JSON_TEST_PATH', 
-                               '/home/elegro/proyectos/python/comfaca-credito/creadte-pdf-model.json')
+                               str(Path(__file__).parent / 'test_consolidado_payload.json'))
     PDF_OUTPUT_DIR = os.getenv('PDF_OUTPUT_DIR', './test_output')
     
     # Configuración de logging

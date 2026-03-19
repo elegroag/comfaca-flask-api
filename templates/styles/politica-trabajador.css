@@ -1,14 +1,14 @@
     @page {
       margin: 0in;
-      background-image: url("membrete.jpg");
+      background-image: url("../img/membrete.jpg");
       background-size: cover;
       background-repeat: no-repeat;
     }
 
     @font-face {
-      font-family: "fonts/lato-regular";
-      src: url("fonts/lato-regular.ttf") format("truetype"),
-        url("fonts/lato-regular.woff2") format("woff2");
+      font-family: "Lato Regular";
+      src: url("../fonts/lato-regular.ttf") format("truetype"),
+        url("../fonts/lato-regular.woff2") format("woff2");
       font-weight: normal;
       font-style: normal;
     }
@@ -17,7 +17,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "fonts/lato-regular", sans-serif;
+      font-family: "Lato Regular", sans-serif;
     }
 
     body {
@@ -239,7 +239,7 @@
 
     .form-section td .text {
       font-size: 8px;
-      font-weight: regular;
+      font-weight: normal;
     }
 
     .form-section td .label {
