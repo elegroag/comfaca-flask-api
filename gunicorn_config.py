@@ -12,10 +12,8 @@ timeout = 120  # 2 minutos para generación de PDFs complejos
 keepalive = 30
 max_requests = 1000  # Reiniciar workers después de 1000 peticiones
 max_requests_jitter = 50  # Variación aleatoria para evitar reinicios simultáneos
-preload_app = True
+preload_app = False
 daemon = False
-user = "app"
-group = "app"
 tmp_upload_dir = "/tmp"
 
 # Logging

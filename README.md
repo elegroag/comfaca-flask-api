@@ -218,6 +218,12 @@ source .venv/bin/activate
 uv pip install -e .
 # o simplemente:
 uv sync
+
+
+uv pip freeze > requirements.txt
+uv pip compile pyproject.toml -o requirements.txt
+
+uv venv --python 3.12.2
 ```
 
 ### 4) Verificar instalación
