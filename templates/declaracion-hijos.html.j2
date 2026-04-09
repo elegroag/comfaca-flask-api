@@ -132,20 +132,20 @@
     </div>
     <table class="form-table">
         <tr>
-            <td class="label">Tipo documento papá</td>
-            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
-            <td class="label">Identificación papá</td>
-            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
-            <td class="label">Nombre papá</td>
-            <td class="text">{% if trabajador.sexo != 'M' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
+            <td class="label">Tipo documento mamá</td>
+            <td class="text">{% if trabajador.sexo == 'F' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
+            <td class="label">Identificación mamá</td>
+            <td class="text">{% if trabajador.sexo == 'F' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
+            <td class="label">Nombre mamá</td>
+            <td class="text">{% if trabajador.sexo == 'F' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
         </tr>
         <tr>
-            <td class="label">Tipo documento mamá</td>
-            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
-            <td class="label">Identificación mamá</td>
-            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
-            <td class="label">Nombre mamá</td>
-            <td class="text">{% if trabajador.sexo == 'M' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
+            <td class="label">Tipo documento papá</td>
+            <td class="text">{% if trabajador.sexo != 'F' %}   {{trabajador.tipo_documento}}{% else %}   {{biologico.tipo_documento}}{% endif %}</td>
+            <td class="label">Identificación papá</td>
+            <td class="text">{% if trabajador.sexo != 'F' %}   {{trabajador.numero_documento}}{% else %}   {{biologico.numero_documento}}{% endif %}</td>
+            <td class="label">Nombre papá</td>
+            <td class="text">{% if trabajador.sexo != 'F' %}   {{trabajador.nombre_trabajador}}{% else %}   {{biologico.nombre_completo}}{% endif %}</td>
         </tr>
     </table>
 </div>
