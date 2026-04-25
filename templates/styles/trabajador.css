@@ -225,3 +225,10 @@
     gap: 5px;
     margin-bottom: 6px;
 }
+
+.version-info {
+    text-align: right;
+    font-size: 7.5px;
+    margin-top: 5px;
+    color: #555;
+}
