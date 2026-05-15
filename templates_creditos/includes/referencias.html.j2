@@ -1,10 +1,13 @@
 {# Referencias del solicitante #}
 <table>
+  <colgroup>
+    <col style="width: 60%;">
+    <col style="width: 40%;">
+  </colgroup>
   <tr>
     <td colspan="3" class="section-header">REFERENCIAS</td>
   </tr>
 
-  {# Referencias Familiares #}
   <tr>
     <td colspan="3" class="bg-light-green font-bold">FAMILIAR</td>
   </tr>
@@ -12,7 +15,7 @@
   {% for referencia in referencias %}
   {% if referencia.tipo == 'familiar' %}
   <tr>
-    <td style="width: 60%;">
+    <td>
       <span class="field-label">Nombre / Apellidos</span><br>
       <div class="input-min-field">{{ referencia.nombre_apellidos|default('') }}</div>
     </td>
@@ -25,7 +28,6 @@
   {% endfor %}
   {% endif %}
 
-  {# Referencias Personales #}
   <tr>
     <td colspan="3" class="bg-light-green font-bold">PERSONAL (Que no viva con usted)</td>
   </tr>
@@ -35,22 +37,11 @@
   <tr>
     <td>
       <span class="field-label">Nombre / Apellidos</span><br>
-      <div class="input-min-field">{% if referencia %} {{ referencia.nombre_apellidos }} {% else %} {% endif %}</div>
+      <div class="input-min-field">{{ referencia.nombre_apellidos|default('') }}</div>
     </td>
     <td colspan="2">
       <span class="field-label">No. Celular</span><br>
-      <div class="input-min-field">{% if referencia %} {{ referencia.celular }} {% else %} {% endif %}</div>
-    </td>
-  </tr>
-  {% else %}
-  <tr>
-    <td>
-      <span class="field-label">Nombre / Apellidos</span><br>
-      <div class="input-min-field">{% if referencia %} {{ referencia.nombre_apellidos }} {% else %} {% endif %}</div>
-    </td>
-    <td colspan="2">
-      <span class="field-label">No. Celular</span><br>
-      <div class="input-min-field">{% if referencia %} {{ referencia.celular }} {% else %} {% endif %}</div>
+      <div class="input-min-field">{{ referencia.celular|default('') }}</div>
     </td>
   </tr>
   {% endif %}

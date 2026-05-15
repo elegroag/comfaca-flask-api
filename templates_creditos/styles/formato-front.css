@@ -1,181 +1,210 @@
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 15px;
+/* ==========================================================================
+   CSS Custom Properties — Escala tipográfica y espaciado
+   ========================================================================== */
+:root {
+  --font-size-base: 10px;
+  --font-size-small: 8px;
+  --font-size-large: 14px;
+  --font-size-title: 18px;
+
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 6px;
+  --spacing-lg: 10px;
+  --spacing-xl: 15px;
+
+  --color-primary: #90EE90;
+  --color-light-green: #E8F5E8;
+  --color-border: #444;
+  --color-border-dark: #333;
+  --color-text: #333;
+  --color-bg: #ffffff;
+
+  --table-width: 100%;
+  --table-collapse: collapse;
+  --table-padding: 4px 6px;
+  --table-border: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Reset y container base
+   ========================================================================== */
+* {
+  box-sizing: border-box;
 }
 
 /* Clases reutilizables */
 .section-header {
-    background-color: #90EE90;
-    font-weight: bold;
-    padding: 5px 8px;
-    text-align: center;
-    border: 1px solid #444;
+  background-color: var(--color-primary);
+  font-weight: bold;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border: var(--table-border);
 }
 
 .field-label {
-    font-size: 9px;
-    font-weight: normal;
+  font-size: var(--font-size-small);
+  font-weight: normal;
 }
 
 .input-field {
-    border: none;
-    border-bottom: 1px solid #000;
-    width: 100%;
-    padding: 2px;
-    font-size: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-base);
 }
 
 .input-min-field {
-    border: none;
-    width: 100%;
-    padding: 2px;
-    font-size: 10px;
-    color: #333;
-}
-
-.checkbox-container {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.checkbox {
-    width: 15px;
-    height: 15px;
-    border: 1px solid #444;
-    display: inline-block;
-    vertical-align: -3px;
-    margin-left: 5px;
-    gap: 5px;
-    text-align: center;
-    line-height: 15px;
-    font-weight: bold;
+  border: none;
+  width: 100%;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
 }
 
 /* Tablas */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
+  width: var(--table-width);
+  border-collapse: var(--table-collapse);
+  margin-bottom: var(--spacing-lg);
 }
 
 td,
 th {
-    border: 1px solid #444;
-    padding: 4px 6px;
-    vertical-align: top;
-}
-
-.no-border {
-    border: none;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #000;
+  border: var(--table-border);
+  padding: var(--table-padding);
+  vertical-align: top;
 }
 
 /* Logo y encabezado */
 .header-section {
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .logo-box {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.photo-box {
-    width: 100%;
-    height: 120px;
-    border: 2px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: #ccc;
-    background-color: #f9f9f9;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title-main {
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 3px;
-}
-
-.title-sub {
-    text-align: center;
-    font-size: 10px;
-    margin-bottom: 2px;
+  text-align: center;
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  margin-bottom: 3px;
 }
 
 .warning-text {
-    font-size: 8px;
-    text-align: center;
-    font-style: italic;
+  font-size: var(--font-size-small);
+  text-align: center;
+  font-style: italic;
 }
 
 .amount-box {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-small {
-    font-size: 8px;
-}
-
-.bg-green {
-    background-color: #90EE90;
+  font-size: var(--font-size-title);
+  font-weight: bold;
+  text-align: center;
+  padding: var(--spacing-lg);
 }
 
 .bg-light-green {
-    background-color: #E8F5E8;
-}
-
-.font-bold {
-    font-weight: bold;
-}
-
-.vertical-text {
-    writing-mode: vertical-lr;
-    text-align: center;
-    font-weight: bold;
-}
-
-.firma-section {
-    margin-top: 20px;
-    border: 1px solid #444;
-    padding: 10px;
-}
-
-.code-box {
-    text-align: right;
-    font-size: 9px;
-    padding-top: 10px;
+  background-color: var(--color-light-green);
 }
 
 .page-break {
-    break-before: page;
+  break-before: page;
 }
 
 .footer-section {
-    margin-top: 10px;
+  margin-top: var(--spacing-lg);
+}
+
+.input-min-field,
+.input-field {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.checkbox-container {
+  display: inline-block;
+  margin-right: var(--spacing-lg);
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--color-border);
+  display: inline-block;
+  vertical-align: -3px;
+  margin-left: var(--spacing-xs);
+  gap: var(--spacing-xs);
+  text-align: center;
+  line-height: 15px;
+  font-weight: bold;
+}
+
+.no-border {
+  border: none;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #000;
+}
+
+.photo-box {
+  width: 100%;
+  height: 120px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #ccc;
+  background-color: #f9f9f9;
+}
+
+.title-sub {
+  text-align: center;
+  font-size: var(--font-size-base);
+  margin-bottom: 2px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-small {
+  font-size: var(--font-size-small);
+}
+
+.bg-green {
+  background-color: var(--color-primary);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  text-align: center;
+  font-weight: bold;
+}
+
+.code-box {
+  text-align: right;
+  font-size: var(--font-size-small);
+  padding-top: var(--spacing-lg);
 }
 
 .pb-2 {
-    padding-bottom: 2px;
+  padding-bottom: var(--spacing-xs);
 }
 
 .mb-2 {
-    margin-bottom: 2px;
+  margin-bottom: var(--spacing-xs);
 }

@@ -1,0 +1,50 @@
+{# Macros reutilizables para el formulario de crédito #}
+
+{% macro input_field(label, value='', width='100%') %}
+<span class="field-label">{{ label }}</span><br>
+<div class="input-field" style="width: {{ width }};">{{ value }}</div>
+{% endmacro %}
+
+{% macro input_min_field(label, value='') %}
+<span class="field-label">{{ label }}</span><br>
+<div class="input-min-field">{{ value }}</div>
+{% endmacro %}
+
+{% macro currency_field(label, value=0) %}
+<span class="field-label">{{ label }}</span><br>
+<div class="amount-box">{{ value|currency }}</div>
+{% endmacro %}
+
+{% macro checkbox_field(label, checked=False) %}
+<span class="field-label">{{ label }}</span>
+<div class="checkbox">{{ 'X' if checked else '' }}</div>
+{% endmacro %}
+
+{% macro section_header(title, cols=6) %}
+<tr>
+  <td colspan="{{ cols }}" class="section-header">{{ title }}</td>
+</tr>
+{% endmacro %}
+
+{% macro field_row(label, value='', cols=2) %}
+<tr>
+  <td colspan="{{ cols }}">
+    <span class="field-label">{{ label }}</span><br>
+    <div class="input-min-field">{{ value }}</div>
+  </td>
+</tr>
+{% endmacro %}
+
+{% macro date_field(label, value) %}
+<span class="field-label">{{ label }}</span><br>
+<div class="input-min-field">{{ value|format_date if value else '' }}</div>
+{% endmacro %}
+
+{% macro header_table(columns) %}
+<table>
+  <colgroup>
+    {% for col in columns %}
+    <col style="width: {{ col }}%;">
+    {% endfor %}
+  </colgroup>
+{% endmacro %}
