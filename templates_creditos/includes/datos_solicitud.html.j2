@@ -1,22 +1,28 @@
 {# Sección 1: Solicitud de Crédito #}
 <table>
+  <colgroup>
+    <col style="width: 15%;">
+    <col style="width: 20%;">
+    <col style="width: 35%;">
+    <col style="width: 20%;">
+  </colgroup>
   <tr>
     <td colspan="4" class="section-header">SOLICITUD DE CRÉDITO PERSONA NATURAL</td>
   </tr>
   <tr>
-    <td style="width: 15%;">
+    <td>
       <span class="field-label">No. Solicitud</span><br>
       <div class="input-field">{{ solicitud.numero_solicitud|default('') }}</div>
     </td>
-    <td style="width: 20%;">
+    <td>
       <span class="field-label">No. de Comprobante</span><br>
       <div class="input-field">{{ solicitud.numero_comprobante|default('') }}</div>
     </td>
-    <td style="width: 35%;">
+    <td>
       <span class="field-label">Valor de la Solicitud</span><br>
       <div class="amount-box">{{ solicitud.valor_solicitud|default(0)|currency }}</div>
     </td>
-    <td style="width: 20%;">
+    <td>
       <span class="field-label">Categoría</span><br>
       <div class="input-field">{{ solicitud.categoria|default('') }}</div>
     </td>

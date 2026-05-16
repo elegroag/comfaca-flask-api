@@ -1,5 +1,11 @@
 {# Ingresos y Descuentos Laborales #}
 <table style="margin-top: 20px;">
+  <colgroup>
+    <col style="width: 40%;">
+    <col style="width: 10%;">
+    <col style="width: 40%;">
+    <col style="width: 10%;">
+  </colgroup>
   <tr>
     <td colspan="4" class="section-header">INGRESOS Y DESCUENTOS LABORALES DEL SOLICITANTE</td>
   </tr>
@@ -8,12 +14,12 @@
     <td colspan="2" class="bg-light-green font-bold text-center">DESCUENTOS POR NÓMINA</td>
   </tr>
   <tr>
-    <td style="width: 40%;">Salario básico mensual</td>
-    <td style="width: 10%;">
+    <td>Salario básico mensual</td>
+    <td>
       <div class="input-min-field">{{ ingresos.salario_basico_mensual|default(0)|currency }}</div>
     </td>
-    <td style="width: 40%;">Salud y pensión</td>
-    <td style="width: 10%;">
+    <td>Salud y pensión</td>
+    <td>
       <div class="input-min-field">{{ descuentos.salud_pension|default(0)|currency }}</div>
     </td>
   </tr>

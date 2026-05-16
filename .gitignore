@@ -16,3 +16,5 @@ output/
 services/__pycache__/
 python_flask_pdf.egg-info/
 *.pdf
+AGENTS.md
+session-*
