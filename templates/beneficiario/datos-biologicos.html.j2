@@ -85,11 +85,11 @@
       <span style="margin-right: 10px;">Desconoce ubicación del padre/madre biológico del menor:</span>
       <div class="checkbox-inline">
           <span>SI</span>
-          <div {% if desconoce_ubicacion=='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+          <div {% if biodesco =='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
             endif %}>{% if desconoce_ubicacion=='S' %}X{% endif %}</div>
         
           <span>NO</span>
-          <div {% if desconoce_ubicacion !='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
+          <div {% if biodesco !='S' %} class="small-checkbox active" {% else %} class="small-checkbox" {%
             endif %}>{% if desconoce_ubicacion !='S' %}X{% endif %} </div>
       </div>
     </div>
