@@ -41,18 +41,33 @@ Por lo tanto, la API estará disponible (por ejemplo en local) en: `http://local
 
 ## Autenticación
 
-La API utiliza un middleware de autenticación básica (Basic Auth) definido en `services/auth_middleware.py`.
+La API utiliza un middleware de autenticación básica (Basic Auth) definido en `services/auth_middleware.py`. Las credenciales se leen desde `.env` (`BASIC_USER`, `BASIC_PASSWORD`).
 
-- El middleware está registrado para todas las rutas excepto `/api/health` y `/favicon.ico`.
-- Las credenciales se leen desde el archivo `.env`.
+**Rutas exentas** (no requieren auth):
 
-Consulta `services/auth_middleware.py` para ver los nombres exactos de las variables de entorno y la lógica de validación.
+- `/api/health`
+- `/api/favicon.ico`
+- `/api/creditos/generate-pdf`
+- `/api/creditos/v2/generate-pdf`
+- `/api/creditos/v2/render-template`
+- `/api/download-pdf`
+
+**Prefijos exentos**:
+
+- `/api/creditos/v2/assets/` (CSS y estáticos para previsualización HTML)
 
 ## Estructura principal
 
 - `app.py`: aplicación Flask y definición de endpoints.
-- `services/generate_pdf_service.py`: servicio que encapsula la lógica de renderizado HTML y generación de PDF con WeasyPrint.
-- `templates/`: plantillas HTML/Jinja2 utilizadas para generar los documentos.
+- `services/generate_pdf_service.py`: generación genérica HTML → PDF (WeasyPrint).
+- `services/creditos_generator_service.py`: PDF de solicitud de crédito (formato v1).
+- `services/creditos_v2_generator_service.py`: PDF/HTML de solicitud de crédito (formato v2).
+- `services/auth_middleware.py`: Basic Auth.
+- `templates/`: plantillas genéricas.
+- `templates_creditos/`: plantillas del formato de crédito v1.
+- `templates_creditos_v2/`: plantillas del formato de crédito v2 (layout, includes, styles).
+- `credito-new-format.html`: referencia visual del diseño v2.
+- `public/`: JSON de configuración y fixtures para `render-template` (p. ej. `render_config_creditos_v2.json`).
 
 ## Endpoints
 
@@ -127,7 +142,7 @@ Renderiza una plantilla HTML en el navegador leyendo su configuración desde un 
 - Parámetros de query:
   - `config` (opcional): nombre del archivo JSON de configuración. Por defecto `render_config.json`.
 
-El archivo JSON se busca en el mismo directorio donde está `app.py`.
+El archivo JSON se busca en el directorio `public/` del proyecto.
 
 **Formato del archivo JSON**
 
@@ -185,16 +200,123 @@ Endpoint de verificación de salud.
 
 Este endpoint no requiere autenticación.
 
+### 4. `POST /api/creditos/generate-pdf` (formato v1)
+
+Genera el PDF de solicitud de crédito con las plantillas de `templates_creditos/` (`CreditosGeneratorService`).
+
+- **Auth**: no requiere Basic Auth.
+- **Body**: JSON de dominio de crédito (`solicitud_id`, `solicitud`, `solicitante`, etc.). Ver `docs/variables-oficio-credito.md`.
+- **Salida**: `temp_output/solicitudes/{solicitud_id}/`.
+
+```bash
+curl -X POST "http://localhost:5000/api/creditos/generate-pdf" \
+  -H "Content-Type: application/json" \
+  -d @payload_credito.json
+```
+
+### 5. Créditos formato v2
+
+Nuevo formato basado en `credito-new-format.html`, implementado en `templates_creditos_v2/` y `CreditosV2GeneratorService`.
+
+Comparte el **mismo contrato JSON** que el endpoint v1 (con normalización de `referencias`, `conyuge`, `economica`, etc.).
+
+#### Productos (`solicitud.producto_tipo`)
+
+| Código | Producto              |
+|--------|-----------------------|
+| `04`   | Educación             |
+| `05`   | Salud                 |
+| `02`   | Vivienda              |
+| `01`   | Libre Inversión       |
+| `03`   | Recreación y Turismo  |
+
+#### Estructura de plantillas v2
+
+```
+templates_creditos_v2/
+  layout.html.j2
+  formato-credito.html.j2
+  styles/main.css
+  macros/macros.html.j2
+  includes/
+    header.html.j2
+    solicitud.html.j2
+    producto_solicitado.html.j2
+    datos_solicitante.html.j2
+    informacion_laboral.html.j2
+    informacion_economica.html.j2
+```
+
+#### 5.1. `POST /api/creditos/v2/generate-pdf`
+
+Genera el PDF con el formato v2.
+
+- **Auth**: no requiere Basic Auth.
+- **Body**: mismo JSON de dominio que v1 (`solicitud_id` obligatorio).
+- **Salida**: `temp_output/solicitudes_v2/{solicitud_id}/solicitud_v2_*.pdf`.
+- **Respuesta**:
+
+```json
+{
+  "success": true,
+  "message": "PDF v2 generado exitosamente",
+  "data": {
+    "api_content": "<base64>",
+    "api_path": ".../temp_output/solicitudes_v2/.../archivo.pdf",
+    "api_filename": "solicitud_v2_....pdf"
+  }
+}
+```
+
+```bash
+curl -X POST "http://localhost:5000/api/creditos/v2/generate-pdf" \
+  -H "Content-Type: application/json" \
+  -d @public/render_config_creditos_v2.json
+```
+
+#### 5.2. `POST|GET /api/creditos/v2/render-template`
+
+Renderiza el HTML del formato v2 para validar la presentación en el navegador (sin generar PDF).
+
+- **Auth**: no requiere Basic Auth.
+- **Respuesta**: `text/html` (CSS servido desde `/api/creditos/v2/assets/...`).
+- **GET**: los archivos JSON se leen desde `public/`.
+
+**POST** — body JSON (mismo contrato que generate-pdf; también acepta `{ "context": { ... } }`):
+
+```bash
+curl -X POST "http://localhost:5000/api/creditos/v2/render-template" \
+  -H "Content-Type: application/json" \
+  -d @public/render_config_creditos_v2.json \
+  -o preview-v2.html
+```
+
+**GET** — lee un JSON desde `public/` (`config` por defecto: `render_config_creditos_v2.json`):
+
+```bash
+curl "http://localhost:5000/api/creditos/v2/render-template?config=render_config_creditos_v2.json" \
+  -o preview-v2.html
+```
+
+Abrir `preview-v2.html` en el navegador (o apuntar el navegador al endpoint GET si el servidor está en marcha) para validar layout, checkboxes, montos y secciones.
+
+#### 5.3. `GET /api/creditos/v2/assets/<path>`
+
+Sirve archivos estáticos de `templates_creditos_v2/` (p. ej. `styles/main.css`) usados por la previsualización HTML. Sin autenticación.
+
 ## Notas sobre las plantillas
 
-- Las plantillas se almacenan en el directorio `templates/`.
+- Las plantillas genéricas viven en `templates/`; las de crédito en `templates_creditos/` (v1) y `templates_creditos_v2/` (v2).
 - El servicio `GeneratePdfService` espera nombres de archivo con extensión `.j2`.
-- Desde los endpoints, se suele trabajar con un nombre lógico (por ejemplo `adicion-old.html`) y el código agrega la extensión `.j2` internamente.
+- Desde los endpoints genéricos se usa un nombre lógico (por ejemplo `empresa.html`) y el código agrega `.j2` internamente.
+- Los endpoints de créditos no reciben `template` en el body: cada servicio fija su plantilla principal (`formato-credito-front.html.j2` / `formato-credito.html.j2`).
 
 ## Desarrollo y pruebas
 
-- Puedes crear nuevas plantillas en `templates/` y probar su renderizado primero con `/api/render-template` usando un archivo JSON de configuración.
-- Una vez validado el HTML, puedes generar el PDF usando `/api/generate-pdf` con la misma plantilla y contexto.
+- Plantillas genéricas: probar con `/api/render-template` y luego `/api/generate-pdf`.
+- Créditos v2: validar presentación con `/api/creditos/v2/render-template` (fixture `public/render_config_creditos_v2.json`) y luego generar PDF con `/api/creditos/v2/generate-pdf`.
+- Coloca los JSON de prueba/configuración en `public/`; los endpoints `render-template` solo leen archivos de esa carpeta.
+- Referencia de variables del JSON de crédito: `docs/variables-oficio-credito.md`.
 
 ## Para volver a crear el venv con `uv` en [flask-api](cci:9://file:///home/elegro/proyectos/python/comfaca-credito/flask-api:0:0-0:0)
 

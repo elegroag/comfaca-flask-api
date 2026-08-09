@@ -1,0 +1,36 @@
+{% from "macros/macros.html.j2" import check %}
+{# Sección 2: Producto solicitado
+   Códigos: 04=Educación, 05=Salud, 02=Vivienda, 01=Libre Inversión, 03=Recreación y Turismo
+#}
+<div class="section s2">
+  <div class="section-title">PRODUCTO SOLICITADO (Marque con una X)</div>
+  <div class="s2-body">
+    <div class="s2-num">2</div>
+    <div class="s2-content">
+      <div class="s2-row1">
+        <div class="check-item">
+          {{ check(solicitud.producto_tipo == '04', 'lg') }} A. Educación
+        </div>
+        <div class="check-item">
+          {{ check(solicitud.producto_tipo == '05', 'lg') }} B. Salud
+        </div>
+        <div class="check-item">
+          {{ check(solicitud.producto_tipo == '02', 'lg') }} C. Vivienda
+        </div>
+        <div class="check-item">
+          {{ check(solicitud.producto_tipo == '01', 'lg') }} D. Libre Inversión
+        </div>
+        <div class="s2-credito">
+          <span>Ha tenido crédito con Comfaca:</span>
+          <div class="check-item">{{ check(solicitud.ha_tenido_credito_comfaca, 'lg') }} SI</div>
+          <div class="check-item">{{ check(not solicitud.ha_tenido_credito_comfaca, 'lg') }} NO</div>
+        </div>
+      </div>
+      <div class="s2-row2">
+        <div class="check-item">
+          {{ check(solicitud.producto_tipo == '03', 'lg') }} E. Recreación y Turismo
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

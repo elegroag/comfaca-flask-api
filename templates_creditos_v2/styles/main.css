@@ -1,0 +1,377 @@
+@page {
+  size: letter landscape;
+  margin: 6mm;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #000;
+  background: #fff;
+}
+
+.page {
+  width: 100%;
+  background: #fff;
+}
+
+/* ---- Header ---- */
+.s1-header {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid #000;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.s1-ref {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 8px;
+  text-align: right;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+.s1-logo {
+  width: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-right: 1.5px solid #000;
+}
+
+.s1-logo svg {
+  width: 80px;
+  height: auto;
+}
+
+.s1-titles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 40px 8px 10px;
+  text-align: center;
+  gap: 2px;
+}
+
+.s1-titles .t1 {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+.s1-titles .t2 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.s1-titles .t3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.s1-titles .t4 {
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.s1-titles .t5 {
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.s1-radicado {
+  width: 130px;
+  flex-shrink: 0;
+  border-left: 1.5px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px 6px;
+  padding-top: 22px;
+  gap: 4px;
+}
+
+.s1-radicado .fecha {
+  font-weight: normal;
+  font-size: 10px;
+  min-height: 16px;
+}
+
+/* ---- Sections ---- */
+.section {
+  border: 1.5px solid #000;
+  border-top: none;
+}
+
+.section-title {
+  background: #2d6a4f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 5px 8px;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+.section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.section table td,
+.section table th {
+  border: 1px solid #000;
+  padding: 3px 5px;
+  vertical-align: middle;
+  font-size: 10px;
+}
+
+.section table td.lbl,
+.section table th.lbl {
+  font-size: 9px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.section table td.green-header,
+.section table th.green-header {
+  background: #2d6a4f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+}
+
+.section table td.sub-header,
+.section table th.sub-header {
+  background: #d9d9d9;
+  font-weight: bold;
+  text-align: center;
+  font-size: 10px;
+}
+
+.section table td.bold-center,
+.section table th.bold-center {
+  font-weight: bold;
+  text-align: center;
+}
+
+.section table td.row-num {
+  background: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  text-align: center;
+  width: 22px;
+  vertical-align: middle;
+}
+
+.field-value {
+  min-height: 12px;
+  font-size: 10px;
+  padding-top: 1px;
+}
+
+.chk {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 11px;
+  font-size: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.chk.lg {
+  width: 14px;
+  height: 14px;
+  line-height: 13px;
+  font-size: 10px;
+}
+
+.date-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+.date-group .part {
+  min-width: 22px;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  font-size: 9px;
+  padding: 0 2px;
+}
+
+.date-group .part.year {
+  min-width: 32px;
+}
+
+.date-group span {
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.check-box-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-right: 6px;
+  font-size: 10px;
+}
+
+/* ---- Sección 2 ---- */
+.s2-body {
+  display: flex;
+  align-items: stretch;
+}
+
+.s2-num,
+.s3-num,
+.s4-num,
+.s5-num {
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+  border-right: 1.5px solid #000;
+  flex-shrink: 0;
+}
+
+.s2-content {
+  flex: 1;
+  padding: 0;
+}
+
+.s2-row1 {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  gap: 18px;
+  border-bottom: 1px solid #000;
+  flex-wrap: wrap;
+}
+
+.s2-row2 {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  gap: 18px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+}
+
+.s2-credito {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  border-left: 1px solid #000;
+  padding-left: 10px;
+}
+
+/* ---- Sección 3 ---- */
+.s3-body {
+  display: flex;
+  align-items: stretch;
+}
+
+.s3-body table {
+  flex: 1;
+}
+
+.green-side {
+  background: #2d6a4f;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+/* ---- Sección 4 ---- */
+.s4-body {
+  display: flex;
+  align-items: stretch;
+}
+
+.s4-content {
+  flex: 1;
+}
+
+.firma-section {
+  padding: 8px;
+  border-top: 1px solid #000;
+}
+
+.firma-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  margin-bottom: 6px;
+}
+
+.firma-field {
+  flex: 1;
+  border-bottom: 1px solid #000;
+  min-height: 28px;
+  font-size: 9px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 2px;
+}
+
+.firma-label {
+  font-size: 9px;
+  font-weight: bold;
+  text-align: center;
+  flex: 2;
+}
+
+.firma-nota {
+  font-size: 8px;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 4px;
+  padding: 4px;
+  border: 1px solid #ccc;
+}
+
+/* ---- Sección 5 ---- */
+.s5-body {
+  display: flex;
+  align-items: stretch;
+}
+
+.s5-body table {
+  flex: 1;
+  width: 100%;
+}

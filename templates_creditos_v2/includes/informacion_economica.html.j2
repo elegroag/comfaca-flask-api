@@ -1,0 +1,115 @@
+{% from "macros/macros.html.j2" import field, money %}
+{# Sección 5: Información económica, propiedades, deudas y referencias #}
+{% set vivienda = propiedades_por_tipo.vivienda if propiedades_por_tipo else none %}
+{% set vehiculo = propiedades_por_tipo.vehiculo if propiedades_por_tipo else none %}
+{% set otros = propiedades_por_tipo.otros if propiedades_por_tipo else none %}
+
+<div class="section s5">
+  <div class="section-title">INFORMACIÓN ECONÓMICA DEL SOLICITANTE</div>
+  <div class="s5-body">
+    <div class="s5-num">5</div>
+    <table style="width:100%">
+      <tr>
+        <td colspan="6" class="bold-center" style="background:#e8e8e8">OTROS INGRESOS</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="lbl">Arrendamientos {{ money(economica.arrendamientos|default(0)) }}</td>
+        <td colspan="3" class="lbl">TOTAL GASTOS {{ money(economica.total_gastos|default(0)) }}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="lbl">Otros ingresos {{ money(economica.otros_ingresos|default(0)) }}</td>
+        <td colspan="3" class="lbl">Descripción de gastos {{ field(economica.descripcion_gastos|default('')) }}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="lbl">Descripción de ingresos:<br>{{ field(economica.descripcion_ingresos|default('')) }}</td>
+        <td colspan="3" class="lbl">TOTAL ACTIVOS {{ money(economica.total_activos|default(0)) }}</td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td colspan="3" class="lbl">TOTAL PASIVOS {{ money(economica.total_pasivos|default(0)) }}</td>
+      </tr>
+
+      <tr>
+        <td colspan="6" class="bold-center" style="background:#e8e8e8">PROPIEDADES</td>
+      </tr>
+      <tr>
+        <td class="sub-header" style="width:14%">TIPO DE BIEN</td>
+        <td class="sub-header" colspan="2">DIRECCIÓN - MARCA - PLACA</td>
+        <td class="sub-header">CIUDAD</td>
+        <td class="sub-header">MATRICULA INMOB. / MODELO</td>
+        <td class="sub-header">VALOR COMERCIAL</td>
+      </tr>
+      <tr>
+        <td class="lbl">Vivienda</td>
+        <td colspan="2">{{ field(vivienda.direccion_marca_placa|default('') if vivienda else '') }}</td>
+        <td>{{ field(vivienda.ciudad|default('') if vivienda else '') }}</td>
+        <td>{{ field(vivienda.matricula_modelo|default('') if vivienda else '') }}</td>
+        <td>{% if vivienda %}{{ money(vivienda.valor_comercial|default(0)) }}{% else %}{{ field('') }}{% endif %}</td>
+      </tr>
+      <tr>
+        <td class="lbl">Vehículo</td>
+        <td colspan="2">{{ field(vehiculo.direccion_marca_placa|default('') if vehiculo else '') }}</td>
+        <td>{{ field(vehiculo.ciudad|default('') if vehiculo else '') }}</td>
+        <td>{{ field(vehiculo.matricula_modelo|default('') if vehiculo else '') }}</td>
+        <td>{% if vehiculo %}{{ money(vehiculo.valor_comercial|default(0)) }}{% else %}{{ field('') }}{% endif %}</td>
+      </tr>
+      <tr>
+        <td class="lbl">Otros</td>
+        <td colspan="2">{{ field(otros.direccion_marca_placa|default('') if otros else '') }}</td>
+        <td>{{ field(otros.ciudad|default('') if otros else '') }}</td>
+        <td>{{ field(otros.matricula_modelo|default('') if otros else '') }}</td>
+        <td>{% if otros %}{{ money(otros.valor_comercial|default(0)) }}{% else %}{{ field('') }}{% endif %}</td>
+      </tr>
+
+      <tr>
+        <td colspan="6" class="bold-center" style="background:#e8e8e8">DEUDAS A CARGO DEL SOLICITANTE</td>
+      </tr>
+      <tr>
+        <td class="sub-header" colspan="2">NOMBRE ACREEDOR</td>
+        <td class="sub-header" colspan="2">CONCEPTO</td>
+        <td class="sub-header">VALOR CUOTA</td>
+        <td class="sub-header">SALDO DE LA OBLIGACIÓN</td>
+      </tr>
+      {% set deudas_list = deudas or [] %}
+      {% for i in range(3) %}
+      {% set d = deudas_list[i] if i < deudas_list|length else none %}
+      <tr>
+        <td colspan="2" style="height:20px">{{ field(d.nombre_acreedor|default('') if d else '') }}</td>
+        <td colspan="2">{{ field(d.concepto|default('') if d else '') }}</td>
+        <td>{% if d %}{{ money(d.valor_cuota|default(0)) }}{% else %}{{ field('') }}{% endif %}</td>
+        <td>{% if d %}{{ money(d.saldo_obligacion|default(0)) }}{% else %}{{ field('') }}{% endif %}</td>
+      </tr>
+      {% endfor %}
+
+      <tr>
+        <td colspan="6" class="green-header">REFERENCIAS</td>
+      </tr>
+      <tr>
+        <td colspan="6" class="bold-center" style="background:#e8e8e8">FAMILIAR</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="lbl">
+          <strong>Nombre y Apellidos:</strong><br>
+          {{ field(referencia_familiar.nombre_apellidos|default('') if referencia_familiar else '') }}
+        </td>
+        <td colspan="2" class="lbl">
+          <strong>No. Celular:</strong><br>
+          {{ field(referencia_familiar.celular|default('') if referencia_familiar else '') }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6" class="bold-center" style="background:#e8e8e8">PERSONAL (Que no viva con usted)</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="lbl">
+          <strong>Nombre y Apellidos:</strong><br>
+          {{ field(referencia_personal.nombre_apellidos|default('') if referencia_personal else '') }}
+        </td>
+        <td colspan="2" class="lbl">
+          <strong>No. Celular:</strong><br>
+          {{ field(referencia_personal.celular|default('') if referencia_personal else '') }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+{
+  "solicitud_id": "preview-v2-001",
+  "solicitud": {
+    "numero_solicitud": "SOL-001",
+    "numero_comprobante": "CMP-001",
+    "valor_solicitud": 5000000,
+    "valor_cuota": 250000,
+    "categoria": "A",
+    "rol_en_solicitud": "solicitante",
+    "plazo_meses": 24,
+    "producto_tipo": "01",
+    "ha_tenido_credito_comfaca": false
+  },
+  "solicitante": {
+    "fecha_vinculacion": "2020-03-15",
+    "tipo_documento": "CC",
+    "numero_documento": "1234567890",
+    "fecha_nacimiento": "1990-05-20",
+    "pais_nacimiento": "Colombia",
+    "nombre_completo": "Juan Perez Gomez",
+    "fecha_expedicion_documento": "2008-06-01",
+    "profesion_ocupacion": "Ingeniero",
+    "sexo": "M",
+    "nivel_educativo": "universitario",
+    "direccion_residencia": "Calle 1 # 2-3",
+    "barrio_residencia": "Centro",
+    "ciudad_residencia": "Florencia",
+    "pais_residencia": "Colombia",
+    "telefono_fijo": "6081234567",
+    "telefono_movil": "3001234567",
+    "email": "juan@example.com",
+    "tipo_vivienda": "propia",
+    "vive_con_nucleo_familiar": true,
+    "personas_a_cargo": 2
+  },
+  "laboral": {
+    "empresa_razon_social": "Empresa Demo SAS",
+    "empresa_nit": "900123456",
+    "empresa_telefono": "6087654321",
+    "empresa_direccion": "Carrera 5",
+    "empresa_ciudad": "Florencia",
+    "cargo": "Analista",
+    "tiempo_servicio": 36,
+    "fecha_ingreso": "2021-01-10",
+    "tipo_contrato": "Indefinido",
+    "nombramiento_o_pagador": "Pedro Admin",
+    "mes": "01",
+    "anio": "2026"
+  },
+  "ingresos": {
+    "salario_basico_mensual": 3000000,
+    "subsidio_transporte": 140606,
+    "horas_extras": 0,
+    "comisiones": 0,
+    "otros_ingresos": 0,
+    "total_ingresos": 3140606,
+    "total_neto": 2500000
+  },
+  "descuentos": {
+    "salud_pension": 240000,
+    "libranzas_comfaca": 0,
+    "otras_libranzas": 0,
+    "judiciales": 0,
+    "otras_deducciones": 0,
+    "total_gastos": 240000
+  },
+  "economica": {
+    "arrendamientos": 0,
+    "otros_ingresos": 200000,
+    "descripcion_ingresos": "Honorarios",
+    "total_gastos": 800000,
+    "descripcion_gastos": "Vivienda y transporte",
+    "total_activos": 80000000,
+    "total_pasivos": 10000000
+  },
+  "conyuge": {
+    "numero_identificacion": "987654321",
+    "nombres_apellidos": "Maria Lopez",
+    "ingresos_laborales": 2000000,
+    "trabaja": true,
+    "empresa_nombre": "Otra SAS",
+    "empresa_direccion": "Calle 9",
+    "email": "maria@example.com",
+    "empresa_telefono": "6081112233",
+    "telefono_movil": "3009876543"
+  },
+  "propiedades": [
+    {
+      "tipo_bien": "Vivienda",
+      "direccion_marca_placa": "Calle 10",
+      "ciudad": "Florencia",
+      "matricula_modelo": "123-45",
+      "valor_comercial": 70000000
+    },
+    {
+      "tipo_bien": "Vehiculo",
+      "direccion_marca_placa": "ABC123",
+      "ciudad": "Florencia",
+      "matricula_modelo": "2020",
+      "valor_comercial": 30000000
+    }
+  ],
+  "deudas": [
+    {
+      "nombre_acreedor": "Banco X",
+      "concepto": "Libre inversion",
+      "valor_cuota": 300000,
+      "saldo_obligacion": 5000000
+    }
+  ],
+  "referencias": {
+    "familiares": [
+      { "nombre_apellidos": "Ana Perez", "celular": "3001112233" }
+    ],
+    "personales": [
+      { "nombre_apellidos": "Luis Diaz", "celular": "3004445566" }
+    ]
+  },
+  "encabezado": {
+    "fecha_radicado": "2026-08-09"
+  },
+  "convenio": {
+    "representante_nombre": "Pedro Admin"
+  }
+}

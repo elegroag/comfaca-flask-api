@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Solicitud de Crédito - COMFACA</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      color: #000;
+      background: #e5e5e5;
+      padding: 20px;
+    }
+
+    .page {
+      width: 270mm;
+      margin: 0 auto;
+      background: #fff;
+      padding: 8mm;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+
+      /* Sección 1: HEADER */
+      & .s1-header {
+        display: flex;
+        align-items: stretch;
+        border: 1.5px solid #000;
+        margin-bottom: 0;
+        position: relative;
+
+        & .s1-ref {
+          position: absolute;
+          top: 2px;
+          right: 4px;
+          font-size: 8px;
+          text-align: right;
+          line-height: 1.5;
+        }
+
+        & .s1-logo {
+          width: 90px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
+          border-right: 1.5px solid #000;
+
+          & svg {
+            width: 80px;
+            height: auto;
+          }
+        }
+
+        & .s1-titles {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 40px 8px 10px;
+          text-align: center;
+          gap: 2px;
+
+          & .t1 {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+          }
+
+          & .t2 {
+            font-size: 13px;
+            font-weight: bold;
+          }
+
+          & .t3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 4px;
+          }
+
+          & .t4 {
+            font-size: 9px;
+            margin-top: 4px;
+          }
+
+          & .t5 {
+            font-size: 9px;
+            font-weight: bold;
+          }
+        }
+
+        & .s1-radicado {
+          width: 130px;
+          flex-shrink: 0;
+          border-left: 1.5px solid #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 10px;
+          font-weight: bold;
+          padding: 8px 6px;
+          padding-top: 22px;
+        }
+      }
+
+      /* Secciones comunes */
+      & .section {
+        border: 1.5px solid #000;
+        border-top: none;
+
+        & .section-title {
+          background: #2d6a4f;
+          color: #fff;
+          font-weight: bold;
+          font-size: 11px;
+          padding: 5px 8px;
+          text-align: center;
+          letter-spacing: 0.2px;
+        }
+
+        & table {
+          width: 100%;
+          border-collapse: collapse;
+
+          & td, & th {
+            border: 1px solid #000;
+            padding: 3px 5px;
+            vertical-align: middle;
+            font-size: 10px;
+
+            &.lbl {
+              font-size: 9px;
+              color: #333;
+              white-space: nowrap;
+            }
+
+            &.green-header {
+              background: #2d6a4f;
+              color: #fff;
+              font-weight: bold;
+              font-size: 10px;
+              text-align: center;
+            }
+
+            &.sub-header {
+              background: #d9d9d9;
+              font-weight: bold;
+              text-align: center;
+              font-size: 10px;
+            }
+
+            &.bold-center {
+              font-weight: bold;
+              text-align: center;
+            }
+
+            &.row-num {
+              background: #fff;
+              font-weight: bold;
+              font-size: 11px;
+              text-align: center;
+              width: 22px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+
+      /* ---- Sección 2: PRODUCTO SOLICITADO ---- */
+      & .s2 {
+        & .s2-body {
+          display: flex;
+          align-items: stretch;
+
+          & .s2-num {
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+            border-right: 1.5px solid #000;
+            flex-shrink: 0;
+          }
+
+          & .s2-content {
+            flex: 1;
+            padding: 0;
+
+            & .s2-row1 {
+              display: flex;
+              align-items: center;
+              padding: 6px 8px;
+              gap: 18px;
+              border-bottom: 1px solid #000;
+              flex-wrap: wrap;
+
+              & .check-item {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 10px;
+
+                & input[type="checkbox"] {
+                  width: 14px;
+                  height: 14px;
+                  border: 1.5px solid #000;
+                  appearance: none;
+                  flex-shrink: 0;
+                  cursor: pointer;
+
+                  &:checked::after {
+                    content: "X";
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: bold;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 1;
+                  }
+                }
+              }
+
+              & .s2-credito {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 10px;
+                border-left: 1px solid #000;
+                padding-left: 10px;
+
+                & .check-item {
+                  gap: 3px;
+                }
+              }
+            }
+
+            & .s2-row2 {
+              display: flex;
+              align-items: center;
+              padding: 5px 8px;
+              gap: 18px;
+
+              & .s2-credito-bottom {
+                margin-left: auto;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+
+      /* ---- Sección 3: DATOS DEL SOLICITANTE ---- */
+      & .s3 {
+        & .s3-body {
+          display: flex;
+          align-items: stretch;
+
+          & .s3-num {
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+            border-right: 1.5px solid #000;
+            flex-shrink: 0;
+          }
+
+          & table {
+            & .date-group {
+              display: flex;
+              align-items: center;
+              gap: 3px;
+              margin-top: 2px;
+
+              & input {
+                width: 26px;
+                text-align: center;
+                border: none;
+                border-bottom: 1px solid #000;
+                font-size: 9px;
+              }
+
+              & span {
+                font-size: 9px;
+                font-weight: bold;
+              }
+            }
+
+            & .check-box-inline {
+              display: inline-flex;
+              align-items: center;
+              gap: 3px;
+              margin-right: 6px;
+              font-size: 10px;
+
+              & input[type="checkbox"] {
+                width: 12px;
+                height: 12px;
+                border: 1px solid #000;
+                appearance: none;
+                flex-shrink: 0;
+                cursor: pointer;
+                &:checked::after {
+                  content: "X";
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 9px;
+                  font-weight: bold;
+                }
+              }
+            }
+
+            & .green-side {
+              background: #2d6a4f;
+              color: #fff;
+              font-weight: bold;
+              text-align: center;
+              font-size: 10px;
+              vertical-align: middle;
+              writing-mode: horizontal-tb;
+            }
+          }
+        }
+      }
+
+      /* ---- Sección 4: INFORMACIÓN LABORAL ---- */
+      & .s4 {
+        & .s4-body {
+          display: flex;
+          align-items: stretch;
+
+          & .s4-num {
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+            border-right: 1.5px solid #000;
+            flex-shrink: 0;
+          }
+
+          & .s4-content {
+            flex: 1;
+
+            & .firma-section {
+              padding: 8px;
+              border-top: 1px solid #000;
+
+              & .firma-row {
+                display: flex;
+                gap: 8px;
+                align-items: flex-end;
+                margin-bottom: 6px;
+
+                & .firma-field {
+                  flex: 1;
+                  border-bottom: 1px solid #000;
+                  min-height: 28px;
+                  font-size: 9px;
+                  display: flex;
+                  align-items: flex-end;
+                  padding-bottom: 2px;
+                }
+
+                & .firma-label {
+                  font-size: 9px;
+                  font-weight: bold;
+                  text-align: center;
+                  flex: 2;
+                }
+              }
+
+              & .firma-nota {
+                font-size: 8px;
+                text-align: center;
+                line-height: 1.4;
+                margin-top: 4px;
+                padding: 4px;
+                border: 1px solid #ccc;
+              }
+            }
+          }
+        }
+      }
+
+      /* ---- Sección 5: INFORMACIÓN ECONÓMICA ---- */
+      & .s5 {
+        & .s5-body {
+          display: flex;
+          align-items: stretch;
+
+          & .s5-num {
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+            border-right: 1.5px solid #000;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+
+    /* Input base styles */
+    input[type="text"],
+    input[type="number"] {
+      border: none;
+      border-bottom: 1px solid #bbb;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      width: 100%;
+      background: transparent;
+      outline: none;
+      padding: 1px 2px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .page {
+        box-shadow: none;
+        padding: 6mm;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== SECCIÓN 1: HEADER ===== -->
+  <div class="s1-header">
+    <div class="s1-ref">
+      V7<br>PM-SCS-FT-02<br>07-07-2022
+    </div>
+
+    <div class="s1-logo">
+      <!-- Logo COMFACA SVG inline -->
+      <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <!-- Figura central grande -->
+        <circle cx="60" cy="22" r="9" fill="#2d6a4f"/>
+        <!-- Figura izquierda -->
+        <circle cx="38" cy="26" r="7.5" fill="#4a9e72"/>
+        <!-- Figura derecha -->
+        <circle cx="82" cy="26" r="7.5" fill="#4a9e72"/>
+        <!-- Cuerpos -->
+        <ellipse cx="60" cy="42" rx="10" ry="13" fill="#2d6a4f"/>
+        <ellipse cx="38" cy="44" rx="8.5" ry="11" fill="#4a9e72"/>
+        <ellipse cx="82" cy="44" rx="8.5" ry="11" fill="#4a9e72"/>
+        <!-- Texto comfaca -->
+        <text x="60" y="67" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2d6a4f">comfaca</text>
+      </svg>
+    </div>
+
+    <div class="s1-titles">
+      <div class="t1">CAJA DE COMPENSACIÓN FAMILIAR DEL CAQUETÁ</div>
+      <div class="t2">"COMFACA"</div>
+      <div class="t3">FORMULARIO DE SOLICITUD DE CRÉDITO</div>
+      <div class="t4">LOS DATOS AQUÍ REGISTRADOS ESTÁN SUJETOS A VERIFICACIÓN</div>
+      <div class="t5">Diligenciar completamente este formulario con lapicero negro sin tachones ni enmendaduras</div>
+    </div>
+
+    <div class="s1-radicado">
+      FECHA RADICADO
+    </div>
+  </div>
+
+  <!-- ===== SECCIÓN 1B: SOLICITUD ===== -->
+  <div class="section">
+    <div class="section-title">SOLICITUD DE CRÉDITO PERSONA NATURAL</div>
+    <table>
+      <tr>
+        <td class="row-num" rowspan="3">1</td>
+        <td class="lbl" colspan="2"><strong>No. Solicitud</strong><br>&nbsp;</td>
+        <td class="lbl" colspan="2"><strong>No. de Comprobante</strong><br>&nbsp;</td>
+        <td class="lbl"><strong>Valor de la Cuota</strong><br>$</td>
+        <td class="lbl"><strong>Categoría</strong><br>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="lbl" colspan="2" style="text-align:center"><strong>Marque con una X</strong></td>
+        <td class="lbl" colspan="2"><strong>Valor Solicitado</strong><br>$</td>
+        <td class="lbl" colspan="2"><strong>Plazo en meses</strong><br>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="lbl"><strong>Solicitante</strong></td>
+        <td class="lbl">
+          <input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;">
+        </td>
+        <td class="lbl"><strong>Codeudor</strong></td>
+        <td class="lbl">
+          <input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;">
+        </td>
+        <td class="lbl" colspan="2">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ===== SECCIÓN 2: PRODUCTO SOLICITADO ===== -->
+  <div class="section s2">
+    <div class="section-title">PRODUCTO SOLICITADO (Marque con una X)</div>
+    <div class="s2-body">
+      <div class="s2-num">2</div>
+      <div class="s2-content">
+        <div class="s2-row1">
+          <div class="check-item">
+            <input type="checkbox"> A. Educación
+          </div>
+          <div class="check-item">
+            <input type="checkbox"> B. Salud
+          </div>
+          <div class="check-item">
+            <input type="checkbox"> C. Vivienda
+          </div>
+          <div class="check-item">
+            <input type="checkbox"> D. Libre Inversión
+          </div>
+          <div class="s2-credito">
+            <span>Ha tenido crédito con Comfaca:</span>
+            <div class="check-item"><input type="checkbox"> SI</div>
+            <div class="check-item"><input type="checkbox"> NO</div>
+          </div>
+        </div>
+        <div class="s2-row2">
+          <div class="check-item">
+            <input type="checkbox"> E. Recreación y Turismo
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECCIÓN 3: DATOS DEL SOLICITANTE ===== -->
+  <div class="section s3">
+    <div class="section-title">DATOS DEL SOLICITANTE (Quien va a solicitar el crédito)</div>
+    <div class="s3-body">
+      <div class="s3-num">3</div>
+      <table>
+        <tr>
+          <td colspan="2" style="width:18%">
+            <span class="lbl"><strong>Fecha de Vinculación a Comfaca</strong></span>
+            <div class="date-group">
+              <span>Día</span><input style="width:22px"> <span>Mes</span><input style="width:22px"> <span>Año</span><input style="width:32px">
+            </div>
+          </td>
+          <td colspan="2" style="width:16%">
+            <span class="lbl"><strong>Tipo de Identificación</strong></span><br>
+            <label class="check-box-inline"><input type="checkbox"> C.C.</label>
+            <label class="check-box-inline"><input type="checkbox"> C.E.</label>
+          </td>
+          <td colspan="2" style="width:28%">
+            <span class="lbl"><strong>No. Identificación</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2" style="width:24%">
+            <span class="lbl"><strong>Fecha de Nacimiento</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" style="width:28%">
+            <span class="lbl"><strong>País de Nacimiento</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="5">
+            <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="lbl"><strong>Fecha de Expedición</strong></span>
+            <div class="date-group">
+              <span>Día</span><input style="width:22px"> <span>Mes</span><input style="width:22px"> <span>Año</span><input style="width:32px">
+            </div>
+          </td>
+          <td colspan="3">
+            <span class="lbl"><strong>Profesión u Ocupación</strong></span><br>
+            <input type="text">
+          </td>
+          <td style="width:6%">
+            <span class="lbl"><strong>Sexo</strong></span><br>
+            <label class="check-box-inline"><input type="checkbox"> M</label>
+          </td>
+          <td style="width:6%">
+            <br>
+            <label class="check-box-inline"><input type="checkbox"> F</label>
+          </td>
+          <td>
+            <span class="lbl"><strong>Otros</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="lbl">Nivel educativo</td>
+          <td class="sub-header">Primaria</td>
+          <td style="width:8%;text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+          <td class="sub-header">Bachillerato</td>
+          <td style="width:8%;text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+          <td class="sub-header">Técnico</td>
+          <td style="text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="sub-header">Universitario</td>
+          <td style="text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+          <td class="sub-header">Posgrado</td>
+          <td style="text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+          <td class="sub-header">Ninguno</td>
+          <td style="text-align:center"><input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;"></td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <span class="lbl"><strong>Dirección de Residencia - Recibo de Correspondencia</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Barrio</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="1">
+            <span class="lbl"><strong>Ciudad Residencia</strong></span><br>
+            <input type="text">
+          </td>
+          <td>
+            <span class="lbl"><strong>País Residencia</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span class="lbl"><strong>Teléfono fijo</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="3">
+            <span class="lbl"><strong>Móvil</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>E-mail:</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="lbl"><strong>Tipo de Vivienda</strong></span><br>&nbsp;
+          </td>
+          <td style="text-align:center">
+            <span class="lbl">Propia</span><br>
+            <input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;">
+          </td>
+          <td style="text-align:center">
+            <span class="lbl">Familiar</span><br>
+            <input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;">
+          </td>
+          <td style="text-align:center">
+            <span class="lbl">Arrendada</span><br>
+            <input type="checkbox" style="width:12px;height:12px;border:1px solid #000;appearance:none;">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Núcleo Familiar</strong></span><br>
+            <input type="text">
+          </td>
+          <td>
+            <span class="lbl"><strong>No. de Personas a Cargo</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <!-- DATOS CONYUGE -->
+        <tr>
+          <td class="green-header" rowspan="3" style="background:#2d6a4f;color:#fff;font-weight:bold;text-align:center;vertical-align:middle;font-size:10px;width:55px">
+            DATOS<br>CÓNYUGE
+          </td>
+          <td colspan="3">
+            <span class="lbl"><strong>No. de Identificación</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Ingresos Laborales</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="lbl"><strong>Trabaja</strong></span>
+            <label class="check-box-inline" style="margin-left:4px"><input type="checkbox"> SI</label>
+            <label class="check-box-inline"><input type="checkbox"> NO</label>
+          </td>
+          <td colspan="3">
+            <span class="lbl"><strong>Nombre de la empresa</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Dirección</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span class="lbl"><strong>E-mail:</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Teléfono Empresa</strong></span><br>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Móvil</strong></span><br>
+            <input type="text">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== SECCIÓN 4: INFORMACIÓN LABORAL ===== -->
+  <div class="section s4">
+    <div class="section-title">INFORMACIÓN LABORAL DEL MES: &nbsp;&nbsp;&nbsp; AÑO: &nbsp;&nbsp;&nbsp; (ESPACIO EXCLUSIVO PARA LA EMPRESA)</div>
+    <div class="s4-body">
+      <div class="s4-num">4</div>
+      <div class="s4-content">
+        <table>
+          <tr>
+            <td colspan="4">
+              <span class="lbl"><strong>Razón Social de la Empresa</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Nit.</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Teléfono</strong></span><br>
+              <input type="text">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <span class="lbl"><strong>Dirección de la Empresa</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Ciudad</strong></span><br>
+              <input type="text">
+            </td>
+            <td>
+              <span class="lbl"><strong>Cargo</strong></span><br>
+              <input type="text">
+            </td>
+            <td>
+              <span class="lbl"><strong>Tiempo de Servicio</strong></span><br>
+              <input type="text">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="lbl"><strong>Fecha de Ingreso</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Tipo de contrato</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Vencimiento</strong></span><br>
+              <input type="text">
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Nombre del pagador</strong></span><br>
+              <input type="text">
+            </td>
+          </tr>
+          <!-- Subheader ingresos -->
+          <tr>
+            <td colspan="8" class="bold-center" style="background:#e8e8e8;font-size:11px;padding:5px">
+              INGRESOS Y DESCUENTOS LABORALES DEL SOLICITANTE
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="sub-header">INGRESOS COMO EMPLEADO</td>
+            <td colspan="4" class="sub-header">DESCUENTOS POR NÓMINA</td>
+          </tr>
+          <!-- Filas ingresos vs descuentos -->
+          <tr>
+            <td colspan="3" class="lbl">Salario devengado mensual</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="lbl">Salud y pensión</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="lbl">Subsidio de transporte</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="lbl">Libranzas con Comfaca</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="lbl">Horas Extras</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="lbl">Otras Libranzas</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="lbl">Comisiones</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="lbl">Judiciales</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="lbl">Otros ingresos laborales</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="lbl">Otras deducciones de nómina</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="sub-header">TOTAL INGRESOS</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+            <td colspan="3" class="sub-header">TOTAL GASTOS</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="4">&nbsp;</td>
+            <td colspan="3" class="sub-header">TOTAL NETO RECIBIDO</td>
+            <td class="lbl">$&nbsp;<input type="text" style="width:70%"></td>
+          </tr>
+          <tr>
+            <td colspan="8" style="height:30px">&nbsp;</td>
+          </tr>
+        </table>
+        <!-- Firma y sello -->
+        <div class="firma-section">
+          <div class="firma-row">
+            <div>
+              <div class="firma-field" style="width:120px">NOMBRE,</div>
+            </div>
+            <div style="flex:3">
+              <div style="text-align:center;font-weight:bold;font-size:9px;margin-bottom:4px">
+                FIRMA Y SELLO (RESPONSABLE ADMINISTRACIÓN PERSONAL AUTORIZADO POR LA EMPRESA)
+              </div>
+              <div class="firma-field">&nbsp;</div>
+            </div>
+          </div>
+          <div class="firma-nota">
+            Acepto como responsable de autorizar el descuento por nómina descontar el valor correspondiente de acuerdo al plan de pagos, el valor del Crédito concedido por COMFACA al solicitante más los intereses, seguros y demás obligaciones a su cargo, y entregarlos a dicha entidad en las fechas convenidas una vez realice los descuentos (diez (10) primeros días del mes)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECCIÓN 5: INFORMACIÓN ECONÓMICA ===== -->
+  <div class="section s5">
+    <div class="section-title">INFORMACIÓN ECONÓMICA DEL SOLICITANTE</div>
+    <div class="s5-body">
+      <div class="s5-num">5</div>
+      <table style="width:100%">
+        <!-- OTROS INGRESOS -->
+        <tr>
+          <td colspan="6" class="bold-center" style="background:#e8e8e8">OTROS INGRESOS</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Arrendamientos $&nbsp;<input type="text" style="width:60%"></td>
+          <td colspan="3" class="lbl">TOTAL GASTOS $&nbsp;<input type="text" style="width:60%"></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Otros ingresos $&nbsp;<input type="text" style="width:60%"></td>
+          <td colspan="3" class="lbl">Descripción de gastos $&nbsp;<input type="text" style="width:60%"></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Descripción de ingresos:<br><input type="text"></td>
+          <td colspan="3" class="lbl">TOTAL ACTIVOS $&nbsp;<input type="text" style="width:60%"></td>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td colspan="3" class="lbl">TOTAL PASIVOS $&nbsp;<input type="text" style="width:60%"></td>
+        </tr>
+        <!-- PROPIEDADES -->
+        <tr>
+          <td colspan="6" class="bold-center" style="background:#e8e8e8">PROPIEDADES</td>
+        </tr>
+        <tr>
+          <td class="sub-header" style="width:14%">TIPO DE BIEN</td>
+          <td class="sub-header" colspan="2">DIRECCIÓN - MARCA - PLACA</td>
+          <td class="sub-header">CIUDAD</td>
+          <td class="sub-header">MATRICULA INMOB. / MODELO</td>
+          <td class="sub-header">VALOR COMERCIAL</td>
+        </tr>
+        <tr>
+          <td class="lbl">Vivienda</td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td class="lbl">Vehículo</td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td class="lbl">Otros</td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <!-- DEUDAS -->
+        <tr>
+          <td colspan="6" class="bold-center" style="background:#e8e8e8">DEUDAS A CARGO DEL SOLICITANTE</td>
+        </tr>
+        <tr>
+          <td class="sub-header" colspan="2">NOMBRE ACREEDOR</td>
+          <td class="sub-header" colspan="2">CONCEPTO</td>
+          <td class="sub-header">VALOR CUOTA</td>
+          <td class="sub-header">SALDO DE LA OBLIGACIÓN</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="height:20px"><input type="text"></td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="height:20px"><input type="text"></td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="height:20px"><input type="text"></td>
+          <td colspan="2"><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <!-- REFERENCIAS -->
+        <tr>
+          <td colspan="6" class="green-header">REFERENCIAS</td>
+        </tr>
+        <tr>
+          <td colspan="6" class="bold-center" style="background:#e8e8e8">FAMILIAR</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="lbl"><strong>Nombre y Apellidos:</strong><br><input type="text"></td>
+          <td colspan="2" class="lbl"><strong>No. Celular:</strong><br><input type="text"></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="bold-center" style="background:#e8e8e8">PERSONAL (Que no viva con usted)</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="lbl"><strong>Nombre y Apellidos:</strong><br><input type="text"></td>
+          <td colspan="2" class="lbl"><strong>No. Celular:</strong><br><input type="text"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

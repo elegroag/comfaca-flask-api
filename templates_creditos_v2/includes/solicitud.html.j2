@@ -1,0 +1,48 @@
+{% from "macros/macros.html.j2" import check, field, money %}
+{# Sección 1B: Solicitud #}
+<div class="section">
+  <div class="section-title">SOLICITUD DE CRÉDITO PERSONA NATURAL</div>
+  <table>
+    <tr>
+      <td class="row-num" rowspan="3">1</td>
+      <td class="lbl" colspan="2">
+        <strong>No. Solicitud</strong><br>
+        {{ field(solicitud.numero_solicitud|default('')) }}
+      </td>
+      <td class="lbl" colspan="2">
+        <strong>No. de Comprobante</strong><br>
+        {{ field(solicitud.numero_comprobante|default('')) }}
+      </td>
+      <td class="lbl">
+        <strong>Valor de la Cuota</strong><br>
+        {{ money(solicitud.valor_cuota|default(solicitud.valor_solicitud|default(0))) }}
+      </td>
+      <td class="lbl">
+        <strong>Categoría</strong><br>
+        {{ field(solicitud.categoria|default('')) }}
+      </td>
+    </tr>
+    <tr>
+      <td class="lbl" colspan="2" style="text-align:center"><strong>Marque con una X</strong></td>
+      <td class="lbl" colspan="2">
+        <strong>Valor Solicitado</strong><br>
+        {{ money(solicitud.valor_solicitud|default(0)) }}
+      </td>
+      <td class="lbl" colspan="2">
+        <strong>Plazo en meses</strong><br>
+        {{ field(solicitud.plazo_meses|default('')) }}
+      </td>
+    </tr>
+    <tr>
+      <td class="lbl"><strong>Solicitante</strong></td>
+      <td class="lbl" style="text-align:center">
+        {{ check(solicitud.rol_en_solicitud == 'solicitante') }}
+      </td>
+      <td class="lbl"><strong>Codeudor</strong></td>
+      <td class="lbl" style="text-align:center">
+        {{ check(solicitud.rol_en_solicitud == 'codeudor') }}
+      </td>
+      <td class="lbl" colspan="2">&nbsp;</td>
+    </tr>
+  </table>
+</div>

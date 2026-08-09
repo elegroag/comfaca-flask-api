@@ -11,7 +11,7 @@ Uso:
 """
 
 from pathlib import Path
-from flask import Flask, request, jsonify, send_file, send_from_directory
+from flask import Flask, request, jsonify, send_file, send_from_directory, Response
 from dotenv import dotenv_values, load_dotenv
 import base64
 import io
@@ -40,16 +40,35 @@ except Exception:
 
 from services.generate_pdf_service import GeneratePdfService
 from services.creditos_generator_service import CreditosGeneratorService
+from services.creditos_v2_generator_service import CreditosV2GeneratorService
 # Cargar variables de entorno lo antes posible para que el middleware pueda leerlas
 load_dotenv(".env")
 config = dotenv_values(".env")
 
 app = Flask(__name__)
 
+# JSON de configuración / fixtures para render-template
+PUBLIC_DIR = Path(__file__).parent / 'public'
+PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+
 # Registrar middleware de autenticación Basic (excluir /health)
 from services.auth_middleware import register_basic_auth
 
-register_basic_auth(app, config, exempt_paths=['/api/health', '/api/favicon.ico', '/api/creditos/generate-pdf', '/api/download-pdf'])
+register_basic_auth(
+    app,
+    config,
+    exempt_paths=[
+        '/api/health',
+        '/api/favicon.ico',
+        '/api/creditos/generate-pdf',
+        '/api/creditos/v2/generate-pdf',
+        '/api/creditos/v2/render-template',
+        '/api/download-pdf',
+    ],
+    exempt_prefixes=[
+        '/api/creditos/v2/assets/',
+    ],
+)
 
 # Instantiate PDF service
 pdf_service = GeneratePdfService()
@@ -230,9 +249,9 @@ def render_template_endpoint():
         if safe_name != config_name:
             return jsonify({"error": "Nombre de archivo JSON inválido"}), 400
 
-        json_path = Path(__file__).parent / safe_name
+        json_path = PUBLIC_DIR / safe_name
         if not json_path.exists():
-            return jsonify({"error": f"Archivo JSON no encontrado: {config_name}"}), 404
+            return jsonify({"error": f"Archivo JSON no encontrado en public/: {config_name}"}), 404
 
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -334,6 +353,97 @@ def generate_pdf_creditos():
     except Exception as e:
         logger.error(f"Error inesperado: {e}")
         return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
+
+
+@app.route('/api/creditos/v2/generate-pdf', methods=['POST'])
+def generate_pdf_creditos_v2():
+    """Genera PDF de solicitud de crédito con el formato v2 (templates_creditos_v2)."""
+    import logging
+    logger = logging.getLogger(__name__)
+
+    try:
+        if not request.is_json:
+            raise ValueError("Content-Type debe ser application/json")
+        data = request.get_json()
+
+        pdf_service_creditos_v2 = CreditosV2GeneratorService()
+        resultado = pdf_service_creditos_v2.generar_pdf(data)
+
+        return jsonify({
+            "success": True,
+            "message": "PDF v2 generado exitosamente",
+            "data": resultado
+        })
+
+    except ValueError as e:
+        logger.error(f"Error de validación (créditos v2): {e}")
+        return jsonify({"success": False, "error": str(e)}), 400
+    except RuntimeError as e:
+        logger.error(f"Error de runtime (créditos v2): {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
+    except Exception as e:
+        logger.error(f"Error inesperado (créditos v2): {e}")
+        return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
+
+
+@app.route('/api/creditos/v2/render-template', methods=['POST', 'GET'])
+def render_template_creditos_v2():
+    """
+    Renderiza el HTML del formato créditos v2 para previsualización.
+
+    POST: body JSON con el mismo contrato que /api/creditos/v2/generate-pdf
+    GET:  ?config=archivo.json  (archivo en public/ con el mismo JSON)
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+
+    try:
+        if request.method == 'GET':
+            config_name = request.args.get('config', 'render_config_creditos_v2.json')
+            safe_name = Path(config_name).name
+            if safe_name != config_name:
+                raise ValueError("Nombre de archivo JSON inválido")
+
+            json_path = PUBLIC_DIR / safe_name
+            if not json_path.exists():
+                return jsonify({
+                    "success": False,
+                    "error": f"Archivo JSON no encontrado en public/: {config_name}",
+                }), 404
+
+            with open(json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        else:
+            if not request.is_json:
+                raise ValueError("Content-Type debe ser application/json")
+            data = request.get_json()
+            if not data:
+                raise ValueError("JSON requerido")
+
+        # Aceptar payload directo o envuelto en { "context": {...} }
+        if isinstance(data.get('context'), dict) and 'solicitud' not in data:
+            data = data['context']
+
+        pdf_service_creditos_v2 = CreditosV2GeneratorService()
+        rendered_html = pdf_service_creditos_v2.renderizar_html(
+            data,
+            assets_base_url='/api/creditos/v2/assets',
+        )
+        return Response(rendered_html, mimetype='text/html')
+
+    except ValueError as e:
+        logger.error(f"Error de validación (render créditos v2): {e}")
+        return jsonify({"success": False, "error": str(e)}), 400
+    except Exception as e:
+        logger.error(f"Error inesperado (render créditos v2): {e}")
+        return jsonify({"success": False, "error": f"Error inesperado: {e}"}), 500
+
+
+@app.route('/api/creditos/v2/assets/<path:filename>', methods=['GET'])
+def serve_creditos_v2_assets(filename):
+    """Sirve CSS y estáticos de templates_creditos_v2 para la previsualización HTML."""
+    assets_dir = Path(__file__).parent / 'templates_creditos_v2'
+    return send_from_directory(assets_dir, filename)
 
 
 @app.errorhandler(404)

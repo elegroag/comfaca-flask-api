@@ -1,0 +1,20 @@
+{% macro check(condition, size='') -%}
+<span class="chk{% if size %} {{ size }}{% endif %}">{% if condition %}X{% endif %}</span>
+{%- endmacro %}
+
+{% macro date_parts(value) -%}
+{% set parts = value|date_parts %}
+<div class="date-group">
+  <span>Día</span><span class="part">{{ parts.day }}</span>
+  <span>Mes</span><span class="part">{{ parts.month }}</span>
+  <span>Año</span><span class="part year">{{ parts.year }}</span>
+</div>
+{%- endmacro %}
+
+{% macro field(value='') -%}
+<div class="field-value">{{ value if value is not none else '' }}</div>
+{%- endmacro %}
+
+{% macro money(value) -%}
+<div class="field-value">{{ value|default(0)|currency }}</div>
+{%- endmacro %}

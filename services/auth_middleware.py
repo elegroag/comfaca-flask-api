@@ -15,16 +15,27 @@ def _unauthorized_response() -> Response:
     return Response('Unauthorized', 401, {'WWW-Authenticate': 'Basic realm="Login Required"'})
 
 
-def register_basic_auth(app, config, exempt_paths: Optional[Iterable[str]] = None):
+def register_basic_auth(
+    app,
+    config,
+    exempt_paths: Optional[Iterable[str]] = None,
+    exempt_prefixes: Optional[Iterable[str]] = None,
+):
     """Registra un before_request que valida Basic Auth contra variables en el entorno.
 
     - Requiere BASIC_USER y BASIC_PASS en el entorno (cargadas desde .env).
-    - exempt_paths: lista opcional de rutas que no requieren autenticación.
+    - exempt_paths: rutas exactas que no requieren autenticación.
+    - exempt_prefixes: prefijos de ruta (p. ej. assets estáticos) sin autenticación.
     """
     if exempt_paths is None:
         exempt_paths = set()
     else:
         exempt_paths = set(exempt_paths)
+
+    if exempt_prefixes is None:
+        exempt_prefixes = tuple()
+    else:
+        exempt_prefixes = tuple(exempt_prefixes)
 
     user = config['BASIC_USER']
     pwd = config['BASIC_PASSWORD']
@@ -37,6 +48,8 @@ def register_basic_auth(app, config, exempt_paths: Optional[Iterable[str]] = Non
             return None
         path = request.path or ''
         if path in exempt_paths:
+            return None
+        if any(path.startswith(prefix) for prefix in exempt_prefixes):
             return None
 
         # Use custom header name 'Authorization' per requirements

@@ -1,0 +1,138 @@
+{% from "macros/macros.html.j2" import field, money %}
+{# Sección 4: Información laboral + ingresos/descuentos + firma #}
+<div class="section s4">
+  <div class="section-title">
+    INFORMACIÓN LABORAL DEL MES: {{ laboral.mes|default('') }}
+    &nbsp;&nbsp;&nbsp; AÑO: {{ laboral.anio|default('') }}
+    &nbsp;&nbsp;&nbsp; (ESPACIO EXCLUSIVO PARA LA EMPRESA)
+  </div>
+  <div class="s4-body">
+    <div class="s4-num">4</div>
+    <div class="s4-content">
+      <table>
+        <tr>
+          <td colspan="4">
+            <span class="lbl"><strong>Razón Social de la Empresa</strong></span><br>
+            {{ field(laboral.empresa_razon_social|default('')) }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Nit.</strong></span><br>
+            {{ field(laboral.empresa_nit|default('')) }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Teléfono</strong></span><br>
+            {{ field(laboral.empresa_telefono|default('')) }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <span class="lbl"><strong>Dirección de la Empresa</strong></span><br>
+            {{ field(laboral.empresa_direccion|default('')) }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Ciudad</strong></span><br>
+            {{ field(laboral.empresa_ciudad|default('')) }}
+          </td>
+          <td>
+            <span class="lbl"><strong>Cargo</strong></span><br>
+            {{ field(laboral.cargo|default('')) }}
+          </td>
+          <td>
+            <span class="lbl"><strong>Tiempo de Servicio</strong></span><br>
+            {{ field((laboral.tiempo_servicio|default('')) ~ (' ' ~ laboral.tiempo_servicio_unidad|default('meses') if laboral.tiempo_servicio else '')) }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="lbl"><strong>Fecha de Ingreso</strong></span><br>
+            {{ field(laboral.fecha_ingreso|format_date if laboral.fecha_ingreso else '') }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Tipo de contrato</strong></span><br>
+            {{ field(laboral.tipo_contrato|default('')) }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Vencimiento</strong></span><br>
+            {{ field(laboral.vencimiento_contrato|format_date if laboral.vencimiento_contrato else laboral.vencimiento|default('')) }}
+          </td>
+          <td colspan="2">
+            <span class="lbl"><strong>Nombre del pagador</strong></span><br>
+            {{ field(laboral.nombramiento_o_pagador|default('')) }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" class="bold-center" style="background:#e8e8e8;font-size:11px;padding:5px">
+            INGRESOS Y DESCUENTOS LABORALES DEL SOLICITANTE
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="sub-header">INGRESOS COMO EMPLEADO</td>
+          <td colspan="4" class="sub-header">DESCUENTOS POR NÓMINA</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Salario devengado mensual</td>
+          <td class="lbl">{{ money(ingresos.salario_basico_mensual|default(0)) }}</td>
+          <td colspan="3" class="lbl">Salud y pensión</td>
+          <td class="lbl">{{ money(descuentos.salud_pension|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Subsidio de transporte</td>
+          <td class="lbl">{{ money(ingresos.subsidio_transporte|default(0)) }}</td>
+          <td colspan="3" class="lbl">Libranzas con Comfaca</td>
+          <td class="lbl">{{ money(descuentos.libranzas_comfaca|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Horas Extras</td>
+          <td class="lbl">{{ money(ingresos.horas_extras|default(0)) }}</td>
+          <td colspan="3" class="lbl">Otras Libranzas</td>
+          <td class="lbl">{{ money(descuentos.otras_libranzas|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Comisiones</td>
+          <td class="lbl">{{ money(ingresos.comisiones|default(0)) }}</td>
+          <td colspan="3" class="lbl">Judiciales</td>
+          <td class="lbl">{{ money(descuentos.judiciales|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="lbl">Otros ingresos laborales</td>
+          <td class="lbl">{{ money(ingresos.otros_ingresos|default(0)) }}</td>
+          <td colspan="3" class="lbl">Otras deducciones de nómina</td>
+          <td class="lbl">{{ money(descuentos.otras_deducciones|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="sub-header">TOTAL INGRESOS</td>
+          <td class="lbl">{{ money(ingresos.total_ingresos|default(0)) }}</td>
+          <td colspan="3" class="sub-header">TOTAL GASTOS</td>
+          <td class="lbl">{{ money(descuentos.total_gastos|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="4">&nbsp;</td>
+          <td colspan="3" class="sub-header">TOTAL NETO RECIBIDO</td>
+          <td class="lbl">{{ money(ingresos.total_neto|default(0)) }}</td>
+        </tr>
+        <tr>
+          <td colspan="8" style="height:30px">&nbsp;</td>
+        </tr>
+      </table>
+
+      <div class="firma-section">
+        <div class="firma-row">
+          <div>
+            <div class="firma-field" style="width:120px">
+              NOMBRE, {{ convenio.representante_nombre|default('') if convenio else '' }}
+            </div>
+          </div>
+          <div style="flex:3">
+            <div style="text-align:center;font-weight:bold;font-size:9px;margin-bottom:4px">
+              FIRMA Y SELLO (RESPONSABLE ADMINISTRACIÓN PERSONAL AUTORIZADO POR LA EMPRESA)
+            </div>
+            <div class="firma-field">&nbsp;</div>
+          </div>
+        </div>
+        <div class="firma-nota">
+          Acepto como responsable de autorizar el descuento por nómina descontar el valor correspondiente de acuerdo al plan de pagos, el valor del Crédito concedido por COMFACA al solicitante más los intereses, seguros y demás obligaciones a su cargo, y entregarlos a dicha entidad en las fechas convenidas una vez realice los descuentos (diez (10) primeros días del mes)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
