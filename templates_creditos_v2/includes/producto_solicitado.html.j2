@@ -4,33 +4,39 @@
 #}
 <div class="section s2">
   <div class="section-title">PRODUCTO SOLICITADO (Marque con una X)</div>
-  <div class="s2-body">
-    <div class="s2-num">2</div>
-    <div class="s2-content">
-      <div class="s2-row1">
-        <div class="check-item">
-          {{ check(solicitud.producto_tipo == '04', 'lg') }} A. Educación
+  <table class="section-frame">
+    <tr>
+      <td class="sec-num" rowspan="2">2</td>
+      <td class="sec-main">
+        <div class="s2-row1">
+          <div class="check-item">
+            {{ check(solicitud.producto_tipo == '04', 'lg') }} A. Educación
+          </div>
+          <div class="check-item">
+            {{ check(solicitud.producto_tipo == '05', 'lg') }} B. Salud
+          </div>
+          <div class="check-item">
+            {{ check(solicitud.producto_tipo == '02', 'lg') }} C. Vivienda
+          </div>
+          <div class="check-item">
+            {{ check(solicitud.producto_tipo == '01', 'lg') }} D. Libre Inversión
+          </div>
+          <div class="s2-credito">
+            <span>Ha tenido crédito con Comfaca:</span>
+            <div class="check-item">{{ check(solicitud.ha_tenido_credito_comfaca, 'lg') }} SI</div>
+            <div class="check-item">{{ check(not solicitud.ha_tenido_credito_comfaca, 'lg') }} NO</div>
+          </div>
         </div>
-        <div class="check-item">
-          {{ check(solicitud.producto_tipo == '05', 'lg') }} B. Salud
+      </td>
+    </tr>
+    <tr>
+      <td class="sec-main">
+        <div class="s2-row2">
+          <div class="check-item">
+            {{ check(solicitud.producto_tipo == '03', 'lg') }} E. Recreación y Turismo
+          </div>
         </div>
-        <div class="check-item">
-          {{ check(solicitud.producto_tipo == '02', 'lg') }} C. Vivienda
-        </div>
-        <div class="check-item">
-          {{ check(solicitud.producto_tipo == '01', 'lg') }} D. Libre Inversión
-        </div>
-        <div class="s2-credito">
-          <span>Ha tenido crédito con Comfaca:</span>
-          <div class="check-item">{{ check(solicitud.ha_tenido_credito_comfaca, 'lg') }} SI</div>
-          <div class="check-item">{{ check(not solicitud.ha_tenido_credito_comfaca, 'lg') }} NO</div>
-        </div>
-      </div>
-      <div class="s2-row2">
-        <div class="check-item">
-          {{ check(solicitud.producto_tipo == '03', 'lg') }} E. Recreación y Turismo
-        </div>
-      </div>
-    </div>
-  </div>
+      </td>
+    </tr>
+  </table>
 </div>

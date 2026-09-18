@@ -2,183 +2,187 @@
 {# Sección 3: Datos del solicitante + cónyuge #}
 <div class="section s3">
   <div class="section-title">DATOS DEL SOLICITANTE (Quien va a solicitar el crédito)</div>
-  <div class="s3-body">
-    <div class="s3-num">3</div>
-    <table>
-      <tr>
-        <td colspan="2" style="width:18%">
-          <span class="lbl"><strong>Fecha de Vinculación a Comfaca</strong></span>
-          {{ date_parts(solicitante.fecha_vinculacion) }}
-        </td>
-        <td colspan="2" style="width:16%">
-          <span class="lbl"><strong>Tipo de Identificación</strong></span><br>
-          <label class="check-box-inline">{{ check(solicitante.tipo_documento == 'CC') }} C.C.</label>
-          <label class="check-box-inline">{{ check(solicitante.tipo_documento == 'CE') }} C.E.</label>
-        </td>
-        <td colspan="2" style="width:28%">
-          <span class="lbl"><strong>No. Identificación</strong></span><br>
-          {{ field(solicitante.numero_documento|default('')) }}
-        </td>
-        <td colspan="2" style="width:24%">
-          <span class="lbl"><strong>Fecha de Nacimiento</strong></span><br>
-          {{ field(solicitante.fecha_nacimiento|format_date if solicitante.fecha_nacimiento else '') }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3" style="width:28%">
-          <span class="lbl"><strong>País de Nacimiento</strong></span><br>
-          {{ field(solicitante.pais_nacimiento|default('Colombia')) }}
-        </td>
-        <td colspan="5">
-          <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
-          {{ field(solicitante.nombre_completo|default('')) }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <span class="lbl"><strong>Fecha de Expedición</strong></span>
-          {{ date_parts(solicitante.fecha_expedicion_documento) }}
-        </td>
-        <td colspan="3">
-          <span class="lbl"><strong>Profesión u Ocupación</strong></span><br>
-          {{ field(solicitante.profesion_ocupacion|default('')) }}
-        </td>
-        <td style="width:6%">
-          <span class="lbl"><strong>Sexo</strong></span><br>
-          <label class="check-box-inline">{{ check(solicitante.sexo == 'M') }} M</label>
-        </td>
-        <td style="width:6%">
-          <br>
-          <label class="check-box-inline">{{ check(solicitante.sexo == 'F') }} F</label>
-        </td>
-        <td>
-          <span class="lbl"><strong>Otros</strong></span><br>
-          {{ field(solicitante.sexo_otro|default('')) }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" class="lbl">Nivel educativo</td>
-        <td class="sub-header">Primaria</td>
-        <td style="width:8%;text-align:center">{{ check(solicitante.nivel_educativo == 'primaria') }}</td>
-        <td class="sub-header">Bachillerato</td>
-        <td style="width:8%;text-align:center">{{ check(solicitante.nivel_educativo == 'bachillerato') }}</td>
-        <td class="sub-header">Técnico</td>
-        <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'tecnico') }}</td>
-      </tr>
-      <tr>
-        <td colspan="2"></td>
-        <td class="sub-header">Universitario</td>
-        <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'universitario') }}</td>
-        <td class="sub-header">Posgrado</td>
-        <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'posgrado') }}</td>
-        <td class="sub-header">Ninguno</td>
-        <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'ninguno') }}</td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          <span class="lbl"><strong>Dirección de Residencia - Recibo de Correspondencia</strong></span><br>
-          {{ field(solicitante.direccion_residencia|default('')) }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Barrio</strong></span><br>
-          {{ field(solicitante.barrio_residencia|default('')) }}
-        </td>
-        <td colspan="1">
-          <span class="lbl"><strong>Ciudad Residencia</strong></span><br>
-          {{ field(solicitante.ciudad_residencia|default('')) }}
-        </td>
-        <td>
-          <span class="lbl"><strong>País Residencia</strong></span><br>
-          {{ field(solicitante.pais_residencia|default('Colombia')) }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <span class="lbl"><strong>Teléfono fijo</strong></span><br>
-          {{ field(solicitante.telefono_fijo|default('')) }}
-        </td>
-        <td colspan="3">
-          <span class="lbl"><strong>Móvil</strong></span><br>
-          {{ field(solicitante.telefono_movil|default('')) }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>E-mail:</strong></span><br>
-          {{ field(solicitante.email|default('')) }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <span class="lbl"><strong>Tipo de Vivienda</strong></span><br>&nbsp;
-        </td>
-        <td style="text-align:center">
-          <span class="lbl">Propia</span><br>
-          {{ check(solicitante.tipo_vivienda == 'propia') }}
-        </td>
-        <td style="text-align:center">
-          <span class="lbl">Familiar</span><br>
-          {{ check(solicitante.tipo_vivienda == 'familiar') }}
-        </td>
-        <td style="text-align:center">
-          <span class="lbl">Arrendada</span><br>
-          {{ check(solicitante.tipo_vivienda == 'arrendada') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Núcleo Familiar</strong></span><br>
-          {{ field('X' if solicitante.vive_con_nucleo_familiar else '') }}
-        </td>
-        <td>
-          <span class="lbl"><strong>No. de Personas a Cargo</strong></span><br>
-          {{ field(solicitante.personas_a_cargo|default(0)) }}
-        </td>
-      </tr>
+  <table class="section-frame">
+    <tr>
+      <td class="sec-num">3</td>
+      <td class="sec-main">
+        <table>
+          <tr>
+            <td colspan="2" style="width:18%">
+              <span class="lbl"><strong>Fecha de Vinculación a Comfaca</strong></span>
+              {{ date_parts(solicitante.fecha_vinculacion) }}
+            </td>
+            <td colspan="2" style="width:16%">
+              <span class="lbl"><strong>Tipo de Identificación</strong></span><br>
+              <label class="check-box-inline">{{ check(solicitante.tipo_documento == 'CC') }} C.C.</label>
+              <label class="check-box-inline">{{ check(solicitante.tipo_documento == 'CE') }} C.E.</label>
+            </td>
+            <td colspan="2" style="width:28%">
+              <span class="lbl"><strong>No. Identificación</strong></span><br>
+              {{ field(solicitante.numero_documento|default('')) }}
+            </td>
+            <td colspan="2" style="width:24%">
+              <span class="lbl"><strong>Fecha de Nacimiento</strong></span><br>
+              {{ field(solicitante.fecha_nacimiento|format_date if solicitante.fecha_nacimiento else '') }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width:28%">
+              <span class="lbl"><strong>País de Nacimiento</strong></span><br>
+              {{ field(solicitante.pais_nacimiento|default('Colombia')) }}
+            </td>
+            <td colspan="5">
+              <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
+              {{ field(solicitante.nombre_completo|default('')) }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="lbl"><strong>Fecha de Expedición</strong></span>
+              {{ date_parts(solicitante.fecha_expedicion_documento) }}
+            </td>
+            <td colspan="3">
+              <span class="lbl"><strong>Profesión u Ocupación</strong></span><br>
+              {{ field(solicitante.profesion_ocupacion|default('')) }}
+            </td>
+            <td style="width:6%">
+              <span class="lbl"><strong>Sexo</strong></span><br>
+              <label class="check-box-inline">{{ check(solicitante.sexo == 'M') }} M</label>
+            </td>
+            <td style="width:6%">
+              <br>
+              <label class="check-box-inline">{{ check(solicitante.sexo == 'F') }} F</label>
+            </td>
+            <td>
+              <span class="lbl"><strong>Otros</strong></span><br>
+              {{ field(solicitante.sexo_otro|default('')) }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="lbl">Nivel educativo</td>
+            <td class="sub-header">Primaria</td>
+            <td style="width:8%;text-align:center">{{ check(solicitante.nivel_educativo == 'primaria') }}</td>
+            <td class="sub-header">Bachillerato</td>
+            <td style="width:8%;text-align:center">{{ check(solicitante.nivel_educativo == 'bachillerato') }}</td>
+            <td class="sub-header">Técnico</td>
+            <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'tecnico') }}</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td class="sub-header">Universitario</td>
+            <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'universitario') }}</td>
+            <td class="sub-header">Posgrado</td>
+            <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'posgrado') }}</td>
+            <td class="sub-header">Ninguno</td>
+            <td style="text-align:center">{{ check(solicitante.nivel_educativo == 'ninguno') }}</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <span class="lbl"><strong>Dirección de Residencia - Recibo de Correspondencia</strong></span><br>
+              {{ field(solicitante.direccion_residencia|default('')) }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Barrio</strong></span><br>
+              {{ field(solicitante.barrio_residencia|default('')) }}
+            </td>
+            <td colspan="1">
+              <span class="lbl"><strong>Ciudad Residencia</strong></span><br>
+              {{ field(solicitante.ciudad_residencia|default('')) }}
+            </td>
+            <td>
+              <span class="lbl"><strong>País Residencia</strong></span><br>
+              {{ field(solicitante.pais_residencia|default('Colombia')) }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <span class="lbl"><strong>Teléfono fijo</strong></span><br>
+              {{ field(solicitante.telefono_fijo|default('')) }}
+            </td>
+            <td colspan="3">
+              <span class="lbl"><strong>Móvil</strong></span><br>
+              {{ field(solicitante.telefono_movil|default('')) }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>E-mail:</strong></span><br>
+              {{ field(solicitante.email|default('')) }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="lbl"><strong>Tipo de Vivienda</strong></span><br>&nbsp;
+            </td>
+            <td style="text-align:center">
+              <span class="lbl">Propia</span><br>
+              {{ check(solicitante.tipo_vivienda == 'propia') }}
+            </td>
+            <td style="text-align:center">
+              <span class="lbl">Familiar</span><br>
+              {{ check(solicitante.tipo_vivienda == 'familiar') }}
+            </td>
+            <td style="text-align:center">
+              <span class="lbl">Arrendada</span><br>
+              {{ check(solicitante.tipo_vivienda == 'arrendada') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Núcleo Familiar</strong></span><br>
+              {{ field('X' if solicitante.vive_con_nucleo_familiar else '') }}
+            </td>
+            <td>
+              <span class="lbl"><strong>No. de Personas a Cargo</strong></span><br>
+              {{ field(solicitante.personas_a_cargo|default(0)) }}
+            </td>
+          </tr>
 
-      {# DATOS CÓNYUGE #}
-      <tr>
-        <td class="green-header" rowspan="3" style="width:55px">
-          DATOS<br>CÓNYUGE
-        </td>
-        <td colspan="3">
-          <span class="lbl"><strong>No. de Identificación</strong></span><br>
-          {{ field(conyuge.numero_identificacion|default('') if conyuge else '') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
-          {{ field(conyuge.nombres_apellidos|default('') if conyuge else '') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Ingresos Laborales</strong></span><br>
-          {% if conyuge %}{{ money(conyuge.ingresos_laborales|default(0)) }}{% else %}{{ field('') }}{% endif %}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <span class="lbl"><strong>Trabaja</strong></span>
-          <label class="check-box-inline" style="margin-left:4px">{{ check(conyuge and conyuge.trabaja) }} SI</label>
-          <label class="check-box-inline">{{ check(conyuge and not conyuge.trabaja) }} NO</label>
-        </td>
-        <td colspan="3">
-          <span class="lbl"><strong>Nombre de la empresa</strong></span><br>
-          {{ field(conyuge.empresa_nombre|default('') if conyuge else '') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Dirección</strong></span><br>
-          {{ field(conyuge.empresa_direccion|default('') if conyuge else '') }}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <span class="lbl"><strong>E-mail:</strong></span><br>
-          {{ field(conyuge.email|default('') if conyuge else '') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Teléfono Empresa</strong></span><br>
-          {{ field(conyuge.empresa_telefono|default('') if conyuge else '') }}
-        </td>
-        <td colspan="2">
-          <span class="lbl"><strong>Móvil</strong></span><br>
-          {{ field(conyuge.telefono_movil|default('') if conyuge else '') }}
-        </td>
-      </tr>
-    </table>
-  </div>
+          {# DATOS CÓNYUGE #}
+          <tr>
+            <td class="green-header" rowspan="3" style="width:55px">
+              DATOS<br>CÓNYUGE
+            </td>
+            <td colspan="3">
+              <span class="lbl"><strong>No. de Identificación</strong></span><br>
+              {{ field(conyuge.numero_identificacion|default('') if conyuge else '') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Nombre y apellidos</strong></span><br>
+              {{ field(conyuge.nombres_apellidos|default('') if conyuge else '') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Ingresos Laborales</strong></span><br>
+              {% if conyuge %}{{ money(conyuge.ingresos_laborales|default(0)) }}{% else %}{{ field('') }}{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="lbl"><strong>Trabaja</strong></span>
+              <label class="check-box-inline" style="margin-left:4px">{{ check(conyuge and conyuge.trabaja) }} SI</label>
+              <label class="check-box-inline">{{ check(conyuge and not conyuge.trabaja) }} NO</label>
+            </td>
+            <td colspan="3">
+              <span class="lbl"><strong>Nombre de la empresa</strong></span><br>
+              {{ field(conyuge.empresa_nombre|default('') if conyuge else '') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Dirección</strong></span><br>
+              {{ field(conyuge.empresa_direccion|default('') if conyuge else '') }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <span class="lbl"><strong>E-mail:</strong></span><br>
+              {{ field(conyuge.email|default('') if conyuge else '') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Teléfono Empresa</strong></span><br>
+              {{ field(conyuge.empresa_telefono|default('') if conyuge else '') }}
+            </td>
+            <td colspan="2">
+              <span class="lbl"><strong>Móvil</strong></span><br>
+              {{ field(conyuge.telefono_movil|default('') if conyuge else '') }}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </div>

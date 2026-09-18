@@ -1,6 +1,6 @@
 @page {
-  size: letter landscape;
-  margin: 6mm;
+  size: letter;
+  margin: 7mm;
 }
 
 * {
@@ -11,9 +11,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   color: #000;
   background: #fff;
+  line-height: 1.2;
 }
 
 .page {
@@ -26,32 +27,35 @@ body {
   display: flex;
   align-items: stretch;
   border: 1.5px solid #000;
-  margin-bottom: 0;
   position: relative;
+  min-height: 58px;
+  break-inside: avoid;
+  margin-bottom: 3px;
 }
 
 .s1-ref {
   position: absolute;
   top: 2px;
   right: 4px;
-  font-size: 8px;
+  font-size: 7px;
   text-align: right;
-  line-height: 1.5;
+  line-height: 1.3;
   z-index: 1;
 }
 
 .s1-logo {
-  width: 90px;
+  width: 72px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 5px;
   border-right: 1.5px solid #000;
 }
 
-.s1-logo svg {
-  width: 80px;
+.s1-logo svg,
+.s1-logo img {
+  width: 62px;
   height: auto;
 }
 
@@ -61,40 +65,40 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 40px 8px 10px;
+  padding: 5px 34px 5px 8px;
   text-align: center;
-  gap: 2px;
+  gap: 1px;
 }
 
 .s1-titles .t1 {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: bold;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.15px;
 }
 
 .s1-titles .t2 {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 .s1-titles .t3 {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
-  margin-top: 4px;
+  margin-top: 1px;
 }
 
 .s1-titles .t4 {
-  font-size: 9px;
-  margin-top: 4px;
+  font-size: 7.5px;
+  margin-top: 1px;
 }
 
 .s1-titles .t5 {
-  font-size: 9px;
+  font-size: 7.5px;
   font-weight: bold;
 }
 
 .s1-radicado {
-  width: 130px;
+  width: 110px;
   flex-shrink: 0;
   border-left: 1.5px solid #000;
   display: flex;
@@ -102,53 +106,111 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 10px;
+  font-size: 8.5px;
   font-weight: bold;
-  padding: 8px 6px;
-  padding-top: 22px;
-  gap: 4px;
+  padding: 5px;
+  padding-top: 16px;
+  gap: 3px;
 }
 
 .s1-radicado .fecha {
   font-weight: normal;
-  font-size: 10px;
+  font-size: 9.5px;
   min-height: 16px;
+  line-height: 1.2;
 }
 
-/* ---- Sections ---- */
+/* ---- Sections (tabla propia + margen entre bloques) ---- */
 .section {
   border: 1.5px solid #000;
-  border-top: none;
+  margin-bottom: 3px;
+  break-inside: auto;
+}
+
+.section:last-child {
+  margin-bottom: 0;
 }
 
 .section-title {
   background: #2d6a4f;
   color: #fff;
   font-weight: bold;
-  font-size: 11px;
-  padding: 5px 8px;
+  font-size: 9.5px;
+  padding: 3px 6px;
   text-align: center;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15px;
 }
 
 .section table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .section table td,
 .section table th {
   border: 1px solid #000;
-  padding: 3px 5px;
-  vertical-align: middle;
-  font-size: 10px;
+  padding: 3px 4px;
+  vertical-align: top;
+  font-size: 9px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
+/* Marco externo: número de sección + contenido */
+.section-frame {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.section-frame > tbody > tr > td.sec-num,
+.section-frame > tr > td.sec-num {
+  width: 16px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 10px;
+  border: none;
+  border-right: 1.5px solid #000;
+  padding: 4px 2px;
+}
+
+.section-frame > tbody > tr > td.sec-main,
+.section-frame > tr > td.sec-main {
+  border: none;
+  padding: 0;
+  vertical-align: top;
+}
+
+.section-frame .sec-main > table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.section-frame .sec-main > table td,
+.section-frame .sec-main > table th {
+  border: 1px solid #000;
+  padding: 3px 4px;
+  vertical-align: top;
+  font-size: 9px;
+}
+
+/* Etiquetas legibles; sin nowrap forzado para respetar márgenes */
 .section table td.lbl,
 .section table th.lbl {
-  font-size: 9px;
+  font-size: 8px;
   color: #333;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.15;
+}
+
+.section table td.lbl strong,
+.section table th.lbl strong,
+.section table .lbl strong {
+  font-size: 8px;
+  color: #000;
 }
 
 .section table td.green-header,
@@ -156,8 +218,10 @@ body {
   background: #2d6a4f;
   color: #fff;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 8.5px;
   text-align: center;
+  vertical-align: middle;
+  padding: 3px 2px;
 }
 
 .section table td.sub-header,
@@ -165,111 +229,103 @@ body {
   background: #d9d9d9;
   font-weight: bold;
   text-align: center;
-  font-size: 10px;
+  font-size: 8px;
+  padding: 2px 3px;
+  vertical-align: middle;
 }
 
 .section table td.bold-center,
 .section table th.bold-center {
   font-weight: bold;
   text-align: center;
+  vertical-align: middle;
+  padding: 3px 4px;
+  font-size: 9px;
 }
 
 .section table td.row-num {
   background: #fff;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 10px;
   text-align: center;
-  width: 22px;
+  width: 16px;
   vertical-align: middle;
 }
 
+/* Espacio de llenado bajo cada etiqueta */
 .field-value {
-  min-height: 12px;
-  font-size: 10px;
-  padding-top: 1px;
+  min-height: 13px;
+  font-size: 9px;
+  line-height: 1.15;
+  padding-top: 2px;
+  word-wrap: break-word;
 }
 
 .chk {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border: 1px solid #000;
   text-align: center;
-  line-height: 11px;
-  font-size: 9px;
+  line-height: 9px;
+  font-size: 7.5px;
   font-weight: bold;
   vertical-align: middle;
 }
 
 .chk.lg {
-  width: 14px;
-  height: 14px;
-  line-height: 13px;
-  font-size: 10px;
+  width: 12px;
+  height: 12px;
+  line-height: 11px;
+  font-size: 8.5px;
 }
 
 .date-group {
   display: flex;
   align-items: center;
-  gap: 3px;
+  flex-wrap: wrap;
+  gap: 2px;
   margin-top: 2px;
 }
 
 .date-group .part {
-  min-width: 22px;
+  min-width: 18px;
+  min-height: 13px;
   text-align: center;
   border-bottom: 1px solid #000;
-  font-size: 9px;
-  padding: 0 2px;
+  font-size: 8.5px;
+  padding: 1px 2px;
 }
 
 .date-group .part.year {
-  min-width: 32px;
+  min-width: 28px;
 }
 
 .date-group span {
-  font-size: 9px;
+  font-size: 7.5px;
   font-weight: bold;
 }
 
 .check-box-inline {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  margin-right: 6px;
-  font-size: 10px;
+  gap: 2px;
+  margin-right: 5px;
+  font-size: 8.5px;
+  white-space: nowrap;
 }
+
+/*
+  Cuerpos de sección: tabla propia (.section-frame).
+  Evita float/flex para permitir margen entre secciones.
+*/
 
 /* ---- Sección 2 ---- */
-.s2-body {
-  display: flex;
-  align-items: stretch;
-}
-
-.s2-num,
-.s3-num,
-.s4-num,
-.s5-num {
-  width: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 11px;
-  border-right: 1.5px solid #000;
-  flex-shrink: 0;
-}
-
-.s2-content {
-  flex: 1;
-  padding: 0;
-}
-
 .s2-row1 {
   display: flex;
   align-items: center;
-  padding: 6px 8px;
-  gap: 18px;
+  padding: 4px 6px;
+  gap: 10px;
   border-bottom: 1px solid #000;
   flex-wrap: wrap;
 }
@@ -277,101 +333,95 @@ body {
 .s2-row2 {
   display: flex;
   align-items: center;
-  padding: 5px 8px;
-  gap: 18px;
+  padding: 4px 6px;
+  gap: 10px;
 }
 
 .check-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 10px;
+  gap: 3px;
+  font-size: 8.5px;
 }
 
 .s2-credito {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 10px;
+  gap: 5px;
+  font-size: 8.5px;
   border-left: 1px solid #000;
-  padding-left: 10px;
+  padding-left: 7px;
 }
 
 /* ---- Sección 3 ---- */
-.s3-body {
-  display: flex;
-  align-items: stretch;
-}
-
-.s3-body table {
-  flex: 1;
-}
-
 .green-side {
   background: #2d6a4f;
   color: #fff;
   font-weight: bold;
   text-align: center;
-  font-size: 10px;
+  font-size: 8.5px;
   vertical-align: middle;
 }
 
-/* ---- Sección 4 ---- */
-.s4-body {
-  display: flex;
-  align-items: stretch;
+/* ---- Sección firma empresa (bloque independiente) ---- */
+.s4-firma {
+  break-before: page;
+  page-break-before: always;
 }
 
-.s4-content {
-  flex: 1;
+.s4-firma .firma-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
-.firma-section {
-  padding: 8px;
-  border-top: 1px solid #000;
+.s4-firma .firma-table td {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  vertical-align: top;
 }
 
-.firma-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-  margin-bottom: 6px;
+.s4-firma .firma-nombre {
+  width: 28%;
 }
 
-.firma-field {
-  flex: 1;
+.s4-firma .firma-sello {
+  width: 72%;
+}
+
+.s4-firma .firma-label-top {
+  font-size: 8px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.s4-firma .firma-field {
   border-bottom: 1px solid #000;
-  min-height: 28px;
-  font-size: 9px;
+  min-height: 32px;
+  font-size: 8.5px;
   display: flex;
   align-items: flex-end;
   padding-bottom: 2px;
 }
 
-.firma-label {
-  font-size: 9px;
-  font-weight: bold;
-  text-align: center;
-  flex: 2;
+.s4-firma .firma-field-wide {
+  min-height: 36px;
 }
 
-.firma-nota {
-  font-size: 8px;
+.s4-firma .firma-nota {
+  font-size: 7px;
   text-align: center;
-  line-height: 1.4;
-  margin-top: 4px;
-  padding: 4px;
-  border: 1px solid #ccc;
+  line-height: 1.3;
+  padding: 5px 8px;
+  vertical-align: middle;
 }
 
 /* ---- Sección 5 ---- */
-.s5-body {
-  display: flex;
-  align-items: stretch;
-}
-
-.s5-body table {
-  flex: 1;
-  width: 100%;
+.s4 tr.row-fill td,
+.s5 tr.row-fill td {
+  height: 18px;
+  vertical-align: middle;
 }
