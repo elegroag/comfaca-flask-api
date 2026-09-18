@@ -1,0 +1,33 @@
+tags:
+  - PDF Oficios
+summary: Generar PDF consolidado
+description: |
+  Genera varios PDFs a partir de una lista de plantillas y los fusiona en uno solo.
+  Requiere Basic Auth.
+security:
+  - basicAuth: []
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      $ref: "#/definitions/ConsolidadoPdfRequest"
+responses:
+  200:
+    description: PDF consolidado generado
+    schema:
+      $ref: "#/definitions/SuccessPdf"
+  400:
+    description: Validación fallida
+    schema:
+      $ref: "#/definitions/ErrorResponse"
+  401:
+    description: No autorizado
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorResponse"

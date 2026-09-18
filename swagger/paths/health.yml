@@ -1,0 +1,11 @@
+tags:
+  - General
+summary: Health check
+description: Verifica que el servicio esté en ejecución. No requiere autenticación.
+produces:
+  - application/json
+responses:
+  200:
+    description: Servicio saludable
+    schema:
+      $ref: "#/definitions/HealthResponse"

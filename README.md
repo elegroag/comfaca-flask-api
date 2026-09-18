@@ -39,6 +39,26 @@ Por lo tanto, la API estará disponible (por ejemplo en local) en: `http://local
 
 > Si necesitas cambiar el puerto o modo debug, modifica la sección `if __name__ == '__main__':` en `app.py`.
 
+## Documentación Swagger
+
+La API incluye Swagger UI (Flasgger):
+
+- UI: `http://localhost:<puerto>/docs/`
+- Spec OpenAPI 2.0: `http://localhost:<puerto>/apispec_1.json`
+
+Los endpoints están agrupados en tags: **General**, **PDF Oficios**, **Creditos V1** y **Creditos V2**.
+
+Créditos v1 y v2 comparten el mismo contrato JSON (`CreditoPayload`); ver también `docs/variables-oficio-credito.md` y el ejemplo en `public/render_config_creditos_v2.json`.
+
+### Cómo probar con Basic Auth
+
+1. Abre `/docs/`.
+2. Pulsa **Authorize**.
+3. Introduce `BASIC_USER` y `BASIC_PASSWORD` del `.env`.
+4. Usa **Try it out** en endpoints protegidos (p. ej. `POST /api/generate-pdf`).
+
+Las rutas de documentación (`/docs/`, `/apispec_1.json`, `/flasgger_static`) no requieren autenticación.
+
 ## Autenticación
 
 La API utiliza un middleware de autenticación básica (Basic Auth) definido en `services/auth_middleware.py`. Las credenciales se leen desde `.env` (`BASIC_USER`, `BASIC_PASSWORD`).
@@ -51,14 +71,18 @@ La API utiliza un middleware de autenticación básica (Basic Auth) definido en 
 - `/api/creditos/v2/generate-pdf`
 - `/api/creditos/v2/render-template`
 - `/api/download-pdf`
+- `/apispec_1.json`
 
 **Prefijos exentos**:
 
 - `/api/creditos/v2/assets/` (CSS y estáticos para previsualización HTML)
+- `/docs` (Swagger UI)
+- `/flasgger_static` (assets de Swagger UI)
 
 ## Estructura principal
 
 - `app.py`: aplicación Flask y definición de endpoints.
+- `swagger/`: plantilla OpenAPI y specs YAML por endpoint (Flasgger).
 - `services/generate_pdf_service.py`: generación genérica HTML → PDF (WeasyPrint).
 - `services/creditos_generator_service.py`: PDF de solicitud de crédito (formato v1).
 - `services/creditos_v2_generator_service.py`: PDF/HTML de solicitud de crédito (formato v2).

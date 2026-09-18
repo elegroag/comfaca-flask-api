@@ -1,0 +1,21 @@
+tags:
+  - Creditos V2
+summary: Assets estáticos de créditos v2
+description: |
+  Sirve CSS y estáticos de `templates_creditos_v2/` para la previsualización HTML.
+  No requiere Basic Auth.
+parameters:
+  - name: filename
+    in: path
+    type: string
+    required: true
+    description: Ruta relativa (p. ej. styles/main.css)
+    example: styles/main.css
+produces:
+  - text/css
+  - application/octet-stream
+responses:
+  200:
+    description: Archivo estático
+  404:
+    description: Archivo no encontrado

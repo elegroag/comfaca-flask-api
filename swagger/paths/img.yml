@@ -1,0 +1,23 @@
+tags:
+  - General
+summary: Servir imágenes de plantillas
+description: Sirve archivos estáticos desde `templates/img/`. Requiere Basic Auth.
+security:
+  - basicAuth: []
+parameters:
+  - name: filename
+    in: path
+    type: string
+    required: true
+    description: Ruta relativa de la imagen (p. ej. logo-min.png)
+produces:
+  - image/png
+  - image/jpeg
+  - application/octet-stream
+responses:
+  200:
+    description: Archivo estático
+  401:
+    description: No autorizado
+  404:
+    description: Archivo no encontrado

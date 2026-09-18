@@ -1,0 +1,29 @@
+tags:
+  - Creditos V2
+summary: Previsualizar HTML de crédito v2 (POST)
+description: |
+  Renderiza el HTML del formato créditos v2 para validar presentación (sin PDF).
+  Acepta el mismo contrato que generate-pdf, o `{ "context": { ... } }`.
+  No requiere Basic Auth.
+consumes:
+  - application/json
+produces:
+  - text/html
+  - application/json
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      $ref: "#/definitions/CreditoPayload"
+responses:
+  200:
+    description: HTML renderizado (text/html)
+  400:
+    description: Validación fallida
+    schema:
+      $ref: "#/definitions/ErrorResponse"
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorResponse"

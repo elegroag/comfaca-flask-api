@@ -1,0 +1,32 @@
+tags:
+  - General
+summary: Descargar PDF en base64
+description: |
+  Lee un PDF desde `temp_output/` por nombre de archivo y lo retorna en base64.
+  No requiere autenticación.
+parameters:
+  - name: filepath
+    in: query
+    type: string
+    required: true
+    description: Solo nombre de archivo (sin rutas). Debe terminar en .pdf
+    example: consolidado_abc123.pdf
+produces:
+  - application/json
+responses:
+  200:
+    description: PDF en base64
+    schema:
+      $ref: "#/definitions/DownloadPdfResponse"
+  400:
+    description: Parámetro inválido o faltante
+    schema:
+      $ref: "#/definitions/ErrorMessage"
+  404:
+    description: Archivo no encontrado
+    schema:
+      $ref: "#/definitions/ErrorMessage"
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorMessage"

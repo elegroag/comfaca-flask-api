@@ -1,0 +1,31 @@
+tags:
+  - Creditos V1
+summary: Generar PDF de crédito (formato v1)
+description: |
+  Genera el PDF de solicitud de crédito con plantillas de `templates_creditos/`.
+  Comparte el mismo contrato JSON que créditos v2 (`solicitud_id` obligatorio).
+  No requiere Basic Auth.
+  Salida: `temp_output/solicitudes/{solicitud_id}/`.
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      $ref: "#/definitions/CreditoPayload"
+responses:
+  200:
+    description: PDF v1 generado
+    schema:
+      $ref: "#/definitions/SuccessPdf"
+  400:
+    description: Validación fallida
+    schema:
+      $ref: "#/definitions/ErrorResponse"
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorResponse"

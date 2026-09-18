@@ -1,0 +1,21 @@
+tags:
+  - General
+summary: Servir fuentes de plantillas
+description: Sirve archivos estáticos desde `templates/fonts/`. Requiere Basic Auth.
+security:
+  - basicAuth: []
+parameters:
+  - name: filename
+    in: path
+    type: string
+    required: true
+    description: Ruta relativa de la fuente
+produces:
+  - application/octet-stream
+responses:
+  200:
+    description: Archivo estático
+  401:
+    description: No autorizado
+  404:
+    description: Archivo no encontrado

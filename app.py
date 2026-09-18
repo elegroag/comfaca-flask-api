@@ -13,6 +13,7 @@ Uso:
 from pathlib import Path
 from flask import Flask, request, jsonify, send_file, send_from_directory, Response
 from dotenv import dotenv_values, load_dotenv
+from flasgger import Swagger, swag_from
 import base64
 import io
 import os
@@ -48,8 +49,31 @@ config = dotenv_values(".env")
 app = Flask(__name__)
 
 # JSON de configuración / fixtures para render-template
-PUBLIC_DIR = Path(__file__).parent / 'public'
+BASE_DIR = Path(__file__).parent
+PUBLIC_DIR = BASE_DIR / 'public'
 PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+SWAGGER_DIR = BASE_DIR / 'swagger'
+
+# Documentación Swagger UI (Flasgger)
+swagger_config = {
+    'headers': [],
+    'specs': [
+        {
+            'endpoint': 'apispec_1',
+            'route': '/apispec_1.json',
+            'rule_filter': lambda rule: True,
+            'model_filter': lambda tag: True,
+        }
+    ],
+    'static_url_path': '/flasgger_static',
+    'swagger_ui': True,
+    'specs_route': '/docs/',
+}
+Swagger(
+    app,
+    config=swagger_config,
+    template_file=str(SWAGGER_DIR / 'openapi_template.yml'),
+)
 
 # Registrar middleware de autenticación Basic (excluir /health)
 from services.auth_middleware import register_basic_auth
@@ -64,9 +88,12 @@ register_basic_auth(
         '/api/creditos/v2/generate-pdf',
         '/api/creditos/v2/render-template',
         '/api/download-pdf',
+        '/apispec_1.json',
     ],
     exempt_prefixes=[
         '/api/creditos/v2/assets/',
+        '/docs',
+        '/flasgger_static',
     ],
 )
 
@@ -74,20 +101,9 @@ register_basic_auth(
 pdf_service = GeneratePdfService()
 
 @app.route('/api/generate-pdf', methods=['POST'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'generate_pdf.yml'))
 def generate_pdf_endpoint():
-    """
-    Endpoint para generar PDFs.
-    Request JSON:
-    {
-        "template": "empresa.html",
-        "context": {"key": "value", ...},
-        "output": "optional/path/to/output.pdf"
-    }
-
-    Response:
-    - Si output especificado: JSON con {"status": "success", "path": "path/to/file"}
-    - Si no output: PDF file como attachment
-    """
+    """Genera un PDF a partir de una plantilla y un contexto JSON."""
     import logging
     logger = logging.getLogger(__name__)
     
@@ -141,6 +157,7 @@ def generate_pdf_endpoint():
 
 
 @app.route('/api/genera-consolidado-pdf', methods=['POST'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'genera_consolidado_pdf.yml'))
 def genera_consolidado_pdf_endpoint():
     import logging
     logger = logging.getLogger(__name__)
@@ -221,24 +238,28 @@ def genera_consolidado_pdf_endpoint():
 
 
 @app.route('/api/styles/<path:filename>')
+@swag_from(str(SWAGGER_DIR / 'paths' / 'styles.yml'))
 def serve_styles(filename):
     styles_dir = Path(__file__).parent / 'templates' / 'styles'
     return send_from_directory(styles_dir, filename)
 
 
 @app.route('/api/img/<path:filename>')
+@swag_from(str(SWAGGER_DIR / 'paths' / 'img.yml'))
 def serve_images(filename):
     img_dir = Path(__file__).parent / 'templates' / 'img'
     return send_from_directory(img_dir, filename)
 
 
 @app.route('/api/fonts/<path:filename>')
+@swag_from(str(SWAGGER_DIR / 'paths' / 'fonts.yml'))
 def serve_fonts(filename):
     fonts_dir = Path(__file__).parent / 'templates' / 'fonts'
     return send_from_directory(fonts_dir, filename)
 
 
 @app.route('/api/render-template', methods=['GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'render_template.yml'))
 def render_template_endpoint():
     try:
         config_name = request.args.get('config', 'render_config.json')
@@ -276,12 +297,14 @@ def render_template_endpoint():
         return jsonify({"error": f"Error inesperado: {e}"}), 500
 
 @app.route('/api/health', methods=['GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'health.yml'))
 def health_check():
     """Endpoint de verificación de salud."""
     return jsonify({"status": "healthy", "service": "pdf-generator"})
 
 
 @app.route('/api/download-pdf', methods=['GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'download_pdf.yml'))
 def download_pdf():
     """Endpoint para descargar PDF en base64."""
     try:
@@ -326,6 +349,7 @@ def download_pdf():
 
 
 @app.route('/api/creditos/generate-pdf', methods=['POST'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'creditos_v1_generate.yml'))
 def generate_pdf_creditos():
     import logging
     logger = logging.getLogger(__name__)
@@ -356,6 +380,7 @@ def generate_pdf_creditos():
 
 
 @app.route('/api/creditos/v2/generate-pdf', methods=['POST'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'creditos_v2_generate.yml'))
 def generate_pdf_creditos_v2():
     """Genera PDF de solicitud de crédito con el formato v2 (templates_creditos_v2)."""
     import logging
@@ -387,6 +412,8 @@ def generate_pdf_creditos_v2():
 
 
 @app.route('/api/creditos/v2/render-template', methods=['POST', 'GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'creditos_v2_render_get.yml'), methods=['GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'creditos_v2_render_post.yml'), methods=['POST'])
 def render_template_creditos_v2():
     """
     Renderiza el HTML del formato créditos v2 para previsualización.
@@ -440,6 +467,7 @@ def render_template_creditos_v2():
 
 
 @app.route('/api/creditos/v2/assets/<path:filename>', methods=['GET'])
+@swag_from(str(SWAGGER_DIR / 'paths' / 'creditos_v2_assets.yml'))
 def serve_creditos_v2_assets(filename):
     """Sirve CSS y estáticos de templates_creditos_v2 para la previsualización HTML."""
     assets_dir = Path(__file__).parent / 'templates_creditos_v2'

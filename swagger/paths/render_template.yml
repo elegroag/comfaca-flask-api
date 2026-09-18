@@ -1,0 +1,35 @@
+tags:
+  - General
+summary: Previsualizar plantilla HTML
+description: |
+  Renderiza una plantilla genérica a HTML usando un JSON de configuración
+  ubicado en `public/`. Requiere Basic Auth.
+security:
+  - basicAuth: []
+parameters:
+  - name: config
+    in: query
+    type: string
+    required: false
+    default: render_config.json
+    description: Nombre del archivo JSON en public/
+produces:
+  - text/html
+  - application/json
+responses:
+  200:
+    description: HTML renderizado
+  400:
+    description: Configuración inválida
+    schema:
+      $ref: "#/definitions/ErrorMessage"
+  401:
+    description: No autorizado
+  404:
+    description: Archivo JSON o plantilla no encontrada
+    schema:
+      $ref: "#/definitions/ErrorMessage"
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorMessage"

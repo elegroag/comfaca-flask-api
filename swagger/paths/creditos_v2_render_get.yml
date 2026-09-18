@@ -1,0 +1,32 @@
+tags:
+  - Creditos V2
+summary: Previsualizar HTML de crédito v2 (GET)
+description: |
+  Lee un JSON desde `public/` y renderiza el HTML del formato créditos v2.
+  Por defecto usa `render_config_creditos_v2.json`.
+  No requiere Basic Auth.
+produces:
+  - text/html
+  - application/json
+parameters:
+  - name: config
+    in: query
+    type: string
+    required: false
+    default: render_config_creditos_v2.json
+    description: Nombre del archivo JSON en public/
+responses:
+  200:
+    description: HTML renderizado (text/html)
+  400:
+    description: Nombre de archivo inválido
+    schema:
+      $ref: "#/definitions/ErrorResponse"
+  404:
+    description: Archivo JSON no encontrado
+    schema:
+      $ref: "#/definitions/ErrorResponse"
+  500:
+    description: Error interno
+    schema:
+      $ref: "#/definitions/ErrorResponse"

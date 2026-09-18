@@ -1,0 +1,233 @@
+swagger: "2.0"
+info:
+  title: COMFACA PDF Generator API
+  description: |
+    API Flask para generar PDFs a partir de plantillas HTML/Jinja2 (WeasyPrint).
+
+    Incluye generación de oficios/afiliaciones y solicitud de crédito en formatos
+    **v1** (`templates_creditos/`) y **v2** (`templates_creditos_v2/`).
+
+    Use el botón **Authorize** para endpoints protegidos con Basic Auth
+    (`BASIC_USER` / `BASIC_PASSWORD` del archivo `.env`).
+  version: "1.0.0"
+  contact:
+    responsibleOrganization: COMFACA
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Auth (BASIC_USER / BASIC_PASSWORD)
+tags:
+  - name: General
+    description: Salud del servicio, descarga y assets estáticos
+  - name: PDF Oficios
+    description: Generación de PDFs de oficios y afiliaciones (requiere Basic Auth)
+  - name: Creditos V1
+    description: Solicitud de crédito formato v1 (sin Basic Auth)
+  - name: Creditos V2
+    description: Solicitud de crédito formato v2 (sin Basic Auth)
+definitions:
+  ErrorResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: false
+      error:
+        type: string
+        example: "Campo requerido faltante"
+  ErrorMessage:
+    type: object
+    properties:
+      error:
+        type: string
+        example: "Endpoint no encontrado"
+  PdfResultData:
+    type: object
+    properties:
+      api_content:
+        type: string
+        description: PDF codificado en base64
+      api_path:
+        type: string
+        description: Ruta absoluta del archivo generado
+      api_filename:
+        type: string
+        description: Nombre del archivo PDF
+  SuccessPdf:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      message:
+        type: string
+      data:
+        $ref: "#/definitions/PdfResultData"
+  GeneratePdfRequest:
+    type: object
+    required:
+      - template
+    properties:
+      template:
+        type: string
+        description: Nombre lógico de la plantilla (sin extensión .j2)
+        example: empresa.html
+      context:
+        type: object
+        description: Variables para renderizar la plantilla
+        additionalProperties: true
+        example:
+          razon: Empresa S.A.
+          direccion: Calle 123
+      output:
+        type: string
+        description: Nombre relativo del PDF dentro de temp_output/enlinea/
+        example: empresa.pdf
+  ConsolidadoPdfRequest:
+    type: object
+    required:
+      - templates
+    properties:
+      templates:
+        type: array
+        description: Lista de nombres lógicos de plantillas a consolidar
+        items:
+          type: string
+        example:
+          - empresa.html
+          - oficio-empresa.html
+      context:
+        type: object
+        additionalProperties: true
+      output:
+        type: string
+        description: Nombre del PDF consolidado
+        example: consolidado.pdf
+  HealthResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        example: healthy
+      service:
+        type: string
+        example: pdf-generator
+  DownloadPdfResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      filename:
+        type: string
+      size_bytes:
+        type: integer
+      base64_content:
+        type: string
+  CreditoSolicitud:
+    type: object
+    properties:
+      numero_solicitud:
+        type: string
+      numero_comprobante:
+        type: string
+      valor_solicitud:
+        type: number
+      valor_cuota:
+        type: number
+      categoria:
+        type: string
+      rol_en_solicitud:
+        type: string
+      plazo_meses:
+        type: integer
+      producto_tipo:
+        type: string
+        description: "01 Libre Inversión, 02 Vivienda, 03 Recreación, 04 Educación, 05 Salud"
+        example: "01"
+      ha_tenido_credito_comfaca:
+        type: boolean
+  CreditoSolicitante:
+    type: object
+    properties:
+      tipo_documento:
+        type: string
+        example: CC
+      numero_documento:
+        type: string
+      nombre_completo:
+        type: string
+      email:
+        type: string
+      telefono_movil:
+        type: string
+      ciudad_residencia:
+        type: string
+  CreditoPayload:
+    type: object
+    required:
+      - solicitud_id
+    properties:
+      solicitud_id:
+        type: string
+        description: Identificador de la solicitud (obligatorio)
+        example: preview-v2-001
+      solicitud:
+        $ref: "#/definitions/CreditoSolicitud"
+      solicitante:
+        $ref: "#/definitions/CreditoSolicitante"
+      laboral:
+        type: object
+        additionalProperties: true
+      ingresos:
+        type: object
+        additionalProperties: true
+      descuentos:
+        type: object
+        additionalProperties: true
+      economica:
+        type: object
+        additionalProperties: true
+      conyuge:
+        type: object
+        additionalProperties: true
+      propiedades:
+        type: array
+        items:
+          type: object
+          additionalProperties: true
+      deudas:
+        type: array
+        items:
+          type: object
+          additionalProperties: true
+      referencias:
+        type: object
+        additionalProperties: true
+      encabezado:
+        type: object
+        additionalProperties: true
+      convenio:
+        type: object
+        additionalProperties: true
+    example:
+      solicitud_id: preview-v2-001
+      solicitud:
+        numero_solicitud: SOL-001
+        valor_solicitud: 5000000
+        valor_cuota: 250000
+        plazo_meses: 24
+        producto_tipo: "01"
+      solicitante:
+        tipo_documento: CC
+        numero_documento: "1234567890"
+        nombre_completo: Juan Perez Gomez
+        email: juan@example.com
+        ciudad_residencia: Florencia

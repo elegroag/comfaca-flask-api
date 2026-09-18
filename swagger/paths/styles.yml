@@ -1,0 +1,22 @@
+tags:
+  - General
+summary: Servir CSS de plantillas
+description: Sirve archivos estáticos desde `templates/styles/`. Requiere Basic Auth.
+security:
+  - basicAuth: []
+parameters:
+  - name: filename
+    in: path
+    type: string
+    required: true
+    description: Ruta relativa del CSS (p. ej. empresa.css)
+produces:
+  - text/css
+  - application/octet-stream
+responses:
+  200:
+    description: Archivo estático
+  401:
+    description: No autorizado
+  404:
+    description: Archivo no encontrado
