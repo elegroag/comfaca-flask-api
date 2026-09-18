@@ -155,8 +155,10 @@
           <tr>
             <td colspan="2">
               <span class="lbl"><strong>Trabaja</strong></span>
-              <label class="check-box-inline" style="margin-left:4px">{{ check(conyuge and conyuge.trabaja) }} SI</label>
-              <label class="check-box-inline">{{ check(conyuge and not conyuge.trabaja) }} NO</label>
+              <div class="si-no-row">
+                <label class="check-box-inline">{{ check(conyuge and conyuge.trabaja) }} SI</label>
+                <label class="check-box-inline">{{ check(conyuge and not conyuge.trabaja) }} NO</label>
+              </div>
             </td>
             <td colspan="3">
               <span class="lbl"><strong>Nombre de la empresa</strong></span><br>

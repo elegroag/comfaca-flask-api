@@ -6,9 +6,9 @@
   <div class="section-title">PRODUCTO SOLICITADO (Marque con una X)</div>
   <table class="section-frame">
     <tr>
-      <td class="sec-num" rowspan="2">2</td>
-      <td class="sec-main">
-        <div class="s2-row1">
+      <td class="sec-num">2</td>
+      <td class="sec-main s2-products-cell">
+        <div class="s2-products">
           <div class="check-item">
             {{ check(solicitud.producto_tipo == '04', 'lg') }} A. Educación
           </div>
@@ -21,20 +21,16 @@
           <div class="check-item">
             {{ check(solicitud.producto_tipo == '01', 'lg') }} D. Libre Inversión
           </div>
-          <div class="s2-credito">
-            <span>Ha tenido crédito con Comfaca:</span>
-            <div class="check-item">{{ check(solicitud.ha_tenido_credito_comfaca, 'lg') }} SI</div>
-            <div class="check-item">{{ check(not solicitud.ha_tenido_credito_comfaca, 'lg') }} NO</div>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="sec-main">
-        <div class="s2-row2">
           <div class="check-item">
             {{ check(solicitud.producto_tipo == '03', 'lg') }} E. Recreación y Turismo
           </div>
+        </div>
+      </td>
+      <td class="s2-credito-cell">
+        <div class="s2-credito">
+          <span>Ha tenido crédito con Comfaca:</span>
+          <div class="check-item">{{ check(solicitud.ha_tenido_credito_comfaca, 'lg') }} SI</div>
+          <div class="check-item">{{ check(not solicitud.ha_tenido_credito_comfaca, 'lg') }} NO</div>
         </div>
       </td>
     </tr>

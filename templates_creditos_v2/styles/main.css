@@ -1,6 +1,9 @@
 @page {
   size: letter;
   margin: 7mm;
+  background-image: url("../img/membrete.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 * {
@@ -13,13 +16,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 9px;
   color: #000;
-  background: #fff;
+  background: transparent;
   line-height: 1.2;
 }
 
 .page {
   width: 100%;
-  background: #fff;
+  background: transparent;
 }
 
 /* ---- Header ---- */
@@ -56,7 +59,10 @@ body {
 .s1-logo svg,
 .s1-logo img {
   width: 62px;
+  max-width: 100%;
+  max-height: 52px;
   height: auto;
+  object-fit: contain;
 }
 
 .s1-titles {
@@ -148,12 +154,12 @@ body {
   border-bottom: none;
 }
 
-.section.s3 .section-frame > tbody > tr > td.sec-num,
-.section.s3 .section-frame > tr > td.sec-num,
-.section.s4 .section-frame > tbody > tr > td.sec-num,
-.section.s4 .section-frame > tr > td.sec-num,
-.section.s5 .section-frame > tbody > tr > td.sec-num,
-.section.s5 .section-frame > tr > td.sec-num {
+.section.s3 .section-frame>tbody>tr>td.sec-num,
+.section.s3 .section-frame>tr>td.sec-num,
+.section.s4 .section-frame>tbody>tr>td.sec-num,
+.section.s4 .section-frame>tr>td.sec-num,
+.section.s5 .section-frame>tbody>tr>td.sec-num,
+.section.s5 .section-frame>tr>td.sec-num {
   border-top: 0.5px solid #000;
   border-left: 0.5px solid #000;
   border-bottom: 0.5px solid #000;
@@ -192,8 +198,8 @@ body {
   table-layout: fixed;
 }
 
-.section-frame > tbody > tr > td.sec-num,
-.section-frame > tr > td.sec-num {
+.section-frame>tbody>tr>td.sec-num,
+.section-frame>tr>td.sec-num {
   width: 16px;
   text-align: center;
   vertical-align: middle;
@@ -204,21 +210,21 @@ body {
   padding: 4px 2px;
 }
 
-.section-frame > tbody > tr > td.sec-main,
-.section-frame > tr > td.sec-main {
+.section-frame>tbody>tr>td.sec-main,
+.section-frame>tr>td.sec-main {
   border: none;
   padding: 0;
   vertical-align: top;
 }
 
-.section-frame .sec-main > table {
+.section-frame .sec-main>table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
-.section-frame .sec-main > table td,
-.section-frame .sec-main > table th {
+.section-frame .sec-main>table td,
+.section-frame .sec-main>table th {
   border: 0.5px solid #000;
   padding: 3px 4px;
   vertical-align: top;
@@ -311,9 +317,10 @@ body {
 .date-group {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 2px;
+  flex-wrap: nowrap;
+  gap: 3px;
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 .date-group .part {
@@ -343,43 +350,58 @@ body {
   white-space: nowrap;
 }
 
+.si-no-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin-top: 3px;
+}
+
 /*
   Cuerpos de sección: tabla propia (.section-frame).
   Evita float/flex para permitir margen entre secciones.
 */
 
 /* ---- Sección 2 ---- */
-.s2-row1 {
-  display: flex;
-  align-items: center;
-  padding: 4px 6px;
-  gap: 10px;
-  border-bottom: 1px solid #000;
-  flex-wrap: wrap;
+.s2 .section-frame > tbody > tr > td.s2-products-cell,
+.s2 .section-frame > tr > td.s2-products-cell {
+  border: none;
+  padding: 4px 5px;
+  vertical-align: middle;
 }
 
-.s2-row2 {
-  display: flex;
-  align-items: center;
-  padding: 4px 6px;
-  gap: 10px;
+.s2 .section-frame > tbody > tr > td.s2-credito-cell,
+.s2 .section-frame > tr > td.s2-credito-cell {
+  border: none;
+  border-left: 0.5px solid #000;
+  padding: 4px 5px;
+  vertical-align: middle;
+  width: 32%;
+  white-space: nowrap;
 }
 
-.check-item {
+.s2-products {
   display: flex;
   align-items: center;
-  gap: 3px;
-  font-size: 8.5px;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.s2 .check-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 7.5px;
+  white-space: nowrap;
 }
 
 .s2-credito {
-  margin-left: auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 8.5px;
-  border-left: 1px solid #000;
-  padding-left: 7px;
+  gap: 4px;
+  font-size: 7.5px;
+  white-space: nowrap;
 }
 
 /* ---- Sección 3 ---- */
@@ -451,5 +473,141 @@ body {
 .s4 tr.row-fill td,
 .s5 tr.row-fill td {
   height: 18px;
+  vertical-align: middle;
+}
+
+/* ---- Reverso legal (back v1 → diseño v2; fluye bajo sección 5) ---- */
+.section.s5 {
+  margin-bottom: 30px;
+}
+
+.section.s-legal-page {
+  break-before: page;
+  page-break-before: always;
+}
+
+.section.s-legal {
+  border: 0.5px solid #000;
+  margin-bottom: 3px;
+}
+
+.section.s-legal .section-title {
+  border: none;
+}
+
+.legal-body {
+  padding: 5px 7px;
+}
+
+.legal-text {
+  font-size: 7.5px;
+  line-height: 1.25;
+  text-align: justify;
+  margin: 0 0 5px 0;
+}
+
+.legal-text:last-child {
+  margin-bottom: 0;
+}
+
+.legal-channels,
+.legal-contact,
+.firma-deudor-table,
+.firmantes-table,
+.proceso-table,
+.checklist-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-top: 4px;
+}
+
+.legal-channels td,
+.legal-contact td,
+.firma-deudor-table td,
+.firmantes-table td,
+.proceso-table td {
+  border: 0.5px solid #000;
+  padding: 4px 5px;
+  vertical-align: top;
+  font-size: 8px;
+}
+
+.legal-channels td {
+  white-space: nowrap;
+}
+
+.firma-deudor-main,
+.firmante-info {
+  width: 75%;
+}
+
+.firma-huella {
+  width: 25%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.huella-title {
+  font-size: 8px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.huella-box {
+  border: 0.5px solid #000;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  color: #555;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.firma-line {
+  margin-top: 28px;
+  border-top: 0.5px solid #000;
+  padding-top: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  text-align: center;
+  width: 70%;
+}
+
+.checklist-table td {
+  border: 0.5px solid #000;
+  padding: 4px;
+  vertical-align: top;
+}
+
+.checklist-logo {
+  width: 18%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.checklist-logo img {
+  width: 70px;
+  max-height: 60px;
+  height: auto;
+  object-fit: contain;
+}
+
+.checklist-items {
+  width: 82%;
+  padding: 0 !important;
+}
+
+.checklist-items>table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.checklist-items>table td {
+  border: 0.5px solid #000;
+  padding: 3px 4px;
+  font-size: 7.5px;
   vertical-align: middle;
 }
