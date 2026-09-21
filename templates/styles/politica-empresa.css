@@ -1,225 +1,275 @@
+/* Alineado visualmente con styles/empresa.css (solicitud empleador) */
 
 p {
-    margin-bottom: 3px;
-    text-align: justify;
-    font-size: 9px;
-    color: #333;
+  margin-bottom: 3px;
+  text-align: justify;
+  font-size: 8px;
+  color: #000;
 }
 
 ol {
-    margin: 8px 0 8px 20px;
-    font-size: 8px;
-    text-align: justify;
+  margin: 6px 0 6px 18px;
+  font-size: 8px;
+  text-align: justify;
 }
 
 li {
-    margin-bottom: 3px;
-    color: #333;
+  margin-bottom: 3px;
+  color: #000;
 }
 
 ul {
-    margin: 10px 0 10px 25px;
-    list-style-type: disc;
-    font-size: 8.5px;
+  margin: 6px 0 6px 18px;
+  list-style-type: disc;
+  font-size: 8px;
 }
 
 ul li {
-    margin-bottom: 3px;
-    color: #333;
+  margin-bottom: 3px;
+  color: #000;
 }
 
 .sello-section {
-    position: absolute;
-    bottom: 18px;
-    right: 80px;
+  position: absolute;
+  bottom: 18px;
+  right: 80px;
 }
 
+/* Header: misma barra verde / gradiente que solicitud empresa */
 .header {
-    width: 100%;
-    padding-bottom: 0px;
-    border-bottom: 3px solid #4a9d5f;
-    margin-bottom: 10px;
-    position: relative;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #4a9d5f;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 .header::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(to right,
-        #4a9d5f 0%,
-        #009e47 50%,
-        #00c3ff 100%);
-    border-radius: 0 0 50% 50%;
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #4a9d5f 0%,
+    #009e47 50%,
+    #00c3ff 100%
+  );
+  border-radius: 0 0 50% 50%;
+}
+
+.header .table-border-0 {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}
+
+.header .table-border-0 td {
+  border: none;
+  vertical-align: top;
+  padding: 2px 4px;
+}
+
+.logo-section {
+  width: 250px;
+  padding-bottom: 5px;
+}
+
+.header-info {
+  text-align: center;
+  font-size: 7.5px;
+  line-height: 1.35;
+  color: #000;
+}
+
+.header-info h3 {
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.25;
+  color: #000;
+}
+
+.header-info p {
+  margin-bottom: 1px;
+  font-size: 7px;
+  text-align: center;
+  color: #000;
 }
 
 .underline {
-    border-bottom: 1px solid #444;
+  border-bottom: 1px solid #444;
 }
 
 .text-center {
-    text-align: center;
-}
-
-.table-border-0 {
-    width: 100%;
-    border: none;
+  text-align: center;
 }
 
 .title-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin: 9px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0;
 }
 
 .resolution-box {
-    border: 1px solid #777;
-    padding: 5px;
-    width: 160px;
+  border: 1px solid #000;
+  padding: 5px;
+  width: 180px;
+  margin-left: auto;
 }
 
 .resolution-header {
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 1px solid #777;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  font-size: 8px;
 }
 
 .text-radicado {
-    font-size: 9px;
-    font-weight: bold;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    color: #3f4e46;
+  font-size: 9px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #3f4e46;
 }
 
 .form-label {
-    font-size: 8px;
-    font-weight: bold;
-    margin-bottom: 2px;
-    color: #444;
+  font-size: 8px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #000;
 }
 
 .resolution-fields {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .resolution-field {
-    flex: 1;
-    border: 1px solid #777;
-    padding: 10px 5px;
-    text-align: center;
-    font-size: 9px;
+  flex: 1;
+  border: 1px solid #000;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 9px;
 }
 
-.contact-section {
-    background-color: #f9f9f9;
-    padding: 5px;
-    margin-top: 5px;
-    margin-left: 20px;
-    border-left: 4px solid #006b4f;
-    font-size: 9px;
-}
-
-.contact-section ul {
-    margin-left: 20px;
-}
-
-.declaration {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-top: 5px;
-    margin-left: 20px;
-    border-radius: 4px;
-    font-size: 9px;
-    text-align: justify;
-    color: #333;
-}
-
+/* Títulos de sección: mismo patrón que .section-header de empresa */
 .section-title {
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    color: #333;
-    font-size: 9px;
+  padding: 3px 5px;
+  font-weight: bold;
+  font-size: 8px;
+  margin: 6px 0 0 0;
+  color: #000;
+  background-color: #89bd94;
+  border-top: 1px solid #444;
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
+  border-bottom: none;
 }
 
-.rights-section {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.rights-section ul {
-    margin-left: 30px;
-}
-
-.rights-section li {
-    margin-bottom: 6px;
-}
-
-.form-table {
-    margin: auto;
-    width: 450px;
-    border-collapse: collapse;
-    margin-top: 5px;
-}
-
-.form-table td {
-    padding: 4px;
-    vertical-align: top;
-    font-size: 8px;
-}
-
-.form-table .label {
-    font-weight: bold;
-    white-space: nowrap;
-    width: 25%;
+.intro-text,
+.sensitive-data,
+.third-party-data,
+.minors-data,
+.audiovisual-data,
+.rights-section,
+.declaration {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  margin: 0 0 4px 0;
+  font-size: 8px;
+  text-align: justify;
+  color: #000;
+  background: transparent;
 }
 
 .intro-text {
-    text-align: justify;
-    margin-bottom: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
-    font-size: 9px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.declaration {
+  background-color: #f0f0f0;
+}
+
+.rights-section ul {
+  margin-left: 18px;
+}
+
+.rights-section li {
+  margin-bottom: 4px;
+}
+
+/* Formulario de datos: ancho completo como tablas de solicitud */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 0 0;
+}
+
+.form-table td {
+  padding: 4px 5px;
+  vertical-align: middle;
+  font-size: 8px;
+  border: 0.8px solid #444;
+}
+
+.form-table td:has(.label) {
+  background-color: #e7e7e7;
+}
+
+.form-table .label {
+  font-weight: bold;
+  white-space: nowrap;
+  width: 28%;
+  background-color: transparent;
+}
+
+.form-table .text {
+  display: inline-block;
+  min-height: 14px;
+  padding: 1px 2px;
 }
 
 .intro-text strong {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.contact-section {
+  background-color: #f9f9f9;
+  padding: 5px;
+  margin-top: 5px;
+  border-left: 4px solid #006b4f;
+  font-size: 8px;
 }
 
 .purposes-list {
-    margin: 0px;
-    margin-left: 40px;
-    padding-left: 10px;
+  margin: 0;
+  padding-left: 18px;
 }
 
 .purposes-list li {
-    font-size: 8.5px;
-    margin-bottom: 3px;
-    text-align: justify;
+  font-size: 8px;
+  margin-bottom: 3px;
+  text-align: justify;
 }
 
 .rights-list {
-    margin: 15px 0;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 25px;
+  margin: 8px 0;
+  padding-left: 18px;
 }
 
 .rights-list li {
-    font-size: 8px;
-    margin-bottom: 10px;
-    text-align: justify;
+  font-size: 8px;
+  margin-bottom: 6px;
+  text-align: justify;
 }
 
 .rights-list li strong {
-    font-weight: bold;
+  font-weight: bold;
 }

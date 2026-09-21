@@ -134,12 +134,16 @@
 }
 
 .checkbox {
-    width: 8px;
-    height: 8px;
-    border: 1px solid #000;
     display: inline-block;
-    position: relative;
-    top: 1px;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 0;
+    vertical-align: middle;
+    background-color: #fff;
 }
 
 .inline-checkbox {
@@ -180,20 +184,35 @@
 }
 
 .small-checkbox {
-    width: 10px;
-    height: 10px;
-    padding: 1px;
-    border: 1px solid #638864;
     display: inline-block;
-    border-radius: 3px;
-    font-size: 7px;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 2px;
+    font-size: 8px;
     font-weight: bold;
+    line-height: 11px;
     color: #000;
     text-align: center;
+    vertical-align: middle;
+    background-color: #fff;
+}
+
+.small-checkbox:empty::before {
+    content: "\00a0";
+}
+
+.small-checkbox.active:empty::before {
+    content: "x";
 }
 
 .small-checkbox.active {
-    background-color: #e1f9e4;
+    background-color: #fff;
 }
 
 .declaracion {

@@ -11,13 +11,13 @@
     <td style="width: 10%">
       <div class="list-item">
         <label class="label">Natural</label>
-        <span class="small-checkbox{{ ' active' if tipper=='N' else '' }}"></span>
+        <span class="small-checkbox{{ ' active' if tipper=='N' else '' }}">{% if tipper=='N' %}x{% endif %}</span>
       </div>
     </td>
     <td style="width: 10%">
       <div class="list-item">
         <label class="label">Jurídica</label>
-        <span class="small-checkbox{{ ' active' if tipper=='J' else '' }}"></span>
+        <span class="small-checkbox{{ ' active' if tipper=='J' else '' }}">{% if tipper=='J' %}x{% endif %}</span>
       </div>
     </td>
     <td style="width: 15%" class="label-bg">
@@ -26,19 +26,19 @@
     <td style="width: 10%">
       <div class="list-item">
         <label class="label">Publica</label>
-        <span class="small-checkbox{{ ' active' if tipemp=='P' else '' }}"></span>
+        <span class="small-checkbox{{ ' active' if tipemp=='P' else '' }}">{% if tipemp=='P' %}x{% endif %}</span>
       </div>
     </td>
     <td style="width: 10%">
       <div class="list-item">
         <label class="label">Oficial</label>
-        <span class="small-checkbox{{ ' active' if tipemp=='O' else '' }}"></span>
+        <span class="small-checkbox{{ ' active' if tipemp=='O' else '' }}">{% if tipemp=='O' %}x{% endif %}</span>
       </div>
     </td>
     <td style="width: 10%">
       <div class="list-item">
         <label class="label">Mixta</label>
-        <span class="small-checkbox{{ ' active' if tipemp=='M' else '' }}"></span>
+        <span class="small-checkbox{{ ' active' if tipemp=='M' else '' }}">{% if tipemp=='M' %}x{% endif %}</span>
       </div>
     </td>
   </tr>

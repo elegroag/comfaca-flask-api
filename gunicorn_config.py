@@ -15,6 +15,7 @@ max_requests_jitter = 50  # Variación aleatoria para evitar reinicios simultán
 preload_app = False
 daemon = False
 tmp_upload_dir = "/tmp"
+control_socket_disable = True  # evita Permission denied: '/.gunicorn' (USER sin HOME escribible)
 
 # Logging
 accesslog = "-"
