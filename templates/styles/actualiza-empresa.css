@@ -138,6 +138,12 @@
     border: 1px solid #333;
     margin-right: 8px;
     vertical-align: middle;
+    text-align: center;
+    line-height: 14px;
+    font-size: 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: #fff;
 }
 
 .notes-box {
@@ -222,5 +228,6 @@ p {
 }
 
 .checkbox.active {
-    background-color: #7a7a7a;
+    background-color: #fff;
+    color: #000;
 }
