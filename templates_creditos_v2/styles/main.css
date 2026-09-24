@@ -582,7 +582,7 @@ body {
   vertical-align: top;
 }
 
-.checklist-logo {
+.checklist-table td.checklist-logo {
   width: 18%;
   text-align: center;
   vertical-align: middle;

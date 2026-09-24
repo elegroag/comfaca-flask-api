@@ -87,6 +87,18 @@ class CreditosV2GeneratorService:
             empty = {"day": "", "month": "", "year": ""}
             if not value:
                 return empty
+            # Ya viene separado desde el cliente Nuxt (day/month/year o dia/mes/anio)
+            if isinstance(value, dict):
+                day = str(value.get("day") or value.get("dia") or "").strip()
+                month = str(value.get("month") or value.get("mes") or "").strip()
+                year = str(value.get("year") or value.get("anio") or "").strip()
+                if day or month or year:
+                    return {
+                        "day": day.zfill(2) if day.isdigit() else day,
+                        "month": month.zfill(2) if month.isdigit() else month,
+                        "year": year,
+                    }
+                return empty
             try:
                 if isinstance(value, str):
                     date_obj = datetime.fromisoformat(value.replace("Z", "+00:00"))
@@ -227,8 +239,24 @@ class CreditosV2GeneratorService:
         ctx["propiedades_por_tipo"] = self._agrupar_propiedades(ctx.get("propiedades") or [])
         ctx["referencia_familiar"] = self._primera_referencia(ctx.get("referencias") or [], "familiar")
         ctx["referencia_personal"] = self._primera_referencia(ctx.get("referencias") or [], "personal")
+        ctx["documentos_entregados_codigos"] = self._codigos_documentos_entregados(
+            ctx.get("documentos_entregados")
+        )
 
         return ctx
+
+    def _codigos_documentos_entregados(self, documentos: Any) -> List[str]:
+        """Códigos tipdoc de SISU normalizados a 2 dígitos ('5' -> '05')."""
+        if not isinstance(documentos, list):
+            return []
+        codigos: List[str] = []
+        for doc in documentos:
+            if not isinstance(doc, dict):
+                continue
+            codigo = str(doc.get("documento_requerido_id") or "").strip()
+            if codigo:
+                codigos.append(codigo.zfill(2))
+        return codigos
 
     def _agrupar_propiedades(self, propiedades: List[Dict[str, Any]]) -> Dict[str, Optional[Dict[str, Any]]]:
         result: Dict[str, Optional[Dict[str, Any]]] = {

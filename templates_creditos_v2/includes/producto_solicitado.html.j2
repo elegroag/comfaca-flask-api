@@ -1,7 +1,9 @@
 {% from "macros/macros.html.j2" import check %}
 {# Sección 2: Producto solicitado
-   Códigos: 04=Educación, 05=Salud, 02=Vivienda, 01=Libre Inversión, 03=Recreación y Turismo
+   Opciones: A=Educación, B=Salud, C=Vivienda, D=Libre Inversión, E=Recreación y Turismo
+   Cualquier otro valor no vacío marca "Otros".
 #}
+{% set producto = (solicitud.producto_tipo or '')|string|trim|upper %}
 <div class="section s2">
   <div class="section-title">PRODUCTO SOLICITADO (Marque con una X)</div>
   <table class="section-frame">
@@ -10,19 +12,22 @@
       <td class="sec-main s2-products-cell">
         <div class="s2-products">
           <div class="check-item">
-            {{ check(solicitud.producto_tipo == '04', 'lg') }} A. Educación
+            {{ check(producto == 'A', 'lg') }} A. Educación
           </div>
           <div class="check-item">
-            {{ check(solicitud.producto_tipo == '05', 'lg') }} B. Salud
+            {{ check(producto == 'B', 'lg') }} B. Salud
           </div>
           <div class="check-item">
-            {{ check(solicitud.producto_tipo == '02', 'lg') }} C. Vivienda
+            {{ check(producto == 'C', 'lg') }} C. Vivienda
           </div>
           <div class="check-item">
-            {{ check(solicitud.producto_tipo == '01', 'lg') }} D. Libre Inversión
+            {{ check(producto == 'D', 'lg') }} D. Libre Inversión
           </div>
           <div class="check-item">
-            {{ check(solicitud.producto_tipo == '03', 'lg') }} E. Recreación y Turismo
+            {{ check(producto == 'E', 'lg') }} E. Recreación y Turismo
+          </div>
+          <div class="check-item">
+            {{ check(producto and producto not in ['A', 'B', 'C', 'D', 'E'], 'lg') }} Otros
           </div>
         </div>
       </td>

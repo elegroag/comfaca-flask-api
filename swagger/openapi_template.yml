@@ -150,8 +150,8 @@ definitions:
         type: integer
       producto_tipo:
         type: string
-        description: "01 Libre Inversión, 02 Vivienda, 03 Recreación, 04 Educación, 05 Salud"
-        example: "01"
+        description: "A Educación, B Salud, C Vivienda, D Libre Inversión, E Recreación y Turismo. Cualquier otro valor se marca como Otros."
+        example: "D"
       ha_tenido_credito_comfaca:
         type: boolean
   CreditoSolicitante:
@@ -170,6 +170,25 @@ definitions:
         type: string
       ciudad_residencia:
         type: string
+  CreditoCodeudor:
+    type: object
+    description: Datos del codeudor. Opcional; si se envía, se muestran en la sección DEUDOR O CODEUDOR (v2).
+    properties:
+      tipo_documento:
+        type: string
+        example: CC
+      numero_documento:
+        type: string
+        example: "11223344"
+      nombre_completo:
+        type: string
+        example: PEDRO GÓMEZ
+      email:
+        type: string
+        example: pedro@example.com
+      telefono:
+        type: string
+        example: "3001234567"
   CreditoPayload:
     type: object
     required:
@@ -183,6 +202,8 @@ definitions:
         $ref: "#/definitions/CreditoSolicitud"
       solicitante:
         $ref: "#/definitions/CreditoSolicitante"
+      codeudor:
+        $ref: "#/definitions/CreditoCodeudor"
       laboral:
         type: object
         additionalProperties: true
@@ -224,10 +245,16 @@ definitions:
         valor_solicitud: 5000000
         valor_cuota: 250000
         plazo_meses: 24
-        producto_tipo: "01"
+        producto_tipo: "D"
       solicitante:
         tipo_documento: CC
         numero_documento: "1234567890"
         nombre_completo: Juan Perez Gomez
         email: juan@example.com
         ciudad_residencia: Florencia
+      codeudor:
+        tipo_documento: CC
+        numero_documento: "11223344"
+        nombre_completo: PEDRO GÓMEZ
+        email: pedro@example.com
+        telefono: "3001234567"

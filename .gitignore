@@ -19,3 +19,5 @@ python_flask_pdf.egg-info/
 AGENTS.md
 session-*
 .hermes
+temp_output/solicitudes_v2/preview-docs/*.png
+temp_output/solicitudes_v2/preview-codeudor/*.png
